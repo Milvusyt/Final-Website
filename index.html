@@ -889,10 +889,14 @@
     .intel-section {
       background: radial-gradient(circle at 80% 20%, rgba(212, 175, 55, 0.05) 0%, transparent 60%),
                   var(--bg-dark);
-      border-top: 1px solid var(--gold-border);
+        display: none;
       border-bottom: 1px solid var(--gold-border);
       position: relative;
       overflow: hidden;
+    }
+
+    .nav-menu li:has(.nav-link[href="#intel"]) {
+      display: none;
     }
 
     .intel-grid {
@@ -1103,7 +1107,7 @@
     }
 
     /* ==========================================================================
-       SECTION 03: CONTINUOUS AIRDROP LANDING & VOLUMETRIC RED SMOKE
+      SECTION 03: UPCOMING TOURNAMENTS & LIVE BRACKET CONTROL
        ========================================================================== */
     .airdrop-landing-zone {
       position: relative;
@@ -1121,6 +1125,149 @@
       align-items: center;
       position: relative;
       z-index: 5;
+    }
+
+    .tournament-board {
+      width: 88%;
+      position: relative;
+      z-index: 5;
+    }
+
+    .tournament-board-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--gold-border);
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--gold-primary);
+      letter-spacing: 0.12em;
+    }
+
+    .tournament-board-status {
+      color: #00ff88;
+      white-space: nowrap;
+    }
+
+    .tournament-bracket-line {
+      height: 1px;
+      margin: 28px 0;
+      background: linear-gradient(90deg, transparent, var(--gold-primary), transparent);
+      box-shadow: 0 0 12px var(--gold-glow);
+    }
+
+    .tournament-board h3 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1;
+      color: var(--text-bone);
+      margin-bottom: 10px;
+    }
+
+    .tournament-board p {
+      color: var(--text-muted);
+      font-family: var(--font-condensed);
+      font-size: 1rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .tournament-board-meta {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .tournament-board-meta span {
+      padding: 10px 12px;
+      border: 1px solid rgba(212, 175, 55, 0.18);
+      background: rgba(8, 6, 4, 0.5);
+      color: var(--gold-light);
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+    }
+
+    .upcoming-tournaments-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .upcoming-tournament-card {
+      background: linear-gradient(135deg, rgba(26, 18, 11, 0.9), rgba(10, 8, 5, 0.96));
+      border: 1px solid var(--gold-border);
+      border-left: 3px solid var(--gold-primary);
+      border-radius: 6px;
+      padding: 18px 20px;
+      transition: transform 0.3s var(--ease-out), border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .upcoming-tournament-card:hover {
+      transform: translateX(6px);
+      border-color: var(--gold-primary);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.55), 0 0 18px rgba(212, 175, 55, 0.14);
+    }
+
+    .upcoming-tournament-card.featured {
+      border-left-color: var(--crimson);
+      background: linear-gradient(135deg, rgba(52, 18, 18, 0.92), rgba(10, 8, 5, 0.98));
+    }
+
+    .upcoming-tournament-card.featured:hover {
+      border-color: var(--crimson);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.55), 0 0 20px rgba(214, 40, 40, 0.2);
+    }
+
+    .upcoming-tournament-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.45rem;
+      line-height: 1;
+      color: var(--text-bone);
+      margin: 8px 0 12px;
+    }
+
+    .tournament-card-topline,
+    .tournament-card-details {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+    }
+
+    .tournament-card-topline { color: var(--gold-primary); }
+    .tournament-card-details { color: var(--text-muted); }
+    .tournament-card-open { color: #00ff88; }
+
+    .tournament-card-facts {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+      margin: 14px 0 2px;
+    }
+
+    .tournament-card-facts span {
+      padding: 7px 9px;
+      border: 1px solid rgba(212, 175, 55, 0.15);
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      font-size: 0.64rem;
+    }
+
+    .tournament-card-facts strong {
+      display: block;
+      color: var(--gold-light);
+      font-size: 0.72rem;
+      margin-top: 2px;
+    }
+
+    .tournament-card-action {
+      margin-top: 14px;
+      padding: 7px 14px;
+      font-size: 0.72rem;
     }
 
     @media (max-width: 992px) {
@@ -1716,22 +1863,101 @@
     }
 
     .finals-card {
-      background: linear-gradient(180deg, var(--bg-panel) 0%, rgba(14, 10, 6, 0.95) 100%);
-      border: 1px solid var(--gold-border);
-      border-radius: 8px;
-      padding: 24px 16px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
       position: relative;
-      transition: all 0.3s var(--ease-out);
+      min-height: 260px;
+      perspective: 1000px;
+      cursor: pointer;
+      outline: none;
     }
 
     .finals-card:hover {
-      border-color: var(--gold-primary);
       transform: translateY(-6px);
+    }
+
+    .finals-card-inner {
+      position: relative;
+      width: 100%;
+      min-height: 260px;
+      transform-style: preserve-3d;
+      transition: transform 0.7s var(--ease-out);
+    }
+
+    .finals-card.flipped .finals-card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .finals-card-face {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 24px 16px;
+      border: 1px solid var(--gold-border);
+      border-radius: 8px;
+      background: linear-gradient(180deg, var(--bg-panel) 0%, rgba(14, 10, 6, 0.95) 100%);
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      overflow: hidden;
+    }
+
+    .finals-card-face::after {
+      content: 'CLICK TO VIEW ACHIEVEMENTS';
+      position: absolute;
+      bottom: 10px;
+      font-family: var(--font-mono);
+      font-size: 0.56rem;
+      letter-spacing: 0.08em;
+      color: var(--text-dark);
+    }
+
+    .finals-card:hover .finals-card-front {
+      border-color: var(--gold-primary);
       box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8), 0 0 25px rgba(212, 175, 55, 0.25);
+    }
+
+    .finals-card-back {
+      align-items: stretch;
+      justify-content: flex-start;
+      transform: rotateY(180deg);
+      background: linear-gradient(145deg, rgba(42, 28, 12, 0.98), rgba(10, 8, 5, 0.98));
+      text-align: left;
+    }
+
+    .finals-card-back::after { content: 'CLICK TO RETURN'; }
+
+    .achievement-kicker {
+      font-family: var(--font-mono);
+      font-size: 0.64rem;
+      letter-spacing: 0.15em;
+      color: var(--gold-primary);
+      text-transform: uppercase;
+    }
+
+    .achievement-title {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      line-height: 1;
+      color: var(--text-bone);
+      margin: 10px 0 14px;
+    }
+
+    .achievement-list {
+      display: grid;
+      gap: 8px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--text-muted);
+    }
+
+    .achievement-list li::before {
+      content: '// ';
+      color: var(--crimson);
     }
 
     .finals-crown-tag {
@@ -2002,7 +2228,7 @@
   <nav class="chapter-nav" id="chapter-nav">
     <div class="chapter-dot active" data-section="hero" data-label="01 // HERO"></div>
     <div class="chapter-dot" data-section="intel" data-label="02 // INTEL"></div>
-    <div class="chapter-dot" data-section="airdrop-zone" data-label="03 // AIRDROP"></div>
+    <div class="chapter-dot" data-section="upcoming-tournaments" data-label="03 // UPCOMING"></div>
     <div class="chapter-dot" data-section="arsenal" data-label="04 // ARSENAL"></div>
     <div class="chapter-dot" data-section="protocol" data-label="05 // PROTOCOL"></div>
     <div class="chapter-dot" data-section="roster" data-label="06 // ROSTER"></div>
@@ -2017,7 +2243,7 @@
         <img src="assets/squadone-logo.png" onerror="this.src='assets/teams/squadone.png'" alt="Squad One Crest">
       </div>
       <div class="brand-title">
-        SQUAD ONE
+        SQUAD ONE 
         <span>PUBG DIVISION</span>
       </div>
     </a>
@@ -2025,7 +2251,7 @@
     <ul class="nav-menu">
       <li><a href="#hero" class="nav-link active" data-sound="hover">Home</a></li>
       <li><a href="#intel" class="nav-link" data-sound="hover">Intel</a></li>
-      <li><a href="#airdrop-zone" class="nav-link" data-sound="hover">Airdrop</a></li>
+      <li><a href="#upcoming-tournaments" class="nav-link" data-sound="hover">Upcoming Tournaments</a></li>
       <li><a href="#arsenal" class="nav-link" data-sound="hover">Arsenal</a></li>
       <li><a href="#protocol" class="nav-link" data-sound="hover">Protocol</a></li>
       <li><a href="#roster" class="nav-link" data-sound="hover">Roster</a></li>
@@ -2082,8 +2308,8 @@
         <a href="https://ewave.gg/game/pubg/dashboard" target="_blank" class="cyber-btn" data-sound="click">
           REGISTER FOR SCRIMS
         </a>
-        <a href="#airdrop-zone" class="cyber-btn cyber-btn-outline" data-sound="click">
-          INSPECT AIRDROP
+        <a href="#upcoming-tournaments" class="cyber-btn cyber-btn-outline" data-sound="click">
+          VIEW TOURNAMENTS
         </a>
       </div>
     </div>
@@ -2191,56 +2417,100 @@
   </section>
 
   <!-- =========================================================================
-       SECTION 03: CONTINUOUS AIRDROP LANDING, VOLUMETRIC RED SMOKE & LOOTING
+       SECTION 03: UPCOMING TOURNAMENTS & LIVE BRACKET CONTROL
        ========================================================================= -->
-  <section class="airdrop-landing-zone" id="airdrop-zone">
+  <section class="airdrop-landing-zone" id="upcoming-tournaments">
     <div class="container">
-      <div class="sec-eyebrow">CARE PACKAGE INCOMING</div>
-      <h2 class="sec-title">THE <span>AIRDROP DESCENT</span></h2>
+      <div class="sec-eyebrow">COMPETITION CALENDAR // OPEN REGISTRATION</div>
+      <h2 class="sec-title">UPCOMING <span>TOURNAMENTS</span></h2>
       <p class="sec-desc">
-        Watch the Care Package touch down from the skies. Billowing red flare smoke signals high-tier crates as our squad secures the landing zone.
+        Secure your slot in the next Squad One events. Track the lobby status, format, and registration window before the bracket locks.
       </p>
 
       <div class="airdrop-showcase-layout">
-        
-        <!-- Airdrop Landing Crate + Volumetric Red Smoke Canvas -->
+
         <div class="airdrop-stage-container" id="airdrop-stage">
           <canvas id="smoke-canvas"></canvas>
-          <img src="assets/pubg/airdrop_crate.jpg" class="airdrop-crate-img" id="airdrop-crate-node" alt="PUBG Airdrop Care Package">
-          <img src="assets/pubg/player_model.jpg" class="player-looting-img" id="player-looter-node" alt="PUBG Level 3 Operator">
+          <div class="tournament-board">
+            <div class="tournament-board-header">
+              <span>SYS://EVENT_QUEUE</span>
+              <span class="tournament-board-status">● REGISTRATION LIVE</span>
+            </div>
+            <div class="tournament-bracket-line"></div>
+            <h3>BRACKET CONTROL</h3>
+            <p>Next match cycle is loading into the competitive lobby.</p>
+            <div class="tournament-board-meta">
+              <span>TEAMS: 16 / 16</span>
+              <span>MAP: ERANGEL</span>
+              <span>FORMAT: 4 MATCHES</span>
+              <span>SERVER: ASIA // 18 MS</span>
+            </div>
+          </div>
         </div>
 
-        <!-- In-Game PUBG Loot Inventory HUD -->
-        <div class="pubg-inventory-panel">
-          <div class="inventory-header">
-            <span>📦 CARE PACKAGE LOOT CRATE</span>
-            <span style="color:#00ff88;">[STATUS: OPEN & READY]</span>
-          </div>
+        <div class="upcoming-tournaments-list">
+          <article class="upcoming-tournament-card featured" data-sound="hover">
+            <div class="tournament-card-topline">
+              <span>LIVE // SQUAD ONE NATIONAL LEAGUE</span>
+              <span class="tournament-card-open">USING EWAVE ANTICHEAT</span>
+            </div>
+            <h3>Squad One National League - Season 2</h3>
+            <div class="tournament-card-details">
+              <span>AUG 07 · 20:00 IST</span>
+              <span>INDIA · PC</span>
+            </div>
+            <div class="tournament-card-facts">
+              <span>PRIZE POOL<strong>₹35,000</strong></span>
+              <span>REGISTERED TEAMS<strong>95 / ∞</strong></span>
+              <span>HOSTED BY<strong>eWave Team</strong></span>
+              <span>FORMAT<strong>QUALIFIERS · 3 ROUNDS</strong></span>
+            </div>
+            <a href="https://ewave.gg/game/pubg/dashboard" target="_blank" class="cyber-btn cyber-btn-crimson tournament-card-action" data-sound="click">VIEW LIVE EVENT</a>
+          </article>
 
-          <div class="loot-item-row" data-sound="hover">
-            <span class="loot-name">AWM .300 MAGNUM SNIPER</span>
-            <span class="loot-tier">CRATE TIER S+</span>
-          </div>
-          <div class="loot-item-row" data-sound="hover">
-            <span class="loot-name">GHILLIE SUIT (ERANGEL CAMO)</span>
-            <span class="loot-tier">STEALTH ARMOR</span>
-          </div>
-          <div class="loot-item-row" data-sound="hover">
-            <span class="loot-name">SPETSNAZ LEVEL 3 HELMET</span>
-            <span class="loot-tier">230 HP ARMOR</span>
-          </div>
-          <div class="loot-item-row" data-sound="hover">
-            <span class="loot-name">8X CQB/SNIPER MILDOT SCOPE</span>
-            <span class="loot-tier">ATTACHMENT</span>
-          </div>
-          <div class="loot-item-row" data-sound="hover">
-            <span class="loot-name">ADRENALINE SYRINGE & MED KIT</span>
-            <span class="loot-tier">100% BOOST</span>
-          </div>
-          <div class="loot-item-row" data-sound="hover">
-            <span class="loot-name">LEVEL 3 MILITARY BACKPACK</span>
-            <span class="loot-tier">MAX CAPACITY</span>
-          </div>
+          <article class="upcoming-tournament-card" data-sound="hover">
+            <div class="tournament-card-topline">
+              <span>01 // SUNDAY PRO GAUNTLET</span>
+              <span class="tournament-card-open">OPEN</span>
+            </div>
+            <h3>Squad One Sunday Finals</h3>
+            <div class="tournament-card-details">
+              <span>AUG 30 · 19:00 IST</span>
+              <span>16 TEAMS · TPP</span>
+            </div>
+            <a href="https://ewave.gg/game/pubg/dashboard" target="_blank" class="cyber-btn tournament-card-action" data-sound="click">REGISTER SLOT</a>
+          </article>
+
+          <article class="upcoming-tournament-card" data-sound="hover">
+            <div class="tournament-card-topline">
+              <span>02 // NIGHT OPS CUP</span>
+              <span class="tournament-card-open">OPEN</span>
+            </div>
+            <h3>Crimson Night Operations</h3>
+            <div class="tournament-card-details">
+              <span>SEP 05 · 21:30 IST</span>
+              <span>24 TEAMS · FPP</span>
+            </div>
+            <a href="https://ewave.gg/game/pubg/dashboard" target="_blank" class="cyber-btn tournament-card-action" data-sound="click">VIEW DETAILS</a>
+          </article>
+
+          <article class="upcoming-tournament-card" data-sound="hover">
+            <div class="tournament-card-topline">
+              <span>03 // OPEN SCRIM SERIES</span>
+              <span class="tournament-card-open">OPEN</span>
+            </div>
+            <h3>Battlefield Warm-Up Series</h3>
+            <div class="tournament-card-details">
+              <span>SEP 12 · 18:00 IST</span>
+              <span>32 TEAMS · TPP</span>
+            </div>
+            <a href="https://ewave.gg/game/pubg/dashboard" target="_blank" class="cyber-btn tournament-card-action" data-sound="click">JOIN WAITLIST</a>
+          </article>
+        </div>
+
+        <div hidden>
+          <img id="airdrop-crate-node" src="assets/pubg/airdrop_crate.jpg" alt="">
+          <img id="player-looter-node" src="assets/pubg/player_model.jpg" alt="">
         </div>
 
       </div>
@@ -3057,12 +3327,12 @@
     gsap.registerPlugin(ScrollTrigger);
 
     const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      duration: 1.6,
+      easing: (t) => 1 - Math.pow(1 - t, 4),
       orientation: 'vertical',
       gestureOrientation: 'vertical',
       smoothWheel: true,
-      wheelMultiplier: 1,
+      wheelMultiplier: 0.85,
       smoothTouch: false,
     });
 
@@ -3266,7 +3536,7 @@
     /* ==========================================================================
        08. CHAPTER NAVIGATION RAIL & ACTIVE HIGHLIGHT
        ========================================================================== */
-    const sections = ['hero', 'intel', 'airdrop-zone', 'arsenal', 'protocol', 'roster', 'tournaments', 'join'];
+    const sections = ['hero', 'intel', 'upcoming-tournaments', 'arsenal', 'protocol', 'roster', 'tournaments', 'join'];
     const chapterDots = document.querySelectorAll('.chapter-dot');
     const navLinks = document.querySelectorAll('.nav-link');
 
@@ -3275,7 +3545,11 @@
         const targetId = dot.getAttribute('data-section');
         const targetEl = document.getElementById(targetId);
         if (targetEl) {
-          lenis.scrollTo(targetEl, { offset: -40 });
+          lenis.scrollTo(targetEl, {
+            offset: -40,
+            duration: 1.8,
+            easing: (t) => 1 - Math.pow(1 - t, 4)
+          });
         }
       });
     });
@@ -3324,7 +3598,7 @@
     });
 
     /* ==========================================================================
-       10. CONTINUOUS AIRDROP DESCENT & LANDING TRIGGER
+      10. UPCOMING TOURNAMENTS SCROLL ENTRANCE
        ========================================================================== */
     gsap.fromTo('#airdrop-crate-node', 
       { y: -180, scale: 0.7, opacity: 0.6 },
@@ -3335,7 +3609,7 @@
         duration: 1,
         ease: 'bounce.out',
         scrollTrigger: {
-          trigger: '#airdrop-zone',
+          trigger: '#upcoming-tournaments',
           start: 'top 75%'
         }
       }
@@ -3349,7 +3623,7 @@
         duration: 1,
         ease: 'power3.out',
         scrollTrigger: {
-          trigger: '#airdrop-zone',
+          trigger: '#upcoming-tournaments',
           start: 'top 65%'
         }
       }
@@ -3543,6 +3817,60 @@
     [...chunk1, ...chunk1].forEach(f => row1El.appendChild(createCapsule(f)));
     [...chunk2, ...chunk2].forEach(f => row2El.appendChild(createCapsule(f)));
     [...chunk3, ...chunk3].forEach(f => row3El.appendChild(createCapsule(f)));
+
+    /* FINALS CARD ACHIEVEMENT FLIP */
+    const finalsAchievements = [
+      ['HOST RECORD', '24 events hosted', '16 finals lobbies', '100% bracket uptime'],
+      ['QUALIFIER RUN', '3 podium finishes', 'Top 8 regional seed', '92% match survival'],
+      ['FRAGGING RECORD', '4.8 team K/D', '18 clutch wipes', 'Best entry rate'],
+      ['FINALS FORM', '6 straight finals', '12 clean rotations', 'Zone control award'],
+      ['CHAMPIONSHIP RUN', '2 grand final wins', 'Top damage roster', 'MVP nomination'],
+      ['TEAM LEGACY', '5 season appearances', 'Regional top 10', '8 match win streak'],
+      ['QUALIFIER RUN', '4 match victories', 'Zero disqualifications', 'Top 16 seed'],
+      ['TOURNAMENT FORM', '11 finals points', '3 clean sweeps', 'Stronghold award'],
+      ['FINALS RECORD', 'Top 5 regional team', '14 lobby wins', 'Endgame specialist'],
+      ['RISING SQUAD', '8 qualifier wins', 'Top 12 seed', 'Fastest rotation'],
+      ['CLUTCH RECORD', '9 clutch finishes', '5 comeback wins', 'Final circle award'],
+      ['QUALIFIER FORM', '14 lobby points', 'Top 16 seed', '2 clean rounds'],
+      ['TEAM LEGACY', '7 finals appearances', 'Regional top 8', 'Best support play'],
+      ['FINALS FORM', '10 match win streak', 'Top damage team', '3 MVP awards'],
+      ['BREAKOUT RUN', '6 qualifier wins', 'Top 16 seed', 'Rookie impact award'],
+      ['QUALIFIER FORM', '12 finals points', 'Regional top 10', 'Strong finish rate']
+    ];
+
+    document.querySelectorAll('.finals-card').forEach((card, cardIndex) => {
+      const originalContent = card.innerHTML;
+      const achievement = finalsAchievements[cardIndex] || finalsAchievements[0];
+      card.innerHTML = `
+        <div class="finals-card-inner">
+          <div class="finals-card-face finals-card-front">${originalContent}</div>
+          <div class="finals-card-face finals-card-back">
+            <div class="achievement-kicker">ACHIEVEMENT LOG // ${String(cardIndex + 1).padStart(2, '0')}</div>
+            <div class="achievement-title">${achievement[0]}</div>
+            <ul class="achievement-list">
+              <li>${achievement[1]}</li>
+              <li>${achievement[2]}</li>
+              <li>${achievement[3]}</li>
+            </ul>
+          </div>
+        </div>`;
+      card.setAttribute('role', 'button');
+      card.setAttribute('tabindex', '0');
+      card.setAttribute('aria-label', 'View team achievements');
+
+      const toggleFinalsCard = () => {
+        card.classList.toggle('flipped');
+        sound.playClick();
+      };
+
+      card.addEventListener('click', toggleFinalsCard);
+      card.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          toggleFinalsCard();
+        }
+      });
+    });
 
     /* ==========================================================================
        16. KINETIC MARQUEE SCROLL DYNAMICS & COUNTDOWN TIMER
