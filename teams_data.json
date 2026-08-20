@@ -1,0 +1,582 @@
+[
+  {
+    "file": "4guys.png",
+    "name": "4GUYS"
+  },
+  {
+    "file": "IP4.png",
+    "name": "IP4"
+  },
+  {
+    "file": "RD.png",
+    "name": "RD"
+  },
+  {
+    "file": "RDB.png",
+    "name": "RDB"
+  },
+  {
+    "file": "SQ1_Orange.PNG",
+    "name": "SQ1 ORANGE"
+  },
+  {
+    "file": "SQ1_eccl.png",
+    "name": "SQ1 ECCL"
+  },
+  {
+    "file": "SQ1_pink.png",
+    "name": "SQ1 PINK"
+  },
+  {
+    "file": "UE.png",
+    "name": "UE"
+  },
+  {
+    "file": "UE_red.png",
+    "name": "UE RED"
+  },
+  {
+    "file": "Vaah.png",
+    "name": "VAAH"
+  },
+  {
+    "file": "X-RAY.png",
+    "name": "X RAY"
+  },
+  {
+    "file": "ZE.png",
+    "name": "ZE"
+  },
+  {
+    "file": "abf.png",
+    "name": "ABF"
+  },
+  {
+    "file": "adr.png",
+    "name": "ADR"
+  },
+  {
+    "file": "aex.png",
+    "name": "AEX"
+  },
+  {
+    "file": "alg.png",
+    "name": "ALG"
+  },
+  {
+    "file": "alto.png",
+    "name": "ALTO"
+  },
+  {
+    "file": "bad.png",
+    "name": "BAD"
+  },
+  {
+    "file": "bana.png",
+    "name": "BANA"
+  },
+  {
+    "file": "bbz.png",
+    "name": "BBZ"
+  },
+  {
+    "file": "bmesports.png",
+    "name": "BMESPORTS"
+  },
+  {
+    "file": "bmg.png",
+    "name": "BMG"
+  },
+  {
+    "file": "bmm.png",
+    "name": "BMM"
+  },
+  {
+    "file": "brc.png",
+    "name": "BRC"
+  },
+  {
+    "file": "brh.png",
+    "name": "BRH"
+  },
+  {
+    "file": "btgg.png",
+    "name": "BTGG"
+  },
+  {
+    "file": "cjgaming.png",
+    "name": "CJGAMING"
+  },
+  {
+    "file": "ctx.png",
+    "name": "CTX"
+  },
+  {
+    "file": "cvaa.png",
+    "name": "CVAA"
+  },
+  {
+    "file": "cvm.png",
+    "name": "CVM"
+  },
+  {
+    "file": "darkshadow.png",
+    "name": "DARKSHADOW"
+  },
+  {
+    "file": "doe.png",
+    "name": "DOE"
+  },
+  {
+    "file": "e2x.png",
+    "name": "E2X"
+  },
+  {
+    "file": "evx.png",
+    "name": "EVX"
+  },
+  {
+    "file": "expands.png",
+    "name": "EXPANDS"
+  },
+  {
+    "file": "fate.png",
+    "name": "FATE"
+  },
+  {
+    "file": "fourged.png",
+    "name": "FOURGED"
+  },
+  {
+    "file": "frag.png",
+    "name": "FRAG"
+  },
+  {
+    "file": "frz.png",
+    "name": "FRZ"
+  },
+  {
+    "file": "fzp.png",
+    "name": "FZP"
+  },
+  {
+    "file": "guru.png",
+    "name": "GURU"
+  },
+  {
+    "file": "havk.png",
+    "name": "HAVK"
+  },
+  {
+    "file": "hf.png",
+    "name": "HF"
+  },
+  {
+    "file": "hi.png",
+    "name": "HI"
+  },
+  {
+    "file": "ip4elite.png",
+    "name": "IP4ELITE"
+  },
+  {
+    "file": "junglisena.png",
+    "name": "JUNGLISENA"
+  },
+  {
+    "file": "k51.png",
+    "name": "K51"
+  },
+  {
+    "file": "kali1.png",
+    "name": "KALI1"
+  },
+  {
+    "file": "kb.png",
+    "name": "KB"
+  },
+  {
+    "file": "kg.png",
+    "name": "KG"
+  },
+  {
+    "file": "kidi.png",
+    "name": "KIDI"
+  },
+  {
+    "file": "kortex.png",
+    "name": "KORTEX"
+  },
+  {
+    "file": "koya.png",
+    "name": "KOYA"
+  },
+  {
+    "file": "koya_iykyk.png",
+    "name": "KOYA IYKYK"
+  },
+  {
+    "file": "kvp.png",
+    "name": "KVP"
+  },
+  {
+    "file": "kx.png",
+    "name": "KX"
+  },
+  {
+    "file": "lili.png",
+    "name": "LILI"
+  },
+  {
+    "file": "los.png",
+    "name": "LOS"
+  },
+  {
+    "file": "m5.png",
+    "name": "M5"
+  },
+  {
+    "file": "macky.png",
+    "name": "MACKY"
+  },
+  {
+    "file": "man.png",
+    "name": "MAN"
+  },
+  {
+    "file": "manhoy.png",
+    "name": "MANHOY"
+  },
+  {
+    "file": "marathabaad.png",
+    "name": "MARATHABAAD"
+  },
+  {
+    "file": "masz.png",
+    "name": "MASZ"
+  },
+  {
+    "file": "mdx.png",
+    "name": "MDX"
+  },
+  {
+    "file": "mfl.png",
+    "name": "MFL"
+  },
+  {
+    "file": "mgx.png",
+    "name": "MGX"
+  },
+  {
+    "file": "mindspark.png",
+    "name": "MINDSPARK"
+  },
+  {
+    "file": "mix.png",
+    "name": "MIX"
+  },
+  {
+    "file": "mob.png",
+    "name": "MOB"
+  },
+  {
+    "file": "mutant.png",
+    "name": "MUTANT"
+  },
+  {
+    "file": "night.png",
+    "name": "NIGHT"
+  },
+  {
+    "file": "nxs.png",
+    "name": "NXS"
+  },
+  {
+    "file": "obey.png",
+    "name": "OBEY"
+  },
+  {
+    "file": "oceangaming.png",
+    "name": "OCEANGAMING"
+  },
+  {
+    "file": "or.png",
+    "name": "OR"
+  },
+  {
+    "file": "orb.png",
+    "name": "ORB"
+  },
+  {
+    "file": "ork.png",
+    "name": "ORK"
+  },
+  {
+    "file": "orkesports.png",
+    "name": "ORKESPORTS"
+  },
+  {
+    "file": "otg.png",
+    "name": "OTG"
+  },
+  {
+    "file": "outstrippers.png",
+    "name": "OUTSTRIPPERS"
+  },
+  {
+    "file": "p9.png",
+    "name": "P9"
+  },
+  {
+    "file": "p9cc.png",
+    "name": "P9CC"
+  },
+  {
+    "file": "p9se.png",
+    "name": "P9SE"
+  },
+  {
+    "file": "pdx.png",
+    "name": "PDX"
+  },
+  {
+    "file": "plants.png",
+    "name": "PLANTS"
+  },
+  {
+    "file": "pleck.png",
+    "name": "PLECK"
+  },
+  {
+    "file": "priv.png",
+    "name": "PRIV"
+  },
+  {
+    "file": "racr.png",
+    "name": "RACR"
+  },
+  {
+    "file": "rakuzan.png",
+    "name": "RAKUZAN"
+  },
+  {
+    "file": "rat.png",
+    "name": "RAT"
+  },
+  {
+    "file": "rathunters.png",
+    "name": "RATHUNTERS"
+  },
+  {
+    "file": "redv.png",
+    "name": "REDV"
+  },
+  {
+    "file": "revmebro.png",
+    "name": "REVMEBRO"
+  },
+  {
+    "file": "rifl.png",
+    "name": "RIFL"
+  },
+  {
+    "file": "rising.png",
+    "name": "RISING"
+  },
+  {
+    "file": "rz.png",
+    "name": "RZ"
+  },
+  {
+    "file": "sadya.png",
+    "name": "SADYA"
+  },
+  {
+    "file": "sala.png",
+    "name": "SALA"
+  },
+  {
+    "file": "sappu.png",
+    "name": "SAPPU"
+  },
+  {
+    "file": "sena.png",
+    "name": "SENA"
+  },
+  {
+    "file": "sigma.png",
+    "name": "SIGMA"
+  },
+  {
+    "file": "soul.png",
+    "name": "SOUL"
+  },
+  {
+    "file": "sq-red.png",
+    "name": "SQ RED"
+  },
+  {
+    "file": "sq1eccli.png",
+    "name": "SQ1ECCLI"
+  },
+  {
+    "file": "sq1r.png",
+    "name": "SQ1R"
+  },
+  {
+    "file": "squadmatrix.png",
+    "name": "SQUADMATRIX"
+  },
+  {
+    "file": "squadone.png",
+    "name": "SQUADONE"
+  },
+  {
+    "file": "std.png",
+    "name": "STD"
+  },
+  {
+    "file": "studs.png",
+    "name": "STUDS"
+  },
+  {
+    "file": "sus.png",
+    "name": "SUS"
+  },
+  {
+    "file": "teamfragfusion.png",
+    "name": "TEAMFRAGFUSION"
+  },
+  {
+    "file": "teamlootkhor.png",
+    "name": "TEAMLOOTKHOR"
+  },
+  {
+    "file": "teammindspark.png",
+    "name": "TEAMMINDSPARK"
+  },
+  {
+    "file": "teamminus.png",
+    "name": "TEAMMINUS"
+  },
+  {
+    "file": "teamxd.png",
+    "name": "TEAMXD"
+  },
+  {
+    "file": "tex.png",
+    "name": "TEX"
+  },
+  {
+    "file": "tga.png",
+    "name": "TGA"
+  },
+  {
+    "file": "thereflexmatrix.png",
+    "name": "THEREFLEXMATRIX"
+  },
+  {
+    "file": "tl.png",
+    "name": "TL"
+  },
+  {
+    "file": "top1.png",
+    "name": "TOP1"
+  },
+  {
+    "file": "tox.png",
+    "name": "TOX"
+  },
+  {
+    "file": "tpa.png",
+    "name": "TPA"
+  },
+  {
+    "file": "tracezero.png",
+    "name": "TRACEZERO"
+  },
+  {
+    "file": "trinath.png",
+    "name": "TRINATH"
+  },
+  {
+    "file": "trx.png",
+    "name": "TRX"
+  },
+  {
+    "file": "tva.png",
+    "name": "TVA"
+  },
+  {
+    "file": "uered.png",
+    "name": "UERED"
+  },
+  {
+    "file": "uki.png",
+    "name": "UKI"
+  },
+  {
+    "file": "un.png",
+    "name": "UN"
+  },
+  {
+    "file": "unknown.png",
+    "name": "UNKNOWN"
+  },
+  {
+    "file": "vikings.png",
+    "name": "VIKINGS"
+  },
+  {
+    "file": "warlord.png",
+    "name": "WARLORD"
+  },
+  {
+    "file": "wbl.png",
+    "name": "WBL"
+  },
+  {
+    "file": "wfww.png",
+    "name": "WFWW"
+  },
+  {
+    "file": "wolf.png",
+    "name": "WOLF"
+  },
+  {
+    "file": "wtm.png",
+    "name": "WTM"
+  },
+  {
+    "file": "wx7.png",
+    "name": "WX7"
+  },
+  {
+    "file": "xd.png",
+    "name": "XD"
+  },
+  {
+    "file": "xdd.png",
+    "name": "XDD"
+  },
+  {
+    "file": "xray.png",
+    "name": "XRAY"
+  },
+  {
+    "file": "xttt.png",
+    "name": "XTTT"
+  },
+  {
+    "file": "z30.png",
+    "name": "Z30"
+  },
+  {
+    "file": "zerohour.png",
+    "name": "ZEROHOUR"
+  },
+  {
+    "file": "zh.png",
+    "name": "ZH"
+  }
+]
