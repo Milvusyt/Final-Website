@@ -665,6 +665,10 @@
       font-weight: bold;
     }
 
+    .sec-eyebrow.no-prefix::before {
+      content: none;
+    }
+
     .sec-title {
       font-family: var(--font-display);
       font-size: clamp(2.5rem, 6vw, 4.5rem);
@@ -781,11 +785,12 @@
     }
 
     .hero-badge-crest img {
-      width: 100px;
-      height: 100px;
+      width: 185px;
+      height: 185px;
       object-fit: contain;
       filter: drop-shadow(0 0 25px var(--gold-glow));
       z-index: 2;
+      transform: translate(-8px, -3px);
     }
 
     .hero h1 {
@@ -3310,6 +3315,101 @@
       transform: translateX(4px);
     }
 
+    .news-article-card.featured-event {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(260px, 42%);
+      gap: 22px;
+      align-items: center;
+    }
+
+    .news-article-card-copy {
+      min-width: 0;
+    }
+
+    .news-event-image-button {
+      display: block;
+      width: 100%;
+      padding: 0;
+      border: 1px solid var(--gold-border);
+      border-radius: 6px;
+      overflow: hidden;
+      background: var(--bg-darker);
+      cursor: zoom-in;
+    }
+
+    .news-event-image-button img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      transition: transform 0.35s var(--ease-out), filter 0.35s ease;
+    }
+
+    .news-event-image-button:hover img,
+    .news-event-image-button:focus-visible img {
+      transform: scale(1.04);
+      filter: brightness(1.08);
+    }
+
+    .event-image-lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 11000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: clamp(14px, 4vw, 48px);
+      background: rgba(2, 2, 1, 0.94);
+      backdrop-filter: blur(10px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+
+    .event-image-lightbox.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .event-image-lightbox img {
+      display: block;
+      max-width: 100%;
+      max-height: calc(100vh - 40px);
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      border: 1px solid var(--gold-primary);
+      box-shadow: 0 0 60px rgba(0, 0, 0, 0.95), 0 0 30px var(--gold-glow);
+    }
+
+    .event-image-lightbox-close {
+      position: absolute;
+      top: 18px;
+      right: 22px;
+      width: 42px;
+      height: 42px;
+      border: 1px solid var(--gold-primary);
+      border-radius: 50%;
+      background: rgba(10, 8, 5, 0.9);
+      color: var(--gold-light);
+      font-size: 1.25rem;
+      cursor: pointer;
+    }
+
+    @media (max-width: 640px) {
+      .news-article-card.featured-event {
+        grid-template-columns: 1fr;
+      }
+
+      .event-image-lightbox {
+        padding: 12px;
+      }
+
+      .event-image-lightbox img {
+        max-height: calc(100vh - 90px);
+      }
+    }
+
     .news-card-date {
       font-family: var(--font-mono);
       font-size: 0.72rem;
@@ -4695,10 +4795,7 @@
             </div>
             <div class="finals-card-face finals-card-back">
               <div class="achievement-kicker">ACHIEVEMENT LOG // 12</div>
-              <div class="achievement-title">QUALIFIER FORM</div>
-              <ul class="achievement-list">
-                <li>14 lobby points</li><li>Top 16 seed</li><li>2 clean rounds</li>
-              </ul>
+              <div class="achievement-title">COMING SOON</div>
               <button class="finals-roster-btn btn-open-ewave-popup" data-team-index="11" type="button">
                 👥 VIEW EWAVE PLAYER INTEL ↗
               </button>
@@ -4725,12 +4822,12 @@
             </div>
           </div>
         </div>
-        <div class="finals-card" data-team-index="13" data-sound="hover" role="button" tabindex="0" aria-label="MINDSPARK card. Click to flip, double-click for eWave player info.">
+        <div class="finals-card" data-team-index="13" data-sound="hover" role="button" tabindex="0" aria-label="UE RED card. Click to flip, double-click for eWave player info.">
           <div class="finals-card-inner">
             <div class="finals-card-face finals-card-front">
               <div class="finals-crown-tag">⭐ #13</div>
-              <img src="assets/teams/teammindspark.png" onerror="this.src='assets/teams/squadone.png'" alt="Mindspark">
-              <div class="team-title">MINDSPARK</div>
+              <img src="assets/teams/uered.png" onerror="this.src='assets/teams/squadone.png'" alt="UE RED">
+              <div class="team-title">UE RED</div>
               <div class="team-tier">FINALS QUALIFIED</div>
             </div>
             <div class="finals-card-face finals-card-back">
@@ -4745,12 +4842,12 @@
             </div>
           </div>
         </div>
-        <div class="finals-card" data-team-index="14" data-sound="hover" role="button" tabindex="0" aria-label="IP4 ELITE card. Click to flip, double-click for eWave player info.">
+        <div class="finals-card" data-team-index="14" data-sound="hover" role="button" tabindex="0" aria-label="SQUADONE MATRIX card. Click to flip, double-click for eWave player info.">
           <div class="finals-card-inner">
             <div class="finals-card-face finals-card-front">
               <div class="finals-crown-tag">⭐ #14</div>
-              <img src="assets/teams/ip4elite.png" onerror="this.src='assets/teams/IP4.png'" alt="IP4 Elite">
-              <div class="team-title">IP4 ELITE</div>
+              <img src="assets/teams/squadmatrix.png" onerror="this.src='assets/teams/squadone.png'" alt="Squadone Matrix">
+              <div class="team-title">SQUADONE MATRIX</div>
               <div class="team-tier">FINALS QUALIFIED</div>
             </div>
             <div class="finals-card-face finals-card-back">
@@ -4765,12 +4862,12 @@
             </div>
           </div>
         </div>
-        <div class="finals-card" data-team-index="15" data-sound="hover" role="button" tabindex="0" aria-label="K51 OFFICIALS card. Click to flip, double-click for eWave player info.">
+        <div class="finals-card" data-team-index="15" data-sound="hover" role="button" tabindex="0" aria-label="MARATHABAAD card. Click to flip, double-click for eWave player info.">
           <div class="finals-card-inner">
             <div class="finals-card-face finals-card-front">
               <div class="finals-crown-tag">⭐ #15</div>
-              <img src="assets/teams/k51.png" onerror="this.src='assets/teams/squadone.png'" alt="K51">
-              <div class="team-title">K51 OFFICIALS</div>
+              <img src="assets/teams/marathabaad.png" onerror="this.src='assets/teams/squadone.png'" alt="Marathabaad">
+              <div class="team-title">MARATHABAAD</div>
               <div class="team-tier">FINALS QUALIFIED</div>
             </div>
             <div class="finals-card-face finals-card-back">
@@ -4844,7 +4941,7 @@
     <div class="container">
       
             <!-- =====================================================================
-           TOURNAMENT INFRASTRUCTURE & WEEKLY SCRIM SCHEDULE (EXACT SCREENSHOT LAYOUT)
+           TOURNAMENT INFRASTRUCTURE & WEEKLY TOURNAMENT SCHEDULE (EXACT SCREENSHOT LAYOUT)
            ===================================================================== -->
       <div class="ewave-box">
         <div class="ewave-box-left">
@@ -4853,7 +4950,7 @@
             POWERED BY <span style="color: var(--gold-primary);">EWAVE.GG</span>
           </h2>
           <p class="ewave-box-desc">
-            All official Squad One scrims, prize cups, and qualifier brackets run on eWave’s automated esports tournament engine with real-time stats and anti-cheat tracking.
+            All official Squad One tournaments, prize cups, and qualifier brackets run on eWave’s automated esports tournament engine with real-time stats and anti-cheat tracking.
           </p>
 
           <div class="ewave-box-btn-group">
@@ -4867,7 +4964,7 @@
         </div>
 
         <div class="ewave-countdown-panel">
-          <div class="sec-eyebrow" style="justify-content: center; margin-bottom: 6px;">// WEEKLY SCRIM SCHEDULE</div>
+          <div class="sec-eyebrow no-prefix" style="justify-content: center; margin-bottom: 6px;">TOURNAMENT SCHEDULE</div>
           <h3 class="countdown-schedule-title">
             FRIDAY · SATURDAY · SUNDAY
           </h3>
@@ -4892,7 +4989,7 @@
           </div>
 
           <div class="countdown-footer-note">
-            SCRIMS START AT 8:00 PM IST · EVERY FRI, SAT & SUN
+            TOURNAMENTS START AT 8:00 PM IST · EVERY FRI, SAT & SUN
           </div>
         </div>
       </div>
@@ -5113,6 +5210,17 @@
         <button class="esports-modal-close" data-close-modal="modal-news">✕</button>
       </div>
       <div class="esports-modal-body">
+        <article class="news-article-card featured-event">
+          <div class="news-article-card-copy">
+            <div class="news-card-date">● AUGUST 2026 // GRAND FINALE</div>
+            <div class="news-card-title">SquadOne National League - Season 2 Grand Finale</div>
+            <p>The <strong>SquadOne National League - Season 2 Grand Finale</strong> is here! Join the live finale and take part in our exciting <strong>Predict &amp; Win</strong> challenge. Make your predictions for the <strong>Team Winner and Top Fragger</strong>, follow the action live, and stand a chance to win <strong>mystery gifts</strong>. Tune in to the Grand Finale live on <strong>YouTube and Twitch</strong> and be part of the ultimate PUBG PC esports showdown in India.</p>
+          </div>
+          <button class="news-event-image-button" type="button" aria-label="Open Season 2 Grand Finale event image full screen" data-open-event-image>
+            <img src="assets/eventimage.jpeg" alt="SquadOne National League Season 2 Grand Finale Predict and Win event">
+          </button>
+        </article>
+
         <div class="news-article-card">
           <div class="news-card-date">● AUGUST 2026 // OFFICIAL ANNOUNCEMENT</div>
           <div class="news-card-title">National League Season 2 Grand Finals Announced</div>
@@ -5132,6 +5240,11 @@
         </div>
       </div>
     </div>
+  </div>
+
+  <div class="event-image-lightbox" id="event-image-lightbox" role="dialog" aria-modal="true" aria-label="Season 2 Grand Finale event image" aria-hidden="true">
+    <button class="event-image-lightbox-close" type="button" aria-label="Close event image">✕</button>
+    <img src="assets/eventimage.jpeg" alt="SquadOne National League Season 2 Grand Finale Predict and Win event">
   </div>
 
   
@@ -5901,6 +6014,17 @@
        11. FINALS CARD CONTROLLER (SINGLE CLICK = FLIP, DBL CLICK = EWAVE POPUP)
        ========================================================================== */
     const finals16Data = [{"id": "sq1", "tag": "\ud83d\udc51 #HOST", "name": "Squad One", "title": "SQUAD ONE", "tier": "GRAND HOST", "logo": "squadone.png", "group": "GROUP A \u00b7 GRAND HOST", "log_num": "01", "achieve_title": "HOST RECORD", "bullets": ["24 events hosted", "16 finals lobbies", "100% bracket uptime"], "players": [{"name": "XAIROO", "role": "IGL / ASSAULT", "status": "ACTIVE", "kills": null}, {"name": "SQ1_AVIYAL", "role": "ENTRY FRAGGER", "status": "ACTIVE", "kills": null}, {"name": "KL-07_TOXIC", "role": "SNIPER / RECON", "status": "ACTIVE", "kills": null}, {"name": "itsYoLibetrY_-", "role": "SUPPORT / UTILITY", "status": "ACTIVE", "kills": null}]}, {"id": "rkz", "tag": "\u2b50 #01", "name": "Rakuzan", "title": "RAKUZAN", "tier": "FINALS QUALIFIED", "logo": "rakuzan.png", "group": "GROUP B \u00b7 QUALIFIERS", "log_num": "02", "achieve_title": "QUALIFIER RUN", "bullets": ["3 podium finishes", "Top 8 regional seed", "92% match survival"], "players": [{"name": "CR4ZY-XD", "role": "IGL / CAPTAIN", "status": "ACTIVE", "kills": null}, {"name": "004GlitcH", "role": "MAIN FRAGGER", "status": "ACTIVE", "kills": null}, {"name": "AsTRO-OG", "role": "SUPPORT / COVER", "status": "ACTIVE", "kills": null}, {"name": "DUKS-46", "role": "ROTATION ANCHOR", "status": "ACTIVE", "kills": null}]}, {"id": "havk", "tag": "\u2b50 #02", "name": "HAVK", "title": "HAVK GAMING", "tier": "FINALS QUALIFIED", "logo": "havk.png", "group": "GROUP B \u00b7 QUALIFIERS", "log_num": "03", "achieve_title": "FRAGGING RECORD", "bullets": ["4.8 team K/D", "18 clutch wipes", "Best entry rate"], "players": [{"name": "HAVK_Amit", "role": "IGL", "status": "ACTIVE", "kills": null}, {"name": "HAVK_Vedzz", "role": "ENTRY ASSAULT", "status": "ACTIVE", "kills": null}, {"name": "HAVK_ADIT5K", "role": "FRAGGER", "status": "ACTIVE", "kills": null}, {"name": "HAVK_K1LLUAA", "role": "UTILITY SPECIALIST", "status": "ACTIVE", "kills": null}]}, {"id": "zh", "tag": "\u2b50 #03", "name": "Zero Hour", "title": "ZERO HOUR", "tier": "FINALS QUALIFIED", "logo": "zerohour.png", "group": "GROUP B \u00b7 QUALIFIERS", "log_num": "04", "achieve_title": "FINALS FORM", "bullets": ["6 straight finals", "12 clean rotations", "Zone control award"], "players": [{"name": "GULUzmbi-YT", "role": "IGL / SHOTCALLER", "status": "ACTIVE", "kills": null}, {"name": "The--SherLock", "role": "DMR / MARKSMAN", "status": "ACTIVE", "kills": null}, {"name": "InZaynnn", "role": "ENTRY FRAGGER", "status": "ACTIVE", "kills": null}, {"name": "Granny_In_Bikini", "role": "SUPPORT ANCHOR", "status": "ACTIVE", "kills": null}]}, {"id": "ork", "tag": "\u2b50 #04", "name": "ORK Esports", "title": "ORK ESPORTS", "tier": "FINALS QUALIFIED", "logo": "orkesports.png", "group": "GROUP A \u00b7 QUALIFIERS", "log_num": "05", "achieve_title": "CHAMPIONSHIP RUN", "bullets": ["2 grand final wins", "Top damage roster", "MVP nomination"], "players": [{"name": "ORK_KenpachiAjax", "role": "TEAM CAPTAIN", "status": "ACTIVE", "kills": null}, {"name": "SqwaKu", "role": "ASSAULT LEAD", "status": "ACTIVE", "kills": null}, {"name": "ORK_Infected", "role": "FRAG SPECIALIST", "status": "ACTIVE", "kills": null}, {"name": "Sourav04", "role": "SUPPORT", "status": "ACTIVE", "kills": null}]}, {"id": "studs", "tag": "\u2b50 #05", "name": "The Studs", "title": "THE STUDS", "tier": "FINALS QUALIFIED", "logo": "studs.png", "group": "GROUP D \u00b7 QUALIFIERS", "log_num": "06", "achieve_title": "TEAM LEGACY", "bullets": ["5 season appearances", "Regional top 10", "8 match win streak"], "players": [{"name": "1-1_1-1_1-1_1-1_", "role": "TACTICAL LEAD", "status": "ACTIVE", "kills": null}, {"name": "RetiredBolter", "role": "LONG RANGE RECON", "status": "ACTIVE", "kills": null}, {"name": "whatislive", "role": "ENTRY ASSAULT", "status": "ACTIVE", "kills": null}, {"name": "wikirex", "role": "ROTATION SUPPORT", "status": "ACTIVE", "kills": null}]}, {"id": "js", "tag": "\u2b50 #06", "name": "Jungli Sena", "title": "JUNGLI SENA", "tier": "FINALS QUALIFIED", "logo": "junglisena.png", "group": "GROUP A \u00b7 QUALIFIERS", "log_num": "07", "achieve_title": "QUALIFIER RUN", "bullets": ["4 match victories", "Zero disqualifications", "Top 16 seed"], "players": [{"name": "Jaaadoo", "role": "IGL / ASSAULT", "status": "ACTIVE", "kills": null}, {"name": "Shivam-_", "role": "ENTRY FRAGGER", "status": "ACTIVE", "kills": null}, {"name": "BBELLLLAAA", "role": "DMR / OVERWATCH", "status": "ACTIVE", "kills": null}, {"name": "CrimeM4st3r_GoGo", "role": "UTILITY LEAD", "status": "ACTIVE", "kills": null}]}, {"id": "og", "tag": "\u2b50 #07", "name": "Ocean Gaming", "title": "OCEAN GAMING", "tier": "FINALS QUALIFIED", "logo": "oceangaming.png", "group": "GROUP A \u00b7 QUALIFIERS", "log_num": "08", "achieve_title": "TOURNAMENT FORM", "bullets": ["11 finals points", "3 clean sweeps", "Stronghold award"], "players": [{"name": "X-GHASITAA", "role": "CAPTAIN", "status": "ACTIVE", "kills": null}, {"name": "X-Cl0ne", "role": "ASSAULT", "status": "ACTIVE", "kills": null}, {"name": "OG_Zakrimz", "role": "FRAGGER", "status": "ACTIVE", "kills": null}, {"name": "X-Diablo_", "role": "ANCHOR", "status": "ACTIVE", "kills": null}]}, {"id": "rm", "tag": "\u2b50 #08", "name": "Reflex Matrix", "title": "REFLEX MATRIX", "tier": "FINALS QUALIFIED", "logo": "thereflexmatrix.png", "group": "GROUP C \u00b7 QUALIFIERS", "log_num": "09", "achieve_title": "FINALS RECORD", "bullets": ["Top 5 regional team", "14 lobby wins", "Endgame specialist"], "players": [{"name": "DavilsHluffy", "role": "IGL", "status": "ACTIVE", "kills": null}, {"name": "Xplodey", "role": "ENTRY FRAGGER", "status": "ACTIVE", "kills": null}, {"name": "Zink69", "role": "MARKSMAN", "status": "ACTIVE", "kills": null}, {"name": "Kimsanity_", "role": "SUPPORT", "status": "ACTIVE", "kills": null}]}, {"id": "ff", "tag": "\u2b50 #09", "name": "Frag Fusion", "title": "FRAG FUSION", "tier": "FINALS QUALIFIED", "logo": "teamfragfusion.png", "group": "GROUP C \u00b7 QUALIFIERS", "log_num": "10", "achieve_title": "RISING SQUAD", "bullets": ["8 qualifier wins", "Top 12 seed", "Fastest rotation"], "players": [{"name": "PANTH3R_-", "role": "IGL / LEAD", "status": "ACTIVE", "kills": null}, {"name": "JARUSSAL", "role": "ASSAULT", "status": "ACTIVE", "kills": null}, {"name": "Villain-JJB", "role": "FRAGGER", "status": "ACTIVE", "kills": null}, {"name": "HeaDCoacH_7", "role": "TACTICAL SUPPORT", "status": "ACTIVE", "kills": null}]}, {"id": "rh", "tag": "\u2b50 #10", "name": "Rat Hunters", "title": "RAT HUNTERS", "tier": "FINALS QUALIFIED", "logo": "rathunters.png", "group": "GROUP A \u00b7 QUALIFIERS", "log_num": "11", "achieve_title": "CLUTCH RECORD", "bullets": ["9 clutch finishes", "5 comeback wins", "Final circle award"], "players": [{"name": "RAXIAL-", "role": "IGL", "status": "ACTIVE", "kills": null}, {"name": "TGS_3X1LE", "role": "ENTRY ASSAULT", "status": "ACTIVE", "kills": null}, {"name": "GodexGG", "role": "FRAGGER", "status": "ACTIVE", "kills": null}, {"name": "GodexGG", "role": "SUPPORT", "status": "ACTIVE", "kills": null}]}, {"id": "koya", "tag": "\u2b50 #11", "name": "Koya", "title": "KOYA ESPORTS", "tier": "FINALS QUALIFIED", "logo": "koya.png", "group": "GROUP A \u00b7 QUALIFIERS", "log_num": "12", "achieve_title": "QUALIFIER FORM", "bullets": ["14 lobby points", "Top 16 seed", "2 clean rounds"], "players": [{"name": "Kidilam-Firoz", "role": "CAPTAIN", "status": "ACTIVE", "kills": null}, {"name": "PlingedHIHI", "role": "ENTRY FRAGGER", "status": "ACTIVE", "kills": null}, {"name": "SprayLag8K", "role": "SNIPER", "status": "ACTIVE", "kills": null}, {"name": "R1pJaw", "role": "SUPPORT", "status": "ACTIVE", "kills": null}]}, {"id": "4g", "tag": "\u2b50 #12", "name": "4Guys", "title": "4 GUYS", "tier": "FINALS QUALIFIED", "logo": "4guys.png", "group": "GROUP C \u00b7 QUALIFIERS", "log_num": "13", "achieve_title": "TEAM LEGACY", "bullets": ["7 finals appearances", "Regional top 8", "Best support play"], "players": [{"name": "KOHL1_-", "role": "IGL / LEAD", "status": "ACTIVE", "kills": null}, {"name": "ILLMINDD", "role": "ENTRY ASSAULT", "status": "ACTIVE", "kills": null}, {"name": "NINJAREX0", "role": "FRAGGER", "status": "ACTIVE", "kills": null}, {"name": "IND_Rupesh_-", "role": "SUPPORT", "status": "ACTIVE", "kills": null}]}, {"id": "ms", "tag": "\u2b50 #13", "name": "Mindspark", "title": "MINDSPARK", "tier": "FINALS QUALIFIED", "logo": "teammindspark.png", "group": "GROUP D \u00b7 QUALIFIERS", "log_num": "14", "achieve_title": "FINALS FORM", "bullets": ["10 match win streak", "Top damage team", "3 MVP awards"], "players": [{"name": "GUUTTTTSSSS", "role": "CAPTAIN / ASSAULT", "status": "ACTIVE", "kills": null}, {"name": "TMSxLOADOUT", "role": "FRAGGER", "status": "ACTIVE", "kills": null}, {"name": "MalluHeck", "role": "MARKSMAN", "status": "ACTIVE", "kills": null}, {"name": "TMSxNEMESIS_15", "role": "SUPPORT", "status": "ACTIVE", "kills": null}]}, {"id": "ip4", "tag": "\u2b50 #14", "name": "IP4 Elite", "title": "IP4 ELITE", "tier": "FINALS QUALIFIED", "logo": "ip4elite.png", "fallback_logo": "IP4.png", "group": "GROUP A \u00b7 QUALIFIERS", "log_num": "15", "achieve_title": "BREAKOUT RUN", "bullets": ["6 qualifier wins", "Top 16 seed", "Rookie impact award"], "players": [{"name": "IP4_Viper", "role": "IGL / CAPTAIN", "status": "ACTIVE", "kills": null}, {"name": "IP4_Shadow", "role": "ENTRY FRAGGER", "status": "ACTIVE", "kills": null}, {"name": "IP4_Frost", "role": "DMR SPECIALIST", "status": "ACTIVE", "kills": null}, {"name": "IP4_Apex", "role": "SUPPORT ANCHOR", "status": "ACTIVE", "kills": null}]}, {"id": "k51", "tag": "\u2b50 #15", "name": "K51", "title": "K51 OFFICIALS", "tier": "FINALS QUALIFIED", "logo": "k51.png", "group": "GROUP A \u00b7 QUALIFIERS", "log_num": "16", "achieve_title": "ROOKIE SQUAD", "bullets": ["12 lobby points", "Top 16 seed", "Regional debut"], "players": [{"name": "XtremeeBoy", "role": "IGL / LEAD", "status": "ACTIVE", "kills": null}, {"name": "Rambo_PP", "role": "ASSAULT", "status": "ACTIVE", "kills": null}, {"name": "igUnKNoWNdUKE", "role": "FRAGGER", "status": "ACTIVE", "kills": null}, {"name": "14th_Republic", "role": "SUPPORT", "status": "ACTIVE", "kills": null}]}];
+    Object.assign(finals16Data[13], { name: 'UE RED', title: 'UE RED', logo: 'uered.png' });
+    Object.assign(finals16Data[14], { name: 'Squadone Matrix', title: 'SQUADONE MATRIX', logo: 'squadmatrix.png' });
+    Object.assign(finals16Data[15], { name: 'Marathabaad', title: 'MARATHABAAD', logo: 'marathabaad.png' });
+
+    document.querySelectorAll('.finals-card-back').forEach(card => {
+      const achievementTitle = card.querySelector('.achievement-title');
+      const achievementList = card.querySelector('.achievement-list');
+      if (achievementTitle) achievementTitle.textContent = 'COMING SOON';
+      if (achievementList) achievementList.remove();
+    });
+
     const playerModal = document.getElementById('ewave-player-modal');
     const modalTeamLogo = document.getElementById('modal-team-logo');
     const modalTeamName = document.getElementById('modal-team-name');
@@ -6285,6 +6409,35 @@
         }
       });
     });
+
+    const eventImageLightbox = document.getElementById('event-image-lightbox');
+    const eventImageButton = document.querySelector('[data-open-event-image]');
+    const eventImageCloseButton = eventImageLightbox?.querySelector('.event-image-lightbox-close');
+
+    const closeEventImageLightbox = () => {
+      if (!eventImageLightbox) return;
+      eventImageLightbox.classList.remove('active');
+      eventImageLightbox.setAttribute('aria-hidden', 'true');
+    };
+
+    if (eventImageLightbox && eventImageButton && eventImageCloseButton) {
+      eventImageButton.addEventListener('click', () => {
+        eventImageLightbox.classList.add('active');
+        eventImageLightbox.setAttribute('aria-hidden', 'false');
+        eventImageCloseButton.focus();
+      });
+
+      eventImageCloseButton.addEventListener('click', closeEventImageLightbox);
+      eventImageLightbox.addEventListener('click', (e) => {
+        if (e.target === eventImageLightbox) closeEventImageLightbox();
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && eventImageLightbox.classList.contains('active')) {
+          closeEventImageLightbox();
+        }
+      });
+    }
 
     
     /* ==========================================================================
