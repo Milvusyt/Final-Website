@@ -1,0 +1,182 @@
+{
+  "Squad One": {
+    "name": "Squad One",
+    "group": "GROUP A",
+    "players": [
+      "XAIROO",
+      "SQ1_AVIYAL",
+      "KL-07_TOXIC",
+      "itsYoLibetrY_-"
+    ],
+    "logo": "squadone.png",
+    "logo_url": "https://rywkcgvnvptncxgmljzp.supabase.co/storage/v1/object/public/teams/team-d811b0f4-ab4a-4da5-b307-b4d61c2255fc-0.011314392518372518.png"
+  },
+  "Rakuzan": {
+    "name": "RAKUZAN",
+    "group": "GROUP B",
+    "players": [
+      "CR4ZY-XD",
+      "004GlitcH",
+      "AsTRO-OG",
+      "DUKS-46"
+    ],
+    "logo": "rakuzan.png",
+    "logo_url": "https://rywkcgvnvptncxgmljzp.supabase.co/storage/v1/object/public/teams/team-dfc77f7d-ebf9-4478-99ab-d8245af027cd-0.02512906539527049.png"
+  },
+  "HAVK": {
+    "name": "HAVK",
+    "group": "GROUP B",
+    "players": [
+      "HAVK_Amit",
+      "HAVK_Vedzz",
+      "HAVK_ADIT5K",
+      "HAVK_K1LLUAA"
+    ],
+    "logo": "havk.png",
+    "logo_url": "https://rywkcgvnvptncxgmljzp.supabase.co/storage/v1/object/public/teams/ee8bf6f5-63a8-4791-a925-57c6d66bf52b.png"
+  },
+  "Zero Hour": {
+    "name": "Zero Hour",
+    "group": "GROUP B",
+    "players": [
+      "GULUzmbi-YT",
+      "The--SherLock",
+      "InZaynnn",
+      "Granny_In_Bikini"
+    ],
+    "logo": "zerohour.png",
+    "logo_url": "https://rywkcgvnvptncxgmljzp.supabase.co/storage/v1/object/public/teams/team-165c09d1-2ee7-47c3-a325-4485e935d422-0.44862113444505036.png"
+  },
+  "ORK Esports": {
+    "name": "ORK Esports",
+    "group": "GROUP A",
+    "players": [
+      "ORK_KenpachiAjax",
+      "SqwaKu",
+      "ORK_Infected",
+      "Sourav04"
+    ],
+    "logo": "orkesports.png",
+    "logo_url": "https://rywkcgvnvptncxgmljzp.supabase.co/storage/v1/object/public/teams/team-e2bc1b92-e979-4e57-9078-09db8be0215c-0.9579987746660356.webp"
+  },
+  "The Studs": {
+    "name": "STUDS",
+    "group": "GROUP D",
+    "players": [
+      "1-1_1-1_1-1_1-1_",
+      "RetiredBolter",
+      "whatislive",
+      "wikirex"
+    ],
+    "logo": "studs.png",
+    "logo_url": "https://rywkcgvnvptncxgmljzp.supabase.co/storage/v1/object/public/teams/team-010dd838-bdf6-4909-91ce-414fbcef2e9c-0.6665282648721814.png"
+  },
+  "Jungli Sena": {
+    "name": "JUNGLI SENA",
+    "group": "GROUP A",
+    "players": [
+      "Jaaadoo",
+      "Shivam-_",
+      "BBELLLLAAA",
+      "CrimeM4st3r_GoGo"
+    ],
+    "logo": "junglisena.png",
+    "logo_url": "https://rywkcgvnvptncxgmljzp.supabase.co/storage/v1/object/public/teams/team-0e558bdb-27b7-44d4-8517-34cfdf7d81cd-0.021565993644099946.png"
+  },
+  "Ocean Gaming": {
+    "name": "Ocean Gaming",
+    "group": "GROUP A",
+    "players": [
+      "X-GHASITAA",
+      "X-Cl0ne",
+      "OG_Zakrimz",
+      "X-Diablo_"
+    ],
+    "logo": "oceangaming.png",
+    "logo_url": "https://rywkcgvnvptncxgmljzp.supabase.co/storage/v1/object/public/teams/team-f4e3e44a-ba2d-4e26-8683-153c5905e4d1-0.5529728501779976.jpg"
+  },
+  "Reflex Matrix": {
+    "name": "The Reflex Matrix",
+    "group": "GROUP C",
+    "players": [
+      "DavilsHluffy",
+      "Xplodey",
+      "Zink69",
+      "Kimsanity_"
+    ],
+    "logo": "thereflexmatrix.png",
+    "logo_url": "https://rywkcgvnvptncxgmljzp.supabase.co/storage/v1/object/public/teams/team-d3f81c3f-dd46-44dc-86d2-3c1ad8d578d6-0.47826033927978384.png"
+  },
+  "Frag Fusion": {
+    "name": "Team FragFusion",
+    "group": "GROUP C",
+    "players": [
+      "PANTH3R_-",
+      "JARUSSAL",
+      "Villain-JJB",
+      "HeaDCoacH_7"
+    ],
+    "logo": "teamfragfusion.png",
+    "logo_url": "https://rywkcgvnvptncxgmljzp.supabase.co/storage/v1/object/public/teams/team-3f7f0a2f-cd9d-43d8-909d-1be798ed87ca-0.7454963129224119.png"
+  },
+  "Rat Hunters": {
+    "name": "Rat Hunters",
+    "group": "GROUP A",
+    "players": [
+      "RAXIAL-",
+      "TGS_3X1LE",
+      "GodexGG",
+      "GodexGG"
+    ],
+    "logo": "rathunters.png",
+    "logo_url": "https://rywkcgvnvptncxgmljzp.supabase.co/storage/v1/object/public/teams/team-e5882ff7-c0db-45cc-a7ae-2c6430e4d947-0.04091462919171518.png"
+  },
+  "Koya": {
+    "name": "Koya_IYKYK",
+    "group": "GROUP A",
+    "players": [
+      "Kidilam-Firoz",
+      "PlingedHIHI",
+      "SprayLag8K",
+      "R1pJaw"
+    ],
+    "logo": "koya_iykyk.png",
+    "logo_url": "https://rywkcgvnvptncxgmljzp.supabase.co/storage/v1/object/public/teams/team-4da6b63a-9e7b-41f1-99bd-3a70a1cb0c12-0.4980124797626436.jpg"
+  },
+  "4Guys": {
+    "name": "4 Guys",
+    "group": "GROUP C",
+    "players": [
+      "KOHL1_-",
+      "ILLMINDD",
+      "NINJAREX0",
+      "IND_Rupesh_-"
+    ],
+    "logo": "4guys.png",
+    "logo_url": "https://rywkcgvnvptncxgmljzp.supabase.co/storage/v1/object/public/teams/20b6f5ab-bc22-4c6f-99c5-4171acfd4312.png"
+  },
+  "Mindspark": {
+    "name": "TeamMindSpark",
+    "group": "GROUP D",
+    "players": [
+      "GUUTTTTSSSS",
+      "TMSxLOADOUT",
+      "MalluHeck",
+      "TMSxNEMESIS_15"
+    ],
+    "logo": "teammindspark.png",
+    "logo_url": "https://rywkcgvnvptncxgmljzp.supabase.co/storage/v1/object/public/teams/team-3d962968-c9dd-4aed-9521-645d2df995c7-0.46714441602252554.gif"
+  },
+  "K51": {
+    "name": "K51 Officals",
+    "group": "GROUP A",
+    "players": [
+      "XtremeeBoy",
+      "Rambo_PP",
+      "igUnKNoWNdUKE",
+      "14th_Republic"
+    ],
+    "logo": "squadone.png",
+    "logo_url": "https://rywkcgvnvptncxgmljzp.supabase.co/storage/v1/object/public/teams/team-f42a56d8-3ca7-4e01-a95f-6b6f11166657-0.64435534846331.png"
+  }
+}

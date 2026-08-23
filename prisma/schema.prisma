@@ -1,0 +1,157 @@
+// ============================================================================
+// SQUAD ONE ESPORTS PRISMA SCHEMA
+// ============================================================================
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum RoundKind {
+  QUALIFIERS
+  FINALS
+  GRAND_FINALS
+}
+
+enum GroupFilter {
+  OVERALL
+  A_VS_B
+  C_VS_D
+  A_VS_C
+  B_VS_D
+  A_VS_D
+  B_VS_C
+}
+
+enum TournamentStatus {
+  UPCOMING
+  ONGOING
+  COMPLETED
+}
+
+model Tournament {
+  id           String           @id @default(uuid()) @db.Uuid
+  slug         String           @unique
+  name         String
+  seasonNumber Int              @map("season_number")
+  status       TournamentStatus @default(UPCOMING)
+  startsAt     DateTime?        @map("starts_at")
+  endsAt       DateTime?        @map("ends_at")
+  createdAt    DateTime         @default(now()) @map("created_at")
+
+  rounds       Round[]
+  teams        Team[]
+
+  @@unique([name, seasonNumber])
+  @@map("tournaments")
+}
+
+model Round {
+  id           String      @id @default(uuid()) @db.Uuid
+  tournamentId String      @map("tournament_id") @db.Uuid
+  name         String
+  kind         RoundKind
+  roundNumber  Int         @map("round_number")
+  groupFilter  GroupFilter @default(OVERALL) @map("group_filter")
+  startsAt     DateTime?   @map("starts_at")
+  endsAt       DateTime?   @map("ends_at")
+
+  tournament   Tournament  @relation(fields: [tournamentId], references: [id], onDelete: Cascade)
+  matches      Match[]
+
+  @@unique([tournamentId, roundNumber, groupFilter])
+  @@index([tournamentId, roundNumber])
+  @@map("rounds")
+}
+
+model Match {
+  id          String             @id @default(uuid()) @db.Uuid
+  roundId     String             @map("round_id") @db.Uuid
+  matchNumber Int                @map("match_number")
+  name        String
+  mapName     String             @default("Erangel") @map("map_name")
+  playedAt    DateTime?          @map("played_at")
+
+  round       Round              @relation(fields: [roundId], references: [id], onDelete: Cascade)
+  teamStats   TeamMatchStats[]
+  playerStats PlayerMatchStats[]
+
+  @@unique([roundId, matchNumber])
+  @@index([roundId, matchNumber])
+  @@map("matches")
+}
+
+model Team {
+  id             String           @id @default(uuid()) @db.Uuid
+  tournamentId   String           @map("tournament_id") @db.Uuid
+  name           String
+  normalizedName String           @map("normalized_name")
+  logoUrl        String?          @map("logo_url")
+  createdAt      DateTime         @default(now()) @map("created_at")
+
+  tournament     Tournament       @relation(fields: [tournamentId], references: [id], onDelete: Cascade)
+  players        Player[]
+  matchStats     TeamMatchStats[]
+
+  @@unique([tournamentId, normalizedName])
+  @@index([tournamentId, normalizedName])
+  @@map("teams")
+}
+
+model Player {
+  id           String             @id @default(uuid()) @db.Uuid
+  teamId       String             @map("team_id") @db.Uuid
+  displayName  String             @map("display_name")
+  jerseyNumber Int?               @map("jersey_number")
+  active       Boolean            @default(true)
+
+  team         Team               @relation(fields: [teamId], references: [id], onDelete: Cascade)
+  matchStats   PlayerMatchStats[]
+
+  @@unique([teamId, displayName])
+  @@map("players")
+}
+
+model TeamMatchStats {
+  id              String   @id @default(uuid()) @db.Uuid
+  teamId          String   @map("team_id") @db.Uuid
+  matchId         String   @map("match_id") @db.Uuid
+  placement       Int?
+  placementPoints Int      @default(0) @map("placement_points")
+  kills           Int      @default(0)
+  assists         Int      @default(0)
+  cqbKills        Int      @default(0) @map("cqb_kills")
+  lrbKills        Int      @default(0) @map("lrb_kills")
+  cqbDamage       Decimal  @default(0) @map("cqb_damage") @db.Decimal(10, 2)
+  lrbDamage       Decimal  @default(0) @map("lrb_damage") @db.Decimal(10, 2)
+
+  team            Team     @relation(fields: [teamId], references: [id], onDelete: Cascade)
+  match           Match    @relation(fields: [matchId], references: [id], onDelete: Cascade)
+
+  @@unique([teamId, matchId])
+  @@index([matchId, teamId])
+  @@map("team_match_stats")
+}
+
+model PlayerMatchStats {
+  id         String   @id @default(uuid()) @db.Uuid
+  playerId   String   @map("player_id") @db.Uuid
+  matchId    String   @map("match_id") @db.Uuid
+  kills      Int      @default(0)
+  assists    Int      @default(0)
+  cqbKills   Int      @default(0) @map("cqb_kills")
+  lrbKills   Int      @default(0) @map("lrb_kills")
+  cqbDamage  Decimal  @default(0) @map("cqb_damage") @db.Decimal(10, 2)
+  lrbDamage  Decimal  @default(0) @map("lrb_damage") @db.Decimal(10, 2)
+
+  player     Player   @relation(fields: [playerId], references: [id], onDelete: Cascade)
+  match      Match    @relation(fields: [matchId], references: [id], onDelete: Cascade)
+
+  @@unique([playerId, matchId])
+  @@index([matchId, playerId])
+  @@map("player_match_stats")
+}
