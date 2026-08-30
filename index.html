@@ -3341,18 +3341,47 @@
 
     .news-article-card.featured-event {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(260px, 42%);
-      gap: 22px;
-      align-items: center;
+      grid-template-columns: minmax(0, 1fr) minmax(240px, 38%);
+      gap: 20px;
+      align-items: stretch;
+      min-height: 220px;
+      max-height: 235px;
+      overflow: hidden;
     }
 
     .news-article-card-copy {
       min-width: 0;
+      height: 100%;
+      max-height: 200px;
+      overflow-y: auto;
+      padding-right: 10px;
+      overscroll-behavior: contain;
+    }
+
+    /* Sleek Gold Scrollbar for News Card Copy */
+    .news-article-card-copy::-webkit-scrollbar {
+      width: 4px;
+    }
+    .news-article-card-copy::-webkit-scrollbar-track {
+      background: rgba(10, 8, 5, 0.6);
+      border-radius: 2px;
+    }
+    .news-article-card-copy::-webkit-scrollbar-thumb {
+      background: var(--gold-dim);
+      border-radius: 2px;
+    }
+    .news-article-card-copy::-webkit-scrollbar-thumb:hover {
+      background: var(--gold-primary);
     }
 
     .news-event-image-button {
-      display: block;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       width: 100%;
+      height: 100%;
+      max-height: 200px;
+      aspect-ratio: 16 / 9;
       padding: 0;
       border: 1px solid var(--gold-border);
       border-radius: 6px;
@@ -3364,7 +3393,7 @@
     .news-event-image-button img {
       display: block;
       width: 100%;
-      aspect-ratio: 16 / 9;
+      height: 100%;
       object-fit: cover;
       transition: transform 0.35s var(--ease-out), filter 0.35s ease;
     }
@@ -4281,6 +4310,449 @@
       font-size: 0.72rem;
       color: var(--text-muted);
       line-height: 1.3;
+    }
+
+    /* ==========================================================================
+       WHATSAPP / MODERN OS NOTIFICATION TOAST STACK (20s DURATION)
+       ========================================================================== */
+    .notif-toast-container {
+      position: fixed;
+      top: 85px;
+      right: 24px;
+      z-index: 9990;
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+      width: 360px;
+      max-width: calc(100vw - 32px);
+      pointer-events: none;
+      transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .notif-toast-container.hidden {
+      opacity: 0;
+      transform: translateY(-16px) scale(0.96);
+      pointer-events: none;
+    }
+
+    /* WhatsApp Notification Toast Card */
+    .notif-toast-card {
+      pointer-events: auto;
+      background: rgba(14, 12, 10, 0.88);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border: 1px solid rgba(212, 175, 55, 0.22);
+      border-radius: 14px;
+      padding: 10px 14px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.65), 0 0 15px rgba(0, 0, 0, 0.5);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
+                  opacity 0.35s ease,
+                  border-color 0.3s ease,
+                  box-shadow 0.3s ease,
+                  background 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      user-select: none;
+    }
+
+    .notif-toast-card:hover {
+      background: rgba(22, 18, 14, 0.96);
+      border-color: var(--gold-primary);
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.85), 0 0 20px rgba(212, 175, 55, 0.25);
+    }
+
+    /* Position Dynamics: Middle is slightly larger & emphasized */
+    .notif-toast-card.pos-top {
+      transform: scale(0.92);
+      opacity: 0.55;
+    }
+
+    .notif-toast-card.pos-bot {
+      transform: scale(0.92);
+      opacity: 0.55;
+    }
+
+    .notif-toast-card.pos-top:hover,
+    .notif-toast-card.pos-bot:hover {
+      opacity: 0.9;
+      transform: scale(0.95);
+    }
+
+    .notif-toast-card.pos-mid {
+      transform: scale(1.04);
+      opacity: 1;
+      border-color: var(--gold-primary);
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.8), 0 0 24px rgba(212, 175, 55, 0.3);
+      background: rgba(24, 18, 12, 0.94);
+      z-index: 2;
+    }
+
+    /* Left Avatar / DP Icon with Online Pip */
+    .notif-avatar-wrap {
+      position: relative;
+      flex-shrink: 0;
+      width: 42px;
+      height: 42px;
+    }
+
+    .notif-avatar-img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1.5px solid rgba(212, 175, 55, 0.5);
+      background: #000;
+    }
+
+    .notif-online-pip {
+      position: absolute;
+      bottom: 0px;
+      right: 0px;
+      width: 11px;
+      height: 11px;
+      background: #25D366;
+      border-radius: 50%;
+      border: 2px solid #0e0c0a;
+      box-shadow: 0 0 6px #25D366;
+    }
+
+    /* Toast Content */
+    .notif-content-wrap {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .notif-meta-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 2px;
+    }
+
+    .notif-app-name {
+      font-family: var(--font-condensed);
+      font-size: 0.74rem;
+      font-weight: 700;
+      color: var(--gold-light);
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .notif-time-stamp {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--text-muted);
+    }
+
+    .notif-headline {
+      font-family: var(--font-condensed);
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.25;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-bottom: 1px;
+    }
+
+    .notif-msg-snippet {
+      font-family: var(--font-body);
+      font-size: 0.74rem;
+      color: var(--text-muted);
+      line-height: 1.3;
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .notif-toast-card.pos-mid .notif-msg-snippet {
+      -webkit-line-clamp: 2;
+      color: var(--text-bone);
+    }
+
+    /* Right Mini Thumbnail */
+    .notif-thumb-wrap {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      overflow: hidden;
+      flex-shrink: 0;
+      border: 1px solid rgba(212, 175, 55, 0.25);
+      display: none;
+    }
+
+    .notif-toast-card.pos-mid .notif-thumb-wrap {
+      display: block;
+    }
+
+    .notif-thumb-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Minimal Floating Re-open Button */
+    .notif-reopen-chip {
+      position: fixed;
+      top: 85px;
+      right: 24px;
+      z-index: 9991;
+      display: none;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 14px;
+      background: rgba(18, 14, 10, 0.92);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      border-radius: 20px;
+      color: var(--gold-light);
+      font-family: var(--font-condensed);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+      transition: all 0.25s ease;
+      pointer-events: auto;
+    }
+
+    .notif-reopen-chip:hover {
+      background: var(--gold-primary);
+      color: var(--bg-dark);
+      transform: scale(1.04);
+      box-shadow: 0 0 20px var(--gold-glow);
+    }
+
+    .notif-reopen-chip.active {
+      display: inline-flex;
+    }
+
+    .chip-pulse {
+      width: 8px;
+      height: 8px;
+      background: #25D366;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #25D366;
+    }
+
+    @media (max-width: 768px) {
+      .notif-toast-container {
+        top: 75px;
+        right: 12px;
+        left: 12px;
+        width: auto;
+      }
+      .notif-reopen-chip {
+        top: 70px;
+        right: 12px;
+      }
+    }
+
+    /* ==========================================================================
+       ADMIN CONTROL TERMINAL MODAL
+       ========================================================================== */
+    .admin-modal-window {
+      max-width: 900px !important;
+      background: #0d0a07 !important;
+      border: 1px solid var(--gold-primary) !important;
+      box-shadow: 0 0 60px rgba(0, 0, 0, 0.95), 0 0 30px var(--gold-glow) !important;
+    }
+
+    .admin-modal-header {
+      background: linear-gradient(90deg, #18120b, #261b0c);
+      border-bottom: 1px solid var(--gold-dim);
+    }
+
+    .admin-auth-screen {
+      padding: 40px 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .admin-auth-box {
+      max-width: 420px;
+      width: 100%;
+      background: rgba(22, 16, 10, 0.9);
+      border: 1px solid var(--gold-border);
+      border-radius: 10px;
+      padding: 30px 24px;
+      text-align: center;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7);
+    }
+
+    .auth-lock-icon {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    .admin-auth-box h4 {
+      font-family: var(--font-condensed);
+      font-size: 1.4rem;
+      color: var(--gold-primary);
+      margin-bottom: 8px;
+    }
+
+    .admin-auth-box p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+
+    .auth-input-group {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .auth-input-group input {
+      flex: 1;
+      background: #050302;
+      border: 1px solid var(--gold-dim);
+      border-radius: 4px;
+      padding: 10px 14px;
+      color: var(--gold-light);
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .auth-input-group input:focus {
+      border-color: var(--gold-primary);
+      box-shadow: 0 0 10px var(--gold-glow);
+    }
+
+    .auth-error-msg {
+      display: none;
+      color: var(--crimson);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 700;
+      margin-top: 8px;
+    }
+
+    .auth-hint {
+      margin-top: 14px;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--text-dark);
+    }
+
+    .auth-hint code {
+      color: var(--gold-primary);
+    }
+
+    /* Admin Dashboard View */
+    .admin-dashboard-screen {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .admin-nav-tabs {
+      display: flex;
+      gap: 8px;
+      border-bottom: 1px solid var(--gold-dim);
+      padding-bottom: 10px;
+      flex-wrap: wrap;
+    }
+
+    .admin-tab-btn {
+      background: rgba(20, 15, 10, 0.7);
+      border: 1px solid var(--gold-border);
+      color: var(--text-muted);
+      padding: 8px 16px;
+      border-radius: 4px;
+      font-family: var(--font-condensed);
+      font-size: 0.9rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .admin-tab-btn.active,
+    .admin-tab-btn:hover {
+      background: var(--gold-primary);
+      color: var(--bg-dark);
+      border-color: var(--gold-primary);
+    }
+
+    .admin-tab-content {
+      display: none;
+      animation: fadeInTab 0.3s ease;
+    }
+
+    .admin-tab-content.active {
+      display: block;
+    }
+
+    @keyframes fadeInTab {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .admin-form-group {
+      margin-bottom: 16px;
+    }
+
+    .admin-form-group label {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--gold-primary);
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+
+    .admin-form-group input,
+    .admin-form-group select,
+    .admin-form-group textarea {
+      width: 100%;
+      background: #070503;
+      border: 1px solid var(--gold-dim);
+      border-radius: 4px;
+      padding: 9px 12px;
+      color: var(--text-bone);
+      font-family: var(--font-body);
+      font-size: 0.88rem;
+      outline: none;
+    }
+
+    .admin-form-group textarea {
+      min-height: 80px;
+      resize: vertical;
+    }
+
+    .admin-form-group input:focus,
+    .admin-form-group select:focus,
+    .admin-form-group textarea:focus {
+      border-color: var(--gold-primary);
+      box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
+    }
+
+    .admin-status-toast {
+      display: none;
+      padding: 10px 16px;
+      border-radius: 4px;
+      margin-top: 14px;
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    .admin-status-toast.success {
+      display: block;
+      background: rgba(46, 204, 113, 0.15);
+      border: 1px solid #2ecc71;
+      color: #2ecc71;
     }
   </style>
 </head>
@@ -5199,6 +5671,7 @@
             <li><a href="#" class="modal-trigger-btn" data-open-modal="modal-privacy" data-sound="hover">Privacy Policy</a></li>
             <li><a href="#" class="modal-trigger-btn" data-open-modal="modal-cookies" data-sound="hover">Cookies Policy</a></li>
             <li><a href="#" class="modal-trigger-btn" data-open-modal="modal-faq" data-sound="hover">FAQ</a></li>
+            <li><a href="#" class="modal-trigger-btn" data-open-modal="modal-admin" data-sound="hover" style="color: var(--gold-primary);">⚙️ Admin Terminal</a></li>
           </ul>
         </div>
 
@@ -5218,7 +5691,7 @@
   </footer>
 
   <!-- =========================================================================
-       ESPORTS MODALS (ABOUT US, NEWS, TERMS, PRIVACY, COOKIES, FAQ)
+       ESPORTS MODALS (ABOUT US, NEWS, TERMS, PRIVACY, COOKIES, FAQ, ADMIN)
        ========================================================================= -->
   
   <!-- ABOUT US MODAL -->
@@ -5281,17 +5754,111 @@
   <div class="esports-info-modal" id="modal-news" data-lenis-prevent="true">
     <div class="esports-modal-window" data-lenis-prevent="true">
       <div class="esports-modal-header">
-        <h3>📢 SQUADONE NEWS & EVENTS</h3>
+        <h3>📢 SQUADONE NEWS &amp; EVENTS</h3>
         <button class="esports-modal-close" data-close-modal="modal-news">✕</button>
       </div>
       <div class="esports-modal-body" data-lenis-prevent="true">
-        <article class="news-article-card featured-event">
+        
+        <!-- NEW 01: SQUADONE NATIONS LEAGUE SEASON 3 -->
+        <article class="news-article-card featured-event" id="news-article-sqnl-s3">
+          <div class="news-article-card-copy">
+            <div class="news-card-date">● NOVEMBER 2026 // NATIONS LEAGUE S3</div>
+            <div class="news-card-title">🔥 THE STAGE IS SET AND THE BATTLEGROUNDS ARE CALLING! 🥊💥</div>
+            <p>The <strong>SquadOne PUBG PC Nations League Season 3</strong> is officially on the horizon! 🏆</p>
+            <p>✨ <strong>TOP SQUADS</strong> in the region! Lock in for ultimate glory and supreme dominance! ⚡️🎮</p>
+            <ul style="margin: 10px 0 12px 18px; color: var(--gold-light);">
+              <li><strong>🗓️ WHEN:</strong> November 2026</li>
+              <li><strong>🏆 EVENT:</strong> SquadOne PUBG PC Nations League Season 3</li>
+              <li><strong>💪 STAY TUNED:</strong> Turn on those notifications, drop into the channel, and STAY TUNED for registration details, live stream info, and major updates dropping soon! 🪂👀</li>
+            </ul>
+            <div style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--gold-dim); margin-top: 6px;">
+              #SquadOne #PUBGPC #PUBGIndia #NationalLeague #Season3 #NeverSettle
+            </div>
+            <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 8px; border-top: 1px solid var(--gold-border); padding-top: 6px; font-weight: 600;">
+              eWave.gg | Where Gamers Become Athletes !
+            </div>
+          </div>
+          <button class="news-event-image-button" type="button" aria-label="Open Season 3 Announcement image full screen" data-open-event-image data-image-src="images/sqnlS3.png">
+            <img src="images/sqnlS3.png" alt="SquadOne PUBG PC Nations League Season 3">
+          </button>
+        </article>
+
+        <!-- NEW 02: EWAVE EXECUTIVE BODY (SA & SEA) -->
+        <article class="news-article-card featured-event" id="news-article-ewave-executive">
+          <div class="news-article-card-copy">
+            <div class="news-card-date">● SEPTEMBER 2026 // PLAYER COUNCIL</div>
+            <div class="news-card-title">THE FUTURE OF SA &amp; SEA PUBG IS IN YOUR HANDS</div>
+            <p>For too long in PUBG eSports, decisions about the competitive ecosystem, tournament structures, and rules have been made behind closed doors without the people who actually keep this scene alive: <strong>THE PLAYERS</strong>. eWave was built on a single, non-negotiable principle — a platform <strong>FOR THE PLAYERS, BY THE PLAYERS!</strong></p>
+            <p>We don't just host lobbies, we build the stage for greatness. But to make South Asia and Southeast Asia the most dominant, respected, and player-driven PUBG regions in the world, we need leaders from the front lines. We are officially forming the <strong>eWave Executive Body for SA &amp; SEA</strong> — an elite, player-led council designed to give this community the total authority it deserves.</p>
+            
+            <h4 style="margin: 14px 0 6px; font-size: 1rem; color: var(--gold-primary);">WHY YOU BELONG ON THE EXECUTIVE BODY</h4>
+            <p>This isn't a cosmetic title. It is real power and influence. We are selecting a core group of top players, veterans, and visionaries to sit at the table with us. Every major decision, rulebook update, event format, and regional move will be made in direct coordination with this council. Your voice will set the standard for tournaments across SA and SEA. Your insight will forge the system you've always wanted to play in.</p>
+            
+            <h4 style="margin: 14px 0 6px; font-size: 1rem; color: var(--gold-primary);">WE ARE ONE TEAM. WE STAND UNITED.</h4>
+            <p>This region has the talent, the drive, and the raw passion — now it’s time to claim our place. We are not separate entities operating in silos; we are one team working relentlessly to make SA and SEA legendary. If you are a top player ready to step up, take responsibility, and lead from the front, we want you beside us.</p>
+            
+            <h4 style="margin: 14px 0 6px; font-size: 1rem; color: var(--gold-primary);">HOW TO STEP UP</h4>
+            <ul style="margin: 8px 0 12px 18px;">
+              <li>Head to our Discord server: <a href="https://discord.gg/Sjy7ACKah7" target="_blank" style="color: var(--gold-primary); text-decoration: underline; font-weight: 700;">EWAVE.GG Discord ↗</a></li>
+              <li>Open a ticket in the support channel: <a href="https://discord.com/channels/1157258588662796328/1237666558051094589" target="_blank" style="color: var(--gold-primary); text-decoration: underline; font-weight: 700;">Discord Support Ticket ↗</a></li>
+              <li>Tell us who you are, your background, and why you are ready to help lead SA &amp; SEA.</li>
+            </ul>
+            
+            <div style="background: rgba(214, 40, 40, 0.15); border-left: 3px solid var(--crimson); padding: 8px 12px; margin: 10px 0; font-size: 0.85rem;">
+              <strong>SELECTION TIMELINE:</strong> Sunday 6th of September, in 9 days, immediately following scrims, we will select 5 players to join the team and announce the official members publicly. The era of being ignored is over. Open your ticket today, take the lead, and let’s build something unstoppable together!
+            </div>
+            <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 8px; border-top: 1px solid var(--gold-border); padding-top: 6px; font-weight: 600;">
+              eWave.gg | Where Gamers Become Athletes !
+            </div>
+          </div>
+          <button class="news-event-image-button" type="button" aria-label="Open eWave Executive Body announcement image full screen" data-open-event-image data-image-src="images/ewaveExecutiveBody.jpg">
+            <img src="images/ewaveExecutiveBody.jpg" alt="eWave Executive Body for SA and SEA">
+          </button>
+        </article>
+
+        <!-- NEW 03: SOUTH ASIA CROSS-BAY SCRIMS -->
+        <article class="news-article-card featured-event" id="news-article-crossbay-scrims">
+          <div class="news-article-card-copy">
+            <div class="news-card-date">● WEEKLY 20:00 IST // CROSS-BAY SCRIMS</div>
+            <div class="news-card-title">🚨 THE NEXT STEP FOR OUR SCRIMS! INDIA SCRIMS EVOLVING TO SOUTH ASIA CROSS-BAY SCRIMS 🌊</div>
+            
+            <div style="background: rgba(0, 200, 255, 0.08); border-left: 3px solid var(--blue-zone); padding: 8px 12px; margin: 8px 0 12px; font-size: 0.85rem;">
+              🇮🇳 <strong>India Community Note:</strong> Regular Indian domestic tournaments will keep running uninterrupted! SA Cross Bay Scrims is an ADDITIONAL initiative for cross-regional practice and overall team improvement.
+            </div>
+            
+            <ul style="margin: 8px 0 12px 18px; color: var(--text-bone);">
+              <li>📌 <strong>Primary Region:</strong> South Asia (SA)</li>
+              <li>📌 <strong>Guest Region:</strong> Southeast Asia (SEA)</li>
+              <li>📌 <strong>Server:</strong> SEA — working with Krafton to enable true SA servers</li>
+              <li>🕐 <strong>Time:</strong> 20:00h IST (India time) — UTC +05:30h</li>
+            </ul>
+            
+            <h4 style="margin: 12px 0 6px; font-size: 1rem; color: var(--gold-primary);">⚖️ SLOT SELECTION RULES</h4>
+            <p>Slots are evaluated based on Team Tier &amp; Achievements. In case of a TIE (Same Tier SA vs. Same Tier SEA), the SA Team gets slot priority.</p>
+            
+            <h4 style="margin: 12px 0 6px; font-size: 1rem; color: var(--gold-primary);">📋 REGISTRATION FORM</h4>
+            <pre style="background: rgba(10, 8, 5, 0.85); border: 1px solid var(--gold-border); border-radius: 4px; padding: 10px; font-family: var(--font-mono); font-size: 0.78rem; color: var(--gold-light); margin: 6px 0 10px; line-height: 1.4;">Team Name:
+Region (SA + SEA):
+Team Tier - based on achievements &amp; scrim performance:
+Roster (4 Players + Subs):</pre>
+            
+            <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 8px; border-top: 1px solid var(--gold-border); padding-top: 6px; font-weight: 600;">
+              eWave.gg | Where Gamers Become Athletes !
+            </div>
+          </div>
+          <button class="news-event-image-button" type="button" aria-label="Open SA Cross Bay Scrims image full screen" data-open-event-image data-image-src="images/sa-cross-bay-scrims.jpeg">
+            <img src="images/sa-cross-bay-scrims.jpeg" alt="South Asia Cross-Bay Scrims Announcement">
+          </button>
+        </article>
+
+        <!-- PREVIOUS FEATURED: SEASON 2 GRAND FINALE -->
+        <article class="news-article-card featured-event" id="news-article-s2-finale">
           <div class="news-article-card-copy">
             <div class="news-card-date">● AUGUST 2026 // GRAND FINALE</div>
             <div class="news-card-title">SquadOne National League - Season 2 Grand Finale</div>
             <p>The <strong>SquadOne National League - Season 2 Grand Finale</strong> is here! Join the live finale and take part in our exciting <strong>Predict &amp; Win</strong> challenge. Make your predictions for the <strong>Team Winner and Top Fragger</strong>, follow the action live, and stand a chance to win <strong>mystery gifts</strong>. Tune in to the Grand Finale live on <strong>YouTube and Twitch</strong> and be part of the ultimate PUBG PC esports showdown in India.</p>
           </div>
-          <button class="news-event-image-button" type="button" aria-label="Open Season 2 Grand Finale event image full screen" data-open-event-image>
+          <button class="news-event-image-button" type="button" aria-label="Open Season 2 Grand Finale event image full screen" data-open-event-image data-image-src="assets/eventimage.jpeg">
             <img src="assets/eventimage.jpeg" alt="SquadOne National League Season 2 Grand Finale Predict and Win event">
           </button>
         </article>
@@ -5310,17 +5877,153 @@
 
         <div class="news-article-card">
           <div class="news-card-date">● RECURRING WEEKLY // SCRIM SCHEDULE</div>
-          <div class="news-card-title">Daily Tier-1 Competitive Scrims Live Every Fri, Sat & Sun</div>
+          <div class="news-card-title">Daily Tier-1 Competitive Scrims Live Every Fri, Sat &amp; Sun</div>
           <p>Matches commence sharp at 8:00 PM IST. Registered teams must join the Squad One Discord server and verify their India National League role to access match lobbies.</p>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="event-image-lightbox" id="event-image-lightbox" role="dialog" aria-modal="true" aria-label="Season 2 Grand Finale event image" aria-hidden="true" data-lenis-prevent="true">
+  <div class="event-image-lightbox" id="event-image-lightbox" role="dialog" aria-modal="true" aria-label="Event image viewer" aria-hidden="true" data-lenis-prevent="true">
     <button class="event-image-lightbox-close" type="button" aria-label="Close event image">✕</button>
-    <img src="assets/eventimage.jpeg" alt="SquadOne National League Season 2 Grand Finale Predict and Win event">
+    <img src="images/sqnlS3.png" alt="SquadOne event image preview">
   </div>
+
+  <!-- =========================================================================
+       ADMIN CONTROL PORTAL MODAL
+       ========================================================================= -->
+  <div class="esports-info-modal admin-portal-modal" id="modal-admin" data-lenis-prevent="true">
+    <div class="esports-modal-window admin-modal-window" data-lenis-prevent="true">
+      <div class="esports-modal-header admin-modal-header">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <span style="color: var(--gold-primary); font-size: 1.4rem;">⚙️</span>
+          <div>
+            <h3 style="margin: 0; line-height: 1.1;">SQUADONE COMMAND TERMINAL</h3>
+            <span style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--gold-dim);">RESTRICTED ACCESS // ADMINISTRATOR PORTAL</span>
+          </div>
+        </div>
+        <button class="esports-modal-close" data-close-modal="modal-admin">✕</button>
+      </div>
+
+      <div class="esports-modal-body admin-modal-body" data-lenis-prevent="true">
+        <!-- Auth Gate -->
+        <div class="admin-auth-screen" id="admin-auth-screen">
+          <div class="admin-auth-box">
+            <div class="auth-lock-icon">🔒</div>
+            <h4>SECURITY VERIFICATION</h4>
+            <p>Enter your master administrator passkey to manage tournament data, announcements, and match controls.</p>
+            <div class="auth-input-group">
+              <input type="password" id="admin-passkey-input" placeholder="ENTER ACCESS KEY..." autocomplete="off">
+              <button class="cyber-btn cyber-btn-crimson" id="admin-unlock-btn" type="button">AUTHENTICATE</button>
+            </div>
+            <div class="auth-error-msg" id="admin-auth-error">ACCESS DENIED: Invalid Administrative Key.</div>
+            <div class="auth-hint">DEFAULT KEY: <code>SQ1-ADMIN-2026</code></div>
+          </div>
+        </div>
+
+        <!-- Authenticated Dashboard -->
+        <div class="admin-dashboard-screen" id="admin-dashboard-screen" style="display: none;">
+          
+          <div class="admin-nav-tabs">
+            <button class="admin-tab-btn active" data-admin-tab="tab-news" type="button">📢 NEWS &amp; INTEL</button>
+            <button class="admin-tab-btn" data-admin-tab="tab-seasons" type="button">🏆 TOURNAMENTS &amp; SEASONS</button>
+            <button class="admin-tab-btn" data-admin-tab="tab-ticker" type="button">📊 LIVE TICKER BANNER</button>
+            <button class="admin-tab-btn" data-admin-tab="tab-backup" type="button">💾 BACKUP &amp; DATA</button>
+          </div>
+
+          <!-- TAB 1: News Manager -->
+          <div class="admin-tab-content active" id="tab-news">
+            <h4 style="margin-top: 0; color: var(--gold-primary);">PUBLISH NEW ANNOUNCEMENT</h4>
+            <form id="admin-news-form">
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                <div class="admin-form-group">
+                  <label>CATEGORY / BADGE (e.g. ● NOVEMBER 2026 // SEASON 3)</label>
+                  <input type="text" id="admin-news-badge" placeholder="● MONTH 2026 // BADGE NAME" required>
+                </div>
+                <div class="admin-form-group">
+                  <label>IMAGE URL / PATH (e.g. images/sqnlS3.png)</label>
+                  <input type="text" id="admin-news-img" placeholder="images/filename.png" required>
+                </div>
+              </div>
+              <div class="admin-form-group">
+                <label>ARTICLE TITLE</label>
+                <input type="text" id="admin-news-title" placeholder="Announcement Headline..." required>
+              </div>
+              <div class="admin-form-group">
+                <label>ANNOUNCEMENT DESCRIPTION / DETAILS</label>
+                <textarea id="admin-news-desc" placeholder="Write announcement details..." required></textarea>
+              </div>
+              <button class="cyber-btn" type="submit" style="width: 100%;">+ PUBLISH TO WEBSITE</button>
+            </form>
+            <div class="admin-status-toast" id="admin-news-toast">✓ Announcement published successfully to live news feed!</div>
+          </div>
+
+          <!-- TAB 2: Seasons & Tournaments Manager -->
+          <div class="admin-tab-content" id="tab-seasons">
+            <h4 style="margin-top: 0; color: var(--gold-primary);">SEASON 2 CIRCUIT CONTROLS</h4>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+              <div class="admin-form-group">
+                <label>SEASON 2 STATUS</label>
+                <select id="admin-season2-status">
+                  <option value="ONGOING">● ONGOING (LIVE)</option>
+                  <option value="UPCOMING">● UPCOMING</option>
+                  <option value="COMPLETED">● COMPLETED</option>
+                </select>
+              </div>
+              <div class="admin-form-group">
+                <label>REGISTERED TEAMS COUNT</label>
+                <input type="text" id="admin-season2-teams" value="95 APPLIED">
+              </div>
+            </div>
+            <div class="admin-form-group">
+              <label>CURRENT STAGE</label>
+              <input type="text" id="admin-season2-stage" value="QUALIFIERS">
+            </div>
+            <button class="cyber-btn" id="admin-save-season-btn" type="button" style="width: 100%;">SAVE TOURNAMENT CONFIG</button>
+            <div class="admin-status-toast" id="admin-season-toast">✓ Tournament configuration updated!</div>
+          </div>
+
+          <!-- TAB 3: Live Ticker Banner -->
+          <div class="admin-tab-content" id="tab-ticker">
+            <h4 style="margin-top: 0; color: var(--gold-primary);">HERO MARQUEE &amp; TICKER SETTINGS</h4>
+            <div class="admin-form-group">
+              <label>HERO PARTNER BAR / BROADCAST MESSAGE</label>
+              <input type="text" id="admin-hero-partner-text" value="OFFICIAL SCRIM ARENA &amp; BRACKETS POWERED BY EWAVE.GG">
+            </div>
+            <button class="cyber-btn" id="admin-save-ticker-btn" type="button" style="width: 100%;">UPDATE TICKER</button>
+            <div class="admin-status-toast" id="admin-ticker-toast">✓ Hero announcement ticker updated!</div>
+          </div>
+
+          <!-- TAB 4: Backup & Restore -->
+          <div class="admin-tab-content" id="tab-backup">
+            <h4 style="margin-top: 0; color: var(--gold-primary);">DATA BACKUP &amp; RECOVERY</h4>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 16px;">
+              Export all local customization data or restore previous configurations.
+            </p>
+            <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+              <button class="cyber-btn cyber-btn-outline" id="admin-export-btn" type="button">⬇ EXPORT WEBSITE DATA (JSON)</button>
+              <button class="cyber-btn cyber-btn-crimson" id="admin-reset-btn" type="button">↺ RESET TO DEFAULT DATA</button>
+            </div>
+            <div class="admin-status-toast" id="admin-backup-toast">✓ Data operation completed!</div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       WHATSAPP / MODERN OS NOTIFICATION TOAST STACK (20s DURATION)
+       ========================================================================= -->
+  <div class="notif-toast-container" id="notif-toast-container" role="region" aria-label="Latest Announcements">
+    <!-- 3 Notification Toasts Rendered Dynamically via JS with Middle Card Prominent -->
+  </div>
+
+  <!-- Minimal Floating Re-open Badge -->
+  <button class="notif-reopen-chip" id="notif-reopen-chip" type="button" aria-label="Open 3 Announcements">
+    <span class="chip-pulse"></span>
+    <span>3 New Updates</span>
+  </button>
 
   
   <!-- TERMS OF SERVICE MODAL -->
@@ -6445,7 +7148,7 @@
     }
 
     /* ==========================================================================
-       15. ESPORTS INFO MODALS CONTROLLER
+       15. ESPORTS INFO MODALS & MULTI-IMAGE LIGHTBOX CONTROLLER
        ========================================================================== */
     function checkAllModalsClosed() {
       const anyModalActive = document.querySelector('.esports-info-modal.active, .ewave-player-modal-backdrop.active, .event-image-lightbox.active');
@@ -6494,15 +7197,16 @@
       });
     });
 
-    // Ensure mousewheel events inside modal bodies are isolated from window Lenis
-    document.querySelectorAll('.esports-modal-body, .ewave-player-modal-window').forEach(el => {
+    // Ensure mousewheel events inside modal bodies and news card copy are isolated from window Lenis
+    document.querySelectorAll('.esports-modal-body, .news-article-card-copy, .ewave-player-modal-window').forEach(el => {
       el.addEventListener('wheel', (e) => {
         e.stopPropagation();
       }, { passive: true });
     });
 
+    // Generic Multi-Image Lightbox Handler
     const eventImageLightbox = document.getElementById('event-image-lightbox');
-    const eventImageButton = document.querySelector('[data-open-event-image]');
+    const eventLightboxImg = eventImageLightbox?.querySelector('img');
     const eventImageCloseButton = eventImageLightbox?.querySelector('.event-image-lightbox-close');
 
     const closeEventImageLightbox = () => {
@@ -6512,16 +7216,28 @@
       checkAllModalsClosed();
     };
 
-    if (eventImageLightbox && eventImageButton && eventImageCloseButton) {
-      eventImageButton.addEventListener('click', () => {
-        eventImageLightbox.classList.add('active');
-        eventImageLightbox.setAttribute('aria-hidden', 'false');
-        if (typeof lenis !== 'undefined' && lenis.stop) lenis.stop();
-        document.body.classList.add('modal-open');
-        eventImageCloseButton.focus();
+    document.querySelectorAll('[data-open-event-image]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        sound.init();
+        sound.playClick();
+        const imgSrc = btn.getAttribute('data-image-src') || btn.querySelector('img')?.src;
+        if (imgSrc && eventLightboxImg) {
+          eventLightboxImg.src = imgSrc;
+        }
+        if (eventImageLightbox) {
+          eventImageLightbox.classList.add('active');
+          eventImageLightbox.setAttribute('aria-hidden', 'false');
+          if (typeof lenis !== 'undefined' && lenis.stop) lenis.stop();
+          document.body.classList.add('modal-open');
+          eventImageCloseButton?.focus();
+        }
       });
+    });
 
+    if (eventImageCloseButton) {
       eventImageCloseButton.addEventListener('click', closeEventImageLightbox);
+    }
+    if (eventImageLightbox) {
       eventImageLightbox.addEventListener('click', (e) => {
         if (e.target === eventImageLightbox) closeEventImageLightbox();
       });
@@ -6536,11 +7252,442 @@
         });
         checkAllModalsClosed();
       }
+      // Shortcut Ctrl + Shift + A for Admin Portal
+      if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === 'A' || e.key === 'a')) {
+        e.preventDefault();
+        const adminModal = document.getElementById('modal-admin');
+        if (adminModal) {
+          adminModal.classList.add('active');
+          if (typeof lenis !== 'undefined' && lenis.stop) lenis.stop();
+          document.body.classList.add('modal-open');
+        }
+      }
     });
 
-    
     /* ==========================================================================
-       16. 3D MAGNETIC TILT & CYBER GUN ENGINE FOR EWAVE BUTTON
+       16. WHATSAPP-STYLE NOTIFICATION TOASTS CONTROLLER (20s DURATION, 3.2s CYCLE)
+       ========================================================================== */
+    function initHudNewsWidget() {
+      const container = document.getElementById('notif-toast-container');
+      const chipEl = document.getElementById('notif-reopen-chip');
+
+      if (!container) return;
+
+      const top3News = [
+        {
+          id: 'news-article-sqnl-s3',
+          sender: 'SQUAD ONE ESPORTS',
+          badge: 'SQUADONE ESPORTS',
+          title: '🔥 Nations League S3 Announced!',
+          desc: 'The stage is set! Top squads across SA & SEA lock in for Season 3 this November 2026.',
+          img: 'images/sqnlS3.png'
+        },
+        {
+          id: 'news-article-ewave-executive',
+          sender: 'EWAVE.GG · PARTNER',
+          badge: 'EWAVE.GG',
+          title: 'eWave Executive Body Formed',
+          desc: 'Player-led council for SA & SEA. 5 community leaders to be selected in 9 days via Discord ticket.',
+          img: 'images/ewaveExecutiveBody.jpg'
+        },
+        {
+          id: 'news-article-crossbay-scrims',
+          sender: 'SQUAD ONE SCRIMS',
+          badge: 'SCRIMS HUB',
+          title: '🚨 South Asia Cross-Bay Scrims',
+          desc: 'India scrims now expanding to cross-bay battles with SEA teams. 20:00 IST sharp on SEA servers.',
+          img: 'images/sa-cross-bay-scrims.jpeg'
+        }
+      ];
+
+      let activeIndex = 0;
+      let switchInterval = null;
+      let countdownTimer = null;
+      const totalDuration = 5; // 5 seconds total lifespan
+      let elapsedSeconds = 0;
+
+      function renderCards() {
+        container.innerHTML = '';
+        const n = top3News.length;
+
+        const topIdx = (activeIndex - 1 + n) % n;
+        const midIdx = activeIndex;
+        const botIdx = (activeIndex + 1) % n;
+
+        const slots = [
+          { item: top3News[topIdx], posClass: 'pos-top', index: topIdx },
+          { item: top3News[midIdx], posClass: 'pos-mid', index: midIdx },
+          { item: top3News[botIdx], posClass: 'pos-bot', index: botIdx }
+        ];
+
+        slots.forEach(({ item, posClass, index }) => {
+          const card = document.createElement('div');
+          card.className = `notif-toast-card ${posClass}`;
+          card.setAttribute('data-target-id', item.id);
+          card.setAttribute('data-index', index);
+
+          card.innerHTML = `
+            <div class="notif-avatar-wrap">
+              <img src="assets/squadone-logo.png" class="notif-avatar-img" alt="Squad One" onerror="this.src='assets/teams/squadone.png'">
+              <span class="notif-online-pip"></span>
+            </div>
+            <div class="notif-content-wrap">
+              <div class="notif-meta-row">
+                <span class="notif-app-name">${item.sender}</span>
+                <span class="notif-time-stamp">now</span>
+              </div>
+              <div class="notif-headline">${item.title}</div>
+              <div class="notif-msg-snippet">${item.desc}</div>
+            </div>
+            <div class="notif-thumb-wrap">
+              <img src="${item.img}" alt="${item.title}" onerror="this.src='assets/teams/squadone.png'">
+            </div>
+          `;
+
+          // Clicking toast opens full news modal & scrolls to article
+          if (posClass === 'pos-mid') {
+            card.addEventListener('click', () => {
+              openArticleInNewsModal(item.id);
+            });
+          } else {
+            // Clicking top or bottom switches it to middle
+            card.addEventListener('click', () => {
+              sound.init();
+              sound.playClick();
+              activeIndex = index;
+              renderCards();
+              resetAutoSwitch();
+            });
+          }
+
+          container.appendChild(card);
+        });
+      }
+
+      function openArticleInNewsModal(articleId) {
+        sound.init();
+        sound.playClick();
+        const newsModal = document.getElementById('modal-news');
+        if (newsModal) {
+          newsModal.classList.add('active');
+          if (typeof lenis !== 'undefined' && lenis.stop) lenis.stop();
+          document.body.classList.add('modal-open');
+          
+          setTimeout(() => {
+            const targetArticle = document.getElementById(articleId);
+            if (targetArticle) {
+              targetArticle.scrollIntoView({ behavior: 'smooth', block: 'center' });
+              targetArticle.style.transition = 'box-shadow 0.4s, border-color 0.4s';
+              targetArticle.style.borderColor = 'var(--gold-primary)';
+              targetArticle.style.boxShadow = '0 0 30px var(--gold-glow)';
+              setTimeout(() => {
+                targetArticle.style.borderColor = '';
+                targetArticle.style.boxShadow = '';
+              }, 2500);
+            }
+          }, 200);
+        }
+      }
+
+      function rotateNext() {
+        activeIndex = (activeIndex + 1) % top3News.length;
+        renderCards();
+      }
+
+      function rotatePrev() {
+        activeIndex = (activeIndex - 1 + top3News.length) % top3News.length;
+        renderCards();
+      }
+
+      function startAutoSwitch() {
+        if (switchInterval) clearInterval(switchInterval);
+        switchInterval = setInterval(rotateNext, 1600); // fast switch every 1.6 seconds
+      }
+
+      function resetAutoSwitch() {
+        startAutoSwitch();
+      }
+
+      function startCountdown() {
+        if (countdownTimer) clearInterval(countdownTimer);
+        const startTime = Date.now();
+        const endTime = startTime + totalDuration * 1000;
+
+        countdownTimer = setInterval(() => {
+          const now = Date.now();
+          if (now >= endTime) {
+            clearInterval(countdownTimer);
+            minimizeToChip();
+          }
+        }, 300);
+      }
+
+      function minimizeToChip() {
+        if (switchInterval) clearInterval(switchInterval);
+        if (countdownTimer) clearInterval(countdownTimer);
+        container.classList.add('hidden');
+        if (chipEl) chipEl.classList.add('active');
+      }
+
+      function expandFromChip() {
+        sound.init();
+        sound.playClick();
+        container.classList.remove('hidden');
+        if (chipEl) chipEl.classList.remove('active');
+        startCountdown();
+        startAutoSwitch();
+      }
+
+      if (chipEl) {
+        chipEl.addEventListener('click', expandFromChip);
+      }
+
+      // Mouse Wheel / Trackpad Scroll Navigation on Notification Stack
+      let isScrolling = false;
+      container.addEventListener('wheel', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        if (isScrolling) return;
+        isScrolling = true;
+        sound.init();
+        sound.playClick();
+        if (e.deltaY > 0) {
+          rotateNext();
+        } else if (e.deltaY < 0) {
+          rotatePrev();
+        }
+        resetAutoSwitch();
+        setTimeout(() => { isScrolling = false; }, 200);
+      }, { passive: false });
+
+      // Touch / Mobile Swipe Gesture Navigation
+      let touchStartY = 0;
+      container.addEventListener('touchstart', (e) => {
+        touchStartY = e.touches[0].clientY;
+      }, { passive: true });
+
+      container.addEventListener('touchend', (e) => {
+        const touchEndY = e.changedTouches[0].clientY;
+        const diff = touchStartY - touchEndY;
+        if (Math.abs(diff) > 20) {
+          sound.init();
+          sound.playClick();
+          if (diff > 0) {
+            rotateNext();
+          } else {
+            rotatePrev();
+          }
+          resetAutoSwitch();
+        }
+      }, { passive: true });
+
+      // Pause Auto-Cycle when Hovering to Read Comfortably
+      container.addEventListener('mouseenter', () => {
+        if (switchInterval) clearInterval(switchInterval);
+      });
+      container.addEventListener('mouseleave', () => {
+        startAutoSwitch();
+      });
+
+      // Initial Render & Launch
+      renderCards();
+      startAutoSwitch();
+      startCountdown();
+    }
+
+    /* ==========================================================================
+       17. SQUADONE COMMAND TERMINAL (ADMIN CONTROL PORTAL)
+       ========================================================================== */
+    function initAdminPortal() {
+      const MASTER_KEY = 'SQ1-ADMIN-2026';
+      const passInput = document.getElementById('admin-passkey-input');
+      const unlockBtn = document.getElementById('admin-unlock-btn');
+      const errorMsg = document.getElementById('admin-auth-error');
+      const authScreen = document.getElementById('admin-auth-screen');
+      const dashScreen = document.getElementById('admin-dashboard-screen');
+
+      // Tabs
+      const tabBtns = document.querySelectorAll('.admin-tab-btn');
+      const tabContents = document.querySelectorAll('.admin-tab-content');
+
+      tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          sound.init();
+          sound.playClick();
+          const targetTab = btn.getAttribute('data-admin-tab');
+          tabBtns.forEach(b => b.classList.remove('active'));
+          tabContents.forEach(c => c.classList.remove('active'));
+          btn.classList.add('active');
+          const content = document.getElementById(targetTab);
+          if (content) content.classList.add('active');
+        });
+      });
+
+      function handleUnlock() {
+        const key = passInput?.value.trim();
+        if (key === MASTER_KEY || localStorage.getItem('sq1_admin_auth') === 'true') {
+          sound.init();
+          sound.playClick();
+          if (authScreen) authScreen.style.display = 'none';
+          if (dashScreen) dashScreen.style.display = 'flex';
+          if (errorMsg) errorMsg.style.display = 'none';
+          localStorage.setItem('sq1_admin_auth', 'true');
+        } else {
+          sound.init();
+          if (errorMsg) errorMsg.style.display = 'block';
+          if (passInput) {
+            passInput.style.borderColor = 'var(--crimson)';
+            passInput.focus();
+          }
+        }
+      }
+
+      if (unlockBtn) unlockBtn.addEventListener('click', handleUnlock);
+      if (passInput) {
+        passInput.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter') handleUnlock();
+        });
+      }
+
+      // TAB 1: Publish News Announcement
+      const newsForm = document.getElementById('admin-news-form');
+      const newsToast = document.getElementById('admin-news-toast');
+
+      if (newsForm) {
+        newsForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          sound.init();
+          sound.playClick();
+
+          const badge = document.getElementById('admin-news-badge')?.value.trim();
+          const img = document.getElementById('admin-news-img')?.value.trim();
+          const title = document.getElementById('admin-news-title')?.value.trim();
+          const desc = document.getElementById('admin-news-desc')?.value.trim();
+
+          const newsModalBody = document.querySelector('#modal-news .esports-modal-body');
+          if (newsModalBody && title) {
+            const article = document.createElement('article');
+            article.className = 'news-article-card featured-event';
+            article.innerHTML = `
+              <div class="news-article-card-copy">
+                <div class="news-card-date">${badge || '● ANNOUNCEMENT'}</div>
+                <div class="news-card-title">${title}</div>
+                <p>${desc}</p>
+                <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 8px; border-top: 1px solid var(--gold-border); padding-top: 6px; font-weight: 600;">
+                  Published via SquadOne Terminal · eWave.gg Partner
+                </div>
+              </div>
+              <button class="news-event-image-button" type="button" aria-label="Open image full screen" data-open-event-image data-image-src="${img || 'assets/eventimage.jpeg'}">
+                <img src="${img || 'assets/eventimage.jpeg'}" alt="${title}" onerror="this.src='assets/eventimage.jpeg'">
+              </button>
+            `;
+            newsModalBody.insertBefore(article, newsModalBody.firstChild);
+
+            if (newsToast) {
+              newsToast.className = 'admin-status-toast success';
+              newsToast.textContent = '✓ Announcement published successfully to live news feed!';
+              setTimeout(() => { newsToast.className = 'admin-status-toast'; }, 3000);
+            }
+            newsForm.reset();
+          }
+        });
+      }
+
+      // TAB 2: Season Settings
+      const saveSeasonBtn = document.getElementById('admin-save-season-btn');
+      const seasonToast = document.getElementById('admin-season-toast');
+
+      if (saveSeasonBtn) {
+        saveSeasonBtn.addEventListener('click', () => {
+          sound.init();
+          sound.playClick();
+          const status = document.getElementById('admin-season2-status')?.value;
+          const teams = document.getElementById('admin-season2-teams')?.value;
+          const stage = document.getElementById('admin-season2-stage')?.value;
+
+          const sBadge = document.querySelector('#season2-card .season-badge-live');
+          if (sBadge && status) {
+            sBadge.textContent = status === 'ONGOING' ? '● ONGOING' : `● ${status}`;
+          }
+
+          if (seasonToast) {
+            seasonToast.className = 'admin-status-toast success';
+            seasonToast.textContent = '✓ Tournament settings saved and applied!';
+            setTimeout(() => { seasonToast.className = 'admin-status-toast'; }, 3000);
+          }
+        });
+      }
+
+      // TAB 3: Hero Ticker Settings
+      const saveTickerBtn = document.getElementById('admin-save-ticker-btn');
+      const tickerToast = document.getElementById('admin-ticker-toast');
+
+      if (saveTickerBtn) {
+        saveTickerBtn.addEventListener('click', () => {
+          sound.init();
+          sound.playClick();
+          const partnerText = document.getElementById('admin-hero-partner-text')?.value;
+          const heroPartner = document.getElementById('hero-partner');
+          if (heroPartner && partnerText) {
+            heroPartner.innerHTML = `<span class="dot"></span> ${partnerText}`;
+          }
+          if (tickerToast) {
+            tickerToast.className = 'admin-status-toast success';
+            tickerToast.textContent = '✓ Hero announcement bar updated!';
+            setTimeout(() => { tickerToast.className = 'admin-status-toast'; }, 3000);
+          }
+        });
+      }
+
+      // TAB 4: Backup Export
+      const exportBtn = document.getElementById('admin-export-btn');
+      const resetBtn = document.getElementById('admin-reset-btn');
+      const backupToast = document.getElementById('admin-backup-toast');
+
+      if (exportBtn) {
+        exportBtn.addEventListener('click', () => {
+          sound.init();
+          sound.playClick();
+          const exportData = {
+            export_timestamp: new Date().toISOString(),
+            website: "SQUAD ONE ESPORTS",
+            version: "2.0-ELITE",
+            season_active: 2,
+            master_key_set: true
+          };
+          const blob = new Blob([JSON.stringify(exportData, null, 2)], { type: 'application/json' });
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = `squadone_backup_${Date.now()}.json`;
+          a.click();
+          URL.revokeObjectURL(url);
+          if (backupToast) {
+            backupToast.className = 'admin-status-toast success';
+            backupToast.textContent = '✓ Backup JSON exported successfully!';
+            setTimeout(() => { backupToast.className = 'admin-status-toast'; }, 3000);
+          }
+        });
+      }
+
+      if (resetBtn) {
+        resetBtn.addEventListener('click', () => {
+          if (confirm('Are you sure you want to reset all temporary admin configurations?')) {
+            sound.init();
+            sound.playClick();
+            localStorage.removeItem('sq1_admin_auth');
+            location.reload();
+          }
+        });
+      }
+    }
+
+    // Initialize Widget and Admin Terminal on Load
+    initHudNewsWidget();
+    initAdminPortal();
+
+    /* ==========================================================================
+       18. 3D MAGNETIC TILT & CYBER GUN ENGINE FOR EWAVE BUTTON
        ========================================================================== */
     const ewave3dBtn = document.getElementById('ewave-more-info-btn');
     if (ewave3dBtn) {
