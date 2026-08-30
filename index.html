@@ -660,12 +660,6 @@
     }
 
     .sec-eyebrow::before {
-      content: '//';
-      color: var(--gold-dim);
-      font-weight: bold;
-    }
-
-    .sec-eyebrow.no-prefix::before {
       content: none;
     }
 
@@ -2203,7 +2197,7 @@
     }
 
     .achievement-list li::before {
-      content: '// ';
+      content: '• ';
       color: var(--crimson);
     }
 
@@ -3341,59 +3335,49 @@
 
     .news-article-card.featured-event {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(240px, 38%);
-      gap: 20px;
-      align-items: stretch;
-      min-height: 220px;
-      max-height: 235px;
+      grid-template-columns: minmax(0, 1.15fr) minmax(260px, 0.85fr);
+      gap: 22px;
+      align-items: center;
+      min-height: 240px;
+      max-height: 265px;
+      margin-bottom: 20px;
+      padding: 20px;
       overflow: hidden;
     }
 
     .news-article-card-copy {
       min-width: 0;
       height: 100%;
-      max-height: 200px;
+      max-height: 225px;
       overflow-y: auto;
-      padding-right: 10px;
       overscroll-behavior: contain;
+      /* Seamless invisible scrollbar - scrollable via wheel/touch without visible bar */
+      scrollbar-width: none;
+      -ms-overflow-style: none;
     }
 
-    /* Sleek Gold Scrollbar for News Card Copy */
     .news-article-card-copy::-webkit-scrollbar {
-      width: 4px;
-    }
-    .news-article-card-copy::-webkit-scrollbar-track {
-      background: rgba(10, 8, 5, 0.6);
-      border-radius: 2px;
-    }
-    .news-article-card-copy::-webkit-scrollbar-thumb {
-      background: var(--gold-dim);
-      border-radius: 2px;
-    }
-    .news-article-card-copy::-webkit-scrollbar-thumb:hover {
-      background: var(--gold-primary);
+      display: none;
+      width: 0;
+      height: 0;
     }
 
     .news-event-image-button {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: block;
       width: 100%;
-      height: 100%;
-      max-height: 200px;
-      aspect-ratio: 16 / 9;
+      height: auto;
       padding: 0;
       border: 1px solid var(--gold-border);
       border-radius: 6px;
       overflow: hidden;
-      background: var(--bg-darker);
+      background: transparent;
       cursor: zoom-in;
     }
 
     .news-event-image-button img {
       display: block;
       width: 100%;
-      height: 100%;
+      aspect-ratio: 16 / 9;
       object-fit: cover;
       transition: transform 0.35s var(--ease-out), filter 0.35s ease;
     }
@@ -4159,6 +4143,17 @@
       flex-wrap: wrap;
     }
 
+    .scrim-schedule-center-card {
+      max-width: 780px;
+      margin: 40px auto 24px;
+      background: radial-gradient(circle at top, rgba(28, 20, 12, 0.96), rgba(10, 8, 5, 0.98));
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      border-radius: 12px;
+      padding: 36px 32px;
+      text-align: center;
+      box-shadow: 0 16px 50px rgba(0, 0, 0, 0.8), inset 0 0 30px rgba(212, 175, 55, 0.04);
+    }
+
     .ewave-countdown-panel {
       background: rgba(12, 9, 6, 0.92);
       border: 1px solid rgba(212, 175, 55, 0.25);
@@ -4754,6 +4749,787 @@
       border: 1px solid #2ecc71;
       color: #2ecc71;
     }
+
+    /* Admin Checklist for Page & Section Visibility */
+    .admin-checklist-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 12px;
+      margin: 16px 0;
+    }
+
+    .admin-checklist-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #080604;
+      border: 1px solid var(--gold-border);
+      border-radius: 6px;
+      padding: 12px 14px;
+      transition: all 0.2s;
+    }
+
+    .admin-checklist-card:hover {
+      border-color: var(--gold-primary);
+      background: rgba(25, 18, 12, 0.7);
+    }
+
+    .admin-check-info {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .admin-check-title {
+      font-family: var(--font-condensed);
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-bone);
+    }
+
+    .admin-check-desc {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--text-muted);
+    }
+
+    /* Modern Toggle Switch */
+    .admin-toggle-switch {
+      position: relative;
+      display: inline-block;
+      width: 44px;
+      height: 24px;
+      flex-shrink: 0;
+    }
+
+    .admin-toggle-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .admin-toggle-slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: #221a14;
+      border: 1px solid var(--gold-dim);
+      transition: 0.3s;
+      border-radius: 24px;
+    }
+
+    .admin-toggle-slider:before {
+      position: absolute;
+      content: "";
+      height: 16px;
+      width: 16px;
+      left: 3px;
+      bottom: 3px;
+      background-color: #887766;
+      transition: 0.3s;
+      border-radius: 50%;
+    }
+
+    .admin-toggle-switch input:checked + .admin-toggle-slider {
+      background-color: rgba(46, 204, 113, 0.25);
+      border-color: #2ecc71;
+    }
+
+    .admin-toggle-switch input:checked + .admin-toggle-slider:before {
+      transform: translateX(20px);
+      background-color: #2ecc71;
+      box-shadow: 0 0 8px #2ecc71;
+    }
+
+    /* Scrims Schedule Small Live Button */
+    .scrim-live-badge-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: rgba(230, 57, 70, 0.2);
+      border: 1px solid #e63946;
+      color: #ffffff;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      padding: 2px 8px;
+      border-radius: 20px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      box-shadow: 0 0 10px rgba(230, 57, 70, 0.4);
+    }
+
+    .scrim-live-badge-btn:hover {
+      background: #e63946;
+      color: #fff;
+      transform: scale(1.05);
+      box-shadow: 0 0 16px rgba(230, 57, 70, 0.8);
+    }
+
+    .live-dot-pulse {
+      width: 7px;
+      height: 7px;
+      background: #ff3333;
+      border-radius: 50%;
+      box-shadow: 0 0 6px #ff3333;
+      animation: liveDotPulseAnim 1.4s ease-in-out infinite;
+    }
+
+    @keyframes liveDotPulseAnim {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.75); }
+    }
+
+    /* Bottom-Left Live Stream Info Popup Card */
+    .live-info-popup-container {
+      position: fixed;
+      bottom: 24px;
+      left: 24px;
+      z-index: 10000;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      pointer-events: none;
+    }
+
+    .live-info-card {
+      pointer-events: auto;
+      width: clamp(280px, 85vw, 340px);
+      background: rgba(12, 10, 8, 0.94);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(230, 57, 70, 0.6);
+      border-radius: 12px;
+      padding: 12px 14px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.85), 0 0 25px rgba(230, 57, 70, 0.25);
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .live-info-card.hidden {
+      display: none;
+    }
+
+    .live-info-avatar-wrap {
+      position: relative;
+      width: 42px;
+      height: 42px;
+      flex-shrink: 0;
+      border-radius: 50%;
+      border: 1.5px solid #e63946;
+      background: #000;
+      overflow: visible;
+    }
+
+    .live-info-avatar-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    .live-info-pip {
+      position: absolute;
+      bottom: -1px;
+      right: -1px;
+      width: 11px;
+      height: 11px;
+      background: #ff3333;
+      border: 2px solid #000;
+      border-radius: 50%;
+      box-shadow: 0 0 6px #ff3333;
+      animation: liveDotPulseAnim 1.4s infinite;
+    }
+
+    .live-info-body {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .live-info-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 2px;
+    }
+
+    .live-info-badge {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      font-weight: 800;
+      color: #ff4d4d;
+      letter-spacing: 0.06em;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .live-info-close {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      cursor: pointer;
+      padding: 0 2px;
+      line-height: 1;
+    }
+
+    .live-info-close:hover {
+      color: #ffffff;
+    }
+
+    .live-info-title {
+      font-family: var(--font-condensed);
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--text-bone);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-bottom: 4px;
+    }
+
+    .live-info-action-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #e63946;
+      color: #ffffff;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .live-info-action-btn:hover {
+      background: #ff4d4d;
+      box-shadow: 0 0 12px rgba(255, 77, 77, 0.6);
+      transform: translateY(-1px);
+    }
+
+    /* Bottom-Left Reopen Pill */
+    .live-reopen-chip {
+      pointer-events: auto;
+      display: none;
+      align-items: center;
+      gap: 6px;
+      background: rgba(15, 10, 8, 0.94);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(230, 57, 70, 0.6);
+      color: #ffffff;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 6px 12px;
+      border-radius: 20px;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.8), 0 0 14px rgba(230, 57, 70, 0.35);
+      transition: all 0.25s ease;
+    }
+
+    .live-reopen-chip.active {
+      display: inline-flex;
+    }
+
+    .live-reopen-chip:hover {
+      background: rgba(230, 57, 70, 0.25);
+      border-color: #e63946;
+      transform: scale(1.04);
+    }
+
+    /* ==========================================================================
+       SCRIMS ARENA & 20-SLOT LOBBIES SECTI    /* ==========================================================================
+       17. SCRIMS ARENA & 25-SLOT BATTLEGROUNDS
+       ========================================================================== */
+    .scrims-arena-section {
+      padding: 90px 0 110px;
+      position: relative;
+      background: radial-gradient(circle at 50% 10%, rgba(30, 20, 10, 0.5) 0%, rgba(8, 6, 4, 0.98) 70%);
+      border-top: 1px solid var(--gold-border);
+      border-bottom: 1px solid var(--gold-border);
+      overflow: hidden;
+    }
+
+    .scrim-heading-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-bottom: 28px;
+    }
+
+    .scrim-header-action-group {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .scrim-register-btn {
+      box-shadow: 0 0 20px rgba(186, 24, 27, 0.4);
+      font-weight: 800;
+      letter-spacing: 0.05em;
+    }
+
+    /* Master Lobby Header with Centered Map Rotation */
+    .scrim-lobby-master-card {
+      background: linear-gradient(135deg, rgba(22, 16, 10, 0.96), rgba(10, 8, 5, 0.98));
+      border: 1px solid var(--gold-border);
+      border-radius: 8px;
+      padding: 20px 24px;
+      margin-bottom: 28px;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 24px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7);
+    }
+
+    @media (max-width: 992px) {
+      .scrim-lobby-master-card {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+    }
+
+    .scrim-master-left {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .scrim-live-indicator-badge {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 800;
+      color: var(--gold-primary);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .scrim-master-title {
+      margin: 0;
+      font-family: var(--font-display);
+      font-size: 1.45rem;
+      color: #fff;
+      letter-spacing: 0.04em;
+    }
+
+    .scrim-time-host-row {
+      display: flex;
+      gap: 18px;
+      margin-top: 4px;
+      flex-wrap: wrap;
+    }
+
+    .scrim-meta-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .scrim-meta-item .meta-label {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      color: var(--gold-primary);
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+
+    .scrim-meta-item .meta-val {
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      color: var(--text-bone);
+      font-weight: 600;
+    }
+
+    /* Centered Map Rotation */
+    .scrim-master-center {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      background: rgba(12, 9, 6, 0.85);
+      border: 1px solid var(--gold-dim);
+      border-radius: 6px;
+      padding: 10px 18px;
+    }
+
+    .map-rotation-header {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 8px;
+    }
+
+    .map-rotation-icon {
+      font-size: 0.95rem;
+    }
+
+    .map-rotation-title {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 800;
+      color: var(--gold-light);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .map-chips-grid {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .map-chip {
+      background: rgba(25, 18, 11, 0.9);
+      border: 1px solid rgba(201, 162, 39, 0.35);
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-family: var(--font-condensed);
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text-bone);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      letter-spacing: 0.04em;
+      transition: all 0.2s;
+    }
+
+    .map-chip:hover {
+      border-color: var(--gold-primary);
+      color: #fff;
+      background: rgba(45, 30, 15, 0.95);
+      box-shadow: 0 0 10px rgba(201, 162, 39, 0.3);
+    }
+
+    .scrim-master-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 8px;
+    }
+
+    @media (max-width: 992px) {
+      .scrim-master-right {
+        align-items: flex-start;
+      }
+    }
+
+    .scrim-status-badge {
+      background: rgba(46, 204, 113, 0.15);
+      border: 1px solid #2ecc71;
+      color: #2ecc71;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 800;
+      padding: 4px 12px;
+      border-radius: 20px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      letter-spacing: 0.05em;
+    }
+
+    .scrim-lobby-timing-notice {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--gold-light);
+      letter-spacing: 0.04em;
+      opacity: 0.85;
+    }
+
+    /* 25-Slot Ultra-Professional Grid */
+    .scrim-slots-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+
+    @media (max-width: 500px) {
+      .scrim-slots-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .scrim-slot-card {
+      background: linear-gradient(135deg, rgba(20, 14, 9, 0.95), rgba(10, 7, 5, 0.98));
+      border: 1px solid var(--gold-dim);
+      border-radius: 6px;
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+    }
+
+    .scrim-slot-card.confirmed-slot {
+      border-left: 3px solid var(--gold-primary);
+    }
+
+    .scrim-slot-card.confirmed-slot:hover {
+      border-color: var(--gold-primary);
+      background: linear-gradient(135deg, rgba(32, 22, 12, 0.98), rgba(16, 11, 7, 1));
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(201, 162, 39, 0.25);
+    }
+
+    .scrim-slot-card.open-slot {
+      background: rgba(12, 9, 6, 0.55);
+      border: 1px dashed rgba(201, 162, 39, 0.3);
+      border-left: 3px dashed rgba(201, 162, 39, 0.35);
+      opacity: 0.85;
+    }
+
+    .scrim-slot-card.open-slot:hover {
+      opacity: 1;
+      border-color: rgba(201, 162, 39, 0.6);
+      background: rgba(20, 15, 10, 0.75);
+      transform: translateY(-2px);
+    }
+
+    .slot-num-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: rgba(201, 162, 39, 0.12);
+      border: 1px solid rgba(201, 162, 39, 0.35);
+      border-radius: 4px;
+      padding: 3px 6px;
+      min-width: 38px;
+      flex-shrink: 0;
+    }
+
+    .slot-num-box.open {
+      background: rgba(255, 255, 255, 0.04);
+      border-color: rgba(255, 255, 255, 0.15);
+    }
+
+    .slot-num-label {
+      font-family: var(--font-mono);
+      font-size: 0.55rem;
+      font-weight: 700;
+      color: var(--gold-primary);
+      letter-spacing: 0.05em;
+      line-height: 1;
+    }
+
+    .slot-num-box.open .slot-num-label {
+      color: var(--text-muted);
+    }
+
+    .slot-num-val {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.1;
+    }
+
+    .slot-avatar-wrap {
+      width: 38px;
+      height: 38px;
+      border-radius: 4px;
+      overflow: hidden;
+      background: #000;
+      border: 1px solid var(--gold-dim);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .slot-avatar-wrap.open-placeholder {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px dashed rgba(201, 162, 39, 0.3);
+    }
+
+    .slot-open-icon {
+      font-size: 1.1rem;
+      opacity: 0.7;
+    }
+
+    .slot-team-logo {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .slot-team-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .slot-team-name-wrap {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 3px;
+      overflow: hidden;
+    }
+
+    .slot-team-name {
+      font-family: var(--font-condensed);
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: #fff;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      letter-spacing: 0.02em;
+    }
+
+    .slot-team-name.open-title {
+      color: var(--text-muted);
+      font-style: italic;
+      font-size: 0.82rem;
+    }
+
+    .slot-short-tag {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      font-weight: 800;
+      color: var(--gold-light);
+      background: rgba(201, 162, 39, 0.16);
+      border: 1px solid rgba(201, 162, 39, 0.45);
+      padding: 1px 5px;
+      border-radius: 3px;
+      flex-shrink: 0;
+      letter-spacing: 0.04em;
+    }
+
+    .slot-short-tag.open-tag {
+      color: var(--text-muted);
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(255, 255, 255, 0.15);
+    }
+
+    .slot-status-chip {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      letter-spacing: 0.05em;
+    }
+
+    .slot-status-chip.confirmed {
+      color: #2ecc71;
+    }
+
+    .status-pulse-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #2ecc71;
+      box-shadow: 0 0 6px #2ecc71;
+      display: inline-block;
+    }
+
+    .slot-status-chip.open {
+      color: rgba(201, 162, 39, 0.7);
+    }
+
+    .status-open-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: rgba(201, 162, 39, 0.7);
+      display: inline-block;
+    }
+
+    /* Leaderboard Table */
+    .scrim-leaderboard-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0 6px;
+      margin: 12px 0 24px;
+    }
+
+    .scrim-leaderboard-table th {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--gold-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 8px 12px;
+      text-align: left;
+      border-bottom: 1px solid var(--gold-dim);
+    }
+
+    .scrim-leaderboard-table th:last-child,
+    .scrim-leaderboard-table td:last-child {
+      text-align: right;
+    }
+
+    .scrim-rank-row {
+      background: rgba(16, 12, 8, 0.85);
+      border: 1px solid var(--gold-dim);
+      transition: all 0.2s;
+    }
+
+    .scrim-rank-row:hover {
+      background: rgba(32, 24, 15, 0.95);
+      border-color: var(--gold-primary);
+    }
+
+    .scrim-rank-row td {
+      padding: 10px 12px;
+      color: var(--text-bone);
+      font-family: var(--font-body);
+      font-size: 0.88rem;
+      border-top: 1px solid rgba(212, 175, 55, 0.1);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+    }
+
+    .scrim-rank-row td:first-child {
+      border-left: 1px solid rgba(212, 175, 55, 0.1);
+      border-top-left-radius: 4px;
+      border-bottom-left-radius: 4px;
+      font-family: var(--font-mono);
+      font-weight: 800;
+      color: var(--gold-primary);
+    }
+
+    .scrim-rank-row td:last-child {
+      border-right: 1px solid rgba(212, 175, 55, 0.1);
+      border-top-right-radius: 4px;
+      border-bottom-right-radius: 4px;
+      font-family: var(--font-mono);
+      font-weight: 800;
+      color: var(--gold-light);
+      font-size: 0.98rem;
+    }
+
+    .scrim-rank-team-cell {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .scrim-rank-team-cell img {
+      width: 28px;
+      height: 28px;
+      object-fit: contain;
+      background: #000;
+      border: 1px solid var(--gold-dim);
+      border-radius: 3px;
+    }
   </style>
 </head>
 <body>
@@ -4783,16 +5559,17 @@
 
   <!-- HUD Telemetry Display (Bottom Left) -->
   <div class="hud-telemetry">
-    <div class="hud-status-live"><span class="status-dot"></span>SYS://ONLINE 60FPS</div>
-    <div id="hud-scroll-pos">SCR://0000PX</div>
-    <div id="hud-scroll-pct">PCT://00%</div>
+    <div class="hud-status-live"><span class="status-dot"></span>SYS: ONLINE 60FPS</div>
+    <div id="hud-scroll-pos">SCR: 0000PX</div>
+    <div id="hud-scroll-pct">PCT: 00%</div>
   </div>
 
   <!-- Primary Chapter Nav Dots (Right Rail) -->
   <nav class="chapter-nav" id="chapter-nav">
-    <div class="chapter-dot active" data-section="hero" data-label="01 // HERO"></div>
-    <div class="chapter-dot" data-section="tournaments" data-label="02 // TOURNAMENTS"></div>
-    <div class="chapter-dot" data-section="teams" data-label="03 // 100+ TEAMS"></div>
+    <div class="chapter-dot active" data-section="hero" data-label="01 · HERO"></div>
+    <div class="chapter-dot" data-section="tournaments" data-label="02 · TOURNAMENTS"></div>
+    <div class="chapter-dot" data-section="scrims" data-label="03 · SCRIMS &amp; SLOTS"></div>
+    <div class="chapter-dot" data-section="teams" data-label="04 · 100+ TEAMS"></div>
   </nav>
 
   <!-- NAVIGATION HEADER -->
@@ -4810,8 +5587,9 @@
     <ul class="nav-menu">
       <li><a href="#hero" class="nav-link active" data-sound="hover">Home</a></li>
       <li><a href="#tournaments" class="nav-link" data-sound="hover">Tournaments</a></li>
+      <li><a href="#scrims" class="nav-link" data-sound="hover">Scrims &amp; Slots</a></li>
       <li><a href="#teams" class="nav-link" data-sound="hover">100+ Teams</a></li>
-      <li><a href="#" class="nav-link modal-trigger-btn" data-open-modal="modal-news" data-sound="hover">News & Events</a></li>
+      <li><a href="#" class="nav-link modal-trigger-btn" data-open-modal="modal-news" data-sound="hover">News &amp; Events</a></li>
     </ul>
 
     <div class="header-actions">
@@ -4899,7 +5677,7 @@
         <article class="season-card active-season" id="season2-card" data-sound="hover">
           <div>
             <div class="season-card-topline">
-              <span>01 // CURRENT CIRCUIT</span>
+              <span>01 · CURRENT CIRCUIT</span>
               <span class="season-badge-live">● ONGOING</span>
             </div>
             <h3>Squad One Tournament - Season 2</h3>
@@ -4922,7 +5700,7 @@
         <article class="season-card" id="season1-card" data-sound="hover">
           <div>
             <div class="season-card-topline">
-              <span>02 // SEASON ONE ARCHIVE</span>
+              <span>02 · SEASON ONE ARCHIVE</span>
               <span class="season-badge-past">SEASON 1</span>
             </div>
             <h3>Squad One Tournament - Season 1</h3>
@@ -5008,7 +5786,83 @@
   </section>
 
   <!-- =========================================================================
-       SECTION 03: MATCH PROTOCOL DOCTRINE
+       SECTION 03: SCRIMS ARENA & SLOTS (POWERED BY EWAVE.GG)
+       ========================================================================= -->
+  <section class="scrims-arena-section" id="scrims">
+    <div class="container">
+      
+      <div class="sec-eyebrow">WEEKLY COMPETITIVE INTERNATIONAL BATTLEGROUNDS</div>
+      
+      <div class="scrim-heading-row">
+        <div>
+          <h2 class="sec-title">SCRIMS <span>ARENA &amp; SLOTS</span></h2>
+          <p class="sec-desc">
+            Official competitive scrim lobbies powered by eWave.gg. 25 elite squad slots battling across our official map rotation starting daily at 8:00 PM IST.
+          </p>
+        </div>
+        <div class="scrim-header-action-group">
+          <a href="https://ewave.gg/game/pubg/dashboard" target="_blank" class="cyber-btn cyber-btn-crimson scrim-register-btn" data-sound="click">
+            🏆 REGISTER ON EWAVE.GG ↗
+          </a>
+          <a href="https://discord.gg/pCk89vRPq" target="_blank" class="cyber-btn cyber-btn-outline" data-sound="click">
+            🎮 ROOM PASS ON DISCORD ↗
+          </a>
+        </div>
+      </div>
+
+      <!-- Master Lobby Overview Card with Centered Map Rotation -->
+      <div class="scrim-lobby-master-card" id="scrim-lobby-banner">
+        
+        <!-- Left: Lobby Info -->
+        <div class="scrim-master-left">
+          <div class="scrim-live-indicator-badge" id="scrim-lobby-badge">● DAILY COMPETITIVE SCRIMS · LOBBY 1</div>
+          <h3 class="scrim-master-title" id="scrim-lobby-title">SQUADONE LOBBY 1</h3>
+          <div class="scrim-time-host-row">
+            <div class="scrim-meta-item">
+              <span class="meta-label">⏰ MATCH TIME</span>
+              <span class="meta-val" id="scrim-lobby-time">8:00 PM IST · DAILY</span>
+            </div>
+            <div class="scrim-meta-item">
+              <span class="meta-label">⚡ ENGINE</span>
+              <span class="meta-val">EWAVE.GG VERIFIED</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Center: Centered Map Rotation Bar -->
+        <div class="scrim-master-center">
+          <div class="map-rotation-header">
+            <span class="map-rotation-icon">🗺️</span>
+            <span class="map-rotation-title">MAP ROTATION</span>
+          </div>
+          <div class="map-chips-grid">
+            <div class="map-chip"><span class="map-icon">🌲</span> ERANGEL</div>
+            <div class="map-chip"><span class="map-icon">🏜️</span> MIRAMAR</div>
+            <div class="map-chip"><span class="map-icon">⛩️</span> TAEGO</div>
+            <div class="map-chip"><span class="map-icon">🏙️</span> RONDO</div>
+          </div>
+        </div>
+
+        <!-- Right: Status & Match Timing Notice -->
+        <div class="scrim-master-right">
+          <span class="scrim-status-badge" id="scrim-lobby-status">● SLOTS CONFIRMED</span>
+          <div class="scrim-lobby-timing-notice">
+            <span>● MATCHES COMMENCE AT 8:00 PM IST</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 25-Slot Grid Generated Dynamically -->
+      <div class="scrim-slots-grid" id="scrim-slots-container">
+        <!-- Confirmed Slot Cards rendered by JS -->
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       SECTION 04: MATCH PROTOCOL DOCTRINE
        ========================================================================= -->
   <section class="protocol-section" id="protocol">
     <div id="protocol-pin">
@@ -5022,25 +5876,25 @@
           <div class="protocol-storyline">
             
             <div class="protocol-stage-card active" data-stage="0">
-              <span class="stage-tag">STAGE 01 // PHASE 1-2</span>
+              <span class="stage-tag">STAGE 01 · PHASE 1-2</span>
               <h3>LOOT VELOCITY & MAP CONTROL</h3>
               <p>Execute calculated drops at high-tier compound zones. Secure initial loadouts, armor tier 3, and utility surplus before the first blue zone constriction.</p>
             </div>
 
             <div class="protocol-stage-card" data-stage="1">
-              <span class="stage-tag">STAGE 02 // PHASE 3-4</span>
+              <span class="stage-tag">STAGE 02 · PHASE 3-4</span>
               <h3>HARD-SHIFT ROTATIONS & COMPOUND ANCHOR</h3>
               <p>Predict circle centroid shifts. Vehicle split rotations secure high-ground compounds with overlapping 360° firing lines.</p>
             </div>
 
             <div class="protocol-stage-card" data-stage="2">
-              <span class="stage-tag">STAGE 03 // PHASE 5-6</span>
+              <span class="stage-tag">STAGE 03 · PHASE 5-6</span>
               <h3>EDGE CLEARING & UTILITY SUPPRESSION</h3>
               <p>Establish edge gatekeeping. Coordinated smoke lines and frag grenade barrages eliminate rotating squads along the white zone perimeter.</p>
             </div>
 
             <div class="protocol-stage-card" data-stage="3">
-              <span class="stage-tag">STAGE 04 // FINAL CIRCLE</span>
+              <span class="stage-tag">STAGE 04 · FINAL CIRCLE</span>
               <h3>ISOLATION & CHICKEN DINNER CONVERSION</h3>
               <p>Isolate final surviving squads through precise crossfires. 4-man spread lockdown guarantees maximum placement points and the Winner Winner Chicken Dinner.</p>
             </div>
@@ -5054,7 +5908,7 @@
               <div class="holo-target" id="holo-target">01</div>
             </div>
             <div class="holo-telemetry-text" id="holo-telemetry">
-              COORDS: LAT 44.82 // LON 20.45<br>
+              COORDS: LAT 44.82, LON 20.45<br>
               ZONE 1 DROP PROTOCOL<br>
               STATUS: INFILTRATION COMPLETE
             </div>
@@ -5102,7 +5956,7 @@
               <div class="team-tier">GRAND HOST</div>
             </div>
             <div class="finals-card-face finals-card-back">
-              <div class="achievement-kicker">ACHIEVEMENT LOG // 01</div>
+              <div class="achievement-kicker">ACHIEVEMENT LOG 01</div>
               <div class="achievement-title">HOST RECORD</div>
               <div class="achievement-coming-soon-box">
                 <div class="coming-soon-badge">⏳ COMING SOON</div>
@@ -5123,7 +5977,7 @@
               <div class="team-tier">FINALS QUALIFIED</div>
             </div>
             <div class="finals-card-face finals-card-back">
-              <div class="achievement-kicker">ACHIEVEMENT LOG // 02</div>
+              <div class="achievement-kicker">ACHIEVEMENT LOG 02</div>
               <div class="achievement-title">QUALIFIER RUN</div>
               <div class="achievement-coming-soon-box">
                 <div class="coming-soon-badge">⏳ COMING SOON</div>
@@ -5144,7 +5998,7 @@
               <div class="team-tier">FINALS QUALIFIED</div>
             </div>
             <div class="finals-card-face finals-card-back">
-              <div class="achievement-kicker">ACHIEVEMENT LOG // 03</div>
+              <div class="achievement-kicker">ACHIEVEMENT LOG 03</div>
               <div class="achievement-title">FRAGGING RECORD</div>
               <div class="achievement-coming-soon-box">
                 <div class="coming-soon-badge">⏳ COMING SOON</div>
@@ -5165,7 +6019,7 @@
               <div class="team-tier">FINALS QUALIFIED</div>
             </div>
             <div class="finals-card-face finals-card-back">
-              <div class="achievement-kicker">ACHIEVEMENT LOG // 04</div>
+              <div class="achievement-kicker">ACHIEVEMENT LOG 04</div>
               <div class="achievement-title">FINALS FORM</div>
               <div class="achievement-coming-soon-box">
                 <div class="coming-soon-badge">⏳ COMING SOON</div>
@@ -5186,7 +6040,7 @@
               <div class="team-tier">FINALS QUALIFIED</div>
             </div>
             <div class="finals-card-face finals-card-back">
-              <div class="achievement-kicker">ACHIEVEMENT LOG // 05</div>
+              <div class="achievement-kicker">ACHIEVEMENT LOG 05</div>
               <div class="achievement-title">CHAMPIONSHIP RUN</div>
               <div class="achievement-coming-soon-box">
                 <div class="coming-soon-badge">⏳ COMING SOON</div>
@@ -5207,7 +6061,7 @@
               <div class="team-tier">FINALS QUALIFIED</div>
             </div>
             <div class="finals-card-face finals-card-back">
-              <div class="achievement-kicker">ACHIEVEMENT LOG // 06</div>
+              <div class="achievement-kicker">ACHIEVEMENT LOG 06</div>
               <div class="achievement-title">TEAM LEGACY</div>
               <div class="achievement-coming-soon-box">
                 <div class="coming-soon-badge">⏳ COMING SOON</div>
@@ -5228,7 +6082,7 @@
               <div class="team-tier">FINALS QUALIFIED</div>
             </div>
             <div class="finals-card-face finals-card-back">
-              <div class="achievement-kicker">ACHIEVEMENT LOG // 07</div>
+              <div class="achievement-kicker">ACHIEVEMENT LOG 07</div>
               <div class="achievement-title">QUALIFIER RUN</div>
               <div class="achievement-coming-soon-box">
                 <div class="coming-soon-badge">⏳ COMING SOON</div>
@@ -5249,7 +6103,7 @@
               <div class="team-tier">FINALS QUALIFIED</div>
             </div>
             <div class="finals-card-face finals-card-back">
-              <div class="achievement-kicker">ACHIEVEMENT LOG // 08</div>
+              <div class="achievement-kicker">ACHIEVEMENT LOG 08</div>
               <div class="achievement-title">TOURNAMENT FORM</div>
               <div class="achievement-coming-soon-box">
                 <div class="coming-soon-badge">⏳ COMING SOON</div>
@@ -5270,7 +6124,7 @@
               <div class="team-tier">FINALS QUALIFIED</div>
             </div>
             <div class="finals-card-face finals-card-back">
-              <div class="achievement-kicker">ACHIEVEMENT LOG // 09</div>
+              <div class="achievement-kicker">ACHIEVEMENT LOG 09</div>
               <div class="achievement-title">FINALS RECORD</div>
               <div class="achievement-coming-soon-box">
                 <div class="coming-soon-badge">⏳ COMING SOON</div>
@@ -5291,7 +6145,7 @@
               <div class="team-tier">FINALS QUALIFIED</div>
             </div>
             <div class="finals-card-face finals-card-back">
-              <div class="achievement-kicker">ACHIEVEMENT LOG // 10</div>
+              <div class="achievement-kicker">ACHIEVEMENT LOG 10</div>
               <div class="achievement-title">RISING SQUAD</div>
               <div class="achievement-coming-soon-box">
                 <div class="coming-soon-badge">⏳ COMING SOON</div>
@@ -5312,7 +6166,7 @@
               <div class="team-tier">FINALS QUALIFIED</div>
             </div>
             <div class="finals-card-face finals-card-back">
-              <div class="achievement-kicker">ACHIEVEMENT LOG // 11</div>
+              <div class="achievement-kicker">ACHIEVEMENT LOG 11</div>
               <div class="achievement-title">CLUTCH RECORD</div>
               <div class="achievement-coming-soon-box">
                 <div class="coming-soon-badge">⏳ COMING SOON</div>
@@ -5333,7 +6187,7 @@
               <div class="team-tier">FINALS QUALIFIED</div>
             </div>
             <div class="finals-card-face finals-card-back">
-              <div class="achievement-kicker">ACHIEVEMENT LOG // 12</div>
+              <div class="achievement-kicker">ACHIEVEMENT LOG 12</div>
               <div class="achievement-title">QUALIFIER FORM</div>
               <div class="achievement-coming-soon-box">
                 <div class="coming-soon-badge">⏳ COMING SOON</div>
@@ -5354,7 +6208,7 @@
               <div class="team-tier">FINALS QUALIFIED</div>
             </div>
             <div class="finals-card-face finals-card-back">
-              <div class="achievement-kicker">ACHIEVEMENT LOG // 13</div>
+              <div class="achievement-kicker">ACHIEVEMENT LOG 13</div>
               <div class="achievement-title">TEAM LEGACY</div>
               <div class="achievement-coming-soon-box">
                 <div class="coming-soon-badge">⏳ COMING SOON</div>
@@ -5375,7 +6229,7 @@
               <div class="team-tier">FINALS QUALIFIED</div>
             </div>
             <div class="finals-card-face finals-card-back">
-              <div class="achievement-kicker">ACHIEVEMENT LOG // 14</div>
+              <div class="achievement-kicker">ACHIEVEMENT LOG 14</div>
               <div class="achievement-title">OFFICIAL RECORD</div>
               <div class="achievement-coming-soon-box">
                 <div class="coming-soon-badge">⏳ COMING SOON</div>
@@ -5396,7 +6250,7 @@
               <div class="team-tier">FINALS QUALIFIED</div>
             </div>
             <div class="finals-card-face finals-card-back">
-              <div class="achievement-kicker">ACHIEVEMENT LOG // 15</div>
+              <div class="achievement-kicker">ACHIEVEMENT LOG 15</div>
               <div class="achievement-title">OFFICIAL RECORD</div>
               <div class="achievement-coming-soon-box">
                 <div class="coming-soon-badge">⏳ COMING SOON</div>
@@ -5417,7 +6271,7 @@
               <div class="team-tier">FINALS QUALIFIED</div>
             </div>
             <div class="finals-card-face finals-card-back">
-              <div class="achievement-kicker">ACHIEVEMENT LOG // 16</div>
+              <div class="achievement-kicker">ACHIEVEMENT LOG 16</div>
               <div class="achievement-title">OFFICIAL RECORD</div>
               <div class="achievement-coming-soon-box">
                 <div class="coming-soon-badge">⏳ COMING SOON</div>
@@ -5487,12 +6341,11 @@
 
     <div class="container">
       
-            <!-- =====================================================================
-           TOURNAMENT INFRASTRUCTURE & WEEKLY TOURNAMENT SCHEDULE (EXACT SCREENSHOT LAYOUT)
+      <!-- =====================================================================
+           POWERED BY EWAVE.GG & WEEKLY SCRIMS SCHEDULE
            ===================================================================== -->
       <div class="ewave-box">
         <div class="ewave-box-left">
-          <div class="sec-eyebrow" style="margin-bottom: 8px;">// TOURNAMENT INFRASTRUCTURE</div>
           <h2 class="ewave-box-title">
             POWERED BY <span style="color: var(--gold-primary);">EWAVE.GG</span>
           </h2>
@@ -5511,7 +6364,13 @@
         </div>
 
         <div class="ewave-countdown-panel">
-          <div class="sec-eyebrow no-prefix" style="justify-content: center; margin-bottom: 6px;">TOURNAMENT SCHEDULE</div>
+          <div style="display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 6px;">
+            <div class="sec-eyebrow no-prefix" style="margin-bottom: 0;">SCRIMS SCHEDULE</div>
+            <button class="scrim-live-badge-btn modal-trigger-btn" id="scrim-live-btn" data-open-modal="modal-live-preview" type="button" title="View Live Stream Preview &amp; Thumbnail" data-sound="click">
+              <span class="live-dot-pulse"></span>
+              <span>LIVE</span>
+            </button>
+          </div>
           <h3 class="countdown-schedule-title">
             FRIDAY · SATURDAY · SUNDAY
           </h3>
@@ -5536,13 +6395,13 @@
           </div>
 
           <div class="countdown-footer-note">
-            TOURNAMENTS START AT 8:00 PM IST · EVERY FRI, SAT & SUN
+            SCRIMS START AT 8:00 PM IST · EVERY FRI, SAT &amp; SUN
           </div>
         </div>
       </div>
 
-<!-- Social Media Buttons -->
-      <div class="hero-cta-group" style="justify-content: center; margin-top: 40px;">
+      <!-- Social Media & Official Hub Buttons -->
+      <div class="hero-cta-group" style="justify-content: center; margin-top: 36px;">
         <a href="https://discord.gg/pCk89vRPq" target="_blank" class="cyber-btn cyber-btn-crimson" data-sound="click">
           🎮 DISCORD COMMUNITY
         </a>
@@ -5671,7 +6530,6 @@
             <li><a href="#" class="modal-trigger-btn" data-open-modal="modal-privacy" data-sound="hover">Privacy Policy</a></li>
             <li><a href="#" class="modal-trigger-btn" data-open-modal="modal-cookies" data-sound="hover">Cookies Policy</a></li>
             <li><a href="#" class="modal-trigger-btn" data-open-modal="modal-faq" data-sound="hover">FAQ</a></li>
-            <li><a href="#" class="modal-trigger-btn" data-open-modal="modal-admin" data-sound="hover" style="color: var(--gold-primary);">⚙️ Admin Terminal</a></li>
           </ul>
         </div>
 
@@ -5750,6 +6608,51 @@
   </div>
 
   
+  <!-- =========================================================================
+       LIVE STREAM BROADCAST PREVIEW POPUP (WITH VIDEO THUMBNAIL)
+       ========================================================================= -->
+  <div class="esports-info-modal" id="modal-live-preview" data-lenis-prevent="true">
+    <div class="esports-modal-window" style="max-width: 680px;" data-lenis-prevent="true">
+      <div class="esports-modal-header">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span class="live-dot-pulse"></span>
+          <h3 style="margin: 0; color: #ff4d4d; font-size: 1.15rem;" id="modal-live-header-title">🔴 LIVE STREAM BROADCAST</h3>
+        </div>
+        <button class="esports-modal-close" data-close-modal="modal-live-preview">✕</button>
+      </div>
+      <div class="esports-modal-body" style="padding: 20px;" data-lenis-prevent="true">
+        <!-- Live Stream Thumbnail Card with Hover Play Glare -->
+        <a href="https://www.youtube.com/live/qgJ0nTegK9A?si=1mtKJYlJ9kUk5b6H" target="_blank" id="modal-live-thumb-link" style="display: block; position: relative; border-radius: 8px; overflow: hidden; border: 1.5px solid var(--crimson); box-shadow: 0 8px 30px rgba(230, 57, 70, 0.4); margin-bottom: 16px;">
+          <img src="https://i.ytimg.com/vi/qgJ0nTegK9A/hqdefault.jpg" onerror="this.src='https://img.youtube.com/vi/qgJ0nTegK9A/hqdefault.jpg'" alt="SquadOne Live Stream Thumbnail" style="display: block; width: 100%; aspect-ratio: 16/9; object-fit: cover;" id="modal-live-thumb-img">
+          <div style="position: absolute; inset: 0; background: linear-gradient(0deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 60%, rgba(0,0,0,0.4) 100%); display: flex; align-items: center; justify-content: center;">
+            <div style="width: 64px; height: 64px; background: rgba(230, 57, 70, 0.9); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 1.8rem; box-shadow: 0 0 25px #ff3333;">
+              ▶
+            </div>
+          </div>
+          <span style="position: absolute; top: 12px; left: 12px; background: #e63946; color: #fff; font-family: var(--font-mono); font-size: 0.7rem; font-weight: 800; padding: 3px 8px; border-radius: 4px; box-shadow: 0 0 10px rgba(230,57,70,0.8);">
+            🔴 LIVE NOW
+          </span>
+        </a>
+
+        <div style="margin-bottom: 16px;">
+          <h4 style="margin: 0 0 6px; font-size: 1.15rem; color: #fff;" id="modal-live-stream-title">SquadOne Esports Live Tournament Broadcast</h4>
+          <p style="margin: 0; font-size: 0.85rem; color: var(--text-muted);" id="modal-live-stream-desc">
+            Catch all the high-stakes PUBG PC tournament action, tactical rotations, and final circle conversion live on official SquadOne stream.
+          </p>
+        </div>
+
+        <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+          <a href="https://www.youtube.com/live/qgJ0nTegK9A?si=1mtKJYlJ9kUk5b6H" target="_blank" class="cyber-btn cyber-btn-crimson" id="modal-live-direct-btn" style="flex: 1; text-align: center;" data-sound="click">
+            ▶ WATCH ON YOUTUBE ↗
+          </a>
+          <button class="cyber-btn cyber-btn-outline" data-close-modal="modal-live-preview" type="button" style="padding: 10px 18px;">
+            ✕ CLOSE
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- NEWS & EVENTS MODAL -->
   <div class="esports-info-modal" id="modal-news" data-lenis-prevent="true">
     <div class="esports-modal-window" data-lenis-prevent="true">
@@ -5762,7 +6665,7 @@
         <!-- NEW 01: SQUADONE NATIONS LEAGUE SEASON 3 -->
         <article class="news-article-card featured-event" id="news-article-sqnl-s3">
           <div class="news-article-card-copy">
-            <div class="news-card-date">● NOVEMBER 2026 // NATIONS LEAGUE S3</div>
+            <div class="news-card-date">● NOVEMBER 2026 · NATIONS LEAGUE S3</div>
             <div class="news-card-title">🔥 THE STAGE IS SET AND THE BATTLEGROUNDS ARE CALLING! 🥊💥</div>
             <p>The <strong>SquadOne PUBG PC Nations League Season 3</strong> is officially on the horizon! 🏆</p>
             <p>✨ <strong>TOP SQUADS</strong> in the region! Lock in for ultimate glory and supreme dominance! ⚡️🎮</p>
@@ -5786,7 +6689,7 @@
         <!-- NEW 02: EWAVE EXECUTIVE BODY (SA & SEA) -->
         <article class="news-article-card featured-event" id="news-article-ewave-executive">
           <div class="news-article-card-copy">
-            <div class="news-card-date">● SEPTEMBER 2026 // PLAYER COUNCIL</div>
+            <div class="news-card-date">● SEPTEMBER 2026 · PLAYER COUNCIL</div>
             <div class="news-card-title">THE FUTURE OF SA &amp; SEA PUBG IS IN YOUR HANDS</div>
             <p>For too long in PUBG eSports, decisions about the competitive ecosystem, tournament structures, and rules have been made behind closed doors without the people who actually keep this scene alive: <strong>THE PLAYERS</strong>. eWave was built on a single, non-negotiable principle — a platform <strong>FOR THE PLAYERS, BY THE PLAYERS!</strong></p>
             <p>We don't just host lobbies, we build the stage for greatness. But to make South Asia and Southeast Asia the most dominant, respected, and player-driven PUBG regions in the world, we need leaders from the front lines. We are officially forming the <strong>eWave Executive Body for SA &amp; SEA</strong> — an elite, player-led council designed to give this community the total authority it deserves.</p>
@@ -5819,7 +6722,7 @@
         <!-- NEW 03: SOUTH ASIA CROSS-BAY SCRIMS -->
         <article class="news-article-card featured-event" id="news-article-crossbay-scrims">
           <div class="news-article-card-copy">
-            <div class="news-card-date">● WEEKLY 20:00 IST // CROSS-BAY SCRIMS</div>
+            <div class="news-card-date">● WEEKLY 20:00 IST · CROSS-BAY SCRIMS</div>
             <div class="news-card-title">🚨 THE NEXT STEP FOR OUR SCRIMS! INDIA SCRIMS EVOLVING TO SOUTH ASIA CROSS-BAY SCRIMS 🌊</div>
             
             <div style="background: rgba(0, 200, 255, 0.08); border-left: 3px solid var(--blue-zone); padding: 8px 12px; margin: 8px 0 12px; font-size: 0.85rem;">
@@ -5854,7 +6757,7 @@ Roster (4 Players + Subs):</pre>
         <!-- PREVIOUS FEATURED: SEASON 2 GRAND FINALE -->
         <article class="news-article-card featured-event" id="news-article-s2-finale">
           <div class="news-article-card-copy">
-            <div class="news-card-date">● AUGUST 2026 // GRAND FINALE</div>
+            <div class="news-card-date">● AUGUST 2026 · GRAND FINALE</div>
             <div class="news-card-title">SquadOne National League - Season 2 Grand Finale</div>
             <p>The <strong>SquadOne National League - Season 2 Grand Finale</strong> is here! Join the live finale and take part in our exciting <strong>Predict &amp; Win</strong> challenge. Make your predictions for the <strong>Team Winner and Top Fragger</strong>, follow the action live, and stand a chance to win <strong>mystery gifts</strong>. Tune in to the Grand Finale live on <strong>YouTube and Twitch</strong> and be part of the ultimate PUBG PC esports showdown in India.</p>
           </div>
@@ -5864,20 +6767,20 @@ Roster (4 Players + Subs):</pre>
         </article>
 
         <div class="news-article-card">
-          <div class="news-card-date">● AUGUST 2026 // OFFICIAL ANNOUNCEMENT</div>
+          <div class="news-card-date">● AUGUST 2026 · OFFICIAL ANNOUNCEMENT</div>
           <div class="news-card-title">National League Season 2 Grand Finals Announced</div>
           <p>The top 16 squads from 95 qualifying applicants will battle across 3 intense days and 15 matches (5 per day) for the Season 2 Championship trophy. Broadcast live on YouTube.</p>
         </div>
 
         <div class="news-article-card">
-          <div class="news-card-date">● JULY 2026 // PLATFORM INTEGRATION</div>
+          <div class="news-card-date">● JULY 2026 · PLATFORM INTEGRATION</div>
           <div class="news-card-title">Technology Partnership with eWave.gg</div>
           <p>Squad One has officially partnered with eWave.gg to deploy automated lobby brackets, real-time match telemetry, and the eWave Overwatch Anti-Cheat system for guaranteed competitive integrity.</p>
         </div>
 
         <div class="news-article-card">
-          <div class="news-card-date">● RECURRING WEEKLY // SCRIM SCHEDULE</div>
-          <div class="news-card-title">Daily Tier-1 Competitive Scrims Live Every Fri, Sat &amp; Sun</div>
+          <div class="news-card-date">● RECURRING WEEKLY · SCRIM SCHEDULE</div>
+          <div class="news-card-title">Daily Competitive Scrims Live Every Fri, Sat &amp; Sun</div>
           <p>Matches commence sharp at 8:00 PM IST. Registered teams must join the Squad One Discord server and verify their India National League role to access match lobbies.</p>
         </div>
       </div>
@@ -5899,7 +6802,7 @@ Roster (4 Players + Subs):</pre>
           <span style="color: var(--gold-primary); font-size: 1.4rem;">⚙️</span>
           <div>
             <h3 style="margin: 0; line-height: 1.1;">SQUADONE COMMAND TERMINAL</h3>
-            <span style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--gold-dim);">RESTRICTED ACCESS // ADMINISTRATOR PORTAL</span>
+            <span style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--gold-dim);">RESTRICTED ACCESS · ADMINISTRATOR PORTAL</span>
           </div>
         </div>
         <button class="esports-modal-close" data-close-modal="modal-admin">✕</button>
@@ -5926,8 +6829,10 @@ Roster (4 Players + Subs):</pre>
           
           <div class="admin-nav-tabs">
             <button class="admin-tab-btn active" data-admin-tab="tab-news" type="button">📢 NEWS &amp; INTEL</button>
+            <button class="admin-tab-btn" data-admin-tab="tab-scrims" type="button">🎮 SCRIMS &amp; LOBBIES</button>
+            <button class="admin-tab-btn" data-admin-tab="tab-visibility" type="button">👁️ PAGE VISIBILITY</button>
+            <button class="admin-tab-btn" data-admin-tab="tab-livestream" type="button">🔴 LIVE STREAM &amp; BROADCAST</button>
             <button class="admin-tab-btn" data-admin-tab="tab-seasons" type="button">🏆 TOURNAMENTS &amp; SEASONS</button>
-            <button class="admin-tab-btn" data-admin-tab="tab-ticker" type="button">📊 LIVE TICKER BANNER</button>
             <button class="admin-tab-btn" data-admin-tab="tab-backup" type="button">💾 BACKUP &amp; DATA</button>
           </div>
 
@@ -5937,8 +6842,8 @@ Roster (4 Players + Subs):</pre>
             <form id="admin-news-form">
               <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
                 <div class="admin-form-group">
-                  <label>CATEGORY / BADGE (e.g. ● NOVEMBER 2026 // SEASON 3)</label>
-                  <input type="text" id="admin-news-badge" placeholder="● MONTH 2026 // BADGE NAME" required>
+                  <label>CATEGORY / BADGE (e.g. ● NOVEMBER 2026 · SEASON 3)</label>
+                  <input type="text" id="admin-news-badge" placeholder="● MONTH 2026 · BADGE NAME" required>
                 </div>
                 <div class="admin-form-group">
                   <label>IMAGE URL / PATH (e.g. images/sqnlS3.png)</label>
@@ -5958,7 +6863,225 @@ Roster (4 Players + Subs):</pre>
             <div class="admin-status-toast" id="admin-news-toast">✓ Announcement published successfully to live news feed!</div>
           </div>
 
-          <!-- TAB 2: Seasons & Tournaments Manager -->
+          <!-- TAB 2: Scrims & Lobby Manager -->
+          <div class="admin-tab-content" id="tab-scrims">
+            <h4 style="margin-top: 0; color: var(--gold-primary);">🎮 SCRIMS &amp; LOBBY MANAGEMENT</h4>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 16px;">
+              Manage Lobby details, 20-Slot assignments, and overall squad standings. Team profile logos from eWave / local assets are matched automatically by name!
+            </p>
+
+            <!-- Part 1: Lobby Details -->
+            <div style="background: rgba(15, 11, 8, 0.8); border: 1px solid var(--gold-dim); border-radius: 6px; padding: 14px; margin-bottom: 18px;">
+              <h5 style="margin-top: 0; color: var(--gold-light); margin-bottom: 10px;">📌 LOBBY INFORMATION</h5>
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                <div class="admin-form-group">
+                  <label>LOBBY TITLE</label>
+                  <input type="text" id="admin-scrim-title" value="SQUADONE LOBBY 1">
+                </div>
+                <div class="admin-form-group">
+                  <label>BADGE / CATEGORY</label>
+                  <input type="text" id="admin-scrim-badge" value="● DAILY COMPETITIVE SCRIMS · LOBBY 1">
+                </div>
+              </div>
+              <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px;">
+                <div class="admin-form-group">
+                  <label>MAP ROTATION</label>
+                  <input type="text" id="admin-scrim-map" value="ERANGEL · MIRAMAR · TAEGO · RONDO">
+                </div>
+                <div class="admin-form-group">
+                  <label>MATCH TIME</label>
+                  <input type="text" id="admin-scrim-time" value="8:00 PM IST · DAILY">
+                </div>
+                <div class="admin-form-group">
+                  <label>LOBBY STATUS</label>
+                  <select id="admin-scrim-status">
+                    <option value="● SLOTS CONFIRMED" selected>● SLOTS CONFIRMED</option>
+                    <option value="● LOBBY OPEN">● LOBBY OPEN</option>
+                    <option value="● MATCH LIVE">● MATCH LIVE</option>
+                    <option value="● COMPLETED">● COMPLETED</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- Part 2: Quick Bulk Paste for Scrims Slots -->
+            <div style="background: rgba(15, 11, 8, 0.8); border: 1px solid var(--gold-dim); border-radius: 6px; padding: 14px; margin-bottom: 18px;">
+              <h5 style="margin-top: 0; color: var(--gold-light); margin-bottom: 6px;">⚡ QUICK BULK SLOT PASTE (UP TO 25 SLOTS)</h5>
+              <p style="font-size: 0.78rem; color: var(--text-muted); margin-bottom: 8px;">
+                Paste tab-separated or comma-separated rows: <code>TeamNumber [Tab] TeamName [Tab] TeamShortName [Tab] ImageFileName</code> (or simply paste team names line-by-line).
+              </p>
+              <div class="admin-form-group">
+                <textarea id="admin-scrim-bulk-slots" style="font-family: var(--font-mono); font-size: 0.78rem; min-height: 140px;" placeholder="1	
+2	Koyaiykyk	KOYA	koya.png
+3	Wforthewinnn	WFW	wfww.png
+4	Studs	STUD	studs.png
+5	RedViperz	RV	redv.png
+6	SquadOneEsports	SQ-1	SQ1_Orange.PNG
+7	IndusPrime	IP4	IP4.png
+8	UE-red	UE-Red	UE_red.png
+9	SquadMatrix	SM	squadmatrix.png
+10	Sigma	SIG	sigma.png
+11	JungliSena	SENA	sena.png
+12	RACR	RACR	racr.png
+13	LiliputBD	LBD	lili.png
+14	NightHunter	NH	night.png
+15	RisingDragons	RD	rising.png
+16	RifleClub	RIFL	rifl.png
+17	Unkrithi	UKI	uki.png
+18	TeamLootKhor	TLK	teamlootkhor.png
+19	Kidiloski	KIDI	kidi.png
+20	TeamMindSpark	TMS	teammindspark.png
+21	X-ray	X-RAY	X-RAY.png
+22	TeamXD	XD	teamxd.png
+23	FourgedTitans	FT	fourged.png
+24	ZeroTrace	ZT	tracezero.png
+25	OceanGaming	OG	oceangaming.png"></textarea>
+              </div>
+              <button class="cyber-btn" id="admin-parse-slots-btn" type="button" style="width: 100%; margin-bottom: 14px;">⚡ AUTO-POPULATE SLOTS FROM TEXT</button>
+
+              <h5 style="margin: 12px 0 8px; color: var(--gold-light);">INDIVIDUAL SLOT LIST (SLOT · TEAM NAME · TAG · LOGO FILE)</h5>
+              <div id="admin-slots-editor-grid" style="display: flex; flex-direction: column; gap: 6px; max-height: 280px; overflow-y: auto; padding-right: 6px;">
+                <!-- Slot Input Rows Generated by JS -->
+              </div>
+            </div>
+
+            <button class="cyber-btn cyber-btn-crimson" id="admin-save-scrims-btn" type="button" style="width: 100%;">SAVE ALL SCRIMS &amp; LOBBY DATA</button>
+            <div class="admin-status-toast" id="admin-scrims-toast">✓ Scrims lobby slots updated successfully!</div>
+          </div>
+
+          <!-- TAB 3: Page & Section Visibility Checklist -->
+          <div class="admin-tab-content" id="tab-visibility">
+            <h4 style="margin-top: 0; color: var(--gold-primary);">PAGE &amp; SECTION DISPLAY CHECKLIST</h4>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 14px;">
+              Toggle any section or page component on/off. Unticking instantly hides the section and removes it from user navigation.
+            </p>
+            <div class="admin-checklist-grid">
+              
+              <div class="admin-checklist-card">
+                <div class="admin-check-info">
+                  <span class="admin-check-title">Hero Section &amp; 3D Stage</span>
+                  <span class="admin-check-desc">Main landing title, partners bar, 3D character</span>
+                </div>
+                <label class="admin-toggle-switch">
+                  <input type="checkbox" id="vis-hero" checked data-section-target="#hero">
+                  <span class="admin-toggle-slider"></span>
+                </label>
+              </div>
+
+              <div class="admin-checklist-card">
+                <div class="admin-check-info">
+                  <span class="admin-check-title">Scrims Arena &amp; Lobby Slots</span>
+                  <span class="admin-check-desc">On-page Scrims section, 20 slots &amp; navigation link</span>
+                </div>
+                <label class="admin-toggle-switch">
+                  <input type="checkbox" id="vis-scrims-hub" checked data-section-target="#scrims">
+                  <span class="admin-toggle-slider"></span>
+                </label>
+              </div>
+
+              <div class="admin-checklist-card">
+                <div class="admin-check-info">
+                  <span class="admin-check-title">Tournaments Hub &amp; Seasons</span>
+                  <span class="admin-check-desc">Season 1 &amp; 2 cards, eWave verified team roster</span>
+                </div>
+                <label class="admin-toggle-switch">
+                  <input type="checkbox" id="vis-tournaments" checked data-section-target="#tournaments">
+                  <span class="admin-toggle-slider"></span>
+                </label>
+              </div>
+
+              <div class="admin-checklist-card">
+                <div class="admin-check-info">
+                  <span class="admin-check-title">Combat Protocol &amp; Radar</span>
+                  <span class="admin-check-desc">4-Stage drop strategy &amp; radar telemetry</span>
+                </div>
+                <label class="admin-toggle-switch">
+                  <input type="checkbox" id="vis-protocol" checked data-section-target="#protocol">
+                  <span class="admin-toggle-slider"></span>
+                </label>
+              </div>
+
+              <div class="admin-checklist-card">
+                <div class="admin-check-info">
+                  <span class="admin-check-title">Grand Finals (16 Teams 3D Grid)</span>
+                  <span class="admin-check-desc">Top 16 qualified organizations flip cards</span>
+                </div>
+                <label class="admin-toggle-switch">
+                  <input type="checkbox" id="vis-finals" checked data-section-target=".finals-section">
+                  <span class="admin-toggle-slider"></span>
+                </label>
+              </div>
+
+              <div class="admin-checklist-card">
+                <div class="admin-check-info">
+                  <span class="admin-check-title">100+ Teams Auto-Moving Wall</span>
+                  <span class="admin-check-desc">Continuous 3-track sliding team badges</span>
+                </div>
+                <label class="admin-toggle-switch">
+                  <input type="checkbox" id="vis-hundred" checked data-section-target=".hundred-teams-arena">
+                  <span class="admin-toggle-slider"></span>
+                </label>
+              </div>
+
+              <div class="admin-checklist-card">
+                <div class="admin-check-info">
+                  <span class="admin-check-title">Scrims Schedule &amp; Countdown</span>
+                  <span class="admin-check-desc">Weekly Fri-Sun scrim schedule and eWave box</span>
+                </div>
+                <label class="admin-toggle-switch">
+                  <input type="checkbox" id="vis-scrims" checked data-section-target=".scrims-section">
+                  <span class="admin-toggle-slider"></span>
+                </label>
+              </div>
+
+              <div class="admin-checklist-card">
+                <div class="admin-check-info">
+                  <span class="admin-check-title">Floating News Toast Stack</span>
+                  <span class="admin-check-desc">Top-right floating WhatsApp notification alerts</span>
+                </div>
+                <label class="admin-toggle-switch">
+                  <input type="checkbox" id="vis-notifs" checked data-section-target="#notif-toast-container, #notif-reopen-chip">
+                  <span class="admin-toggle-slider"></span>
+                </label>
+              </div>
+
+            </div>
+            <button class="cyber-btn" id="admin-save-vis-btn" type="button" style="width: 100%; margin-top: 6px;">SAVE PAGE VISIBILITY</button>
+            <div class="admin-status-toast" id="admin-vis-toast">✓ Page &amp; section visibility updated!</div>
+          </div>
+
+          <!-- TAB 3: Live Stream & Broadcast Manager -->
+          <div class="admin-tab-content" id="tab-livestream">
+            <h4 style="margin-top: 0; color: var(--gold-primary);">LIVE STREAM LINK &amp; BROADCAST CONTROLS</h4>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 14px;">
+              Static websites cannot detect YouTube live status automatically without paid API quotas. Enter your YouTube Live Stream URL or Video ID below to instantly route all "Watch Live" buttons to your active broadcast!
+            </p>
+            <div class="admin-form-group">
+              <label>YOUTUBE LIVE STREAM URL OR VIDEO ID</label>
+              <input type="text" id="admin-livestream-url" placeholder="https://www.youtube.com/watch?v=... or https://youtube.com/@SquadOneEsports/live" value="https://www.youtube.com/@SquadOneEsports">
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+              <div class="admin-form-group">
+                <label>BROADCAST STATUS</label>
+                <select id="admin-livestream-status">
+                  <option value="LIVE">🔴 LIVE NOW (Highlight Stream &amp; Show Live Badge)</option>
+                  <option value="OFFLINE" selected>⚪ OFFLINE / REGULAR CHANNEL</option>
+                </select>
+              </div>
+              <div class="admin-form-group">
+                <label>BUTTON LABEL</label>
+                <input type="text" id="admin-livestream-label" value="▶ YOUTUBE STREAM">
+              </div>
+            </div>
+            <div class="admin-form-group">
+              <label>HERO TICKER ANNOUNCEMENT (WHEN LIVE)</label>
+              <input type="text" id="admin-hero-live-ticker" value="🔴 SQUADONE GRAND FINALS LIVE BROADCAST IS STREAMING NOW ON YOUTUBE!">
+            </div>
+            <button class="cyber-btn cyber-btn-crimson" id="admin-save-livestream-btn" type="button" style="width: 100%;">SAVE &amp; ACTIVATE LIVE STREAM</button>
+            <div class="admin-status-toast" id="admin-livestream-toast">✓ Live stream link and broadcast state updated across the website!</div>
+          </div>
+
+          <!-- TAB 4: Seasons & Tournaments Manager -->
           <div class="admin-tab-content" id="tab-seasons">
             <h4 style="margin-top: 0; color: var(--gold-primary);">SEASON 2 CIRCUIT CONTROLS</h4>
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
@@ -5983,18 +7106,7 @@ Roster (4 Players + Subs):</pre>
             <div class="admin-status-toast" id="admin-season-toast">✓ Tournament configuration updated!</div>
           </div>
 
-          <!-- TAB 3: Live Ticker Banner -->
-          <div class="admin-tab-content" id="tab-ticker">
-            <h4 style="margin-top: 0; color: var(--gold-primary);">HERO MARQUEE &amp; TICKER SETTINGS</h4>
-            <div class="admin-form-group">
-              <label>HERO PARTNER BAR / BROADCAST MESSAGE</label>
-              <input type="text" id="admin-hero-partner-text" value="OFFICIAL SCRIM ARENA &amp; BRACKETS POWERED BY EWAVE.GG">
-            </div>
-            <button class="cyber-btn" id="admin-save-ticker-btn" type="button" style="width: 100%;">UPDATE TICKER</button>
-            <div class="admin-status-toast" id="admin-ticker-toast">✓ Hero announcement ticker updated!</div>
-          </div>
-
-          <!-- TAB 4: Backup & Restore -->
+          <!-- TAB 5: Backup & Restore -->
           <div class="admin-tab-content" id="tab-backup">
             <h4 style="margin-top: 0; color: var(--gold-primary);">DATA BACKUP &amp; RECOVERY</h4>
             <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 16px;">
@@ -6025,7 +7137,6 @@ Roster (4 Players + Subs):</pre>
     <span>3 New Updates</span>
   </button>
 
-  
   <!-- TERMS OF SERVICE MODAL -->
   <div class="esports-info-modal" id="modal-tos" data-lenis-prevent="true">
     <div class="esports-modal-window" data-lenis-prevent="true">
@@ -6553,8 +7664,8 @@ Roster (4 Players + Subs):</pre>
         const scrollY = Math.round(self.scroll());
         
         if (progressBar) progressBar.style.width = `${pct}%`;
-        if (hudScrollPct) hudScrollPct.textContent = `PCT://${pct.toString().padStart(2, '0')}%`;
-        if (hudScrollPos) hudScrollPos.textContent = `SCR://${scrollY.toString().padStart(4, '0')}PX`;
+        if (hudScrollPct) hudScrollPct.textContent = `PCT: ${pct.toString().padStart(2, '0')}%`;
+        if (hudScrollPos) hudScrollPos.textContent = `SCR: ${scrollY.toString().padStart(4, '0')}PX`;
 
         if (compassTrack) {
           const compassOffset = (scrollY * 0.25) % 200;
@@ -6577,7 +7688,7 @@ Roster (4 Players + Subs):</pre>
     /* ==========================================================================
        07. CHAPTER NAVIGATION RAIL
        ========================================================================== */
-    const sections = ['hero', 'tournaments', 'teams'];
+    const sections = ['hero', 'tournaments', 'scrims', 'teams'];
     const chapterDots = document.querySelectorAll('.chapter-dot');
     const navLinks = document.querySelectorAll('.nav-link');
 
@@ -6709,10 +7820,10 @@ Roster (4 Players + Subs):</pre>
     const holoTelemetry = document.getElementById('holo-telemetry');
     
     const stageTelemetry = [
-      'COORDS: LAT 44.82 // LON 20.45<br>ZONE 1 DROP PROTOCOL<br>STATUS: INFILTRATION COMPLETE',
-      'COORDS: LAT 45.12 // LON 21.08<br>HARD-SHIFT COMPOUND REACHED<br>STATUS: 3-1 ANCHOR SECURED',
-      'COORDS: LAT 45.30 // LON 21.40<br>UTILITY BARRAGE ENGAGED<br>STATUS: 3 SQUADS ELIMINATED',
-      'COORDS: LAT 45.45 // LON 21.52<br>FINAL CIRCLE SECURED<br>STATUS: CHICKEN DINNER DEPLOYED'
+      'COORDS: LAT 44.82, LON 20.45<br>ZONE 1 DROP PROTOCOL<br>STATUS: INFILTRATION COMPLETE',
+      'COORDS: LAT 45.12, LON 21.08<br>HARD-SHIFT COMPOUND REACHED<br>STATUS: 3-1 ANCHOR SECURED',
+      'COORDS: LAT 45.30, LON 21.40<br>UTILITY BARRAGE ENGAGED<br>STATUS: 3 SQUADS ELIMINATED',
+      'COORDS: LAT 45.45, LON 21.52<br>FINAL CIRCLE SECURED<br>STATUS: CHICKEN DINNER DEPLOYED'
     ];
 
     let currentStage = 0;
@@ -7252,8 +8363,8 @@ Roster (4 Players + Subs):</pre>
         });
         checkAllModalsClosed();
       }
-      // Shortcut Ctrl + Shift + A for Admin Portal
-      if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === 'A' || e.key === 'a')) {
+      // Secret Shortcut Ctrl + Shift + F for Admin Portal
+      if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === 'F' || e.key === 'f')) {
         e.preventDefault();
         const adminModal = document.getElementById('modal-admin');
         if (adminModal) {
@@ -7496,7 +8607,349 @@ Roster (4 Players + Subs):</pre>
     }
 
     /* ==========================================================================
-       17. SQUADONE COMMAND TERMINAL (ADMIN CONTROL PORTAL)
+       17. TEAM LOGO AUTO-RESOLVER & SCRIMS HUB CONTROLLER
+       ========================================================================== */
+    const teamMasterDict = {
+      // User's explicit team mappings
+      'koyaiykyk': 'koya.png',
+      'koya': 'koya.png',
+      'wforthewinnn': 'wfww.png',
+      'wfw': 'wfww.png',
+      'studs': 'studs.png',
+      'stud': 'studs.png',
+      'redviperz': 'redv.png',
+      'redviperzgaming': 'redv.png',
+      'redvierzgaming': 'redv.png',
+      'rv': 'redv.png',
+      'rvg': 'redv.png',
+      'squadoneesports': 'SQ1_Orange.PNG',
+      'squadone': 'SQ1_Orange.PNG',
+      'squad one': 'SQ1_Orange.PNG',
+      'squad one esports': 'SQ1_Orange.PNG',
+      'sq-1': 'SQ1_Orange.PNG',
+      'sq1': 'SQ1_Orange.PNG',
+      'indusprime': 'IP4.png',
+      'indus prime': 'IP4.png',
+      'ip4': 'IP4.png',
+      'ip4_1': 'IP4.png',
+      'ue-red': 'uered.png',
+      'ue red': 'uered.png',
+      'ultraesportsred': 'uered.png',
+      'ultra esports red': 'uered.png',
+      'squadmatrix': 'squadmatrix.png',
+      'squad matrix': 'squadmatrix.png',
+      'sm': 'squadmatrix.png',
+      'sigma': 'sigma.png',
+      'sig': 'sigma.png',
+      'junglisena': 'sena.png',
+      'jungli sena': 'sena.png',
+      'sena': 'sena.png',
+      'racr': 'racr.png',
+      'liliputbd': 'lili.png',
+      'liliput bd': 'lili.png',
+      'lbd': 'lili.png',
+      'nighthunter': 'night.png',
+      'night hunter': 'night.png',
+      'nh': 'night.png',
+      'risingdragons': 'rising.png',
+      'rising dragons': 'rising.png',
+      'rd': 'rising.png',
+      'rifleclub': 'rifl.png',
+      'rifle club': 'rifl.png',
+      'rifl': 'rifl.png',
+      'unkrithi': 'uki.png',
+      'uki': 'uki.png',
+      'teamlootkhor': 'teamlootkhor.png',
+      'team loot khor': 'teamlootkhor.png',
+      'tlk': 'teamlootkhor.png',
+      'kidiloski': 'kidi.png',
+      'kidi': 'kidi.png',
+      'teammindspark': 'teammindspark.png',
+      'team mind spark': 'teammindspark.png',
+      'mindspark': 'teammindspark.png',
+      'tms': 'teammindspark.png',
+      'x-ray': 'X-RAY.png',
+      'xray': 'X-RAY.png',
+      'teamxd': 'teamxd.png',
+      'team xd': 'teamxd.png',
+      'xd': 'teamxd.png',
+      'fourgedtitans': 'fourged.png',
+      'fourged titans': 'fourged.png',
+      'ft': 'fourged.png',
+      'zerotrace': 'tracezero.png',
+      'zero trace': 'tracezero.png',
+      'zt': 'tracezero.png',
+      'oceangaming': 'oceangaming.png',
+      'ocean gaming': 'oceangaming.png',
+      'og': 'oceangaming.png',
+      'zeusaberzesports': 'ZE.png',
+      'ze': 'ZE.png',
+      'zerohour': 'zerohour.png',
+      'zero hour': 'zerohour.png',
+      'zh': 'zerohour.png',
+      'teamalto': 'alto.png',
+      'team alto': 'alto.png',
+      'alto': 'alto.png',
+      'darkshadow': 'darkshadow.png',
+      'dark shadow': 'darkshadow.png',
+      'ds': 'darkshadow.png',
+      'thereflexmatrix': 'trx.png',
+      'the reflex matrix': 'trx.png',
+      'reflex matrix': 'trx.png',
+      'trx': 'trx.png',
+      'squadone-pink': 'SQ1_pink.png',
+      'squadone pink': 'SQ1_pink.png',
+      'sq-p': 'SQ1_pink.png',
+      'pdx': 'pdx.png',
+      'manhoy': 'man.png',
+      'manhoypirates': 'man.png',
+      'manhoy pirates': 'man.png',
+      'man': 'man.png',
+      'mp': 'man.png',
+      'squadonered': 'sq-red.png',
+      'squadone red': 'sq-red.png',
+      'sq-1r': 'sq-red.png',
+      'kandombrothers': 'kb.png',
+      'kandom brothers': 'kb.png',
+      'kb': 'kb.png',
+      'kaliyuga': 'kali1.png',
+      'kali': 'kali1.png',
+      'fate': 'fate.png',
+      'fate esports': 'fate.png',
+      'mallufpslegacy': 'mfl.png',
+      'mallu fps legacy': 'mfl.png',
+      'mfl': 'mfl.png',
+      'teambmg': 'bmg.png',
+      'team bmg': 'bmg.png',
+      'bmg': 'bmg.png',
+      'legionofstrikers': 'los.png',
+      'legion of strikers': 'los.png',
+      'los': 'los.png',
+      'trinath': 'trinath.png',
+      'tnt': 'trinath.png',
+      'top1': 'top1.png',
+      'top 1': 'top1.png',
+      'memberofblood': 'mob.png',
+      'member of blood': 'mob.png',
+      'mob': 'mob.png',
+      'badboyz': 'bbz.png',
+      'bad boyz': 'bbz.png',
+      'bbz': 'bbz.png',
+      'e2xesports': 'e2x.png',
+      'e2x': 'e2x.png',
+      'squadoneeclipse': 'sq1eccli.png',
+      'squadone eclipse': 'sq1eccli.png',
+      'sq-1e': 'sq1eccli.png',
+      'reigndebros': 'RDB.png',
+      'reign de bros': 'RDB.png',
+      'rdb': 'RDB.png',
+      'p9chakkachola': 'p9cc.png',
+      'p9 chakkachola': 'p9cc.png',
+      'p9cc': 'p9cc.png',
+      'mutant': 'mutant.png',
+      'mut': 'mutant.png',
+      'malayalees': 'mlys.png',
+      'malayaleesyodha': 'mlys.png',
+      'malayalees yodha': 'mlys.png',
+      'mlys': 'mlys.png',
+      'theunknown': 'unknown.png',
+      'the unknown': 'unknown.png',
+      'un': 'unknown.png',
+      'mixtizem': 'mix.png',
+      'mix': 'mix.png',
+      'sadya': 'sadya.png',
+      'sa': 'sadya.png',
+      'guru': 'guru.png',
+      'cjgamingarena': 'cjgaming.png',
+      'cj gaming arena': 'cjgaming.png',
+      'cj gaming': 'cjgaming.png',
+      'cga': 'cjgaming.png',
+      'induselite': 'ip4elite.png',
+      'indus elite': 'ip4elite.png',
+      'ip4-elite': 'ip4elite.png',
+      'hashoneesports': 'hi.png',
+      'hashone esports': 'hi.png',
+      'h1': 'hi.png',
+      'teamminus': 'teamminus.png',
+      'team minus': 'teamminus.png',
+      'tm': 'teamminus.png',
+      'apexelitex': 'aex.png',
+      'apex elite x': 'aex.png',
+      'aex': 'aex.png',
+      'rakuzan': 'rakuzan.png',
+      'rz': 'rakuzan.png',
+      'randomkids': 'RD.png',
+      'random kids': 'RD.png',
+      'rkd': 'RD.png',
+      'brocodz': 'brc.png',
+      'brz': 'brc.png',
+      'brc': 'brc.png',
+      'fragrepublic': 'frag.png',
+      'frag republic': 'frag.png',
+      'fr': 'frag.png',
+      'xtreamdominators': 'xdd.png',
+      'xtream dominators': 'xdd.png',
+      'warlordx': 'warlord.png',
+      'warlord x': 'warlord.png',
+      'wx': 'warlord.png',
+      'freezedpednoi': 'fzp.png',
+      'freezed pednoi': 'fzp.png',
+      'fzp': 'fzp.png',
+      'plantsarmy': 'plants.png',
+      'plants army': 'plants.png',
+      'pa': 'plants.png',
+      'masz': 'masz.png',
+      'mas': 'masz.png',
+      'havk': 'havk.png',
+      'ageingbutfearless': 'abf.png',
+      'ageing but fearless': 'abf.png',
+      'abf': 'abf.png',
+      'welcometominas': 'wtm.png',
+      'welcome to minas': 'wtm.png',
+      'wtm': 'wtm.png',
+      'highfury': 'hf.png',
+      'high fury': 'hf.png',
+      'hf': 'hf.png',
+      'mackyminnions': 'macky.png',
+      'macky minions': 'macky.png',
+      'mm': 'macky.png',
+      'frenzy': 'frz.png',
+      'frz': 'frz.png',
+      'bmesports': 'bmesports.png',
+      'bm esports': 'bmesports.png',
+      'bm': 'bmesports.png',
+      'kasargods': 'kg.png',
+      'kasar gods': 'kg.png',
+      'kg': 'kg.png',
+      '4guys': '4guys.png',
+      '4 guys': '4guys.png'
+    };
+
+    function resolveTeamLogo(teamName, shortName, imageFileName) {
+      if (imageFileName && imageFileName.trim()) {
+        const cleanFile = imageFileName.trim().replace(/^assets\/teams\//, '');
+        if (cleanFile.toLowerCase() === 'ue_red.png') return 'assets/teams/uered.png';
+        return 'assets/teams/' + cleanFile;
+      }
+
+      if (teamName) {
+        const cleanName = teamName.trim().toLowerCase();
+        if (teamMasterDict[cleanName]) return 'assets/teams/' + teamMasterDict[cleanName];
+
+        for (const [key, file] of Object.entries(teamMasterDict)) {
+          if (cleanName === key || cleanName.includes(key) || key.includes(cleanName)) {
+            return 'assets/teams/' + file;
+          }
+        }
+      }
+
+      if (shortName) {
+        const cleanShort = shortName.trim().toLowerCase();
+        if (teamMasterDict[cleanShort]) return 'assets/teams/' + teamMasterDict[cleanShort];
+      }
+
+      return 'assets/teams/squadone.png';
+    }
+
+    const DEFAULT_SCRIMS_DATA = {
+      lobbyTitle: "SQUADONE LOBBY 1",
+      lobbyBadge: "● DAILY COMPETITIVE SCRIMS · LOBBY 1",
+      lobbyMap: "ERANGEL · MIRAMAR · TAEGO · RONDO",
+      lobbyTime: "8:00 PM IST · DAILY",
+      lobbyStatus: "● SLOTS CONFIRMED",
+      slots: [
+        { slot: 1, team: "", shortName: "", image: "", status: "OPEN" },
+        { slot: 2, team: "", shortName: "", image: "", status: "OPEN" },
+        { slot: 3, team: "Wforthewinnn", shortName: "WFW", image: "wfww.png", status: "CONFIRMED" },
+        { slot: 4, team: "Studs", shortName: "STUD", image: "studs.png", status: "CONFIRMED" },
+        { slot: 5, team: "RedViperz", shortName: "RV", image: "redv.png", status: "CONFIRMED" },
+        { slot: 6, team: "SquadOneEsports", shortName: "SQ-1", image: "SQ1_Orange.PNG", status: "CONFIRMED" },
+        { slot: 7, team: "IndusPrime", shortName: "IP4", image: "IP4.png", status: "CONFIRMED" },
+        { slot: 8, team: "UE-red", shortName: "UE-Red", image: "uered.png", status: "CONFIRMED" },
+        { slot: 9, team: "SquadMatrix", shortName: "SM", image: "squadmatrix.png", status: "CONFIRMED" },
+        { slot: 10, team: "Sigma", shortName: "SIG", image: "sigma.png", status: "CONFIRMED" },
+        { slot: 11, team: "JungliSena", shortName: "SENA", image: "sena.png", status: "CONFIRMED" },
+        { slot: 12, team: "RACR", shortName: "RACR", image: "racr.png", status: "CONFIRMED" },
+        { slot: 13, team: "LiliputBD", shortName: "LBD", image: "lili.png", status: "CONFIRMED" },
+        { slot: 14, team: "NightHunter", shortName: "NH", image: "night.png", status: "CONFIRMED" },
+        { slot: 15, team: "RisingDragons", shortName: "RD", image: "rising.png", status: "CONFIRMED" },
+        { slot: 16, team: "RifleClub", shortName: "RIFL", image: "rifl.png", status: "CONFIRMED" },
+        { slot: 17, team: "Unkrithi", shortName: "UKI", image: "uki.png", status: "CONFIRMED" },
+        { slot: 18, team: "TeamLootKhor", shortName: "TLK", image: "teamlootkhor.png", status: "CONFIRMED" },
+        { slot: 19, team: "Kidiloski", shortName: "KIDI", image: "kidi.png", status: "CONFIRMED" },
+        { slot: 20, team: "TeamMindSpark", shortName: "TMS", image: "teammindspark.png", status: "CONFIRMED" },
+        { slot: 21, team: "X-ray", shortName: "X-RAY", image: "X-RAY.png", status: "CONFIRMED" },
+        { slot: 22, team: "TeamXD", shortName: "XD", image: "teamxd.png", status: "CONFIRMED" },
+        { slot: 23, team: "FourgedTitans", shortName: "FT", image: "fourged.png", status: "CONFIRMED" },
+        { slot: 24, team: "ZeroTrace", shortName: "ZT", image: "tracezero.png", status: "CONFIRMED" },
+        { slot: 25, team: "OceanGaming", shortName: "OG", image: "oceangaming.png", status: "CONFIRMED" }
+      ]
+    };
+
+    function renderScrimsHub() {
+      let data = DEFAULT_SCRIMS_DATA;
+      try {
+        const saved = JSON.parse(localStorage.getItem('sq1_scrims_data'));
+        if (saved && saved.slots && saved.slots.length > 0) data = saved;
+      } catch (err) {
+        console.warn('Scrims data load error:', err);
+      }
+
+      // Update Lobby Header
+      const titleEl = document.getElementById('scrim-lobby-title');
+      const badgeEl = document.getElementById('scrim-lobby-badge');
+      const mapEl = document.getElementById('scrim-lobby-map');
+      const timeEl = document.getElementById('scrim-lobby-time');
+      const statusEl = document.getElementById('scrim-lobby-status');
+
+      if (titleEl) titleEl.textContent = data.lobbyTitle || "SQUADONE LOBBY 1";
+      if (badgeEl) badgeEl.textContent = data.lobbyBadge || "● DAILY COMPETITIVE SCRIMS · LOBBY 1";
+      if (mapEl) mapEl.textContent = data.lobbyMap || "ERANGEL · MIRAMAR · TAEGO · RONDO";
+      if (timeEl) timeEl.textContent = data.lobbyTime || "8:00 PM IST · DAILY";
+      if (statusEl) statusEl.textContent = data.lobbyStatus || "● SLOTS CONFIRMED";
+
+      // Render only reserved/confirmed slots
+      const slotsContainer = document.getElementById('scrim-slots-container');
+      if (slotsContainer) {
+        slotsContainer.innerHTML = '';
+        const activeSlots = data.slots.filter(s => s.team && s.team.trim() !== '');
+        
+        activeSlots.forEach(s => {
+          const logoPath = resolveTeamLogo(s.team, s.shortName, s.image);
+          const card = document.createElement('div');
+          card.className = 'scrim-slot-card confirmed-slot';
+          card.setAttribute('data-sound', 'hover');
+
+          card.innerHTML = `
+            <div class="slot-num-box">
+              <span class="slot-num-label">SLOT</span>
+              <span class="slot-num-val">${String(s.slot).padStart(2, '0')}</span>
+            </div>
+            <div class="slot-avatar-wrap">
+              <img src="${logoPath}" alt="${s.team}" class="slot-team-logo" onerror="this.src='assets/teams/squadone.png'">
+            </div>
+            <div class="slot-team-info">
+              <div class="slot-team-name-wrap">
+                <span class="slot-team-name">${s.team}</span>
+                ${s.shortName ? `<span class="slot-short-tag">${s.shortName}</span>` : ''}
+              </div>
+              <div class="slot-status-chip confirmed">
+                <span class="status-pulse-dot"></span>
+                <span>${s.status || 'CONFIRMED'}</span>
+              </div>
+            </div>
+          `;
+          slotsContainer.appendChild(card);
+        });
+      }
+    }
+
+    function initScrimsHub() {
+      renderScrimsHub();
+    }
+
+    /* ==========================================================================
+       19. SQUADONE COMMAND TERMINAL (ADMIN CONTROL PORTAL)
        ========================================================================== */
     function initAdminPortal() {
       const MASTER_KEY = 'SQ1-ADMIN-2026';
@@ -7593,7 +9046,338 @@ Roster (4 Players + Subs):</pre>
         });
       }
 
-      // TAB 2: Season Settings
+      // TAB 2: Scrims & Lobby Manager Controls
+      const parseSlotsBtn = document.getElementById('admin-parse-slots-btn');
+      const saveScrimsBtn = document.getElementById('admin-save-scrims-btn');
+      const scrimsToast = document.getElementById('admin-scrims-toast');
+      const slotsEditorGrid = document.getElementById('admin-slots-editor-grid');
+
+      function loadAdminScrims() {
+        let data = DEFAULT_SCRIMS_DATA;
+        try {
+          const saved = JSON.parse(localStorage.getItem('sq1_scrims_data'));
+          if (saved && saved.slots && saved.slots.length > 0) data = saved;
+        } catch (err) {
+          console.warn('Scrims admin load error:', err);
+        }
+
+        const titleInput = document.getElementById('admin-scrim-title');
+        const badgeInput = document.getElementById('admin-scrim-badge');
+        const mapInput = document.getElementById('admin-scrim-map');
+        const timeInput = document.getElementById('admin-scrim-time');
+        const statusSelect = document.getElementById('admin-scrim-status');
+
+        if (titleInput) titleInput.value = data.lobbyTitle || "SQUADONE LOBBY 1";
+        if (badgeInput) badgeInput.value = data.lobbyBadge || "● DAILY COMPETITIVE SCRIMS · LOBBY 1";
+        if (mapInput) mapInput.value = data.lobbyMap || "ERANGEL · MIRAMAR · TAEGO · RONDO";
+        if (timeInput) timeInput.value = data.lobbyTime || "8:00 PM IST · DAILY";
+        if (statusSelect) statusSelect.value = data.lobbyStatus || "● SLOTS CONFIRMED";
+
+        if (slotsEditorGrid) {
+          slotsEditorGrid.innerHTML = '';
+          const count = Math.max(25, data.slots.length);
+          for (let i = 1; i <= count; i++) {
+            const slotObj = data.slots.find(s => s.slot === i) || { slot: i, team: '', shortName: '', image: '', status: 'CONFIRMED' };
+            const row = document.createElement('div');
+            row.style.display = 'grid';
+            row.style.gridTemplateColumns = '36px 1fr 65px 100px';
+            row.style.alignItems = 'center';
+            row.style.gap = '6px';
+            row.style.background = '#050403';
+            row.style.border = '1px solid var(--gold-dim)';
+            row.style.borderRadius = '4px';
+            row.style.padding = '4px 8px';
+            row.innerHTML = `
+              <span style="font-family: var(--font-mono); font-size: 0.68rem; color: var(--gold-primary); font-weight: 800;">S${String(i).padStart(2, '0')}</span>
+              <input type="text" id="admin-slot-team-${i}" value="${slotObj.team || ''}" placeholder="Team Name..." style="background: transparent; border:none; color:#fff; font-size:0.78rem; outline:none;">
+              <input type="text" id="admin-slot-short-${i}" value="${slotObj.shortName || ''}" placeholder="TAG" title="Short Name" style="background: transparent; border:none; color:var(--gold-light); font-size:0.75rem; outline:none; text-transform:uppercase;">
+              <input type="text" id="admin-slot-img-${i}" value="${slotObj.image || ''}" placeholder="Logo.png" title="Image File Name" style="background: transparent; border:none; color:var(--text-muted); font-size:0.7rem; outline:none;">
+            `;
+            slotsEditorGrid.appendChild(row);
+          }
+        }
+      }
+
+      if (parseSlotsBtn) {
+        parseSlotsBtn.addEventListener('click', () => {
+          sound.init();
+          sound.playClick();
+          const rawText = document.getElementById('admin-scrim-bulk-slots')?.value || '';
+          const lines = rawText.split('\n').map(l => l.trim()).filter(Boolean);
+          const newSlots = [];
+
+          lines.forEach((line, idx) => {
+            const parts = line.includes('\t') ? line.split('\t') : (line.includes(',') ? line.split(',') : line.split(/\s{2,}/));
+            const cleanParts = parts.map(p => p.trim()).filter(Boolean);
+
+            let slotNum = idx + 1;
+            let teamName = '';
+            let shortName = '';
+            let imageFile = '';
+
+            if (cleanParts.length >= 4) {
+              slotNum = parseInt(cleanParts[0], 10) || (idx + 1);
+              teamName = cleanParts[1];
+              shortName = cleanParts[2];
+              imageFile = cleanParts[3];
+            } else if (cleanParts.length === 3) {
+              if (/^\d+$/.test(cleanParts[0])) {
+                slotNum = parseInt(cleanParts[0], 10);
+                teamName = cleanParts[1];
+                shortName = cleanParts[2];
+              } else {
+                teamName = cleanParts[0];
+                shortName = cleanParts[1];
+                imageFile = cleanParts[2];
+              }
+            } else if (cleanParts.length === 2) {
+              if (/^\d+$/.test(cleanParts[0])) {
+                slotNum = parseInt(cleanParts[0], 10);
+                teamName = cleanParts[1];
+              } else {
+                teamName = cleanParts[0];
+                shortName = cleanParts[1];
+              }
+            } else if (cleanParts.length === 1) {
+              teamName = cleanParts[0].replace(/^(\d+[\.\)\-:]*|\bSlot\s*\d+[\.\)\-:]*)/i, '').trim();
+            }
+
+            newSlots.push({
+              slot: slotNum,
+              team: teamName,
+              shortName: shortName,
+              image: imageFile,
+              status: teamName ? 'CONFIRMED' : 'OPEN'
+            });
+          });
+
+          if (newSlots.length > 0) {
+            let data = DEFAULT_SCRIMS_DATA;
+            try {
+              const saved = JSON.parse(localStorage.getItem('sq1_scrims_data'));
+              if (saved) data = saved;
+            } catch (e) {}
+            data.slots = newSlots;
+            localStorage.setItem('sq1_scrims_data', JSON.stringify(data));
+            loadAdminScrims();
+            renderScrimsHub();
+
+            if (scrimsToast) {
+              scrimsToast.className = 'admin-status-toast success';
+              scrimsToast.textContent = `✓ Auto-parsed and populated ${newSlots.length} slots!`;
+              setTimeout(() => { scrimsToast.className = 'admin-status-toast'; }, 3000);
+            }
+          }
+        });
+      }
+
+      if (saveScrimsBtn) {
+        saveScrimsBtn.addEventListener('click', () => {
+          sound.init();
+          sound.playClick();
+          let data = DEFAULT_SCRIMS_DATA;
+          try {
+            const saved = JSON.parse(localStorage.getItem('sq1_scrims_data'));
+            if (saved) data = saved;
+          } catch (e) {}
+
+          data.lobbyTitle = document.getElementById('admin-scrim-title')?.value.trim() || "SQUADONE LOBBY 1";
+          data.lobbyBadge = document.getElementById('admin-scrim-badge')?.value.trim() || "● DAILY COMPETITIVE SCRIMS · LOBBY 1";
+          data.lobbyMap = document.getElementById('admin-scrim-map')?.value.trim() || "ERANGEL · MIRAMAR · TAEGO · RONDO";
+          data.lobbyTime = document.getElementById('admin-scrim-time')?.value.trim() || "8:00 PM IST · DAILY";
+          data.lobbyStatus = document.getElementById('admin-scrim-status')?.value || "● SLOTS CONFIRMED";
+
+          data.slots = [];
+          const slotRows = slotsEditorGrid ? slotsEditorGrid.children.length : 25;
+          for (let i = 1; i <= slotRows; i++) {
+            const teamVal = document.getElementById(`admin-slot-team-${i}`)?.value.trim() || '';
+            const shortVal = document.getElementById(`admin-slot-short-${i}`)?.value.trim() || '';
+            const imgVal = document.getElementById(`admin-slot-img-${i}`)?.value.trim() || '';
+            data.slots.push({
+              slot: i,
+              team: teamVal,
+              shortName: shortVal,
+              image: imgVal,
+              status: teamVal ? 'CONFIRMED' : 'OPEN'
+            });
+          }
+
+          localStorage.setItem('sq1_scrims_data', JSON.stringify(data));
+          renderScrimsHub();
+
+          if (scrimsToast) {
+            scrimsToast.className = 'admin-status-toast success';
+            scrimsToast.textContent = '✓ Scrims lobby slots & logos updated & applied!';
+            setTimeout(() => { scrimsToast.className = 'admin-status-toast'; }, 3000);
+          }
+        });
+      }
+
+      // TAB 3: Page & Section Visibility Checklist Manager
+      const saveVisBtn = document.getElementById('admin-save-vis-btn');
+      const visToast = document.getElementById('admin-vis-toast');
+      const visToggles = [
+        { id: 'vis-hero', target: '#hero', nav: 'a[href="#hero"]' },
+        { id: 'vis-scrims-hub', target: '#scrims', nav: 'a[href="#scrims"]' },
+        { id: 'vis-tournaments', target: '#tournaments', nav: 'a[href="#tournaments"]' },
+        { id: 'vis-protocol', target: '#protocol', nav: null },
+        { id: 'vis-finals', target: '.finals-section', nav: null },
+        { id: 'vis-hundred', target: '.hundred-teams-arena', nav: 'a[href="#teams"]' },
+        { id: 'vis-scrims', target: '.ewave-box, .scrims-section', nav: null },
+        { id: 'vis-notifs', target: '#notif-toast-container, #notif-reopen-chip', nav: null }
+      ];
+
+      function loadVisibilityState() {
+        try {
+          const saved = JSON.parse(localStorage.getItem('sq1_section_vis') || '{}');
+          visToggles.forEach(({ id, target, nav }) => {
+            const toggleEl = document.getElementById(id);
+            if (toggleEl && saved[id] !== undefined) {
+              toggleEl.checked = saved[id];
+            }
+          });
+        } catch (err) {
+          console.warn('Visibility state load error:', err);
+        }
+      }
+
+      function applySectionVisibility() {
+        try {
+          const saved = JSON.parse(localStorage.getItem('sq1_section_vis') || '{}');
+          visToggles.forEach(({ id, target, nav }) => {
+            const isVisible = saved[id] !== undefined ? saved[id] : true;
+            document.querySelectorAll(target).forEach(el => {
+              el.style.display = isVisible ? '' : 'none';
+            });
+            if (nav) {
+              document.querySelectorAll(nav).forEach(nEl => {
+                const liParent = nEl.closest('li') || nEl;
+                liParent.style.display = isVisible ? '' : 'none';
+              });
+            }
+          });
+        } catch (err) {
+          console.warn('Section visibility apply error:', err);
+        }
+      }
+
+      if (saveVisBtn) {
+        saveVisBtn.addEventListener('click', () => {
+          sound.init();
+          sound.playClick();
+          const visState = {};
+          visToggles.forEach(({ id }) => {
+            const toggleEl = document.getElementById(id);
+            if (toggleEl) visState[id] = toggleEl.checked;
+          });
+          localStorage.setItem('sq1_section_vis', JSON.stringify(visState));
+          applySectionVisibility();
+
+          if (visToast) {
+            visToast.className = 'admin-status-toast success';
+            visToast.textContent = '✓ Page & section visibility checklist updated & applied!';
+            setTimeout(() => { visToast.className = 'admin-status-toast'; }, 3000);
+          }
+        });
+      }
+
+      // TAB 3: Live Stream & Broadcast Manager
+      const saveLivestreamBtn = document.getElementById('admin-save-livestream-btn');
+      const livestreamToast = document.getElementById('admin-livestream-toast');
+
+      function loadLivestreamConfig() {
+        try {
+          const config = JSON.parse(localStorage.getItem('sq1_livestream_config') || '{}');
+          if (config.url) {
+            const urlInput = document.getElementById('admin-livestream-url');
+            if (urlInput) urlInput.value = config.url;
+          }
+          if (config.status) {
+            const statusSelect = document.getElementById('admin-livestream-status');
+            if (statusSelect) statusSelect.value = config.status;
+          }
+          if (config.label) {
+            const labelInput = document.getElementById('admin-livestream-label');
+            if (labelInput) labelInput.value = config.label;
+          }
+          if (config.ticker) {
+            const tickerInput = document.getElementById('admin-hero-live-ticker');
+            if (tickerInput) tickerInput.value = config.ticker;
+          }
+        } catch (err) {
+          console.warn('Livestream config load error:', err);
+        }
+      }
+
+      function applyLivestreamConfig() {
+        try {
+          const config = JSON.parse(localStorage.getItem('sq1_livestream_config') || '{}');
+          const liveUrl = config.url || 'https://www.youtube.com/live/qgJ0nTegK9A?si=1mtKJYlJ9kUk5b6H';
+          const isLive = config.status === 'LIVE';
+
+          // Extract YouTube Video ID for thumbnail
+          const ytMatch = liveUrl.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|live\/|shorts\/))([\w-]{11})/);
+          const videoId = ytMatch ? ytMatch[1] : 'qgJ0nTegK9A';
+          const thumbUrl = 'https://i.ytimg.com/vi/' + videoId + '/hqdefault.jpg';
+
+          // Update Live Preview Popup elements
+          const thumbImg = document.getElementById('modal-live-thumb-img');
+          if (thumbImg) {
+            thumbImg.src = thumbUrl;
+            thumbImg.onerror = function() { thumbImg.src = 'https://img.youtube.com/vi/' + videoId + '/hqdefault.jpg'; };
+          }
+          const thumbLink = document.getElementById('modal-live-thumb-link');
+          if (thumbLink) thumbLink.href = liveUrl;
+          const directBtn = document.getElementById('modal-live-direct-btn');
+          if (directBtn) directBtn.href = liveUrl;
+          const streamTitle = document.getElementById('modal-live-stream-title');
+          if (streamTitle) streamTitle.textContent = config.ticker || 'SquadOne Esports Live Tournament Broadcast';
+
+          // Update dedicated livestream links
+          document.querySelectorAll('[data-livestream-link]').forEach(btn => {
+            btn.href = liveUrl;
+          });
+
+          // Scrims Schedule Live Button
+          const scrimLiveBtn = document.getElementById('scrim-live-btn');
+          if (scrimLiveBtn) {
+            scrimLiveBtn.style.display = 'inline-flex';
+          }
+
+          // Update Hero Ticker if Live
+          if (isLive && config.ticker) {
+            const heroPartner = document.getElementById('hero-partner');
+            if (heroPartner) {
+              heroPartner.innerHTML = `<span class="dot" style="background:#ff3333; box-shadow:0 0 10px #ff3333;"></span> ${config.ticker}`;
+            }
+          }
+        } catch (err) {
+          console.warn('Livestream config apply error:', err);
+        }
+      }
+
+      if (saveLivestreamBtn) {
+        saveLivestreamBtn.addEventListener('click', () => {
+          sound.init();
+          sound.playClick();
+          const config = {
+            url: document.getElementById('admin-livestream-url')?.value.trim() || 'https://www.youtube.com/@SquadOneEsports',
+            status: document.getElementById('admin-livestream-status')?.value || 'OFFLINE',
+            label: document.getElementById('admin-livestream-label')?.value.trim() || '▶ YOUTUBE STREAM',
+            ticker: document.getElementById('admin-hero-live-ticker')?.value.trim() || ''
+          };
+          localStorage.setItem('sq1_livestream_config', JSON.stringify(config));
+          applyLivestreamConfig();
+
+          if (livestreamToast) {
+            livestreamToast.className = 'admin-status-toast success';
+            livestreamToast.textContent = '✓ Live stream link and broadcast state activated across website!';
+            setTimeout(() => { livestreamToast.className = 'admin-status-toast'; }, 3000);
+          }
+        });
+      }
+
+      // TAB 4: Season Settings
       const saveSeasonBtn = document.getElementById('admin-save-season-btn');
       const seasonToast = document.getElementById('admin-season-toast');
 
@@ -7618,28 +9402,7 @@ Roster (4 Players + Subs):</pre>
         });
       }
 
-      // TAB 3: Hero Ticker Settings
-      const saveTickerBtn = document.getElementById('admin-save-ticker-btn');
-      const tickerToast = document.getElementById('admin-ticker-toast');
-
-      if (saveTickerBtn) {
-        saveTickerBtn.addEventListener('click', () => {
-          sound.init();
-          sound.playClick();
-          const partnerText = document.getElementById('admin-hero-partner-text')?.value;
-          const heroPartner = document.getElementById('hero-partner');
-          if (heroPartner && partnerText) {
-            heroPartner.innerHTML = `<span class="dot"></span> ${partnerText}`;
-          }
-          if (tickerToast) {
-            tickerToast.className = 'admin-status-toast success';
-            tickerToast.textContent = '✓ Hero announcement bar updated!';
-            setTimeout(() => { tickerToast.className = 'admin-status-toast'; }, 3000);
-          }
-        });
-      }
-
-      // TAB 4: Backup Export
+      // TAB 5: Backup Export & Reset
       const exportBtn = document.getElementById('admin-export-btn');
       const resetBtn = document.getElementById('admin-reset-btn');
       const backupToast = document.getElementById('admin-backup-toast');
@@ -7652,8 +9415,9 @@ Roster (4 Players + Subs):</pre>
             export_timestamp: new Date().toISOString(),
             website: "SQUAD ONE ESPORTS",
             version: "2.0-ELITE",
-            season_active: 2,
-            master_key_set: true
+            section_visibility: JSON.parse(localStorage.getItem('sq1_section_vis') || '{}'),
+            livestream_config: JSON.parse(localStorage.getItem('sq1_livestream_config') || '{}'),
+            season_active: 2
           };
           const blob = new Blob([JSON.stringify(exportData, null, 2)], { type: 'application/json' });
           const url = URL.createObjectURL(blob);
@@ -7672,17 +9436,27 @@ Roster (4 Players + Subs):</pre>
 
       if (resetBtn) {
         resetBtn.addEventListener('click', () => {
-          if (confirm('Are you sure you want to reset all temporary admin configurations?')) {
+          if (confirm('Are you sure you want to reset all admin configurations (visibility, stream links, etc.)?')) {
             sound.init();
             sound.playClick();
             localStorage.removeItem('sq1_admin_auth');
+            localStorage.removeItem('sq1_section_vis');
+            localStorage.removeItem('sq1_livestream_config');
             location.reload();
           }
         });
       }
+
+      // Initial Load & Apply
+      loadAdminScrims();
+      loadVisibilityState();
+      applySectionVisibility();
+      loadLivestreamConfig();
+      applyLivestreamConfig();
     }
 
-    // Initialize Widget and Admin Terminal on Load
+    // Initialize Widget, Scrims Hub, and Admin Terminal on Load
+    initScrimsHub();
     initHudNewsWidget();
     initAdminPortal();
 
