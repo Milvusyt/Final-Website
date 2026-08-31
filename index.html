@@ -15,28 +15,47 @@
        CSS VARIABLES & THEME
        ========================================================================== */
     :root {
-      --bg-dark: #080604;
-      --bg-darker: #040302;
-      --bg-panel: #130f0a;
-      --bg-panel-alt: #1a140d;
-      --bg-card: rgba(26, 20, 13, 0.82);
+      /* eWave x SquadOne Unified Cosmic Palette */
+      --bg-dark: #07040a;
+      --bg-darker: #030105;
+      --bg-panel: #110819;
+      --bg-panel-alt: #170c23;
+      --bg-card: rgba(23, 12, 35, 0.88);
       
-      --gold-primary: #d4af37;
-      --gold-light: #f6e6b4;
-      --gold-glow: rgba(212, 175, 55, 0.45);
-      --gold-dim: #7d6522;
-      --gold-border: rgba(212, 175, 55, 0.22);
+      /* Electric Violet / Purple (eWave Accent) */
+      --purple-primary: #953ddf;
+      --purple-light: #c084fc;
+      --purple-glow: rgba(149, 61, 223, 0.5);
+      --purple-dim: #6b21a8;
+      --purple-border: rgba(168, 85, 247, 0.3);
+
+      /* Neon Crimson / Flame Red (Squad One Accent) */
+      --crimson: #ed1418;
+      --crimson-primary: #ff1e27;
+      --crimson-light: #ff6b6b;
+      --crimson-glow: rgba(237, 20, 24, 0.5);
+      --crimson-dim: #8b0a0c;
+      --crimson-border: rgba(237, 20, 24, 0.3);
+
+      /* Primary Brand Highlighting */
+      --gold-primary: #ed1418;
+      --gold-light: #f3e8ff;
+      --gold-glow: rgba(149, 61, 223, 0.45);
+      --gold-dim: #9333ea;
+      --gold-border: rgba(168, 85, 247, 0.28);
       
-      --crimson: #d62828;
-      --crimson-glow: rgba(214, 40, 40, 0.45);
-      --airdrop-red: #ff2222;
-      --airdrop-smoke: rgba(255, 34, 34, 0.6);
-      --blue-zone: #00c8ff;
-      --blue-zone-glow: rgba(0, 200, 255, 0.35);
+      --brand-gradient: linear-gradient(135deg, #953ddf 0%, #a855f7 35%, #ff3b30 70%, #ed1418 100%);
+      --brand-gradient-h: linear-gradient(90deg, #953ddf 0%, #b54dff 40%, #ff3b30 75%, #ed1418 100%);
+      --brand-glow-dual: 0 0 25px rgba(149, 61, 223, 0.45), 0 0 35px rgba(237, 20, 24, 0.4);
+
+      --airdrop-red: #ff1e27;
+      --airdrop-smoke: rgba(255, 30, 39, 0.6);
+      --blue-zone: #a855f7;
+      --blue-zone-glow: rgba(168, 85, 247, 0.4);
       
-      --text-bone: #f5f0e6;
-      --text-muted: #a69e90;
-      --text-dark: #635d52;
+      --text-bone: #f8f6fc;
+      --text-muted: #a79cb8;
+      --text-dark: #665b79;
       
       --font-display: 'Anton', sans-serif;
       --font-condensed: 'Barlow Condensed', sans-serif;
@@ -158,10 +177,13 @@
       pointer-events: none;
       z-index: 1;
       background-image: 
-        linear-gradient(rgba(212, 175, 55, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(212, 175, 55, 0.03) 1px, transparent 1px);
-      background-size: 60px 60px;
-      opacity: 0.7;
+        radial-gradient(circle at 12% 18%, rgba(149, 61, 223, 0.12) 0%, transparent 45%),
+        radial-gradient(circle at 88% 55%, rgba(237, 20, 24, 0.12) 0%, transparent 45%),
+        radial-gradient(circle at 50% 85%, rgba(149, 61, 223, 0.08) 0%, transparent 50%),
+        linear-gradient(rgba(149, 61, 223, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(237, 20, 24, 0.03) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 100% 100%, 60px 60px, 60px 60px;
+      opacity: 0.85;
     }
 
     .scanlines {
@@ -800,8 +822,10 @@
     }
 
     .hero h1 .word-gold {
-      color: var(--gold-primary);
-      text-shadow: 0 0 40px rgba(212, 175, 55, 0.65);
+      background: linear-gradient(135deg, #b54dff 0%, #953ddf 35%, #ff3b30 70%, #ed1418 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 0 35px rgba(237, 20, 24, 0.65));
       opacity: 1 !important;
     }
 
@@ -6828,7 +6852,7 @@ Roster (4 Players + Subs):</pre>
     gsap.ticker.lagSmoothing(0);
 
     /* ==========================================================================
-       04. CRISP, NON-GLOWY SLOW FIRE SPARKS & BURNING EMBERS ENGINE
+       04. EWAVE x SQUADONE DUAL ELECTRIC PURPLE & NEON CRIMSON SPARK ENGINE
        ========================================================================== */
     const globalCanvas = document.getElementById('global-particle-canvas');
     let globalScrollVelocity = 0;
@@ -6844,7 +6868,8 @@ Roster (4 Players + Subs):</pre>
       resizeGlobalCanvas();
       window.addEventListener('resize', resizeGlobalCanvas);
 
-      const sparkCount = window.innerWidth < 768 ? 75 : 150;
+      // High density sparks matching eWave x SquadOne poster
+      const sparkCount = window.innerWidth < 768 ? 140 : 260;
 
       class FireSpark {
         constructor() {
@@ -6853,20 +6878,48 @@ Roster (4 Players + Subs):</pre>
 
         reset(initial = false) {
           this.x = Math.random() * gW;
-          this.y = initial ? Math.random() * gH : gH + 10 + Math.random() * 30;
-          this.type = Math.floor(Math.random() * 3);
-          this.size = this.type === 1 ? (Math.random() * 1.8 + 1.0) : (Math.random() * 1.2 + 0.6);
-          this.length = this.type === 0 ? (Math.random() * 6 + 3) : (Math.random() * 3 + 1.2);
-          this.vx = (Math.random() - 0.5) * 0.35;
-          this.vy = -(Math.random() * 0.45 + 0.22);
-          this.turbulence = Math.random() * 0.025 + 0.008;
+          this.y = initial ? Math.random() * gH : gH + 10 + Math.random() * 35;
+          this.type = Math.floor(Math.random() * 4); // 0: Needle, 1: Ember Flake, 2: Diamond, 3: Micro Mote
+          
+          if (this.type === 0) {
+            // Ascending Needle Streak
+            this.size = Math.random() * 1.5 + 0.8;
+            this.length = Math.random() * 7 + 3.5;
+            this.vx = (Math.random() - 0.5) * 0.38;
+            this.vy = -(Math.random() * 0.7 + 0.3);
+          } else if (this.type === 1) {
+            // Tumbling 3D Ember Flake
+            this.size = Math.random() * 2.2 + 1.1;
+            this.length = Math.random() * 3 + 1.2;
+            this.vx = (Math.random() - 0.5) * 0.45;
+            this.vy = -(Math.random() * 0.48 + 0.2);
+          } else if (this.type === 2) {
+            // Diamond / Star Micro-Spark
+            this.size = Math.random() * 1.5 + 0.8;
+            this.length = this.size * 2;
+            this.vx = (Math.random() - 0.5) * 0.3;
+            this.vy = -(Math.random() * 0.38 + 0.18);
+          } else {
+            // Ambient Floating Mote / Micro-Ember
+            this.size = Math.random() * 1.2 + 0.5;
+            this.length = this.size;
+            this.vx = (Math.random() - 0.5) * 0.25;
+            this.vy = -(Math.random() * 0.28 + 0.12);
+          }
+
+          // Turbulence & 3D rotation
+          this.turbulence = Math.random() * 0.028 + 0.008;
           this.turbPhase = Math.random() * Math.PI * 2;
-          this.turbAmp = Math.random() * 0.35 + 0.12;
+          this.turbAmp = Math.random() * 0.42 + 0.14;
           this.rotation = Math.random() * Math.PI * 2;
-          this.rotSpeed = (Math.random() - 0.5) * 0.03;
-          this.maxLife = Math.random() * 450 + 300;
+          this.rotSpeed = (Math.random() - 0.5) * 0.035;
+          
+          // Color archetype: 0: Electric Violet/Purple, 1: Neon Crimson, 2: Dual Transition
+          this.paletteType = Math.floor(Math.random() * 3);
+
+          this.maxLife = Math.random() * 460 + 300;
           this.life = initial ? Math.random() * this.maxLife : 0;
-          this.flickerSpeed = Math.random() * 0.12 + 0.04;
+          this.flickerSpeed = Math.random() * 0.14 + 0.05;
           this.flickerOffset = Math.random() * Math.PI * 2;
         }
 
@@ -6878,61 +6931,101 @@ Roster (4 Players + Subs):</pre>
           }
           this.turbPhase += this.turbulence;
           this.rotation += this.rotSpeed;
-          const effectiveVy = this.vy - scrollVel * 0.25;
+          const effectiveVy = this.vy - scrollVel * 0.28;
           this.y += effectiveVy;
           this.x += this.vx + Math.sin(this.turbPhase) * this.turbAmp;
-          if (this.x < -10) this.x = gW + 5;
-          if (this.x > gW + 10) this.x = -5;
+          if (this.x < -15) this.x = gW + 10;
+          if (this.x > gW + 15) this.x = -10;
         }
 
         draw(ctx, scrollVel) {
           const progress = this.life / this.maxLife;
-          const flicker = 0.85 + 0.15 * Math.sin(this.life * this.flickerSpeed + this.flickerOffset);
-          const alpha = (progress < 0.1 ? (progress / 0.1) : (1 - progress)) * flicker;
+          const flicker = 0.84 + 0.16 * Math.sin(this.life * this.flickerSpeed + this.flickerOffset);
+          const alpha = (progress < 0.12 ? (progress / 0.12) : (1 - progress)) * flicker;
 
-          if (alpha <= 0.02) return;
+          if (alpha <= 0.015) return;
 
           let r, g, b;
-          if (progress < 0.25) {
-            const t = progress / 0.25;
-            r = 255;
-            g = Math.round(230 - t * 90);
-            b = Math.round(40 - t * 40);
-          } else if (progress < 0.7) {
-            const t = (progress - 0.25) / 0.45;
-            r = Math.round(255 - t * 45);
-            g = Math.round(140 - t * 115);
-            b = 0;
+          if (this.paletteType === 0) {
+            // Electric Purple / Violet (eWave Palette #953DDF / #A855F7)
+            if (progress < 0.25) {
+              const t = progress / 0.25;
+              r = Math.round(255 - t * 87);
+              g = Math.round(245 - t * 160);
+              b = 255;
+            } else if (progress < 0.7) {
+              const t = (progress - 0.25) / 0.45;
+              r = Math.round(168 - t * 19);
+              g = Math.round(85 - t * 24);
+              b = 255 - Math.round(t * 32);
+            } else {
+              const t = (progress - 0.7) / 0.3;
+              r = Math.round(149 - t * 75);
+              g = Math.round(61 - t * 40);
+              b = Math.round(223 - t * 120);
+            }
+          } else if (this.paletteType === 1) {
+            // Aggressive Neon Crimson (Squad One Palette #ED1418 / #FF1E27)
+            if (progress < 0.25) {
+              const t = progress / 0.25;
+              r = 255;
+              g = Math.round(240 - t * 180);
+              b = Math.round(220 - t * 180);
+            } else if (progress < 0.7) {
+              const t = (progress - 0.25) / 0.45;
+              r = Math.round(255 - t * 18);
+              g = Math.round(60 - t * 40);
+              b = Math.round(40 - t * 16);
+            } else {
+              const t = (progress - 0.7) / 0.3;
+              r = Math.round(237 - t * 140);
+              g = Math.round(20 - t * 14);
+              b = Math.round(24 - t * 14);
+            }
           } else {
-            const t = (progress - 0.7) / 0.3;
-            r = Math.round(210 - t * 125);
-            g = Math.round(25 - t * 20);
-            b = 0;
+            // Dual Fusion: Electric Violet to Glowing Crimson
+            if (progress < 0.35) {
+              const t = progress / 0.35;
+              r = Math.round(245 - t * 77);
+              g = Math.round(230 - t * 145);
+              b = 255;
+            } else if (progress < 0.7) {
+              const t = (progress - 0.35) / 0.35;
+              r = Math.round(168 + t * 69);
+              g = Math.round(85 - t * 65);
+              b = Math.round(255 - t * 231);
+            } else {
+              const t = (progress - 0.7) / 0.3;
+              r = Math.round(237 - t * 120);
+              g = Math.round(20 - t * 15);
+              b = Math.round(24 - t * 13);
+            }
           }
 
           ctx.save();
           ctx.translate(this.x, this.y);
-          ctx.shadowBlur = 0;
 
           if (this.type === 0) {
+            // Ascending Needle Streak
             const speed = Math.sqrt(this.vx * this.vx + this.vy * this.vy) + Math.abs(scrollVel * 0.3);
-            const streakLen = Math.max(this.length, speed * 2.5);
-            const angle = Math.atan2(this.vy - scrollVel * 0.25, this.vx);
+            const streakLen = Math.max(this.length, speed * 2.8);
+            const angle = Math.atan2(this.vy - scrollVel * 0.28, this.vx);
             ctx.rotate(angle);
             ctx.beginPath();
-            ctx.moveTo(streakLen * 0.6, 0);
-            ctx.lineTo(-streakLen * 0.35, -this.size * 0.45);
+            ctx.moveTo(streakLen * 0.65, 0);
+            ctx.lineTo(-streakLen * 0.35, -this.size * 0.5);
             ctx.lineTo(-streakLen * 0.65, 0);
-            ctx.lineTo(-streakLen * 0.35, this.size * 0.45);
+            ctx.lineTo(-streakLen * 0.35, this.size * 0.5);
             ctx.closePath();
             ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${alpha.toFixed(3)})`;
             ctx.fill();
 
             if (progress < 0.35) {
-              ctx.fillStyle = `rgba(255, 255, 220, ${ (alpha * 0.9).toFixed(3) })`;
-              ctx.fillRect(streakLen * 0.25, -this.size * 0.25, this.size * 0.7, this.size * 0.5);
+              ctx.fillStyle = `rgba(255, 255, 255, ${ (alpha * 0.95).toFixed(3) })`;
+              ctx.fillRect(streakLen * 0.25, -this.size * 0.25, this.size * 0.65, this.size * 0.5);
             }
           } else if (this.type === 1) {
+            // 3D Ember Flake
             ctx.rotate(this.rotation);
             ctx.beginPath();
             ctx.moveTo(-this.size, -this.size * 0.6);
@@ -6944,16 +7037,17 @@ Roster (4 Players + Subs):</pre>
             ctx.fill();
 
             if (progress < 0.4) {
-              ctx.fillStyle = `rgba(255, 240, 150, ${ (alpha * 0.75).toFixed(3) })`;
+              ctx.fillStyle = `rgba(255, 250, 255, ${ (alpha * 0.8).toFixed(3) })`;
               ctx.fillRect(-this.size * 0.25, -this.size * 0.25, this.size * 0.5, this.size * 0.5);
             }
-          } else {
+          } else if (this.type === 2) {
+            // Diamond / Star Spark
             ctx.rotate(this.rotation);
             ctx.beginPath();
             ctx.moveTo(0, -this.size * 1.6);
-            ctx.lineTo(this.size * 0.75, 0);
+            ctx.lineTo(this.size * 0.85, 0);
             ctx.lineTo(0, this.size * 1.6);
-            ctx.lineTo(-this.size * 0.75, 0);
+            ctx.lineTo(-this.size * 0.85, 0);
             ctx.closePath();
             ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${alpha.toFixed(3)})`;
             ctx.fill();
@@ -6962,6 +7056,12 @@ Roster (4 Players + Subs):</pre>
               ctx.fillStyle = `rgba(255, 255, 255, ${ (alpha * 0.85).toFixed(3) })`;
               ctx.fillRect(-0.5, -0.5, 1, 1);
             }
+          } else {
+            // Ambient Floating Mote
+            ctx.beginPath();
+            ctx.arc(0, 0, this.size, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${alpha.toFixed(3)})`;
+            ctx.fill();
           }
 
           ctx.restore();
