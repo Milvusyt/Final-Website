@@ -4549,8 +4549,6 @@
       }
     }
 
-
-
     /* Scrims Schedule Small Live Button */
     .scrim-live-badge-btn {
       display: inline-flex;
@@ -6502,8 +6500,6 @@ Roster (4 Players + Subs):</pre>
     <img src="images/sqnlS3.png" alt="SquadOne event image preview">
   </div>
 
-
-
   <!-- =========================================================================
        WHATSAPP / MODERN OS NOTIFICATION TOAST STACK (20s DURATION)
        ========================================================================= -->
@@ -8318,7 +8314,7 @@ Roster (4 Players + Subs):</pre>
       renderScrimsHub();
     }
 
-    function applyLivestreamConfig() {
+        function applyLivestreamConfig() {
       try {
         const config = JSON.parse(localStorage.getItem('sq1_livestream_config') || '{}');
         const liveUrl = config.url || 'https://www.youtube.com/live/qgJ0nTegK9A?si=1mtKJYlJ9kUk5b6H';
@@ -8357,7 +8353,7 @@ Roster (4 Players + Subs):</pre>
         if (isLive && config.ticker) {
           const heroPartner = document.getElementById('hero-partner');
           if (heroPartner) {
-            heroPartner.innerHTML = `<span class="dot" style="background:#ff3333; box-shadow:0 0 10px #ff3333;"></span> ${config.ticker}`;
+            heroPartner.innerHTML = '<span class="dot" style="background:#ff3333; box-shadow:0 0 10px #ff3333;"></span> ' + config.ticker;
           }
         }
       } catch (err) {
