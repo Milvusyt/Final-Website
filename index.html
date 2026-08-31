@@ -15,56 +15,80 @@
        CSS VARIABLES & THEME
        ========================================================================== */
     :root {
-      /* User's Exact 9-Color Palette */
-      --bg-dark: #050104;
-      --bg-darker: #050104;
-      --bg-panel: #11021A;
-      --bg-panel-alt: #260638;
-      --bg-card: rgba(38, 6, 56, 0.88);
-      
-      /* Electric Purple / eWave Palette */
-      --purple-primary: #953DDF;
-      --purple-light: #953DDF;
-      --purple-glow: rgba(149, 61, 223, 0.55);
-      --purple-dim: #7328A5;
-      --purple-border: rgba(115, 40, 165, 0.4);
+  /* BACKGROUNDS */
+  --bg-base:        #050104;
+  --bg-dark:        #050104;
+  --bg-darker:      #050104;
+  --bg-panel:       #11021A;
+  --bg-panel-alt:   #1c0529;
+  --bg-card:        rgba(17, 2, 26, 0.88);
+  --bg-card-hover:  rgba(38, 6, 56, 0.85);
 
-      /* Neon Crimson / Squad One Palette */
-      --crimson: #ED1418;
-      --crimson-primary: #ED1418;
-      --crimson-light: #ED1418;
-      --crimson-glow: rgba(237, 20, 24, 0.55);
-      --crimson-dim: #951121;
-      --crimson-border: rgba(149, 17, 33, 0.45);
-      --crimson-dark: #4B030B;
+  /* ELECTRIC PURPLE */
+  --purple:         #953DDF;
+  --purple-primary: #953DDF;
+  --purple-bright:  #A855F7;
+  --purple-light:   #C084FC;
+  --purple-dark:    #260638;
+  --purple-dim:     #541982;
+  --purple-glow:    rgba(149, 61, 223, 0.55);
+  --purple-border:  rgba(149, 61, 223, 0.28);
 
-      /* Primary Brand Highlights */
-      --gold-primary: #ED1418;
-      --gold-light: #F5F0F5;
-      --gold-glow: rgba(149, 61, 223, 0.45);
-      --gold-dim: #7328A5;
-      --gold-border: rgba(115, 40, 165, 0.35);
-      
-      --brand-gradient: linear-gradient(135deg, #953DDF 0%, #7328A5 35%, #ED1418 70%, #951121 100%);
-      --brand-gradient-h: linear-gradient(90deg, #953DDF 0%, #7328A5 40%, #ED1418 75%, #951121 100%);
-      --brand-glow-dual: 0 0 25px rgba(149, 61, 223, 0.5), 0 0 35px rgba(237, 20, 24, 0.45);
+  /* FIERY CRIMSON */
+  --crimson:        #ED1418;
+  --crimson-primary:#ED1418;
+  --crimson-dark:   #951121;
+  --crimson-deep:   #4B030B;
+  --crimson-glow:   rgba(237, 20, 24, 0.55);
+  --crimson-border: rgba(237, 20, 24, 0.28);
 
-      --airdrop-red: #ED1418;
-      --airdrop-smoke: rgba(237, 20, 24, 0.6);
-      --blue-zone: #953DDF;
-      --blue-zone-glow: rgba(149, 61, 223, 0.4);
-      
-      --text-bone: #F5F0F5;
-      --text-muted: #bfaec9;
-      --text-dark: #7a658a;
-      
-      --font-display: 'Anton', sans-serif;
-      --font-condensed: 'Barlow Condensed', sans-serif;
-      --font-body: 'Barlow', sans-serif;
-      --font-mono: 'JetBrains Mono', monospace;
-      
-      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
-    }
+  /* GRADIENTS */
+  --gradient-brand: linear-gradient(90deg, #953DDF, #ED1418);
+  --gradient-brand-135: linear-gradient(135deg, #953DDF, #ED1418);
+  --gradient-bg: linear-gradient(
+    135deg,
+    #050104 0%,
+    #11021A 30%,
+    #260638 50%,
+    #4B030B 75%,
+    #050104 100%
+  );
+
+  /* GLOWS */
+  --glow-purple: 0 0 25px rgba(149, 61, 223, 0.55);
+  --glow-red:    0 0 25px rgba(237, 20, 24, 0.55);
+  --glow-dual:   0 0 20px rgba(149, 61, 223, 0.35),
+                 0 0 40px rgba(237, 20, 24, 0.25);
+
+  /* TEXT */
+  --text-white:  #F5F0F5;
+  --text-bone:   #F5F0F5;
+  --text-muted:  #BD9EA9;
+  --text-dark:   #6E5564;
+
+  /* BACKWARD-COMPATIBILITY ALIASES */
+  --gold-primary: #953DDF;
+  --gold-light:   #F5F0F5;
+  --gold-glow:    rgba(149, 61, 223, 0.55);
+  --gold-dim:     #541982;
+  --gold-border:  rgba(149, 61, 223, 0.28);
+  --brand-gradient: linear-gradient(90deg, #953DDF, #ED1418);
+  --brand-gradient-h: linear-gradient(90deg, #953DDF, #ED1418);
+  --brand-glow-dual: 0 0 25px rgba(149, 61, 223, 0.5), 0 0 35px rgba(237, 20, 24, 0.45);
+  --airdrop-red:  #ED1418;
+  --airdrop-smoke:rgba(237, 20, 24, 0.6);
+  --blue-zone:    #953DDF;
+  --blue-zone-glow:rgba(149, 61, 223, 0.4);
+
+  /* FONTS */
+  --font-display:   'Anton', sans-serif;
+  --font-condensed: 'Barlow Condensed', sans-serif;
+  --font-body:      'Barlow', sans-serif;
+  --font-mono:      'JetBrains Mono', monospace;
+
+  /* EASING */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
 
     /* ==========================================================================
        BASE & RESET
@@ -96,14 +120,20 @@
     }
 
     body {
-      background-color: var(--bg-dark);
-      color: var(--text-bone);
-      font-family: var(--font-body);
-      overflow-x: hidden;
-      line-height: 1.6;
-      position: relative;
-      cursor: default;
-    }
+  background:
+    radial-gradient(circle at 50% 12%,  rgba(149, 61, 223, 0.22) 0%, transparent 55%),
+    radial-gradient(circle at 85% 38%,  rgba(237, 20, 24, 0.16)  0%, transparent 48%),
+    radial-gradient(circle at 15% 62%,  rgba(149, 61, 223, 0.18) 0%, transparent 52%),
+    radial-gradient(circle at 80% 82%,  rgba(237, 20, 24, 0.15)  0%, transparent 48%),
+    linear-gradient(135deg, #050104 0%, #11021A 30%, #260638 50%, #4B030B 75%, #050104 100%);
+  background-attachment: fixed;
+  color: var(--text-white);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  overflow-x: hidden;
+  position: relative;
+  cursor: default;
+}
 
     ::selection {
       background: var(--gold-primary);
@@ -732,6 +762,7 @@
       pointer-events: none;
     }
 
+    /* Big ghost watermark text in background */
     .hero-bg-graphic {
       position: absolute;
       inset: 0;
@@ -742,12 +773,11 @@
       opacity: 0.12;
       pointer-events: none;
     }
-
     .hero-bg-text {
       font-family: var(--font-display);
       font-size: clamp(6rem, 24vw, 24rem);
       color: transparent;
-      -webkit-text-stroke: 2px var(--gold-primary);
+      -webkit-text-stroke: 2px var(--purple);
       text-transform: uppercase;
       letter-spacing: 0.05em;
       white-space: nowrap;
@@ -756,6 +786,7 @@
       will-change: transform;
     }
 
+    /* Content layer */
     .hero-content {
       position: relative;
       z-index: 5;
@@ -766,6 +797,7 @@
       align-items: center;
     }
 
+    /* ── SPINNING CREST LOGO ─────────────────── */
     .hero-badge-crest {
       position: relative;
       width: 150px;
@@ -775,41 +807,32 @@
       align-items: center;
       justify-content: center;
     }
-
     .crest-ring {
       position: absolute;
       inset: 0;
-      border: 1px dashed var(--gold-primary);
+      border: 1px dashed var(--purple);
       border-radius: 50%;
       animation: rotate-ring 24s linear infinite;
     }
-
     .crest-ring-inner {
       position: absolute;
       inset: 12px;
-      border: 1px solid rgba(212, 175, 55, 0.4);
+      border: 1px solid rgba(237, 20, 24, 0.45);
       border-radius: 50%;
       animation: rotate-ring-rev 16s linear infinite;
     }
-
-    @keyframes rotate-ring {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
-    @keyframes rotate-ring-rev {
-      from { transform: rotate(360deg); }
-      to { transform: rotate(0deg); }
-    }
+    @keyframes rotate-ring     { to { transform: rotate(360deg); } }
+    @keyframes rotate-ring-rev { to { transform: rotate(-360deg); } }
 
     .hero-badge-crest img {
-      width: 185px;
-      height: 185px;
+      width: 135px;
+      height: 135px;
       object-fit: contain;
-      filter: drop-shadow(0 0 25px var(--gold-glow));
+      filter: drop-shadow(0 0 25px var(--purple-glow));
       z-index: 2;
-      transform: translate(-8px, -3px);
     }
 
+    /* ── HEADING ─────────────────────────────── */
     .hero h1 {
       font-family: var(--font-display);
       font-size: clamp(3.5rem, 11vw, 9.5rem);
@@ -818,93 +841,132 @@
       letter-spacing: 0.01em;
       margin-bottom: 18px;
       color: #ffffff;
-      opacity: 1 !important;
-      text-shadow: 0 4px 30px rgba(0, 0, 0, 0.95);
+      text-shadow: 0 4px 30px rgba(0,0,0,0.95);
+    }
+    .hero h1 .word-accent {
+      color: var(--purple);
+      text-shadow: 0 0 40px rgba(149, 61, 223, 0.75);
     }
 
-    .hero h1 .word-gold {
-      background: linear-gradient(135deg, #953DDF 0%, #7328A5 30%, #ED1418 70%, #951121 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      filter: drop-shadow(0 0 35px rgba(237, 20, 24, 0.65));
-      opacity: 1 !important;
-    }
-
+    /* ── TAGLINE ─────────────────────────────── */
     .hero-tagline {
       font-family: var(--font-condensed);
       font-size: clamp(1rem, 2.5vw, 1.4rem);
       text-transform: uppercase;
       letter-spacing: 0.4em;
-      color: #f5f0e6;
-      opacity: 1 !important;
+      color: #fff;
       font-weight: 600;
-      margin-bottom: 32px;
+      margin-bottom: 24px;
       display: flex;
       align-items: center;
       gap: 16px;
-      text-shadow: 0 2px 18px rgba(0, 0, 0, 0.9);
+      text-shadow: 0 2px 18px rgba(0,0,0,0.9);
     }
-
-    .hero-tagline::before, .hero-tagline::after {
+    .hero-tagline::before,
+    .hero-tagline::after {
       content: '';
       width: 35px;
       height: 1px;
-      background: var(--gold-dim);
+      background: var(--purple-dim);
     }
 
-    .hero-partner-bar {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      background: rgba(22, 16, 10, 0.95);
-      border: 1px solid var(--gold-primary);
-      padding: 10px 24px;
-      border-radius: 40px;
-      font-family: var(--font-mono);
-      font-size: 0.85rem;
-      color: #ffffff;
-      opacity: 1 !important;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      margin-bottom: 36px;
-      backdrop-filter: blur(12px);
-      box-shadow: 0 4px 25px rgba(0, 0, 0, 0.9), 0 0 20px rgba(212, 175, 55, 0.25);
+    /* ── DESCRIPTION ─────────────────────────── */
+    .hero-desc {
+      max-width: 680px;
+      margin: 0 auto 28px;
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      line-height: 1.6;
     }
 
-    .hero-partner-bar .dot {
-      width: 8px;
-      height: 8px;
-      background: var(--gold-primary);
-      border-radius: 50%;
-      box-shadow: 0 0 10px var(--gold-glow);
-    }
-
+    /* ── CTA BUTTONS ─────────────────────────── */
     .hero-cta-group {
       display: flex;
       gap: 20px;
       flex-wrap: wrap;
       justify-content: center;
-      opacity: 1 !important;
+      margin-bottom: 20px;
     }
 
-    .hero-cta-group .cyber-btn {
-      opacity: 1 !important;
+    .cyber-btn {
+      font-family: var(--font-condensed);
       font-size: 0.95rem;
       font-weight: 800;
+      text-transform: uppercase;
       letter-spacing: 0.14em;
       padding: 13px 32px;
-      box-shadow: 0 6px 25px rgba(0, 0, 0, 0.8), 0 0 20px rgba(212, 175, 55, 0.35);
+      color: #fff;
+      background: linear-gradient(90deg, #953DDF, #ED1418);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+      transition: all 0.3s var(--ease-out);
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 6px 25px rgba(0,0,0,0.8), 0 0 20px rgba(149, 61, 223, 0.35);
+    }
+    .cyber-btn:hover {
+      background: linear-gradient(90deg, #A855F7, #ff2024);
+      box-shadow: 0 0 25px rgba(149, 61, 223, 0.55), 0 0 45px rgba(237, 20, 24, 0.45);
+      transform: translateY(-2px);
     }
 
-    .hero-cta-group .cyber-btn-outline {
-      background: rgba(18, 14, 10, 0.92);
-      border: 1.5px solid var(--gold-primary);
-      color: var(--gold-light);
-      opacity: 1 !important;
-      font-weight: 800;
-      box-shadow: 0 6px 25px rgba(0, 0, 0, 0.8), 0 0 18px rgba(212, 175, 55, 0.25);
+    .cyber-btn-crimson {
+      background: var(--crimson);
+      box-shadow: 0 6px 25px rgba(0,0,0,0.8), 0 0 20px rgba(237, 20, 24, 0.4);
+    }
+    .cyber-btn-crimson:hover {
+      background: #ff2024;
+      box-shadow: 0 0 25px rgba(237, 20, 24, 0.55);
     }
 
+    .cyber-btn-outline {
+      background: rgba(17, 2, 26, 0.92);
+      border: 1.5px solid var(--purple);
+      color: #fff;
+      box-shadow: 0 6px 25px rgba(0,0,0,0.8), 0 0 18px rgba(149, 61, 223, 0.25);
+    }
+    .cyber-btn-outline:hover {
+      background: linear-gradient(90deg, #953DDF, #ED1418);
+      border-color: transparent;
+    }
+
+    /* ── STATS PILL BAR ──────────────────────── */
+    .hero-stats-pill-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 24px;
+      padding: 10px 20px;
+      background: rgba(17, 2, 26, 0.75);
+      border: 1px solid rgba(149, 61, 223, 0.3);
+      border-radius: 999px;
+      box-shadow: 0 0 25px rgba(149, 61, 223, 0.15);
+    }
+    .stats-pill-item {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--text-bone);
+      letter-spacing: 1.2px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .pill-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--purple);
+      box-shadow: 0 0 8px var(--purple-glow);
+    }
+
+    /* ── SCROLL INDICATOR ────────────────────── */
     .scroll-indicator {
       position: absolute;
       bottom: 32px;
@@ -915,26 +977,24 @@
       flex-direction: column;
       align-items: center;
       gap: 10px;
-      color: var(--gold-dim);
+      color: var(--purple-dim);
       font-family: var(--font-mono);
       font-size: 0.7rem;
       letter-spacing: 0.25em;
       text-transform: uppercase;
     }
-
-    .scroll-indicator .scroll-line {
+    .scroll-line {
       width: 1px;
       height: 48px;
-      background: linear-gradient(180deg, var(--gold-primary) 0%, transparent 100%);
-      animation: pulse-scroll-line 2s infinite ease-in-out;
+      background: linear-gradient(180deg, var(--purple) 0%, transparent 100%);
+      animation: pulse-line 2s infinite ease-in-out;
     }
-
-    @keyframes pulse-scroll-line {
-      0% { transform: scaleY(0.2); transform-origin: top; opacity: 0.3; }
-      50% { transform: scaleY(1); transform-origin: top; opacity: 1; }
+    @keyframes pulse-line {
+      0%   { transform: scaleY(0.2); transform-origin: top;    opacity: 0.3; }
+      50%  { transform: scaleY(1);   transform-origin: top;    opacity: 1;   }
       100% { transform: scaleY(0.2); transform-origin: bottom; opacity: 0.3; }
     }
-
+    
     /* ==========================================================================
       SECTION 02: TOURNAMENTS (PARALLAX + LIVE HUD MODAL)
        ========================================================================== */
@@ -5264,6 +5324,7 @@
       border-radius: 3px;
     }
   </style>
+  <link rel="stylesheet" href="squadone-theme.css">
 </head>
 <body>
 
@@ -5345,48 +5406,58 @@
        HERO SECTION (3D PARALLAX & VELOCITY-REACTIVE PARTICLES)
        ========================================================================= -->
   <section class="hero" id="hero">
-    
+
+    <!-- Ghost watermark text behind everything -->
     <div class="hero-bg-graphic">
       <div class="hero-bg-text" id="hero-parallax-bg">SQUAD ONE</div>
     </div>
 
     <div class="hero-content">
+
+      <!-- Spinning Logo Crest -->
       <div class="hero-badge-crest" id="hero-crest">
         <div class="crest-ring"></div>
         <div class="crest-ring-inner"></div>
         <img src="assets/squadone-logo.png" onerror="this.src='assets/teams/squadone.png'" alt="Squad One Logo">
       </div>
 
-      <h1 id="hero-title">
-        FORGED IN <span class="word-gold">FINALS</span>
-      </h1>
+      <!-- Main Title -->
+      <h1 id="hero-title">SQUAD ONE <span class="word-accent">ESPORTS</span></h1>
 
+      <!-- Tagline -->
       <div class="hero-tagline" id="hero-tagline">
-        Precision Rotations · Ruthless Firepower · Pure Instinct
+        FORGED IN FINALS · Competitive PUBG PC Esports
       </div>
 
-      <div class="hero-partner-bar" id="hero-partner">
-        <span class="dot"></span>
-        OFFICIAL SCRIM ARENA & BRACKETS POWERED BY EWAVE.GG
-      </div>
+      <!-- Description -->
+      <p class="hero-desc">
+        Built for teams that want to compete at the highest level. Official home of
+        the National League, elite daily scrims, and India's top battlegrounds squads.
+      </p>
 
+      <!-- CTA Buttons -->
       <div class="hero-cta-group" id="hero-cta">
-        <a href="https://ewave.gg/game/pubg/dashboard" target="_blank" class="cyber-btn" data-sound="click">
-          REGISTER FOR SCRIMS
-        </a>
-        <a href="#tournaments" class="cyber-btn cyber-btn-outline" data-sound="click">
-          VIEW TOURNAMENTS
-        </a>
-        <button class="cyber-btn cyber-btn-outline modal-trigger-btn" data-open-modal="modal-news" type="button" data-sound="click">
-          📢 NEWS & EVENTS
-        </button>
+        <a href="#tournaments" class="cyber-btn cyber-btn-crimson" data-sound="click">🏆 UPCOMING EVENTS</a>
+        <a href="https://discord.gg/pCk89vRPq" target="_blank" class="cyber-btn" data-sound="click">🎮 JOIN OUR COMMUNITY</a>
+        <button class="cyber-btn cyber-btn-outline modal-trigger-btn" data-open-modal="modal-news" type="button" data-sound="click">📢 NEWS &amp; EVENTS</button>
       </div>
+
+      <!-- Stats Ticker -->
+      <div class="hero-stats-pill-bar">
+        <div class="stats-pill-item"><span class="pill-dot"></span><span>100+ TEAMS</span></div>
+        <div class="stats-pill-item"><span class="pill-dot"></span><span>TOURNAMENTS</span></div>
+        <div class="stats-pill-item"><span class="pill-dot"></span><span>DAILY SCRIMS</span></div>
+        <div class="stats-pill-item"><span class="pill-dot"></span><span>INDIA</span></div>
+      </div>
+
     </div>
 
+    <!-- Scroll Indicator -->
     <div class="scroll-indicator">
       <span>SCROLL TO ENGAGE</span>
       <div class="scroll-line"></div>
     </div>
+
   </section>
 
   <!-- =========================================================================

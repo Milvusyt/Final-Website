@@ -1,0 +1,252 @@
+/*
+ * ============================================================
+ *  SQUAD ONE × EWAVE — Esports Color Theme
+ *  Version: 1.0
+ *  Usage: <link rel="stylesheet" href="squadone-theme.css">
+ * ============================================================
+ */
+
+/* ── GOOGLE FONTS ────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* ── CSS VARIABLES ───────────────────────────────────────── */
+:root {
+
+  /* BACKGROUNDS */
+  --bg-base:        #050104;
+  --bg-dark:        #050104;
+  --bg-darker:      #050104;
+  --bg-panel:       #11021A;
+  --bg-panel-alt:   #1c0529;
+  --bg-card:        rgba(17, 2, 26, 0.88);
+  --bg-card-hover:  rgba(38, 6, 56, 0.85);
+
+  /* ELECTRIC PURPLE */
+  --purple:         #953DDF;
+  --purple-primary: #953DDF;
+  --purple-bright:  #A855F7;
+  --purple-light:   #C084FC;
+  --purple-dark:    #260638;
+  --purple-dim:     #541982;
+  --purple-glow:    rgba(149, 61, 223, 0.55);
+  --purple-border:  rgba(149, 61, 223, 0.28);
+
+  /* FIERY CRIMSON */
+  --crimson:        #ED1418;
+  --crimson-primary:#ED1418;
+  --crimson-dark:   #951121;
+  --crimson-deep:   #4B030B;
+  --crimson-glow:   rgba(237, 20, 24, 0.55);
+  --crimson-border: rgba(237, 20, 24, 0.28);
+
+  /* GRADIENTS */
+  --gradient-brand: linear-gradient(90deg, #953DDF, #ED1418);
+  --gradient-brand-135: linear-gradient(135deg, #953DDF, #ED1418);
+  --gradient-bg: linear-gradient(
+    135deg,
+    #050104 0%,
+    #11021A 30%,
+    #260638 50%,
+    #4B030B 75%,
+    #050104 100%
+  );
+
+  /* GLOWS */
+  --glow-purple: 0 0 25px rgba(149, 61, 223, 0.55);
+  --glow-red:    0 0 25px rgba(237, 20, 24, 0.55);
+  --glow-dual:   0 0 20px rgba(149, 61, 223, 0.35),
+                 0 0 40px rgba(237, 20, 24, 0.25);
+
+  /* TEXT */
+  --text-white:  #F5F0F5;
+  --text-bone:   #F5F0F5;
+  --text-muted:  #BD9EA9;
+  --text-dark:   #6E5564;
+
+  /* BACKWARD-COMPATIBILITY ALIASES */
+  --gold-primary: #953DDF;
+  --gold-light:   #F5F0F5;
+  --gold-glow:    rgba(149, 61, 223, 0.55);
+  --gold-dim:     #541982;
+  --gold-border:  rgba(149, 61, 223, 0.28);
+  --brand-gradient: linear-gradient(90deg, #953DDF, #ED1418);
+  --brand-gradient-h: linear-gradient(90deg, #953DDF, #ED1418);
+  --brand-glow-dual: 0 0 25px rgba(149, 61, 223, 0.5), 0 0 35px rgba(237, 20, 24, 0.45);
+  --airdrop-red:  #ED1418;
+  --airdrop-smoke:rgba(237, 20, 24, 0.6);
+  --blue-zone:    #953DDF;
+  --blue-zone-glow:rgba(149, 61, 223, 0.4);
+
+  /* FONTS */
+  --font-display:   'Anton', sans-serif;
+  --font-condensed: 'Barlow Condensed', sans-serif;
+  --font-body:      'Barlow', sans-serif;
+  --font-mono:      'JetBrains Mono', monospace;
+
+  /* EASING */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ── BASE RESET ──────────────────────────────────────────── */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ── BODY BACKGROUND ─────────────────────────────────────── */
+body {
+  background:
+    radial-gradient(circle at 50% 12%,  rgba(149, 61, 223, 0.22) 0%, transparent 55%),
+    radial-gradient(circle at 85% 38%,  rgba(237, 20, 24, 0.16)  0%, transparent 48%),
+    radial-gradient(circle at 15% 62%,  rgba(149, 61, 223, 0.18) 0%, transparent 52%),
+    radial-gradient(circle at 80% 82%,  rgba(237, 20, 24, 0.15)  0%, transparent 48%),
+    linear-gradient(135deg, #050104 0%, #11021A 30%, #260638 50%, #4B030B 75%, #050104 100%);
+  background-attachment: fixed;
+  color: var(--text-white);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ── TYPOGRAPHY UTILITIES ────────────────────────────────── */
+.font-display   { font-family: var(--font-display);   }
+.font-condensed { font-family: var(--font-condensed); }
+.font-body      { font-family: var(--font-body);      }
+.font-mono      { font-family: var(--font-mono);      }
+
+.text-white  { color: var(--text-white); }
+.text-muted  { color: var(--text-muted); }
+.text-purple { color: var(--purple);     }
+.text-bright { color: var(--purple-bright); }
+.text-crimson{ color: var(--crimson);    }
+
+/* ── GRADIENT TEXT ───────────────────────────────────────── */
+.text-gradient {
+  background: var(--gradient-brand);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── BACKGROUND UTILITIES ────────────────────────────────── */
+.bg-panel     { background: var(--bg-panel); }
+.bg-card      { background: var(--bg-card);  }
+
+/* ── BORDER UTILITIES ────────────────────────────────────── */
+.border-purple  { border: 1px solid var(--purple-border); }
+.border-crimson { border: 1px solid var(--crimson-border); }
+
+/* ── GLOW UTILITIES ──────────────────────────────────────── */
+.glow-purple { box-shadow: var(--glow-purple); }
+.glow-red    { box-shadow: var(--glow-red);    }
+.glow-dual   { box-shadow: var(--glow-dual);   }
+
+/* ── GRADIENT LINE / DIVIDER ─────────────────────────────── */
+.divider-brand {
+  height: 1px;
+  background: var(--gradient-brand);
+  border: none;
+  opacity: 0.5;
+}
+
+/* ── CARD ────────────────────────────────────────────────── */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--purple-border);
+  border-radius: 8px;
+  padding: 24px;
+  transition: background 0.3s, box-shadow 0.3s, border-color 0.3s;
+}
+.card:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--purple);
+  box-shadow: var(--glow-dual);
+}
+
+/* ── BUTTON — PURPLE ─────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-condensed);
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 12px 28px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s var(--ease-out);
+}
+
+.btn-purple {
+  background: var(--purple);
+  color: #fff;
+  box-shadow: 0 0 16px rgba(149, 61, 223, 0.4);
+}
+.btn-purple:hover {
+  background: var(--purple-bright);
+  box-shadow: var(--glow-purple);
+  transform: translateY(-2px);
+}
+
+/* ── BUTTON — CRIMSON ────────────────────────────────────── */
+.btn-crimson {
+  background: var(--crimson);
+  color: #fff;
+  box-shadow: 0 0 16px rgba(237, 20, 24, 0.4);
+}
+.btn-crimson:hover {
+  background: #ff2a3a;
+  box-shadow: var(--glow-red);
+  transform: translateY(-2px);
+}
+
+/* ── BUTTON — OUTLINE ────────────────────────────────────── */
+.btn-outline {
+  background: transparent;
+  color: var(--purple-bright);
+  border: 1px solid var(--purple-border);
+}
+.btn-outline:hover {
+  background: rgba(149, 61, 223, 0.12);
+  border-color: var(--purple);
+  box-shadow: var(--glow-purple);
+}
+
+/* ── BUTTON — GRADIENT ───────────────────────────────────── */
+.btn-gradient {
+  background: var(--gradient-brand);
+  color: #fff;
+  box-shadow: var(--glow-dual);
+}
+.btn-gradient:hover {
+  opacity: 0.88;
+  transform: translateY(-2px);
+  box-shadow: var(--glow-dual), 0 8px 24px rgba(0,0,0,0.4);
+}
+
+/* ── BADGE ───────────────────────────────────────────────── */
+.badge {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 3px;
+}
+.badge-purple {
+  background: rgba(149, 61, 223, 0.18);
+  color: var(--purple-bright);
+  border: 1px solid var(--purple-border);
+}
+.badge-crimson {
+  background: rgba(237, 20, 24, 0.14);
+  color: #ff4a4a;
+  border: 1px solid var(--crimson-border);
+}
