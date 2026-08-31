@@ -15,34 +15,64 @@
        CSS VARIABLES & THEME
        ========================================================================== */
     :root {
-      --bg-dark: #080604;
-      --bg-darker: #040302;
-      --bg-panel: #130f0a;
-      --bg-panel-alt: #1a140d;
-      --bg-card: rgba(26, 20, 13, 0.82);
-      
-      --gold-primary: #d4af37;
-      --gold-light: #f6e6b4;
-      --gold-glow: rgba(212, 175, 55, 0.45);
-      --gold-dim: #7d6522;
-      --gold-border: rgba(212, 175, 55, 0.22);
-      
-      --crimson: #d62828;
-      --crimson-glow: rgba(214, 40, 40, 0.45);
-      --airdrop-red: #ff2222;
-      --airdrop-smoke: rgba(255, 34, 34, 0.6);
-      --blue-zone: #00c8ff;
-      --blue-zone-glow: rgba(0, 200, 255, 0.35);
-      
-      --text-bone: #f5f0e6;
-      --text-muted: #a69e90;
-      --text-dark: #635d52;
-      
+      /* SquadOne × EWAVE Esports Color System */
+      --black: #050104;
+      --bg-dark: #050104;
+      --bg-darker: #020003;
+      --bg-panel: #11021A;
+      --bg-panel-alt: #1c0529;
+      --bg-card: rgba(17, 2, 26, 0.88);
+      --bg-card-hover: rgba(38, 6, 56, 0.85);
+
+      /* Electric Purple Accents */
+      --purple: #953DDF;
+      --purple-primary: #953DDF;
+      --purple-bright: #A855F7;
+      --purple-light: #C084FC;
+      --purple-dark: #260638;
+      --purple-dim: #541982;
+      --purple-glow: rgba(149, 61, 223, 0.55);
+      --purple-border: rgba(149, 61, 223, 0.28);
+
+      /* Aggressive Crimson & Red Accents */
+      --red: #ED1418;
+      --red-primary: #ED1418;
+      --crimson: #ED1418;
+      --crimson-dark: #951121;
+      --crimson-deep: #4B030B;
+      --crimson-glow: rgba(237, 20, 24, 0.55);
+      --airdrop-red: #ED1418;
+      --airdrop-smoke: rgba(237, 20, 24, 0.6);
+
+      /* Esports Signature Gradients & Glows */
+      --esports-gradient: linear-gradient(90deg, #953DDF, #ED1418);
+      --esports-gradient-135: linear-gradient(135deg, #050104 0%, #11021A 35%, #260638 50%, #4B030B 70%, #050104 100%);
+      --esports-glow: 0 0 20px rgba(149, 61, 223, 0.35), 0 0 40px rgba(237, 20, 24, 0.25);
+      --glow-purple: 0 0 25px rgba(149, 61, 223, 0.55);
+      --glow-red: 0 0 25px rgba(237, 20, 24, 0.55);
+
+      /* Zone / Secondary HUD */
+      --blue-zone: #953DDF;
+      --blue-zone-glow: rgba(149, 61, 223, 0.45);
+
+      /* Typography & Text */
+      --white: #F5F0F5;
+      --text-bone: #F5F0F5;
+      --text-muted: #BD9EA9;
+      --text-dark: #6E5564;
+
+      /* Backward-Compatibility Aliases */
+      --gold-primary: #953DDF;
+      --gold-light: #F5F0F5;
+      --gold-glow: rgba(149, 61, 223, 0.55);
+      --gold-dim: #260638;
+      --gold-border: rgba(149, 61, 223, 0.28);
+
       --font-display: 'Anton', sans-serif;
       --font-condensed: 'Barlow Condensed', sans-serif;
       --font-body: 'Barlow', sans-serif;
       --font-mono: 'JetBrains Mono', monospace;
-      
+
       --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
     }
 
@@ -76,7 +106,13 @@
     }
 
     body {
-      background-color: var(--bg-dark);
+      background: 
+        radial-gradient(circle at 50% 12%, rgba(149, 61, 223, 0.22) 0%, transparent 55%),
+        radial-gradient(circle at 85% 38%, rgba(237, 20, 24, 0.16) 0%, transparent 48%),
+        radial-gradient(circle at 15% 62%, rgba(149, 61, 223, 0.18) 0%, transparent 52%),
+        radial-gradient(circle at 80% 82%, rgba(237, 20, 24, 0.15) 0%, transparent 48%),
+        linear-gradient(135deg, #050104 0%, #11021A 30%, #260638 50%, #4B030B 75%, #050104 100%);
+      background-attachment: fixed;
       color: var(--text-bone);
       font-family: var(--font-body);
       overflow-x: hidden;
@@ -86,8 +122,8 @@
     }
 
     ::selection {
-      background: var(--gold-primary);
-      color: var(--bg-dark);
+      background: var(--purple-primary);
+      color: var(--white);
     }
 
     /* Custom Scrollbar */
@@ -98,11 +134,13 @@
       background: var(--bg-darker);
     }
     ::-webkit-scrollbar-thumb {
-      background: var(--gold-dim);
+      background: var(--purple-dark);
       border-radius: 3px;
+      border: 1px solid rgba(149, 61, 223, 0.2);
     }
     ::-webkit-scrollbar-thumb:hover {
-      background: var(--gold-primary);
+      background: var(--purple-primary);
+      box-shadow: 0 0 10px var(--purple-glow);
     }
 
     /* ==========================================================================
@@ -114,12 +152,13 @@
       left: 0;
       width: 8px;
       height: 8px;
-      background: var(--gold-primary);
+      background: var(--purple-primary);
       border-radius: 50%;
       pointer-events: none;
       z-index: 9999;
       transform: translate(-50%, -50%);
       transition: transform 0.1s ease-out, background-color 0.2s;
+      box-shadow: 0 0 8px var(--purple-glow);
     }
 
     .cursor-follower {
@@ -128,7 +167,7 @@
       left: 0;
       width: 38px;
       height: 38px;
-      border: 1px solid var(--gold-glow);
+      border: 1px solid var(--purple-glow);
       border-radius: 50%;
       pointer-events: none;
       z-index: 9998;
@@ -140,9 +179,10 @@
     .cursor-active .cursor-follower {
       width: 60px;
       height: 60px;
-      border-color: var(--gold-primary);
-      background: rgba(212, 175, 55, 0.08);
+      border-color: var(--purple-primary);
+      background: rgba(149, 61, 223, 0.12);
       backdrop-filter: blur(2px);
+      box-shadow: 0 0 20px rgba(149, 61, 223, 0.3);
     }
 
     @media (pointer: coarse) {
@@ -158,8 +198,8 @@
       pointer-events: none;
       z-index: 1;
       background-image: 
-        linear-gradient(rgba(212, 175, 55, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(212, 175, 55, 0.03) 1px, transparent 1px);
+        linear-gradient(rgba(149, 61, 223, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(149, 61, 223, 0.04) 1px, transparent 1px);
       background-size: 60px 60px;
       opacity: 0.7;
     }
@@ -169,25 +209,18 @@
       inset: 0;
       pointer-events: none;
       z-index: 2;
-      background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%);
+      background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.35) 50%);
       background-size: 100% 4px;
       opacity: 0.4;
     }
 
-    /* Blue Zone Border Constriction Pulse */
+    /* Blue Zone Border (Disabled per user request for borderless full website) */
     .blue-zone-border {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 990;
-      border: 2px solid transparent;
-      box-shadow: inset 0 0 0px transparent;
-      transition: box-shadow 0.6s ease, border-color 0.6s ease;
+      display: none !important;
     }
 
     .blue-zone-active .blue-zone-border {
-      border-color: rgba(0, 200, 255, 0.45);
-      box-shadow: inset 0 0 50px rgba(0, 200, 255, 0.2), inset 0 0 100px rgba(0, 150, 255, 0.1);
+      display: none !important;
     }
 
     /* ==========================================================================
@@ -200,8 +233,8 @@
       transform: translateX(-50%);
       width: 320px;
       height: 24px;
-      background: rgba(10, 8, 5, 0.88);
-      border: 1px solid var(--gold-border);
+      background: rgba(17, 2, 26, 0.92);
+      border: 1px solid var(--purple-border);
       border-radius: 4px;
       z-index: 999;
       overflow: hidden;
@@ -210,8 +243,8 @@
       justify-content: center;
       font-family: var(--font-mono);
       font-size: 0.65rem;
-      color: var(--gold-primary);
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+      color: var(--purple-primary);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6), 0 0 15px rgba(149, 61, 223, 0.15);
       backdrop-filter: blur(8px);
       transition: opacity 0.3s;
     }
@@ -220,8 +253,8 @@
       position: absolute;
       width: 2px;
       height: 100%;
-      background: var(--crimson);
-      box-shadow: 0 0 6px var(--crimson);
+      background: var(--red);
+      box-shadow: 0 0 8px var(--red);
       z-index: 2;
     }
 
@@ -249,9 +282,9 @@
     }
 
     .killfeed-item {
-      background: rgba(14, 10, 6, 0.94);
-      border: 1px solid var(--gold-border);
-      border-left: 3px solid var(--gold-primary);
+      background: rgba(17, 2, 26, 0.95);
+      border: 1px solid var(--purple-border);
+      border-left: 3px solid var(--purple-primary);
       padding: 6px 14px;
       border-radius: 3px;
       font-family: var(--font-mono);
@@ -260,7 +293,7 @@
       display: flex;
       align-items: center;
       gap: 8px;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.7), 0 0 15px rgba(149, 61, 223, 0.15);
       transform: translateX(120%);
       opacity: 0;
       transition: transform 0.4s var(--ease-out), opacity 0.4s ease;
@@ -271,8 +304,8 @@
       opacity: 1;
     }
 
-    .killfeed-killer { color: var(--gold-light); font-weight: 700; }
-    .killfeed-weapon { color: var(--crimson); font-weight: 600; padding: 0 4px; }
+    .killfeed-killer { color: var(--purple-light); font-weight: 700; }
+    .killfeed-weapon { color: var(--red); font-weight: 600; padding: 0 4px; }
     .killfeed-victim { color: var(--text-muted); }
 
     /* ==========================================================================
@@ -291,8 +324,8 @@
     .progress-bar {
       height: 100%;
       width: 0%;
-      background: linear-gradient(90deg, var(--gold-dim), var(--gold-primary), var(--gold-light));
-      box-shadow: 0 0 12px var(--gold-glow);
+      background: linear-gradient(90deg, var(--purple-dark), var(--purple-primary), var(--red));
+      box-shadow: 0 0 14px var(--purple-glow);
       position: relative;
     }
 
@@ -303,9 +336,9 @@
       top: -2px;
       width: 7px;
       height: 7px;
-      background: var(--gold-light);
+      background: var(--red);
       border-radius: 50%;
-      box-shadow: 0 0 10px #fff, 0 0 20px var(--gold-primary);
+      box-shadow: 0 0 10px #fff, 0 0 20px var(--red);
     }
 
     header {
@@ -319,16 +352,16 @@
       align-items: center;
       justify-content: space-between;
       transition: all 0.4s var(--ease-out);
-      background: linear-gradient(180deg, rgba(8, 6, 4, 0.95) 0%, rgba(8, 6, 4, 0) 100%);
+      background: linear-gradient(180deg, rgba(5, 1, 4, 0.95) 0%, rgba(5, 1, 4, 0) 100%);
     }
 
     header.scrolled {
       padding: 10px 5vw;
-      background: rgba(12, 9, 6, 0.92);
+      background: rgba(17, 2, 26, 0.95);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--gold-border);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+      border-bottom: 1px solid var(--purple-border);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 20px rgba(149, 61, 223, 0.12);
     }
 
     .brand {
@@ -353,7 +386,7 @@
       width: 100%;
       height: 100%;
       object-fit: contain;
-      filter: drop-shadow(0 0 10px var(--gold-glow));
+      filter: drop-shadow(0 0 12px var(--purple-glow));
       transition: transform 0.4s var(--ease-out);
     }
 
@@ -373,7 +406,7 @@
     .brand-title span {
       font-family: var(--font-condensed);
       font-size: 0.7rem;
-      color: var(--gold-primary);
+      color: var(--purple-primary);
       letter-spacing: 0.35em;
       text-transform: uppercase;
       margin-top: 2px;
@@ -410,13 +443,13 @@
       left: 0;
       width: 0;
       height: 2px;
-      background: var(--gold-primary);
-      box-shadow: 0 0 8px var(--gold-glow);
+      background: var(--purple-primary);
+      box-shadow: 0 0 8px var(--purple-glow);
       transition: width 0.3s var(--ease-out);
     }
 
     .nav-link:hover, .nav-link.active {
-      color: var(--gold-light);
+      color: var(--white);
     }
 
     .nav-link:hover::before, .nav-link.active::before {
@@ -431,14 +464,14 @@
 
     /* Sound FX Toggle Button */
     .audio-toggle {
-      background: rgba(212, 175, 55, 0.08);
-      border: 1px solid var(--gold-border);
+      background: rgba(149, 61, 223, 0.1);
+      border: 1px solid var(--purple-border);
       border-radius: 4px;
       padding: 8px 14px;
       display: flex;
       align-items: center;
       gap: 8px;
-      color: var(--gold-primary);
+      color: var(--purple-primary);
       font-family: var(--font-mono);
       font-size: 0.75rem;
       cursor: pointer;
@@ -446,9 +479,9 @@
     }
 
     .audio-toggle:hover {
-      background: rgba(212, 175, 55, 0.18);
-      border-color: var(--gold-primary);
-      box-shadow: 0 0 15px rgba(212, 175, 55, 0.25);
+      background: rgba(149, 61, 223, 0.22);
+      border-color: var(--purple-primary);
+      box-shadow: 0 0 15px rgba(149, 61, 223, 0.35);
     }
 
     .equalizer {
@@ -462,7 +495,7 @@
     .eq-bar {
       width: 2px;
       height: 100%;
-      background: var(--gold-primary);
+      background: var(--purple-primary);
       border-radius: 1px;
       animation: equalize 1s infinite alternate ease-in-out;
       transform-origin: bottom;
@@ -493,8 +526,8 @@
       text-transform: uppercase;
       letter-spacing: 0.14em;
       padding: 11px 26px;
-      color: var(--bg-dark);
-      background: var(--gold-primary);
+      color: var(--white);
+      background: linear-gradient(90deg, #953DDF, #ED1418);
       text-decoration: none;
       display: inline-flex;
       align-items: center;
@@ -505,32 +538,37 @@
       transition: all 0.3s var(--ease-out);
       border: none;
       cursor: pointer;
+      box-shadow: 0 0 20px rgba(149, 61, 223, 0.35), 0 0 40px rgba(237, 20, 24, 0.25);
     }
 
     .cyber-btn:hover {
-      background: var(--gold-light);
-      box-shadow: 0 0 25px var(--gold-glow);
+      background: linear-gradient(90deg, #A855F7, #ff2024);
+      box-shadow: 0 0 25px rgba(149, 61, 223, 0.55), 0 0 45px rgba(237, 20, 24, 0.45);
       transform: translateY(-2px);
     }
 
     .cyber-btn-outline {
-      background: transparent;
-      color: var(--gold-primary);
-      border: 1px solid var(--gold-primary);
+      background: rgba(17, 2, 26, 0.8);
+      color: var(--white);
+      border: 1.5px solid var(--purple-primary);
+      box-shadow: 0 0 15px rgba(149, 61, 223, 0.2);
     }
 
     .cyber-btn-outline:hover {
-      background: var(--gold-primary);
-      color: var(--bg-dark);
+      background: linear-gradient(90deg, #953DDF, #ED1418);
+      color: var(--white);
+      border-color: transparent;
+      box-shadow: 0 0 25px rgba(149, 61, 223, 0.5);
     }
 
     .cyber-btn-crimson {
-      background: var(--crimson);
+      background: var(--red);
       color: #fff;
+      box-shadow: 0 0 20px rgba(237, 20, 24, 0.4);
     }
     .cyber-btn-crimson:hover {
-      background: #ff3333;
-      box-shadow: 0 0 25px var(--crimson-glow);
+      background: #ff2024;
+      box-shadow: 0 0 25px rgba(237, 20, 24, 0.55);
     }
 
     /* ==========================================================================
@@ -592,7 +630,7 @@
       position: relative;
       width: 8px;
       height: 8px;
-      background: rgba(212, 175, 55, 0.3);
+      background: rgba(149, 61, 223, 0.35);
       border-radius: 50%;
       cursor: pointer;
       transition: all 0.3s;
@@ -614,10 +652,10 @@
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.3s, transform 0.3s;
-      background: rgba(12, 9, 6, 0.85);
+      background: rgba(17, 2, 26, 0.9);
       padding: 2px 8px;
       border-radius: 2px;
-      border-left: 2px solid var(--gold-primary);
+      border-left: 2px solid var(--purple-primary);
     }
 
     .chapter-dot:hover::after, .chapter-dot.active::after {
@@ -626,8 +664,8 @@
     }
 
     .chapter-dot.active {
-      background: var(--gold-primary);
-      box-shadow: 0 0 12px var(--gold-glow);
+      background: var(--purple-primary);
+      box-shadow: 0 0 12px var(--purple-glow);
       transform: scale(1.4);
     }
 
@@ -652,7 +690,7 @@
       font-size: 0.78rem;
       text-transform: uppercase;
       letter-spacing: 0.3em;
-      color: var(--gold-primary);
+      color: var(--purple-primary);
       display: flex;
       align-items: center;
       gap: 12px;
@@ -661,7 +699,7 @@
 
     .sec-eyebrow::before {
       content: '//';
-      color: var(--gold-dim);
+      color: var(--purple-dim);
       font-weight: bold;
     }
 
@@ -680,8 +718,8 @@
     }
 
     .sec-title span {
-      color: var(--gold-primary);
-      -webkit-text-fill-color: var(--gold-primary);
+      color: var(--purple-primary);
+      -webkit-text-fill-color: var(--purple-primary);
     }
 
     .sec-desc {
@@ -704,6 +742,7 @@
       position: relative;
       overflow: hidden;
       padding: 140px 20px 80px;
+      background: transparent;
     }
 
     #hero-canvas {
@@ -730,7 +769,7 @@
       font-family: var(--font-display);
       font-size: clamp(6rem, 24vw, 24rem);
       color: transparent;
-      -webkit-text-stroke: 2px var(--gold-primary);
+      -webkit-text-stroke: 2px var(--purple-primary);
       text-transform: uppercase;
       letter-spacing: 0.05em;
       white-space: nowrap;
@@ -762,7 +801,7 @@
     .crest-ring {
       position: absolute;
       inset: 0;
-      border: 1px dashed var(--gold-primary);
+      border: 1px dashed var(--purple-primary);
       border-radius: 50%;
       animation: rotate-ring 24s linear infinite;
     }
@@ -770,7 +809,7 @@
     .crest-ring-inner {
       position: absolute;
       inset: 12px;
-      border: 1px solid rgba(212, 175, 55, 0.4);
+      border: 1px solid rgba(237, 20, 24, 0.45);
       border-radius: 50%;
       animation: rotate-ring-rev 16s linear infinite;
     }
@@ -788,7 +827,7 @@
       width: 185px;
       height: 185px;
       object-fit: contain;
-      filter: drop-shadow(0 0 25px var(--gold-glow));
+      filter: drop-shadow(0 0 25px var(--purple-glow));
       z-index: 2;
       transform: translate(-8px, -3px);
     }
@@ -806,8 +845,8 @@
     }
 
     .hero h1 .word-gold {
-      color: var(--gold-primary);
-      text-shadow: 0 0 40px rgba(212, 175, 55, 0.65);
+      color: var(--purple-primary);
+      text-shadow: 0 0 40px rgba(149, 61, 223, 0.75);
       opacity: 1 !important;
     }
 
@@ -816,7 +855,7 @@
       font-size: clamp(1rem, 2.5vw, 1.4rem);
       text-transform: uppercase;
       letter-spacing: 0.4em;
-      color: #f5f0e6;
+      color: var(--white);
       opacity: 1 !important;
       font-weight: 600;
       margin-bottom: 32px;
@@ -830,15 +869,15 @@
       content: '';
       width: 35px;
       height: 1px;
-      background: var(--gold-dim);
+      background: var(--purple-dim);
     }
 
     .hero-partner-bar {
       display: inline-flex;
       align-items: center;
       gap: 12px;
-      background: rgba(22, 16, 10, 0.95);
-      border: 1px solid var(--gold-primary);
+      background: rgba(17, 2, 26, 0.95);
+      border: 1px solid var(--purple-border);
       padding: 10px 24px;
       border-radius: 40px;
       font-family: var(--font-mono);
@@ -849,15 +888,15 @@
       letter-spacing: 0.12em;
       margin-bottom: 36px;
       backdrop-filter: blur(12px);
-      box-shadow: 0 4px 25px rgba(0, 0, 0, 0.9), 0 0 20px rgba(212, 175, 55, 0.25);
+      box-shadow: 0 4px 25px rgba(0, 0, 0, 0.9), 0 0 20px rgba(149, 61, 223, 0.25);
     }
 
     .hero-partner-bar .dot {
       width: 8px;
       height: 8px;
-      background: var(--gold-primary);
+      background: var(--purple-primary);
       border-radius: 50%;
-      box-shadow: 0 0 10px var(--gold-glow);
+      box-shadow: 0 0 10px var(--purple-glow);
     }
 
     .hero-cta-group {
@@ -874,16 +913,16 @@
       font-weight: 800;
       letter-spacing: 0.14em;
       padding: 13px 32px;
-      box-shadow: 0 6px 25px rgba(0, 0, 0, 0.8), 0 0 20px rgba(212, 175, 55, 0.35);
+      box-shadow: 0 6px 25px rgba(0, 0, 0, 0.8), 0 0 20px rgba(149, 61, 223, 0.35);
     }
 
     .hero-cta-group .cyber-btn-outline {
-      background: rgba(18, 14, 10, 0.92);
-      border: 1.5px solid var(--gold-primary);
-      color: var(--gold-light);
+      background: rgba(17, 2, 26, 0.92);
+      border: 1.5px solid var(--purple-primary);
+      color: var(--white);
       opacity: 1 !important;
       font-weight: 800;
-      box-shadow: 0 6px 25px rgba(0, 0, 0, 0.8), 0 0 18px rgba(212, 175, 55, 0.25);
+      box-shadow: 0 6px 25px rgba(0, 0, 0, 0.8), 0 0 18px rgba(149, 61, 223, 0.25);
     }
 
     .scroll-indicator {
@@ -896,7 +935,7 @@
       flex-direction: column;
       align-items: center;
       gap: 10px;
-      color: var(--gold-dim);
+      color: var(--purple-dim);
       font-family: var(--font-mono);
       font-size: 0.7rem;
       letter-spacing: 0.25em;
@@ -906,7 +945,7 @@
     .scroll-indicator .scroll-line {
       width: 1px;
       height: 48px;
-      background: linear-gradient(180deg, var(--gold-primary) 0%, transparent 100%);
+      background: linear-gradient(180deg, var(--purple-primary) 0%, transparent 100%);
       animation: pulse-scroll-line 2s infinite ease-in-out;
     }
 
@@ -920,9 +959,8 @@
       SECTION 02: TOURNAMENTS (PARALLAX + LIVE HUD MODAL)
        ========================================================================== */
     .intel-section {
-      background: radial-gradient(circle at 80% 20%, rgba(212, 175, 55, 0.05) 0%, transparent 60%),
-                  var(--bg-dark);
-      border-bottom: 1px solid var(--gold-border);
+      background: transparent;
+      border-bottom: none;
       position: relative;
       overflow: hidden;
     }
@@ -947,14 +985,14 @@
     .intel-visual-3d {
       position: relative;
       height: 480px;
-      background: radial-gradient(circle at center, rgba(30, 24, 15, 0.9), rgba(12, 9, 6, 0.95));
-      border: 1px solid var(--gold-border);
+      background: radial-gradient(circle at center, rgba(38, 6, 56, 0.8), rgba(17, 2, 26, 0.95));
+      border: 1px solid var(--purple-border);
       border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
       overflow: hidden;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(149, 61, 223, 0.15);
     }
 
     .radar-sweep {
@@ -962,14 +1000,14 @@
       width: 360px;
       height: 360px;
       border-radius: 50%;
-      border: 1px solid rgba(212, 175, 55, 0.2);
+      border: 1px solid rgba(149, 61, 223, 0.25);
     }
     .radar-sweep::after {
       content: '';
       position: absolute;
       inset: 0;
       border-radius: 50%;
-      background: conic-gradient(from 0deg at 50% 50%, rgba(212, 175, 55, 0.25) 0deg, transparent 60deg, transparent 360deg);
+      background: conic-gradient(from 0deg at 50% 50%, rgba(149, 61, 223, 0.35) 0deg, transparent 60deg, transparent 360deg);
       animation: radar-spin 6s linear infinite;
     }
 
@@ -983,14 +1021,14 @@
       height: auto;
       position: relative;
       z-index: 3;
-      filter: drop-shadow(0 0 35px var(--gold-glow));
+      filter: drop-shadow(0 0 35px var(--purple-glow));
     }
 
     .intel-corner-bracket {
       position: absolute;
       width: 16px;
       height: 16px;
-      border-color: var(--gold-primary);
+      border-color: var(--purple-primary);
       border-style: solid;
       pointer-events: none;
     }
@@ -1007,8 +1045,8 @@
     }
 
     .stat-box {
-      background: rgba(19, 15, 10, 0.6);
-      border: 1px solid var(--gold-border);
+      background: rgba(17, 2, 26, 0.85);
+      border: 1px solid var(--purple-border);
       padding: 24px;
       border-radius: 6px;
       position: relative;
@@ -1018,8 +1056,9 @@
 
     .stat-box:hover {
       transform: translateY(-4px);
-      border-color: var(--gold-primary);
-      background: rgba(26, 20, 13, 0.85);
+      border-color: var(--purple-primary);
+      background: rgba(38, 6, 56, 0.8);
+      box-shadow: 0 0 20px rgba(149, 61, 223, 0.25);
     }
 
     .stat-box::before {
@@ -1029,13 +1068,13 @@
       left: 0;
       width: 30px;
       height: 2px;
-      background: var(--gold-primary);
+      background: linear-gradient(90deg, var(--purple-primary), var(--red));
     }
 
     .stat-number {
       font-family: var(--font-display);
       font-size: 3rem;
-      color: var(--gold-primary);
+      color: var(--purple-primary);
       line-height: 1;
       margin-bottom: 6px;
     }
@@ -1053,7 +1092,7 @@
     .intel-modal-overlay {
       position: fixed;
       inset: 0;
-      background: rgba(4, 3, 2, 0.85);
+      background: rgba(5, 1, 4, 0.88);
       backdrop-filter: blur(12px);
       z-index: 2000;
       display: flex;
@@ -1070,13 +1109,13 @@
     }
 
     .intel-modal-window {
-      background: linear-gradient(160deg, rgba(26, 18, 11, 0.98) 0%, rgba(10, 8, 5, 0.98) 100%);
-      border: 1px solid var(--gold-primary);
+      background: radial-gradient(circle at top center, rgba(38, 6, 56, 0.98), rgba(17, 2, 26, 0.99));
+      border: 1px solid var(--purple-primary);
       border-radius: 12px;
       width: 90%;
       max-width: 680px;
       padding: 36px;
-      box-shadow: 0 0 50px rgba(212, 175, 55, 0.25);
+      box-shadow: 0 0 50px rgba(149, 61, 223, 0.3);
       position: relative;
       transform: scale(0.92) translateY(20px);
       transition: transform 0.3s var(--ease-out);
@@ -1094,10 +1133,10 @@
       width: 250px;
       min-height: 178px;
       padding: 106px 12px 12px;
-      border: 1px solid var(--crimson);
+      border: 1px solid var(--red);
       border-radius: 8px;
-      background: linear-gradient(135deg, rgba(48, 12, 12, 0.96), rgba(10, 8, 5, 0.97));
-      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.65), 0 0 22px var(--crimson-glow);
+      background: linear-gradient(135deg, rgba(75, 3, 11, 0.96), rgba(17, 2, 26, 0.97));
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.65), 0 0 25px rgba(237, 20, 24, 0.55);
       cursor: pointer;
       opacity: 0;
       pointer-events: none;
@@ -1113,7 +1152,7 @@
     }
 
     .finals-live-widget:hover {
-      border-color: var(--gold-primary);
+      border-color: var(--purple-primary);
       transform: translateY(-4px) scale(1.02);
     }
 
@@ -1135,7 +1174,7 @@
       object-fit: cover;
       object-position: center;
       opacity: 0.9;
-      border-bottom: 1px solid var(--crimson);
+      border-bottom: 1px solid var(--red);
       pointer-events: none;
     }
 
@@ -1159,7 +1198,7 @@
     .finals-live-widget small {
       display: block;
       margin-top: 6px;
-      color: var(--gold-light);
+      color: var(--purple-light);
       font-family: var(--font-mono);
       font-size: 0.58rem;
     }
@@ -1177,9 +1216,9 @@
       position: absolute;
       top: 18px;
       right: 18px;
-      background: rgba(212, 175, 55, 0.1);
-      border: 1px solid var(--gold-border);
-      color: var(--gold-primary);
+      background: rgba(149, 61, 223, 0.12);
+      border: 1px solid var(--purple-border);
+      color: var(--purple-primary);
       width: 32px;
       height: 32px;
       border-radius: 50%;
@@ -1193,8 +1232,9 @@
     }
 
     .modal-close-btn:hover {
-      background: var(--gold-primary);
-      color: var(--bg-dark);
+      background: var(--red);
+      border-color: var(--red);
+      color: var(--white);
     }
 
     .intel-telemetry-grid {
@@ -1205,8 +1245,8 @@
     }
 
     .telemetry-pill {
-      background: rgba(14, 10, 6, 0.9);
-      border: 1px solid var(--gold-border);
+      background: rgba(17, 2, 26, 0.9);
+      border: 1px solid var(--purple-border);
       padding: 12px 16px;
       border-radius: 6px;
     }
@@ -1214,7 +1254,7 @@
     .telemetry-pill .t-label {
       font-family: var(--font-mono);
       font-size: 0.68rem;
-      color: var(--gold-primary);
+      color: var(--purple-primary);
       text-transform: uppercase;
     }
 
@@ -1230,9 +1270,9 @@
        ========================================================================== */
     .airdrop-landing-zone {
       position: relative;
-      background: radial-gradient(circle at 50% 30%, rgba(214, 40, 40, 0.08) 0%, transparent 70%),
+      background: radial-gradient(circle at 50% 30%, rgba(237, 20, 24, 0.08) 0%, transparent 70%),
                   var(--bg-darker);
-      border-bottom: 1px solid var(--gold-border);
+      border-bottom: 1px solid var(--purple-border);
       padding: 100px 0 120px;
       overflow: hidden;
     }
@@ -1266,10 +1306,10 @@
       align-items: center;
       gap: 16px;
       padding-bottom: 14px;
-      border-bottom: 1px solid var(--gold-border);
+      border-bottom: 1px solid var(--purple-border);
       font-family: var(--font-mono);
       font-size: 0.72rem;
-      color: var(--gold-primary);
+      color: var(--purple-primary);
       letter-spacing: 0.12em;
     }
 
@@ -1281,8 +1321,8 @@
     .tournament-bracket-line {
       height: 1px;
       margin: 28px 0;
-      background: linear-gradient(90deg, transparent, var(--gold-primary), transparent);
-      box-shadow: 0 0 12px var(--gold-glow);
+      background: linear-gradient(90deg, transparent, var(--purple-primary), transparent);
+      box-shadow: 0 0 12px var(--purple-glow);
     }
 
     .tournament-board h3 {
@@ -1310,9 +1350,9 @@
 
     .tournament-board-meta span {
       padding: 10px 12px;
-      border: 1px solid rgba(212, 175, 55, 0.18);
-      background: rgba(8, 6, 4, 0.5);
-      color: var(--gold-light);
+      border: 1px solid rgba(149, 61, 223, 0.22);
+      background: rgba(17, 2, 26, 0.6);
+      color: var(--purple-light);
       font-family: var(--font-mono);
       font-size: 0.68rem;
     }
@@ -1323,9 +1363,9 @@
     }
 
     .upcoming-tournament-card {
-      background: linear-gradient(135deg, rgba(26, 18, 11, 0.9), rgba(10, 8, 5, 0.96));
-      border: 1px solid var(--gold-border);
-      border-left: 3px solid var(--gold-primary);
+      background: linear-gradient(135deg, rgba(38, 6, 56, 0.7), rgba(17, 2, 26, 0.96));
+      border: 1px solid var(--purple-border);
+      border-left: 3px solid var(--purple-primary);
       border-radius: 6px;
       padding: 18px 20px;
       transition: transform 0.3s var(--ease-out), border-color 0.3s, box-shadow 0.3s;
@@ -1333,18 +1373,18 @@
 
     .upcoming-tournament-card:hover {
       transform: translateX(6px);
-      border-color: var(--gold-primary);
-      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.55), 0 0 18px rgba(212, 175, 55, 0.14);
+      border-color: var(--purple-primary);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.7), 0 0 18px rgba(149, 61, 223, 0.35);
     }
 
     .upcoming-tournament-card.featured {
-      border-left-color: var(--crimson);
-      background: linear-gradient(135deg, rgba(52, 18, 18, 0.92), rgba(10, 8, 5, 0.98));
+      border-left-color: var(--red);
+      background: linear-gradient(135deg, rgba(75, 3, 11, 0.92), rgba(17, 2, 26, 0.98));
     }
 
     .upcoming-tournament-card.featured:hover {
-      border-color: var(--crimson);
-      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.55), 0 0 20px rgba(214, 40, 40, 0.2);
+      border-color: var(--red);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.7), 0 0 20px rgba(237, 20, 24, 0.35);
     }
 
     .upcoming-tournament-card h3 {
@@ -1365,7 +1405,7 @@
       font-size: 0.68rem;
     }
 
-    .tournament-card-topline { color: var(--gold-primary); }
+    .tournament-card-topline { color: var(--purple-primary); }
     .tournament-card-details { color: var(--text-muted); }
     .tournament-card-open { color: #00ff88; }
 
@@ -1378,7 +1418,7 @@
 
     .tournament-card-facts span {
       padding: 7px 9px;
-      border: 1px solid rgba(212, 175, 55, 0.15);
+      border: 1px solid rgba(149, 61, 223, 0.2);
       color: var(--text-muted);
       font-family: var(--font-mono);
       font-size: 0.64rem;
@@ -1386,7 +1426,7 @@
 
     .tournament-card-facts strong {
       display: block;
-      color: var(--gold-light);
+      color: var(--purple-light);
       font-size: 0.72rem;
       margin-top: 2px;
     }
@@ -1400,8 +1440,8 @@
     .qualifier-standings {
       margin-top: 44px;
       scroll-margin-top: 110px;
-      border: 1px solid var(--gold-border);
-      background: rgba(8, 6, 4, 0.72);
+      border: 1px solid var(--purple-border);
+      background: rgba(17, 2, 26, 0.85);
       overflow-x: auto;
     }
 
@@ -1410,7 +1450,7 @@
       justify-content: space-between;
       gap: 18px;
       padding: 18px 20px;
-      border-bottom: 1px solid var(--gold-border);
+      border-bottom: 1px solid var(--purple-border);
     }
 
     .qualifier-standings-header h3 {
@@ -1420,7 +1460,7 @@
     }
 
     .qualifier-standings-header span {
-      color: var(--gold-primary);
+      color: var(--purple-primary);
       font-family: var(--font-mono);
       font-size: 0.68rem;
       align-self: center;
@@ -1436,8 +1476,8 @@
 
     .qualifier-table th {
       padding: 12px 16px;
-      color: var(--gold-primary);
-      background: rgba(212, 175, 55, 0.08);
+      color: var(--purple-primary);
+      background: rgba(38, 6, 56, 0.6);
       text-align: left;
       letter-spacing: 0.08em;
       white-space: nowrap;
@@ -1446,11 +1486,11 @@
     .qualifier-table td {
       padding: 10px 16px;
       color: var(--text-muted);
-      border-top: 1px solid rgba(212, 175, 55, 0.1);
+      border-top: 1px solid rgba(149, 61, 223, 0.15);
     }
 
-    .qualifier-table tr:first-child td { color: var(--gold-light); }
-    .qualifier-table td:first-child { color: var(--gold-primary); width: 58px; }
+    .qualifier-table tr:first-child td { color: var(--white); }
+    .qualifier-table td:first-child { color: var(--purple-primary); width: 58px; }
 
     .qualifier-team {
       display: flex;
@@ -1475,10 +1515,10 @@
       max-width: 620px;
       margin: 24px 0 30px;
       padding: 10px;
-      border: 1px solid var(--crimson);
+      border: 1px solid var(--red);
       border-radius: 8px;
-      background: rgba(48, 12, 12, 0.55);
-      box-shadow: 0 0 22px rgba(214, 40, 40, 0.12);
+      background: rgba(75, 3, 11, 0.65);
+      box-shadow: 0 0 22px rgba(237, 20, 24, 0.25);
     }
 
     .circuit-live-card img {
@@ -1519,8 +1559,8 @@
     .airdrop-stage-container {
       position: relative;
       height: 480px;
-      background: radial-gradient(circle at center, rgba(35, 22, 14, 0.6) 0%, rgba(8, 6, 4, 0.95) 100%);
-      border: 1px solid var(--gold-border);
+      background: radial-gradient(circle at center, rgba(38, 6, 56, 0.6) 0%, rgba(5, 1, 4, 0.95) 100%);
+      border: 1px solid var(--purple-border);
       border-radius: 12px;
       display: flex;
       align-items: center;
@@ -1544,7 +1584,7 @@
       object-fit: contain;
       position: relative;
       z-index: 4;
-      filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.9)) drop-shadow(0 0 25px rgba(255, 34, 34, 0.35));
+      filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.9)) drop-shadow(0 0 25px rgba(237, 20, 24, 0.45));
       transform: translateY(0);
       transition: transform 0.4s var(--ease-out);
     }
@@ -1561,7 +1601,7 @@
       height: 220px;
       object-fit: cover;
       border-radius: 8px;
-      border: 1px solid var(--gold-border);
+      border: 1px solid var(--purple-border);
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
       z-index: 5;
       opacity: 0.95;
@@ -1569,18 +1609,18 @@
 
     /* PUBG Loot Inventory UI Popup */
     .pubg-inventory-panel {
-      background: rgba(14, 10, 6, 0.95);
-      border: 1px solid var(--gold-primary);
+      background: rgba(17, 2, 26, 0.95);
+      border: 1px solid var(--purple-primary);
       border-radius: 8px;
       padding: 24px;
-      box-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
+      box-shadow: 0 0 30px rgba(149, 61, 223, 0.25);
     }
 
     .inventory-header {
       font-family: var(--font-mono);
       font-size: 0.78rem;
-      color: var(--gold-primary);
-      border-bottom: 1px solid var(--gold-border);
+      color: var(--purple-primary);
+      border-bottom: 1px solid var(--purple-border);
       padding-bottom: 10px;
       margin-bottom: 16px;
       display: flex;
@@ -1592,16 +1632,16 @@
       align-items: center;
       justify-content: space-between;
       padding: 10px 14px;
-      background: rgba(24, 18, 12, 0.75);
-      border: 1px solid rgba(212, 175, 55, 0.15);
+      background: rgba(38, 6, 56, 0.4);
+      border: 1px solid rgba(149, 61, 223, 0.2);
       border-radius: 4px;
       margin-bottom: 8px;
       transition: all 0.2s;
     }
 
     .loot-item-row:hover {
-      background: rgba(45, 34, 18, 0.9);
-      border-color: var(--gold-primary);
+      background: rgba(38, 6, 56, 0.85);
+      border-color: var(--purple-primary);
       transform: translateX(4px);
     }
 
@@ -1615,7 +1655,7 @@
     .loot-tier {
       font-family: var(--font-mono);
       font-size: 0.68rem;
-      color: var(--crimson);
+      color: var(--red);
       text-transform: uppercase;
     }
 
@@ -1641,8 +1681,8 @@
     }
 
     .weapon-card {
-      background: linear-gradient(145deg, rgba(28, 20, 12, 0.92) 0%, rgba(12, 9, 5, 0.98) 100%);
-      border: 1px solid var(--gold-border);
+      background: linear-gradient(145deg, rgba(38, 6, 56, 0.6) 0%, rgba(17, 2, 26, 0.98) 100%);
+      border: 1px solid var(--purple-border);
       border-radius: 12px;
       padding: 36px 32px;
       position: relative;
@@ -1651,8 +1691,8 @@
     }
 
     .weapon-card:hover {
-      border-color: var(--gold-primary);
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8), 0 0 25px rgba(212, 175, 55, 0.2);
+      border-color: var(--purple-primary);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8), 0 0 25px rgba(149, 61, 223, 0.3);
       transform: translateY(-6px);
     }
 
@@ -1663,9 +1703,9 @@
       font-family: var(--font-mono);
       font-size: 0.72rem;
       padding: 4px 12px;
-      background: rgba(212, 175, 55, 0.12);
-      border: 1px solid var(--gold-border);
-      color: var(--gold-light);
+      background: rgba(149, 61, 223, 0.15);
+      border: 1px solid var(--purple-border);
+      color: var(--purple-light);
       border-radius: 4px;
       text-transform: uppercase;
       letter-spacing: 0.1em;
@@ -1684,7 +1724,7 @@
     .weapon-ammo-cal {
       font-family: var(--font-mono);
       font-size: 0.8rem;
-      color: var(--gold-primary);
+      color: var(--purple-primary);
       margin-bottom: 20px;
     }
 
@@ -1692,8 +1732,8 @@
     .weapon-stage-viewport {
       width: 100%;
       height: 170px;
-      background: radial-gradient(circle at center, rgba(45, 34, 18, 0.4), transparent 70%);
-      border: 1px dashed rgba(212, 175, 55, 0.3);
+      background: radial-gradient(circle at center, rgba(38, 6, 56, 0.4), transparent 70%);
+      border: 1px dashed rgba(149, 61, 223, 0.3);
       border-radius: 8px;
       display: flex;
       align-items: center;
@@ -1707,7 +1747,7 @@
       max-width: 90%;
       max-height: 110px;
       object-fit: contain;
-      filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.8)) drop-shadow(0 0 15px var(--gold-glow));
+      filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.8)) drop-shadow(0 0 15px var(--purple-glow));
       transition: transform 0.4s var(--ease-out);
       position: relative;
       z-index: 2;
@@ -1724,7 +1764,7 @@
       top: 50%;
       width: 100%;
       height: 2px;
-      background: linear-gradient(90deg, transparent 0%, #fff 50%, var(--gold-primary) 80%, transparent 100%);
+      background: linear-gradient(90deg, transparent 0%, #fff 50%, var(--purple-primary) 80%, transparent 100%);
       opacity: 0;
       transform: scaleX(0);
       transform-origin: left;
@@ -1759,7 +1799,7 @@
 
     .spec-bar-fill {
       height: 100%;
-      background: linear-gradient(90deg, var(--gold-dim), var(--gold-primary));
+      background: linear-gradient(90deg, var(--purple-dark), var(--purple-primary), var(--red));
       border-radius: 3px;
       width: 0%;
       transition: width 1.2s var(--ease-out);
@@ -1824,7 +1864,7 @@
     .stage-idx {
       font-family: var(--font-mono);
       font-size: 0.9rem;
-      color: var(--gold-primary);
+      color: var(--purple-primary);
       letter-spacing: 0.2em;
       margin-bottom: 8px;
     }
@@ -1855,9 +1895,9 @@
       font-family: var(--font-mono);
       font-size: 0.75rem;
       padding: 4px 12px;
-      background: rgba(212, 175, 55, 0.1);
-      border: 1px solid var(--gold-border);
-      color: var(--gold-light);
+      background: rgba(149, 61, 223, 0.12);
+      border: 1px solid var(--purple-border);
+      color: var(--purple-light);
       border-radius: 3px;
     }
 
@@ -1866,8 +1906,8 @@
       position: relative;
       width: 100%;
       height: 480px;
-      background: radial-gradient(circle at center, rgba(30, 20, 10, 0.8), rgba(8, 6, 4, 0.95));
-      border: 1px solid var(--gold-border);
+      background: radial-gradient(circle at center, rgba(38, 6, 56, 0.8), rgba(5, 1, 4, 0.95));
+      border: 1px solid var(--purple-border);
       border-radius: 12px;
       display: flex;
       align-items: center;
@@ -1880,8 +1920,8 @@
       position: absolute;
       inset: 0;
       background-image: 
-        linear-gradient(rgba(212, 175, 55, 0.08) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(212, 175, 55, 0.08) 1px, transparent 1px);
+        linear-gradient(rgba(149, 61, 223, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(149, 61, 223, 0.08) 1px, transparent 1px);
       background-size: 30px 30px;
     }
 
@@ -1889,7 +1929,7 @@
       position: absolute;
       width: 280px;
       height: 280px;
-      border: 2px solid var(--gold-border);
+      border: 2px solid var(--purple-border);
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -1900,15 +1940,15 @@
     .holo-center-target {
       width: 140px;
       height: 140px;
-      border: 2px dashed var(--gold-primary);
+      border: 2px dashed var(--purple-primary);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       font-family: var(--font-display);
       font-size: 2.2rem;
-      color: var(--gold-light);
-      text-shadow: 0 0 20px var(--gold-glow);
+      color: var(--white);
+      text-shadow: 0 0 20px var(--purple-glow);
       transition: all 0.5s;
     }
 
@@ -1918,7 +1958,7 @@
       left: 20px;
       font-family: var(--font-mono);
       font-size: 0.75rem;
-      color: var(--gold-primary);
+      color: var(--purple-primary);
       line-height: 1.5;
     }
 
@@ -1940,8 +1980,8 @@
 
     .roster-card {
       position: relative;
-      background: linear-gradient(165deg, rgba(30, 22, 14, 0.85) 0%, rgba(10, 8, 5, 0.95) 100%);
-      border: 1px solid var(--gold-border);
+      background: linear-gradient(165deg, rgba(38, 6, 56, 0.65) 0%, rgba(17, 2, 26, 0.95) 100%);
+      border: 1px solid var(--purple-border);
       border-radius: 8px;
       height: 420px;
       padding: 24px;
@@ -1956,14 +1996,14 @@
     }
 
     .roster-card:hover {
-      border-color: var(--gold-primary);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8), 0 0 30px rgba(212, 175, 55, 0.25);
+      border-color: var(--purple-primary);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8), 0 0 30px rgba(149, 61, 223, 0.35);
     }
 
     .roster-card .card-sheen {
       position: absolute;
       inset: 0;
-      background: radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.25), transparent 70%);
+      background: radial-gradient(circle at 50% 0%, rgba(149, 61, 223, 0.25), transparent 70%);
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.3s;
@@ -1977,7 +2017,7 @@
       font-family: var(--font-mono);
       font-size: 0.7rem;
       letter-spacing: 0.15em;
-      color: var(--gold-primary);
+      color: var(--purple-primary);
       text-transform: uppercase;
       display: flex;
       align-items: center;
@@ -1988,16 +2028,16 @@
     .player-avatar-box {
       width: 100%;
       height: 180px;
-      background: radial-gradient(circle at center, rgba(60, 45, 20, 0.4), transparent 70%);
+      background: radial-gradient(circle at center, rgba(38, 6, 56, 0.4), transparent 70%);
       display: flex;
       align-items: center;
       justify-content: center;
       font-family: var(--font-display);
       font-size: 4rem;
-      color: var(--gold-dim);
-      border-bottom: 1px solid var(--gold-border);
+      color: var(--purple-dim);
+      border-bottom: 1px solid var(--purple-border);
       transform: translateZ(35px);
-      text-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+      text-shadow: 0 0 20px rgba(149, 61, 223, 0.3);
     }
 
     .player-info-meta {
@@ -2015,7 +2055,7 @@
     .player-specialty {
       font-family: var(--font-condensed);
       font-size: 0.9rem;
-      color: var(--gold-primary);
+      color: var(--purple-primary);
       text-transform: uppercase;
       letter-spacing: 0.1em;
       margin-bottom: 14px;
@@ -2024,7 +2064,7 @@
     .player-stats-row {
       display: flex;
       justify-content: space-between;
-      border-top: 1px solid rgba(212, 175, 55, 0.15);
+      border-top: 1px solid rgba(149, 61, 223, 0.2);
       padding-top: 10px;
       font-family: var(--font-mono);
       font-size: 0.75rem;
@@ -2032,23 +2072,23 @@
     }
 
     .player-stats-row strong {
-      color: var(--gold-light);
+      color: var(--white);
     }
 
     /* ==========================================================================
        SECTION 07: EWAVE FINALS ROSTER & ALL 100+ TEAMS AUTO-WALL (07 TEAMS)
        ========================================================================== */
     .ewave-section {
-      background: radial-gradient(circle at 20% 50%, rgba(214, 40, 40, 0.08) 0%, transparent 60%),
+      background: radial-gradient(circle at 20% 50%, rgba(237, 20, 24, 0.08) 0%, transparent 60%),
                   var(--bg-darker);
-      border-top: 1px solid var(--gold-border);
-      border-bottom: 1px solid var(--gold-border);
+      border-top: 1px solid var(--purple-border);
+      border-bottom: 1px solid var(--purple-border);
       padding: 120px 0 80px;
     }
 
     .ewave-box {
-      background: linear-gradient(135deg, rgba(26, 18, 11, 0.9) 0%, rgba(12, 9, 6, 0.95) 100%);
-      border: 1px solid var(--gold-border);
+      background: linear-gradient(135deg, rgba(38, 6, 56, 0.65) 0%, rgba(17, 2, 26, 0.95) 100%);
+      border: 1px solid var(--purple-border);
       border-radius: 12px;
       padding: 50px;
       display: grid;
@@ -2065,8 +2105,8 @@
     }
 
     .ewave-countdown-panel {
-      background: rgba(10, 8, 5, 0.8);
-      border: 1px solid var(--gold-border);
+      background: rgba(17, 2, 26, 0.9);
+      border: 1px solid var(--purple-border);
       border-radius: 8px;
       padding: 30px;
       text-align: center;
@@ -2080,8 +2120,8 @@
     }
 
     .countdown-item {
-      background: rgba(212, 175, 55, 0.08);
-      border: 1px solid var(--gold-border);
+      background: rgba(38, 6, 56, 0.7);
+      border: 1px solid var(--purple-border);
       padding: 12px 6px;
       border-radius: 4px;
     }
@@ -2089,7 +2129,7 @@
     .cd-val {
       font-family: var(--font-display);
       font-size: 2rem;
-      color: var(--gold-light);
+      color: var(--white);
       line-height: 1;
     }
 
@@ -2142,9 +2182,9 @@
       justify-content: center;
       text-align: center;
       padding: 24px 16px;
-      border: 1px solid var(--gold-border);
+      border: 1px solid var(--purple-border);
       border-radius: 8px;
-      background: linear-gradient(180deg, var(--bg-panel) 0%, rgba(14, 10, 6, 0.95) 100%);
+      background: linear-gradient(180deg, var(--bg-panel) 0%, rgba(17, 2, 26, 0.95) 100%);
       backface-visibility: hidden;
       -webkit-backface-visibility: hidden;
       overflow: hidden;
@@ -2161,15 +2201,15 @@
     }
 
     .finals-card:hover .finals-card-front {
-      border-color: var(--gold-primary);
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8), 0 0 25px rgba(212, 175, 55, 0.25);
+      border-color: var(--purple-primary);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8), 0 0 25px rgba(149, 61, 223, 0.35);
     }
 
     .finals-card-back {
       align-items: stretch;
       justify-content: flex-start;
       transform: rotateY(180deg);
-      background: linear-gradient(145deg, rgba(42, 28, 12, 0.98), rgba(10, 8, 5, 0.98));
+      background: linear-gradient(145deg, rgba(38, 6, 56, 0.98), rgba(17, 2, 26, 0.98));
       text-align: left;
     }
 
@@ -2179,7 +2219,7 @@
       font-family: var(--font-mono);
       font-size: 0.64rem;
       letter-spacing: 0.15em;
-      color: var(--gold-primary);
+      color: var(--purple-primary);
       text-transform: uppercase;
     }
 
@@ -2204,7 +2244,7 @@
 
     .achievement-list li::before {
       content: '// ';
-      color: var(--crimson);
+      color: var(--red);
     }
 
     .finals-crown-tag {
@@ -2213,7 +2253,7 @@
       right: 12px;
       font-family: var(--font-mono);
       font-size: 0.65rem;
-      color: var(--gold-primary);
+      color: var(--purple-primary);
     }
 
     .finals-card img {
@@ -2221,7 +2261,7 @@
       height: 72px;
       object-fit: contain;
       margin: 8px 0 14px;
-      filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.3));
+      filter: drop-shadow(0 0 12px rgba(149, 61, 223, 0.4));
       transition: transform 0.3s;
     }
 
@@ -2239,7 +2279,7 @@
     .finals-card .team-tier {
       font-family: var(--font-mono);
       font-size: 0.7rem;
-      color: var(--gold-primary);
+      color: var(--purple-primary);
       text-transform: uppercase;
     }
 
@@ -2249,9 +2289,9 @@
     .hundred-teams-arena {
       margin-top: 90px;
       padding: 40px 0;
-      background: rgba(6, 4, 3, 0.98);
-      border-top: 1px solid var(--gold-border);
-      border-bottom: 1px solid var(--gold-border);
+      background: rgba(5, 1, 4, 0.98);
+      border-top: 1px solid var(--purple-border);
+      border-bottom: 1px solid var(--purple-border);
       overflow: hidden;
       position: relative;
     }
@@ -2299,8 +2339,8 @@
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      background: rgba(20, 15, 10, 0.85);
-      border: 1px solid rgba(212, 175, 55, 0.2);
+      background: rgba(17, 2, 26, 0.85);
+      border: 1px solid rgba(149, 61, 223, 0.2);
       padding: 6px 14px;
       border-radius: 6px;
       transition: all 0.25s var(--ease-out);
@@ -2310,10 +2350,10 @@
     }
 
     .team-capsule:hover {
-      background: rgba(36, 28, 17, 0.95);
-      border-color: var(--gold-primary);
+      background: rgba(38, 6, 56, 0.95);
+      border-color: var(--purple-primary);
       transform: translateY(-2px) scale(1.04);
-      box-shadow: 0 6px 18px rgba(212, 175, 55, 0.22);
+      box-shadow: 0 6px 18px rgba(149, 61, 223, 0.3);
     }
 
     .team-capsule img {
@@ -2346,7 +2386,7 @@
       font-family: var(--font-display);
       font-size: clamp(3.5rem, 8vw, 8rem);
       color: transparent;
-      -webkit-text-stroke: 1px var(--gold-dim);
+      -webkit-text-stroke: 1px var(--purple-dim);
       white-space: nowrap;
       display: flex;
       gap: 40px;
@@ -2358,11 +2398,11 @@
     .cta-portal-card {
       max-width: 780px;
       margin: 60px auto 0;
-      background: radial-gradient(circle at center, rgba(30, 22, 14, 0.95), rgba(12, 9, 6, 0.98));
-      border: 1px solid var(--gold-primary);
+      background: radial-gradient(circle at center, rgba(38, 6, 56, 0.95), rgba(17, 2, 26, 0.98));
+      border: 1px solid var(--purple-primary);
       border-radius: 16px;
       padding: 60px 40px;
-      box-shadow: 0 0 60px rgba(212, 175, 55, 0.2);
+      box-shadow: 0 0 60px rgba(149, 61, 223, 0.3);
       position: relative;
       z-index: 5;
     }
@@ -2380,7 +2420,7 @@
        ========================================================================== */
     footer {
       background: var(--bg-darker);
-      border-top: 1px solid var(--gold-border);
+      border-top: 1px solid var(--purple-border);
       padding: 40px 5vw;
       display: flex;
       justify-content: space-between;
@@ -2398,12 +2438,12 @@
     }
 
     footer a {
-      color: var(--gold-primary);
+      color: var(--purple-primary);
       text-decoration: none;
       transition: color 0.2s;
     }
     footer a:hover {
-      color: var(--gold-light);
+      color: var(--purple-light);
       text-decoration: underline;
     }
 
@@ -2426,7 +2466,7 @@
     .tournament-seasons-section {
       padding: 110px 0 90px;
       background: transparent;
-      border-bottom: 1px solid var(--gold-border);
+      border-bottom: none;
       position: relative;
       overflow: hidden;
     }
@@ -2455,8 +2495,8 @@
     }
 
     .season-card {
-      background: linear-gradient(135deg, rgba(26, 18, 11, 0.94) 0%, rgba(12, 9, 6, 0.98) 100%);
-      border: 1px solid var(--gold-border);
+      background: linear-gradient(135deg, rgba(38, 6, 56, 0.85) 0%, rgba(17, 2, 26, 0.98) 100%);
+      border: 1px solid var(--purple-border);
       border-radius: 12px;
       padding: 36px 30px;
       position: relative;
@@ -2469,14 +2509,14 @@
     }
 
     .season-card:hover {
-      border-color: var(--gold-primary);
+      border-color: var(--purple-primary);
       transform: translateY(-6px);
-      box-shadow: 0 18px 45px rgba(0,0,0,0.85), 0 0 35px rgba(212, 175, 55, 0.25);
+      box-shadow: 0 18px 45px rgba(0,0,0,0.85), 0 0 35px rgba(149, 61, 223, 0.35);
     }
 
     .season-card.active-season {
-      border-color: #00ffea;
-      box-shadow: 0 0 35px rgba(0, 255, 234, 0.3);
+      border-color: var(--purple-primary);
+      box-shadow: 0 0 35px rgba(149, 61, 223, 0.45);
     }
 
     .season-card-topline {
@@ -2486,7 +2526,7 @@
       margin-bottom: 16px;
       font-family: var(--font-mono);
       font-size: 0.75rem;
-      color: var(--gold-primary);
+      color: var(--purple-primary);
     }
 
     .season-badge-live {
@@ -2501,9 +2541,9 @@
     .season-badge-past {
       padding: 4px 10px;
       border-radius: 12px;
-      background: rgba(212, 175, 55, 0.15);
-      border: 1px solid var(--gold-primary);
-      color: var(--gold-light);
+      background: rgba(149, 61, 223, 0.15);
+      border: 1px solid var(--purple-primary);
+      color: var(--purple-light);
       font-weight: 700;
     }
 
@@ -2520,10 +2560,10 @@
       grid-template-columns: repeat(2, 1fr);
       gap: 12px;
       margin: 24px 0;
-      background: rgba(10, 8, 5, 0.6);
+      background: rgba(17, 2, 26, 0.6);
       padding: 16px;
       border-radius: 8px;
-      border: 1px solid rgba(212, 175, 55, 0.1);
+      border: 1px solid rgba(149, 61, 223, 0.15);
     }
 
     .season-fact-item {
@@ -2536,7 +2576,7 @@
     }
 
     .season-fact-item strong {
-      color: var(--gold-light);
+      color: var(--purple-light);
       font-size: 0.85rem;
     }
 
@@ -2553,11 +2593,11 @@
     }
 
     .ewave-tournament-wrapper {
-      background: radial-gradient(circle at top center, rgba(30, 20, 10, 0.98), rgba(8, 6, 4, 0.99));
-      border: 1px solid var(--gold-border);
+      background: radial-gradient(circle at top center, rgba(38, 6, 56, 0.98), rgba(17, 2, 26, 0.99));
+      border: 1px solid var(--purple-border);
       border-radius: 16px;
       overflow: hidden;
-      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.95), 0 0 50px rgba(212, 175, 55, 0.15);
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.95), 0 0 50px rgba(149, 61, 223, 0.25);
     }
 
     .ewave-banner-hero {
@@ -2569,7 +2609,7 @@
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
-      border-bottom: 1px solid var(--gold-border);
+      border-bottom: 1px solid var(--purple-border);
       overflow: hidden;
     }
 
@@ -2577,7 +2617,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, rgba(8, 6, 4, 0.4) 0%, rgba(8, 6, 4, 0.94) 100%);
+      background: linear-gradient(180deg, rgba(5, 1, 4, 0.4) 0%, rgba(5, 1, 4, 0.94) 100%);
       z-index: 1;
     }
 
@@ -2591,12 +2631,12 @@
       align-items: center;
       gap: 8px;
       padding: 6px 14px;
-      background: rgba(212, 175, 55, 0.15);
-      border: 1px solid var(--gold-primary);
+      background: rgba(149, 61, 223, 0.15);
+      border: 1px solid var(--purple-primary);
       border-radius: 20px;
       font-family: var(--font-mono);
       font-size: 0.72rem;
-      color: var(--gold-light);
+      color: var(--white);
       text-transform: uppercase;
       letter-spacing: 1.5px;
       margin-bottom: 14px;
@@ -2618,7 +2658,7 @@
       letter-spacing: 1.5px;
       line-height: 1.1;
       margin-bottom: 12px;
-      text-shadow: 0 0 25px rgba(212, 175, 55, 0.4);
+      text-shadow: 0 0 25px rgba(149, 61, 223, 0.5);
     }
 
     .ewave-tournament-meta {
@@ -2631,15 +2671,15 @@
     }
 
     .ewave-meta-item strong {
-      color: var(--gold-primary);
+      color: var(--purple-primary);
     }
 
     /* Sub Navigation Tabs */
     .ewave-subnav-bar {
       display: flex;
       align-items: center;
-      background: rgba(14, 10, 6, 0.98);
-      border-bottom: 1px solid var(--gold-border);
+      background: rgba(17, 2, 26, 0.98);
+      border-bottom: 1px solid var(--purple-border);
       padding: 0 20px;
       overflow-x: auto;
       scrollbar-width: none;
@@ -2667,21 +2707,21 @@
 
     .ewave-tab-btn:hover {
       color: var(--text-bone);
-      border-bottom-color: rgba(212, 175, 55, 0.4);
+      border-bottom-color: rgba(149, 61, 223, 0.4);
     }
 
     .ewave-tab-btn.active {
-      color: var(--gold-light);
-      border-bottom-color: var(--gold-primary);
-      background: rgba(212, 175, 55, 0.08);
+      color: var(--white);
+      border-bottom-color: var(--purple-primary);
+      background: rgba(149, 61, 223, 0.15);
     }
 
     .ewave-tab-badge {
       padding: 2px 8px;
-      background: rgba(212, 175, 55, 0.2);
+      background: rgba(149, 61, 223, 0.25);
       border-radius: 12px;
       font-size: 0.72rem;
-      color: var(--gold-primary);
+      color: var(--purple-light);
     }
 
     /* Tab Panes Container */
@@ -2707,8 +2747,8 @@
     }
 
     .format-card {
-      background: rgba(20, 15, 10, 0.8);
-      border: 1px solid var(--gold-border);
+      background: rgba(17, 2, 26, 0.85);
+      border: 1px solid var(--purple-border);
       border-radius: 10px;
       padding: 24px;
       position: relative;
@@ -2719,14 +2759,14 @@
       align-items: center;
       justify-content: space-between;
       margin-bottom: 16px;
-      border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+      border-bottom: 1px solid rgba(149, 61, 223, 0.2);
       padding-bottom: 10px;
     }
 
     .format-card-header h4 {
       font-family: var(--font-condensed);
       font-size: 1.25rem;
-      color: var(--gold-primary);
+      color: var(--purple-primary);
       text-transform: uppercase;
       letter-spacing: 1px;
     }
@@ -2748,15 +2788,15 @@
       gap: 16px;
     }
     .rule-box {
-      background: rgba(18, 14, 9, 0.85);
-      border: 1px solid var(--gold-border);
+      background: rgba(17, 2, 26, 0.85);
+      border: 1px solid var(--purple-border);
       border-radius: 8px;
       padding: 20px;
     }
     .rule-box h4 {
       font-family: var(--font-condensed);
       font-size: 1.15rem;
-      color: var(--gold-light);
+      color: var(--purple-light);
       margin-bottom: 10px;
       display: flex;
       align-items: center;
@@ -2776,8 +2816,8 @@
     }
     .teams-search-input {
       flex: 1;
-      background: rgba(14, 10, 6, 0.9);
-      border: 1px solid var(--gold-border);
+      background: rgba(17, 2, 26, 0.9);
+      border: 1px solid var(--purple-border);
       border-radius: 6px;
       padding: 12px 18px;
       color: var(--text-bone);
@@ -2786,8 +2826,8 @@
       outline: none;
     }
     .teams-search-input:focus {
-      border-color: var(--gold-primary);
-      box-shadow: 0 0 15px rgba(212, 175, 55, 0.25);
+      border-color: var(--purple-primary);
+      box-shadow: 0 0 15px rgba(149, 61, 223, 0.35);
     }
 
     .teams-grid-95 {
@@ -2800,16 +2840,16 @@
     }
 
     .team-applicant-card {
-      background: rgba(20, 15, 10, 0.85);
-      border: 1px solid var(--gold-border);
+      background: rgba(17, 2, 26, 0.85);
+      border: 1px solid var(--purple-border);
       border-radius: 8px;
       padding: 16px;
       transition: all 0.25s ease;
     }
     .team-applicant-card:hover {
-      border-color: var(--gold-primary);
+      border-color: var(--purple-primary);
       transform: translateY(-3px);
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.8), 0 0 20px rgba(212, 175, 55, 0.2);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.8), 0 0 20px rgba(149, 61, 223, 0.3);
     }
     .team-applicant-header {
       display: flex;
@@ -2817,13 +2857,13 @@
       gap: 12px;
       margin-bottom: 12px;
       padding-bottom: 10px;
-      border-bottom: 1px solid rgba(212, 175, 55, 0.12);
+      border-bottom: 1px solid rgba(149, 61, 223, 0.15);
     }
     .team-applicant-avatar {
       width: 44px;
       height: 44px;
       border-radius: 50%;
-      border: 2px solid var(--gold-primary);
+      border: 2px solid var(--purple-primary);
       object-fit: cover;
       background: #111;
     }
@@ -2857,9 +2897,9 @@
       align-items: center;
       justify-content: space-between;
       margin-bottom: 20px;
-      background: rgba(14, 10, 6, 0.7);
+      background: rgba(17, 2, 26, 0.7);
       padding: 14px 20px;
-      border: 1px solid var(--gold-border);
+      border: 1px solid var(--purple-border);
       border-radius: 8px;
     }
 
@@ -2871,7 +2911,7 @@
 
     .filter-pill {
       background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(212, 175, 55, 0.18);
+      border: 1px solid rgba(149, 61, 223, 0.25);
       color: var(--text-muted);
       font-family: var(--font-mono);
       font-size: 0.72rem;
@@ -2882,21 +2922,21 @@
       transition: all 0.2s;
     }
     .filter-pill:hover {
-      color: var(--gold-light);
-      border-color: var(--gold-primary);
+      color: var(--white);
+      border-color: var(--purple-primary);
     }
     .filter-pill.active {
-      background: var(--gold-primary);
-      color: var(--bg-dark);
-      border-color: var(--gold-primary);
+      background: linear-gradient(90deg, var(--purple-primary), var(--red));
+      color: #fff;
+      border-color: var(--purple-primary);
     }
 
     /* Standings Table with Accordion Expansion */
     .ewave-standings-table-container {
       overflow-x: auto;
-      border: 1px solid var(--gold-border);
+      border: 1px solid var(--purple-border);
       border-radius: 8px;
-      background: rgba(12, 9, 6, 0.95);
+      background: rgba(17, 2, 26, 0.95);
     }
 
     .ewave-table {
@@ -2908,14 +2948,14 @@
     }
 
     .ewave-table th {
-      background: rgba(22, 16, 10, 0.98);
-      color: var(--gold-primary);
+      background: rgba(38, 6, 56, 0.9);
+      color: var(--purple-primary);
       font-family: var(--font-mono);
       font-size: 0.72rem;
       text-transform: uppercase;
       letter-spacing: 1.2px;
       padding: 14px 16px;
-      border-bottom: 1px solid var(--gold-border);
+      border-bottom: 1px solid var(--purple-border);
       white-space: nowrap;
     }
 
@@ -2925,17 +2965,17 @@
     }
 
     .ewave-table tr.team-row:hover td {
-      background: rgba(212, 175, 55, 0.08);
+      background: rgba(149, 61, 223, 0.12);
     }
 
     .ewave-table tr.team-row.expanded td {
-      background: rgba(212, 175, 55, 0.12);
+      background: rgba(149, 61, 223, 0.18);
       border-bottom: none;
     }
 
     .ewave-table td {
       padding: 12px 16px;
-      border-bottom: 1px solid rgba(212, 175, 55, 0.08);
+      border-bottom: 1px solid rgba(149, 61, 223, 0.12);
       color: var(--text-bone);
       white-space: nowrap;
     }
@@ -2943,7 +2983,7 @@
     .ewave-table .rank-cell {
       font-family: var(--font-display);
       font-size: 1.15rem;
-      color: var(--gold-primary);
+      color: var(--purple-primary);
       width: 48px;
       text-align: center;
     }
@@ -2962,7 +3002,7 @@
       height: 28px;
       border-radius: 50%;
       object-fit: cover;
-      border: 1px solid var(--gold-border);
+      border: 1px solid var(--purple-border);
     }
 
     .tot-pts-highlight {
@@ -2990,7 +3030,7 @@
     .expand-indicator {
       display: inline-block;
       font-size: 0.7rem;
-      color: var(--gold-primary);
+      color: var(--purple-primary);
       margin-left: 6px;
       transition: transform 0.3s;
     }
@@ -3001,8 +3041,8 @@
     /* INLINE PLAYER ACCORDION EXPANSION ROW */
     .player-breakdown-row {
       display: none;
-      background: rgba(18, 13, 8, 0.95);
-      border-bottom: 2px solid var(--gold-primary);
+      background: rgba(20, 3, 30, 0.95);
+      border-bottom: 2px solid var(--purple-primary);
     }
     .player-breakdown-row.show {
       display: table-row;
@@ -3017,8 +3057,8 @@
       gap: 12px;
     }
     .player-stat-card {
-      background: rgba(26, 20, 13, 0.9);
-      border: 1px solid var(--gold-border);
+      background: rgba(38, 6, 56, 0.75);
+      border: 1px solid var(--purple-border);
       border-radius: 6px;
       padding: 12px 14px;
       display: flex;
@@ -3029,7 +3069,7 @@
       font-family: var(--font-condensed);
       font-size: 1rem;
       font-weight: 700;
-      color: var(--gold-light);
+      color: var(--purple-light);
       display: flex;
       align-items: center;
       gap: 6px;
@@ -3040,7 +3080,7 @@
       font-family: var(--font-mono);
       font-size: 0.68rem;
       color: var(--text-muted);
-      border-top: 1px dashed rgba(212, 175, 55, 0.15);
+      border-top: 1px dashed rgba(149, 61, 223, 0.2);
       padding-top: 4px;
     }
     .player-metrics-mini strong {
@@ -3051,8 +3091,8 @@
        TEAM FALCONS INSPIRED SQUAD ONE MEGA FOOTER
        ========================================================================== */
     .falcon-footer-wrapper {
-      background: linear-gradient(180deg, var(--bg-darker) 0%, #020101 100%);
-      border-top: 1px solid var(--gold-border);
+      background: linear-gradient(180deg, var(--bg-darker) 0%, #050104 100%);
+      border-top: 1px solid var(--purple-border);
       padding: 80px 5vw 40px;
       font-family: var(--font-body);
       position: relative;
@@ -3109,7 +3149,7 @@
       font-family: var(--font-condensed);
       font-size: 1.15rem;
       font-weight: 700;
-      color: var(--gold-primary);
+      color: var(--purple-primary);
       text-transform: uppercase;
       letter-spacing: 1.2px;
       margin-bottom: 20px;
@@ -3124,7 +3164,7 @@
       bottom: 0;
       width: 24px;
       height: 2px;
-      background: var(--gold-primary);
+      background: var(--purple-primary);
     }
 
     .falcon-link-list {
@@ -3145,12 +3185,12 @@
     }
 
     .falcon-link-list a:hover {
-      color: var(--gold-light);
+      color: var(--white);
       transform: translateX(4px);
     }
 
     .falcon-footer-bottom {
-      border-top: 1px solid rgba(212, 175, 55, 0.12);
+      border-top: 1px solid rgba(149, 61, 223, 0.18);
       padding-top: 30px;
       display: flex;
       justify-content: space-between;
@@ -3169,8 +3209,8 @@
 
     .falcon-social-btn {
       padding: 8px 16px;
-      background: rgba(212, 175, 55, 0.08);
-      border: 1px solid var(--gold-border);
+      background: rgba(149, 61, 223, 0.1);
+      border: 1px solid var(--purple-border);
       border-radius: 4px;
       color: var(--text-bone);
       text-decoration: none;
@@ -3182,16 +3222,16 @@
     }
 
     .falcon-social-btn:hover {
-      background: var(--gold-primary);
-      color: var(--bg-dark);
-      border-color: var(--gold-primary);
+      background: linear-gradient(90deg, var(--purple-primary), var(--red));
+      color: #fff;
+      border-color: var(--purple-primary);
     }
 
     /* Modals CSS */
     .esports-info-modal {
       position: fixed;
       inset: 0;
-      background: rgba(4, 3, 2, 0.88);
+      background: rgba(5, 1, 4, 0.9);
       backdrop-filter: blur(12px);
       z-index: 10000;
       display: none;
@@ -3208,15 +3248,15 @@
     }
 
     .esports-modal-window {
-      background: radial-gradient(circle at top center, rgba(30, 22, 13, 0.98), rgba(10, 8, 5, 0.99));
-      border: 1px solid var(--gold-primary);
+      background: radial-gradient(circle at top center, rgba(38, 6, 56, 0.98), rgba(17, 2, 26, 0.99));
+      border: 1px solid var(--purple-primary);
       border-radius: 14px;
       max-width: 800px;
       width: 100%;
       max-height: 85vh;
       display: flex;
       flex-direction: column;
-      box-shadow: 0 0 60px rgba(0, 0, 0, 0.95), 0 0 40px rgba(212, 175, 55, 0.25);
+      box-shadow: 0 0 60px rgba(0, 0, 0, 0.95), 0 0 40px rgba(149, 61, 223, 0.35);
       overflow: hidden;
       animation: modalPopIn 0.35s var(--ease-out);
     }
@@ -3228,11 +3268,11 @@
 
     .esports-modal-header {
       padding: 24px 30px;
-      border-bottom: 1px solid var(--gold-border);
+      border-bottom: 1px solid var(--purple-border);
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: rgba(16, 12, 7, 0.9);
+      background: rgba(22, 4, 34, 0.9);
     }
 
     .esports-modal-header h3 {
@@ -3247,8 +3287,8 @@
 
     .esports-modal-close {
       background: rgba(255, 255, 255, 0.06);
-      border: 1px solid var(--gold-border);
-      color: var(--gold-light);
+      border: 1px solid var(--purple-border);
+      color: var(--purple-light);
       width: 36px;
       height: 36px;
       border-radius: 50%;
@@ -3261,8 +3301,8 @@
     }
 
     .esports-modal-close:hover {
-      background: var(--crimson);
-      border-color: var(--crimson);
+      background: var(--red);
+      border-color: var(--red);
       color: #fff;
       transform: rotate(90deg);
     }
@@ -3285,14 +3325,14 @@
     }
     .esports-modal-body::-webkit-scrollbar-track,
     .ewave-player-modal-window::-webkit-scrollbar-track {
-      background: rgba(10, 8, 5, 0.9);
+      background: rgba(17, 2, 26, 0.9);
       border-radius: 4px;
     }
     .esports-modal-body::-webkit-scrollbar-thumb,
     .ewave-player-modal-window::-webkit-scrollbar-thumb {
-      background: var(--gold-primary);
+      background: var(--purple-primary);
       border-radius: 4px;
-      box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+      box-shadow: 0 0 10px rgba(149, 61, 223, 0.5);
     }
 
     body.modal-open {
@@ -3302,7 +3342,7 @@
     .esports-modal-body h4 {
       font-family: var(--font-condensed);
       font-size: 1.2rem;
-      color: var(--gold-primary);
+      color: var(--purple-primary);
       text-transform: uppercase;
       margin: 20px 0 8px;
     }
@@ -3325,8 +3365,8 @@
     }
 
     .news-article-card {
-      background: rgba(20, 15, 10, 0.7);
-      border: 1px solid var(--gold-border);
+      background: rgba(17, 2, 26, 0.85);
+      border: 1px solid var(--purple-border);
       border-radius: 8px;
       padding: 18px 20px;
       margin-bottom: 16px;
@@ -3334,8 +3374,8 @@
     }
 
     .news-article-card:hover {
-      border-color: var(--gold-primary);
-      background: rgba(30, 22, 14, 0.9);
+      border-color: var(--purple-primary);
+      background: rgba(38, 6, 56, 0.8);
       transform: translateX(4px);
     }
 
@@ -3354,7 +3394,7 @@
       display: block;
       width: 100%;
       padding: 0;
-      border: 1px solid var(--gold-border);
+      border: 1px solid var(--purple-border);
       border-radius: 6px;
       overflow: hidden;
       background: var(--bg-darker);
@@ -3383,7 +3423,7 @@
       align-items: center;
       justify-content: center;
       padding: clamp(14px, 4vw, 48px);
-      background: rgba(2, 2, 1, 0.94);
+      background: rgba(5, 1, 4, 0.95);
       backdrop-filter: blur(10px);
       opacity: 0;
       pointer-events: none;
@@ -3402,8 +3442,8 @@
       width: auto;
       height: auto;
       object-fit: contain;
-      border: 1px solid var(--gold-primary);
-      box-shadow: 0 0 60px rgba(0, 0, 0, 0.95), 0 0 30px var(--gold-glow);
+      border: 1px solid var(--purple-primary);
+      box-shadow: 0 0 60px rgba(0, 0, 0, 0.95), 0 0 30px var(--purple-glow);
     }
 
     .event-image-lightbox-close {
@@ -3412,10 +3452,10 @@
       right: 22px;
       width: 42px;
       height: 42px;
-      border: 1px solid var(--gold-primary);
+      border: 1px solid var(--purple-primary);
       border-radius: 50%;
-      background: rgba(10, 8, 5, 0.9);
-      color: var(--gold-light);
+      background: rgba(17, 2, 26, 0.9);
+      color: var(--purple-light);
       font-size: 1.25rem;
       cursor: pointer;
     }
@@ -3437,7 +3477,7 @@
     .news-card-date {
       font-family: var(--font-mono);
       font-size: 0.72rem;
-      color: var(--gold-primary);
+      color: var(--purple-primary);
       margin-bottom: 4px;
     }
 
@@ -3458,8 +3498,8 @@
       flex-wrap: wrap;
       gap: 16px;
       padding: 20px 30px;
-      background: rgba(14, 10, 6, 0.98);
-      border-bottom: 1px solid var(--gold-border);
+      background: rgba(17, 2, 26, 0.98);
+      border-bottom: 1px solid var(--purple-border);
     }
 
     .ewave-hub-title-badge {
@@ -3469,22 +3509,22 @@
       font-family: var(--font-condensed);
       font-size: 1.15rem;
       font-weight: 700;
-      color: var(--gold-light);
+      color: var(--white);
       text-transform: uppercase;
       letter-spacing: 1.2px;
     }
 
     .ewave-hub-title-badge .count-tag {
-      background: rgba(212, 175, 55, 0.2);
-      border: 1px solid var(--gold-primary);
-      color: var(--gold-primary);
+      background: rgba(149, 61, 223, 0.2);
+      border: 1px solid var(--purple-primary);
+      color: var(--purple-primary);
       padding: 3px 10px;
       border-radius: 12px;
       font-family: var(--font-mono);
       font-size: 0.75rem;
     }
 
-                    /* ==========================================================================
+    /* ==========================================================================
        CYBER GUN SKIN 3D BUTTON (RGB BACKSIDE TURBINE ROTATION & 3D MAGNETIC TILT)
        ========================================================================== */
     .ewave-more-info-btn {
@@ -3493,8 +3533,8 @@
       align-items: center;
       justify-content: center;
       padding: 12px 28px;
-      background: linear-gradient(135deg, #1d1510 0%, #0d0a07 50%, #170f14 100%);
-      border: 1.5px solid var(--gold-primary);
+      background: linear-gradient(135deg, #11021A 0%, #260638 50%, #4B030B 100%);
+      border: 1.5px solid var(--purple-primary);
       border-radius: 8px;
       color: #ffffff;
       text-decoration: none;
@@ -3507,7 +3547,7 @@
       perspective: 900px;
       transform-style: preserve-3d;
       transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.85), 0 0 25px rgba(212, 175, 55, 0.25), inset 0 1px 0 rgba(246, 230, 180, 0.25);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.85), 0 0 25px rgba(149, 61, 223, 0.35), inset 0 1px 0 rgba(168, 85, 247, 0.25);
       overflow: hidden;
       will-change: transform;
     }
@@ -3516,7 +3556,7 @@
       content: '';
       position: absolute;
       inset: 2px;
-      border: 1px dashed rgba(212, 175, 55, 0.3);
+      border: 1px dashed rgba(149, 61, 223, 0.35);
       border-radius: 6px;
       pointer-events: none;
       transition: border-color 0.3s ease;
@@ -3526,10 +3566,10 @@
       content: '';
       position: absolute;
       inset: -2px;
-      background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.8), rgba(255, 0, 128, 0.7), rgba(0, 200, 255, 0.7), transparent);
+      background: linear-gradient(90deg, transparent, rgba(149, 61, 223, 0.8), rgba(237, 20, 24, 0.8), rgba(168, 85, 247, 0.8), transparent);
       border-radius: 9px;
       z-index: 0;
-      opacity: 0.5;
+      opacity: 0.6;
       animation: laserBorderSweep 3.5s linear infinite;
     }
 
@@ -3568,7 +3608,7 @@
       align-items: center;
       gap: 14px;
       transform: translateZ(16px);
-      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9), 0 0 15px rgba(212, 175, 55, 0.4);
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9), 0 0 15px rgba(149, 61, 223, 0.5);
     }
 
     /* Gun Skin Wrapper with Active Backside RGB Turbine */
@@ -3588,7 +3628,7 @@
       width: 100%;
       height: 100%;
       object-fit: contain;
-      filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.8)) drop-shadow(0 0 10px rgba(255, 0, 128, 0.5));
+      filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.8)) drop-shadow(0 0 10px rgba(237, 20, 24, 0.6));
       position: relative;
       z-index: 2;
       transition: filter 0.3s ease;
@@ -3602,13 +3642,13 @@
       width: 13.5px;
       height: 13.5px;
       border-radius: 50%;
-      background: conic-gradient(from 0deg, #ff0055, #ffcc00, #00ff88, #00c8ff, #bf00ff, #ff0055);
+      background: conic-gradient(from 0deg, #ED1418, #953DDF, #A855F7, #ED1418);
       mix-blend-mode: screen;
       animation: rotateTurbineRGB 2.2s linear infinite;
       pointer-events: none;
       z-index: 1;
       opacity: 0.9;
-      box-shadow: 0 0 10px rgba(0, 200, 255, 0.85), 0 0 16px rgba(255, 0, 128, 0.8);
+      box-shadow: 0 0 10px rgba(149, 61, 223, 0.85), 0 0 16px rgba(237, 20, 24, 0.8);
     }
 
     @keyframes rotateTurbineRGB {
@@ -3624,9 +3664,9 @@
       top: 4.5px;
       width: 6px;
       height: 6px;
-      background: #ffcc00;
+      background: #ED1418;
       border-radius: 50%;
-      box-shadow: 0 0 8px #ffcc00, 0 0 14px #ff6600;
+      box-shadow: 0 0 8px #ED1418, 0 0 14px #951121;
       animation: muzzlePulse 1.6s ease-in-out infinite alternate;
       pointer-events: none;
       z-index: 3;
@@ -3646,20 +3686,20 @@
 
     .ewave-more-info-btn .btn-arrow {
       font-size: 1.15rem;
-      color: var(--gold-light);
+      color: var(--purple-light);
       display: inline-block;
       transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s ease;
     }
 
     /* Hover State: 3D Gun Elevation & High Intensity Cyber Glow */
     .ewave-more-info-btn:hover {
-      background: linear-gradient(135deg, #2b1c15 0%, #160e10 50%, #201222 100%);
-      border-color: #fff;
-      box-shadow: 0 16px 45px rgba(0, 0, 0, 0.9), 0 0 35px rgba(255, 0, 128, 0.4), 0 0 25px rgba(212, 175, 55, 0.4);
+      background: linear-gradient(135deg, #260638 0%, #4B030B 50%, #11021A 100%);
+      border-color: var(--red);
+      box-shadow: 0 16px 45px rgba(0, 0, 0, 0.9), 0 0 35px rgba(149, 61, 223, 0.5), 0 0 25px rgba(237, 20, 24, 0.4);
     }
 
     .ewave-more-info-btn:hover::after {
-      border-color: rgba(255, 0, 128, 0.6);
+      border-color: rgba(237, 20, 24, 0.6);
     }
 
     .ewave-more-info-btn:hover .btn-gun-wrapper {
@@ -3667,7 +3707,7 @@
     }
 
     .ewave-more-info-btn:hover .btn-gun-skin {
-      filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.9)) drop-shadow(0 0 16px rgba(255, 0, 128, 0.8)) drop-shadow(0 0 24px rgba(0, 200, 255, 0.6));
+      filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.9)) drop-shadow(0 0 16px rgba(237, 20, 24, 0.8)) drop-shadow(0 0 24px rgba(149, 61, 223, 0.6));
     }
 
     .ewave-more-info-btn:hover .gun-turbine-vortex {
@@ -3677,8 +3717,8 @@
     }
 
     .ewave-more-info-btn:hover .btn-text {
-      color: var(--gold-light);
-      text-shadow: 0 0 15px rgba(212, 175, 55, 0.7), 0 0 25px rgba(255, 0, 128, 0.5);
+      color: var(--white);
+      text-shadow: 0 0 15px rgba(149, 61, 223, 0.8), 0 0 25px rgba(237, 20, 24, 0.6);
     }
 
     .ewave-more-info-btn:hover .btn-arrow {
@@ -3701,19 +3741,73 @@
       width: 100vw;
       height: 100vh;
       pointer-events: none;
-      z-index: 0;
-      opacity: 0.85;
+      z-index: 1;
+      opacity: 0.98;
+      mix-blend-mode: screen;
     }
 
-    body {
-      background-color: var(--bg-dark);
+    /* ==========================================================================
+       EWAVE × SQUAD ONE ALLIANCE BANNER SHOWCASE
+       ========================================================================== */
+    .partnership-banner-section {
+      padding: 50px 0 20px;
       position: relative;
+      z-index: 3;
+    }
+
+    .partnership-banner-card {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(149, 61, 223, 0.35);
+      background: radial-gradient(circle at 30% 50%, rgba(149, 61, 223, 0.15), rgba(5, 1, 4, 0.95) 70%);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9), 0 0 40px rgba(149, 61, 223, 0.2), 0 0 40px rgba(237, 20, 24, 0.15);
+      transition: transform 0.4s var(--ease-out), box-shadow 0.4s ease, border-color 0.4s ease;
+    }
+
+    .partnership-banner-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(149, 61, 223, 0.65);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.95), 0 0 60px rgba(149, 61, 223, 0.35), 0 0 60px rgba(237, 20, 24, 0.25);
+    }
+
+    .banner-image-wrap {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      aspect-ratio: 16 / 9;
+      max-height: 520px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .alliance-banner-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      transition: transform 0.6s var(--ease-out);
+    }
+
+    .partnership-banner-card:hover .alliance-banner-img {
+      transform: scale(1.02);
+    }
+
+    .banner-ambient-glow {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: radial-gradient(circle at 25% 50%, rgba(149, 61, 223, 0.12) 0%, transparent 60%),
+                  radial-gradient(circle at 75% 50%, rgba(237, 20, 24, 0.12) 0%, transparent 60%);
+      mix-blend-mode: screen;
     }
 
     /* Keep sections translucent so global particles flow through entire page */
-    .hero, .tournament-seasons-section, .protocol-section, .finals-teams-section, .hundred-teams-arena, .cta-section, .falcon-footer-wrapper {
+    .hero, .partnership-banner-section, .tournament-seasons-section, .protocol-section, .finals-teams-section, .hundred-teams-arena, .cta-section, .falcon-footer-wrapper {
       position: relative;
-      z-index: 1;
+      z-index: 2;
     }
 
 
@@ -3725,10 +3819,10 @@
       width: 100%;
       height: 90px;
       overflow: hidden;
-      background: linear-gradient(to top, rgba(15, 8, 4, 0.95), transparent);
+      background: linear-gradient(to top, rgba(17, 2, 26, 0.95), transparent);
       margin-top: 25px;
-      border-top: 1px solid rgba(255, 68, 0, 0.3);
-      box-shadow: 0 -15px 35px rgba(255, 68, 0, 0.2);
+      border-top: 1px solid rgba(237, 20, 24, 0.35);
+      box-shadow: 0 -15px 35px rgba(237, 20, 24, 0.2);
     }
 
     #real-flame-canvas {
@@ -3742,15 +3836,13 @@
        FUTURISTIC 3D EWAVE PLAYER INFORMATION POPUP & CARD STYLES
        ========================================================================== */
 
-    .finals-card:hover
-
     .finals-roster-btn {
       margin-top: 14px;
       padding: 6px 12px;
-      background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(214, 40, 40, 0.15));
-      border: 1px solid var(--gold-primary);
+      background: linear-gradient(135deg, rgba(149, 61, 223, 0.25), rgba(237, 20, 24, 0.25));
+      border: 1px solid var(--purple-primary);
       border-radius: 4px;
-      color: var(--gold-light);
+      color: var(--white);
       font-family: var(--font-mono);
       font-size: 0.68rem;
       font-weight: 700;
@@ -3764,9 +3856,9 @@
     }
 
     .finals-roster-btn:hover {
-      background: var(--gold-primary);
-      color: var(--bg-dark);
-      box-shadow: 0 0 15px var(--gold-glow);
+      background: linear-gradient(90deg, var(--purple-primary), var(--red));
+      color: #fff;
+      box-shadow: 0 0 15px var(--purple-glow);
       transform: translateY(-2px);
     }
 
@@ -3774,7 +3866,7 @@
     .ewave-player-modal-backdrop {
       position: fixed;
       inset: 0;
-      background: rgba(4, 3, 2, 0.88);
+      background: rgba(5, 1, 4, 0.9);
       backdrop-filter: blur(14px);
       z-index: 10000;
       display: flex;
@@ -3799,13 +3891,13 @@
     }
 
     .ewave-player-modal-window {
-      background: radial-gradient(circle at top center, rgba(32, 24, 16, 0.98), rgba(10, 8, 6, 0.99));
-      border: 1px solid var(--gold-primary);
+      background: radial-gradient(circle at top center, rgba(38, 6, 56, 0.98), rgba(17, 2, 26, 0.99));
+      border: 1px solid var(--purple-primary);
       border-radius: 16px;
       padding: 32px 36px;
       position: relative;
       max-height: 88vh;
-      box-shadow: 0 30px 90px rgba(0, 0, 0, 0.95), 0 0 50px rgba(212, 175, 55, 0.25), inset 0 0 30px rgba(212, 175, 55, 0.05);
+      box-shadow: 0 30px 90px rgba(0, 0, 0, 0.95), 0 0 50px rgba(149, 61, 223, 0.35), inset 0 0 30px rgba(149, 61, 223, 0.08);
       transform: rotateX(20deg) scale(0.9) translateZ(-60px);
       transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
       overflow-y: auto !important;
@@ -3823,7 +3915,7 @@
       position: absolute;
       width: 14px;
       height: 14px;
-      border-color: var(--gold-primary);
+      border-color: var(--purple-primary);
       border-style: solid;
       pointer-events: none;
     }
@@ -3838,7 +3930,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(180deg, transparent 0%, rgba(212, 175, 55, 0.06) 50%, transparent 100%);
+      background: linear-gradient(180deg, transparent 0%, rgba(149, 61, 223, 0.08) 50%, transparent 100%);
       pointer-events: none;
       animation: modalScanBeam 4s linear infinite;
     }
@@ -3852,7 +3944,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      border-bottom: 1px solid var(--gold-border);
+      border-bottom: 1px solid var(--purple-border);
       padding-bottom: 20px;
       margin-bottom: 20px;
     }
@@ -3869,9 +3961,9 @@
       border-radius: 12px;
       object-fit: contain;
       background: rgba(0, 0, 0, 0.6);
-      border: 1px solid var(--gold-primary);
+      border: 1px solid var(--purple-primary);
       padding: 6px;
-      box-shadow: 0 0 20px rgba(212, 175, 55, 0.25);
+      box-shadow: 0 0 20px rgba(149, 61, 223, 0.3);
     }
 
     .modal-kicker-row {
@@ -3893,9 +3985,9 @@
     .modal-group-badge {
       font-family: var(--font-mono);
       font-size: 0.68rem;
-      color: var(--gold-light);
-      background: rgba(212, 175, 55, 0.15);
-      border: 1px solid var(--gold-dim);
+      color: var(--white);
+      background: rgba(149, 61, 223, 0.2);
+      border: 1px solid var(--purple-primary);
       padding: 2px 8px;
       border-radius: 4px;
       text-transform: uppercase;
@@ -3914,8 +4006,8 @@
       width: 38px;
       height: 38px;
       border-radius: 8px;
-      border: 1px solid var(--gold-border);
-      background: rgba(20, 15, 10, 0.8);
+      border: 1px solid var(--purple-border);
+      background: rgba(17, 2, 26, 0.8);
       color: var(--text-bone);
       font-size: 1.1rem;
       cursor: pointer;
@@ -3926,9 +4018,9 @@
     }
 
     .ewave-modal-close-btn:hover {
-      border-color: var(--crimson);
+      border-color: var(--red);
       color: #ff3344;
-      background: rgba(214, 40, 40, 0.15);
+      background: rgba(237, 20, 24, 0.2);
       transform: scale(1.08);
     }
 
@@ -3938,14 +4030,14 @@
       justify-content: space-between;
       font-family: var(--font-mono);
       font-size: 0.75rem;
-      color: var(--gold-dim);
+      color: var(--purple-dim);
       letter-spacing: 1.5px;
       margin-bottom: 16px;
       text-transform: uppercase;
     }
 
     .modal-ewave-verified {
-      color: var(--gold-primary);
+      color: var(--purple-primary);
       font-weight: 700;
     }
 
@@ -3970,8 +4062,8 @@
     }
 
     .modal-player-card {
-      background: rgba(18, 14, 10, 0.85);
-      border: 1px solid rgba(212, 175, 55, 0.2);
+      background: rgba(17, 2, 26, 0.85);
+      border: 1px solid rgba(149, 61, 223, 0.2);
       border-radius: 10px;
       padding: 16px 18px;
       position: relative;
@@ -3989,19 +4081,19 @@
       top: 0;
       bottom: 0;
       width: 3px;
-      background: var(--gold-primary);
+      background: var(--purple-primary);
       transition: all 0.3s ease;
     }
 
     .modal-player-card:hover {
-      border-color: var(--gold-primary);
-      background: rgba(26, 20, 14, 0.95);
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6), 0 0 20px rgba(212, 175, 55, 0.15);
+      border-color: var(--purple-primary);
+      background: rgba(38, 6, 56, 0.95);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6), 0 0 20px rgba(149, 61, 223, 0.25);
       transform: translateY(-2px);
     }
 
     .modal-player-card:hover::before {
-      background: var(--crimson);
+      background: var(--red);
       box-shadow: 0 0 10px var(--crimson-glow);
     }
 
@@ -4015,7 +4107,7 @@
     .modal-player-role {
       font-family: var(--font-mono);
       font-size: 0.65rem;
-      color: var(--gold-dim);
+      color: var(--purple-dim);
       letter-spacing: 1px;
       text-transform: uppercase;
     }
@@ -4033,7 +4125,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      border-top: 1px solid rgba(212, 175, 55, 0.1);
+      border-top: 1px solid rgba(149, 61, 223, 0.15);
       padding-top: 8px;
       font-family: var(--font-mono);
       font-size: 0.7rem;
@@ -4044,16 +4136,16 @@
     }
 
     .stat-tag-kills {
-      color: var(--gold-light);
+      color: var(--white);
       font-weight: 700;
-      background: rgba(212, 175, 55, 0.1);
+      background: rgba(149, 61, 223, 0.18);
       padding: 2px 6px;
       border-radius: 3px;
-      border: 1px solid rgba(212, 175, 55, 0.2);
+      border: 1px solid rgba(149, 61, 223, 0.3);
     }
 
     .modal-footer-bar {
-      border-top: 1px solid var(--gold-border);
+      border-top: 1px solid var(--purple-border);
       padding-top: 18px;
       display: flex;
       align-items: center;
@@ -4074,17 +4166,17 @@
     .dot-amber {
       width: 8px;
       height: 8px;
-      background: var(--gold-primary);
+      background: var(--purple-primary);
       border-radius: 50%;
-      box-shadow: 0 0 8px var(--gold-glow);
+      box-shadow: 0 0 8px var(--purple-glow);
     }
 
-      /* ==========================================================================
+    /* ==========================================================================
        EWAVE INFRASTRUCTURE & SCRIM COUNTDOWN PANEL (EXACT SCREENSHOT LAYOUT)
        ========================================================================== */
     .ewave-box {
-      background: radial-gradient(circle at top left, rgba(28, 20, 12, 0.95), rgba(10, 8, 5, 0.98));
-      border: 1px solid rgba(212, 175, 55, 0.28);
+      background: radial-gradient(circle at top left, rgba(38, 6, 56, 0.95), rgba(17, 2, 26, 0.98));
+      border: 1px solid rgba(149, 61, 223, 0.35);
       border-radius: 14px;
       padding: 44px 48px;
       display: grid;
@@ -4094,7 +4186,7 @@
       position: relative;
       overflow: hidden;
       margin: 40px auto 20px;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), inset 0 0 30px rgba(212, 175, 55, 0.04);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), inset 0 0 30px rgba(149, 61, 223, 0.08);
       text-align: left;
     }
 
@@ -4131,8 +4223,8 @@
     }
 
     .ewave-countdown-panel {
-      background: rgba(12, 9, 6, 0.92);
-      border: 1px solid rgba(212, 175, 55, 0.25);
+      background: rgba(17, 2, 26, 0.92);
+      border: 1px solid rgba(149, 61, 223, 0.3);
       border-radius: 10px;
       padding: 32px 28px;
       text-align: center;
@@ -4156,8 +4248,8 @@
     }
 
     .countdown-item {
-      background: rgba(22, 16, 10, 0.9);
-      border: 1px solid rgba(212, 175, 55, 0.22);
+      background: rgba(38, 6, 56, 0.9);
+      border: 1px solid rgba(149, 61, 223, 0.28);
       padding: 14px 6px;
       border-radius: 6px;
       box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.6);
@@ -4183,7 +4275,7 @@
     .countdown-footer-note {
       font-family: var(--font-mono);
       font-size: 0.75rem;
-      color: var(--gold-primary);
+      color: var(--purple-primary);
       letter-spacing: 0.8px;
     }
       /* ==========================================================================
@@ -4208,8 +4300,8 @@
       grid-template-columns: repeat(4, 1fr);
       gap: 6px;
       margin: 12px 0;
-      background: rgba(10, 8, 5, 0.8);
-      border: 1px solid rgba(212, 175, 55, 0.2);
+      background: rgba(17, 2, 26, 0.8);
+      border: 1px solid rgba(149, 61, 223, 0.25);
       border-radius: 6px;
       padding: 8px 6px;
       box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.7);
@@ -4228,7 +4320,7 @@
       align-items: center;
       text-align: center;
       padding: 4px 2px;
-      border-right: 1px solid rgba(212, 175, 55, 0.12);
+      border-right: 1px solid rgba(149, 61, 223, 0.18);
     }
 
     .telemetry-stat-cell:last-child {
@@ -4244,7 +4336,7 @@
     .stat-cell-label {
       font-family: var(--font-mono);
       font-size: 0.58rem;
-      color: var(--gold-primary);
+      color: var(--purple-primary);
       text-transform: uppercase;
       letter-spacing: 0.6px;
       margin-bottom: 3px;
@@ -4258,30 +4350,460 @@
       font-weight: 600;
       letter-spacing: 0.3px;
     }
-      /* Achievement Coming Soon Box on Finals Card Back */
-    .achievement-coming-soon-box {
-      margin: 12px 0 16px;
-      padding: 14px 10px;
-      background: rgba(10, 8, 5, 0.65);
-      border: 1px dashed rgba(212, 175, 55, 0.35);
-      border-radius: 6px;
-      text-align: center;
-    }
+      /* =========================================================================
+         BRAND REDESIGN SECTIONS: EVENT, BROADCAST, SCRIMS, NEWS, JOURNEY
+         ========================================================================= */
+      
+      /* Hero Key Stats Ticker Bar */
+      .hero-stats-pill-bar {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+        flex-wrap: wrap;
+        margin-top: 28px;
+        padding: 10px 20px;
+        background: rgba(17, 2, 26, 0.75);
+        border: 1px solid rgba(149, 61, 223, 0.3);
+        border-radius: 999px;
+        box-shadow: 0 0 25px rgba(149, 61, 223, 0.15);
+      }
 
-    .coming-soon-badge {
-      font-family: var(--font-mono);
-      font-size: 0.85rem;
-      color: var(--gold-primary);
-      font-weight: 800;
-      letter-spacing: 1.4px;
-      margin-bottom: 4px;
-    }
+      .stats-pill-item {
+        font-family: var(--font-mono);
+        font-size: 0.78rem;
+        color: var(--text-bone);
+        letter-spacing: 1.2px;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
 
-    .coming-soon-note {
-      font-size: 0.72rem;
-      color: var(--text-muted);
-      line-height: 1.3;
-    }
+      .stats-pill-item .pill-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--purple-primary);
+        box-shadow: 0 0 8px var(--purple-glow);
+      }
+
+      /* Section 02: Current Event Highlight Section */
+      .event-highlight-section {
+        padding: 100px 0;
+        position: relative;
+        background: radial-gradient(circle at 50% 30%, rgba(38, 6, 56, 0.4) 0%, transparent 70%);
+      }
+
+      .event-hero-card {
+        background: radial-gradient(circle at top center, rgba(30, 6, 44, 0.95), rgba(10, 2, 16, 0.98));
+        border: 1px solid var(--purple-primary);
+        border-radius: 18px;
+        padding: clamp(28px, 5vw, 48px);
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 25px 70px rgba(0, 0, 0, 0.85), 0 0 50px rgba(149, 61, 223, 0.25);
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 36px;
+        align-items: center;
+      }
+
+      @media (max-width: 900px) {
+        .event-hero-card {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .event-hero-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: var(--esports-gradient);
+        box-shadow: 0 0 20px rgba(237, 20, 24, 0.6);
+      }
+
+      .event-badge-live {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-family: var(--font-mono);
+        font-size: 0.72rem;
+        font-weight: 800;
+        color: #00ff88;
+        background: rgba(0, 255, 136, 0.12);
+        border: 1px solid rgba(0, 255, 136, 0.4);
+        padding: 4px 12px;
+        border-radius: 999px;
+        letter-spacing: 1.5px;
+        margin-bottom: 16px;
+        text-transform: uppercase;
+      }
+
+      .event-title-main {
+        font-family: var(--font-display);
+        font-size: clamp(2rem, 4vw, 3.2rem);
+        color: var(--text-bone);
+        letter-spacing: 0.03em;
+        line-height: 1.05;
+        margin-bottom: 8px;
+        text-transform: uppercase;
+      }
+
+      .event-subtitle-main {
+        font-family: var(--font-condensed);
+        font-size: 1.4rem;
+        color: var(--purple-bright);
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        margin-bottom: 16px;
+      }
+
+      .event-copy-desc {
+        font-size: 0.95rem;
+        color: var(--text-muted);
+        line-height: 1.6;
+        margin-bottom: 24px;
+      }
+
+      .event-facts-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        margin-bottom: 28px;
+      }
+
+      .event-fact-box {
+        background: rgba(17, 2, 26, 0.8);
+        border: 1px solid rgba(149, 61, 223, 0.25);
+        border-radius: 8px;
+        padding: 12px 16px;
+      }
+
+      .event-fact-label {
+        font-family: var(--font-mono);
+        font-size: 0.65rem;
+        color: var(--purple-primary);
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        margin-bottom: 4px;
+      }
+
+      .event-fact-val {
+        font-family: var(--font-condensed);
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: var(--text-bone);
+        letter-spacing: 0.5px;
+      }
+
+      .event-poster-preview-wrap {
+        position: relative;
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1px solid rgba(149, 61, 223, 0.35);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.9);
+      }
+
+      .event-poster-preview-img {
+        width: 100%;
+        height: auto;
+        display: block;
+        transition: transform 0.4s var(--ease-out);
+      }
+
+      .event-poster-preview-wrap:hover .event-poster-preview-img {
+        transform: scale(1.03);
+      }
+
+      /* Section 03: Live Broadcast Hub */
+      .broadcast-section {
+        padding: 90px 0;
+        position: relative;
+        background: radial-gradient(circle at center, rgba(75, 3, 11, 0.35) 0%, transparent 75%);
+      }
+
+      .broadcast-stage-card {
+        background: radial-gradient(circle at top center, rgba(30, 4, 18, 0.95), rgba(8, 1, 10, 0.98));
+        border: 1px solid var(--red);
+        border-radius: 16px;
+        padding: clamp(24px, 4vw, 40px);
+        box-shadow: 0 25px 80px rgba(0, 0, 0, 0.9), 0 0 45px rgba(237, 20, 24, 0.25);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .broadcast-header-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 24px;
+        flex-wrap: wrap;
+        gap: 14px;
+      }
+
+      .broadcast-video-container {
+        position: relative;
+        width: 100%;
+        padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+        height: 0;
+        border-radius: 10px;
+        overflow: hidden;
+        border: 1px solid rgba(237, 20, 24, 0.4);
+        background: #000;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.95);
+      }
+
+      .broadcast-video-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
+
+      .broadcast-info-bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 24px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(237, 20, 24, 0.25);
+        flex-wrap: wrap;
+        gap: 16px;
+      }
+
+      /* Section 05: Scrims Overview Section */
+      .scrims-section {
+        padding: 90px 0;
+        position: relative;
+        background: radial-gradient(circle at top right, rgba(38, 6, 56, 0.35) 0%, transparent 65%);
+      }
+
+      .scrims-feature-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+        margin: 40px 0 45px;
+      }
+
+      @media (max-width: 860px) {
+        .scrims-feature-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .scrims-card {
+        background: rgba(17, 2, 26, 0.85);
+        border: 1px solid rgba(149, 61, 223, 0.25);
+        border-radius: 12px;
+        padding: 30px 24px;
+        transition: all 0.35s var(--ease-out);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .scrims-card:hover {
+        border-color: var(--purple-primary);
+        background: rgba(38, 6, 56, 0.7);
+        transform: translateY(-6px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8), 0 0 30px rgba(149, 61, 223, 0.3);
+      }
+
+      .scrims-icon {
+        font-size: 2.2rem;
+        margin-bottom: 14px;
+        display: inline-block;
+      }
+
+      .scrims-card h3 {
+        font-family: var(--font-display);
+        font-size: 1.4rem;
+        color: var(--text-bone);
+        letter-spacing: 0.03em;
+        margin-bottom: 8px;
+        text-transform: uppercase;
+      }
+
+      .scrims-card p {
+        font-size: 0.9rem;
+        color: var(--text-muted);
+        line-height: 1.6;
+      }
+
+      /* Section 06: News Showcase Section */
+      .news-showcase-section {
+        padding: 90px 0;
+        position: relative;
+        background: radial-gradient(circle at bottom left, rgba(75, 3, 11, 0.3) 0%, transparent 60%);
+      }
+
+      .news-grid-layout {
+        display: grid;
+        grid-template-columns: 1.3fr 0.9fr;
+        gap: 30px;
+        margin-top: 36px;
+      }
+
+      @media (max-width: 920px) {
+        .news-grid-layout {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .news-featured-hero-card {
+        background: radial-gradient(circle at top left, rgba(38, 6, 56, 0.9), rgba(12, 1, 18, 0.98));
+        border: 1px solid var(--purple-primary);
+        border-radius: 14px;
+        padding: 30px;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .news-card-tagline {
+        font-family: var(--font-mono);
+        font-size: 0.7rem;
+        color: var(--red);
+        font-weight: 700;
+        letter-spacing: 1.2px;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+      }
+
+      .news-featured-title {
+        font-family: var(--font-display);
+        font-size: 1.8rem;
+        color: var(--text-bone);
+        letter-spacing: 0.03em;
+        line-height: 1.15;
+        margin-bottom: 12px;
+      }
+
+      .news-sub-list {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+      }
+
+      .news-sub-item {
+        background: rgba(17, 2, 26, 0.85);
+        border: 1px solid rgba(149, 61, 223, 0.22);
+        border-radius: 10px;
+        padding: 20px 22px;
+        transition: all 0.3s;
+      }
+
+      .news-sub-item:hover {
+        border-color: var(--purple-primary);
+        transform: translateX(4px);
+        background: rgba(38, 6, 56, 0.7);
+      }
+
+      .news-sub-title {
+        font-family: var(--font-condensed);
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: var(--text-bone);
+        margin-bottom: 6px;
+      }
+
+      .news-sub-desc {
+        font-size: 0.85rem;
+        color: var(--text-muted);
+        line-height: 1.5;
+      }
+
+      /* Section 07: Our Journey Timeline Section */
+      .journey-section {
+        padding: 100px 0;
+        position: relative;
+        background: radial-gradient(circle at 50% 50%, rgba(38, 6, 56, 0.35) 0%, transparent 75%);
+      }
+
+      .journey-timeline-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 18px;
+        margin-top: 48px;
+        position: relative;
+      }
+
+      @media (max-width: 1024px) {
+        .journey-timeline-grid {
+          grid-template-columns: 1fr;
+          gap: 24px;
+        }
+      }
+
+      .journey-milestone-card {
+        background: rgba(17, 2, 26, 0.85);
+        border: 1px solid rgba(149, 61, 223, 0.25);
+        border-radius: 12px;
+        padding: 24px 20px;
+        position: relative;
+        transition: all 0.35s var(--ease-out);
+        display: flex;
+        flex-direction: column;
+      }
+
+      .journey-milestone-card:hover {
+        border-color: var(--purple-primary);
+        background: rgba(38, 6, 56, 0.8);
+        transform: translateY(-6px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8), 0 0 25px rgba(149, 61, 223, 0.35);
+      }
+
+      .journey-year-badge {
+        font-family: var(--font-display);
+        font-size: 2rem;
+        color: var(--purple-bright);
+        letter-spacing: 0.05em;
+        line-height: 1;
+        margin-bottom: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .journey-card-phase {
+        font-family: var(--font-mono);
+        font-size: 0.65rem;
+        color: var(--red);
+        letter-spacing: 1px;
+        font-weight: 700;
+      }
+
+      .journey-milestone-card h3 {
+        font-family: var(--font-condensed);
+        font-size: 1.15rem;
+        color: var(--text-bone);
+        font-weight: 700;
+        text-transform: uppercase;
+        margin-bottom: 8px;
+      }
+
+      .journey-milestone-card p {
+        font-size: 0.85rem;
+        color: var(--text-muted);
+        line-height: 1.5;
+        flex: 1;
+      }
+
+      .journey-card-next {
+        border-color: var(--red);
+        background: radial-gradient(circle at top right, rgba(75, 3, 11, 0.7), rgba(17, 2, 26, 0.95));
+      }
+
+      .journey-card-next .journey-year-badge {
+        color: var(--red);
+      }
   </style>
 </head>
 <body>
@@ -4319,8 +4841,12 @@
   <!-- Primary Chapter Nav Dots (Right Rail) -->
   <nav class="chapter-nav" id="chapter-nav">
     <div class="chapter-dot active" data-section="hero" data-label="01 // HERO"></div>
-    <div class="chapter-dot" data-section="tournaments" data-label="02 // TOURNAMENTS"></div>
-    <div class="chapter-dot" data-section="teams" data-label="03 // 100+ TEAMS"></div>
+    <div class="chapter-dot" data-section="event" data-label="02 // GRAND FINALS"></div>
+    <div class="chapter-dot" data-section="broadcast" data-label="03 // LIVE BROADCAST"></div>
+    <div class="chapter-dot" data-section="teams" data-label="04 // FINALISTS"></div>
+    <div class="chapter-dot" data-section="scrims" data-label="05 // SCRIMS"></div>
+    <div class="chapter-dot" data-section="news" data-label="06 // NEWS"></div>
+    <div class="chapter-dot" data-section="journey" data-label="07 // OUR JOURNEY"></div>
   </nav>
 
   <!-- NAVIGATION HEADER -->
@@ -4337,9 +4863,12 @@
 
     <ul class="nav-menu">
       <li><a href="#hero" class="nav-link active" data-sound="hover">Home</a></li>
-      <li><a href="#tournaments" class="nav-link" data-sound="hover">Tournaments</a></li>
-      <li><a href="#teams" class="nav-link" data-sound="hover">100+ Teams</a></li>
-      <li><a href="#" class="nav-link modal-trigger-btn" data-open-modal="modal-news" data-sound="hover">News & Events</a></li>
+      <li><a href="#event" class="nav-link" data-sound="hover">Events</a></li>
+      <li><a href="#broadcast" class="nav-link" data-sound="hover">Broadcast</a></li>
+      <li><a href="#teams" class="nav-link" data-sound="hover">Finalists</a></li>
+      <li><a href="#scrims" class="nav-link" data-sound="hover">Scrims</a></li>
+      <li><a href="#news" class="nav-link" data-sound="hover">News</a></li>
+      <li><a href="#journey" class="nav-link" data-sound="hover">Our Story</a></li>
     </ul>
 
     <div class="header-actions">
@@ -4359,7 +4888,7 @@
   </header>
 
   <!-- =========================================================================
-       HERO SECTION (3D PARALLAX & VELOCITY-REACTIVE PARTICLES)
+       01. HERO SECTION (BRAND IDENTITY & MISSION)
        ========================================================================= -->
   <section class="hero" id="hero">
     
@@ -4375,29 +4904,49 @@
       </div>
 
       <h1 id="hero-title">
-        FORGED IN <span class="word-gold">FINALS</span>
+        SQUAD ONE <span class="word-gold">ESPORTS</span>
       </h1>
 
       <div class="hero-tagline" id="hero-tagline">
-        Precision Rotations · Ruthless Firepower · Pure Instinct
+        FORGED IN FINALS · Competitive PUBG PC Esports
       </div>
 
-      <div class="hero-partner-bar" id="hero-partner">
-        <span class="dot"></span>
-        OFFICIAL SCRIM ARENA & BRACKETS POWERED BY EWAVE.GG
-      </div>
+      <p style="max-width: 680px; margin: 0 auto 24px; color: var(--text-muted); font-size: 1.05rem; line-height: 1.6;">
+        Built for teams that want to compete at the highest level. Official home of the National League, elite daily scrims, and India's top battlegrounds squads.
+      </p>
 
       <div class="hero-cta-group" id="hero-cta">
-        <a href="https://ewave.gg/game/pubg/dashboard" target="_blank" class="cyber-btn" data-sound="click">
-          REGISTER FOR SCRIMS
+        <a href="#event" class="cyber-btn cyber-btn-crimson" data-sound="click">
+          🏆 UPCOMING EVENTS
         </a>
-        <a href="#tournaments" class="cyber-btn cyber-btn-outline" data-sound="click">
-          VIEW TOURNAMENTS
+        <a href="https://discord.gg/pCk89vRPq" target="_blank" class="cyber-btn" data-sound="click">
+          🎮 JOIN OUR COMMUNITY
         </a>
         <button class="cyber-btn cyber-btn-outline modal-trigger-btn" data-open-modal="modal-news" type="button" data-sound="click">
           📢 NEWS & EVENTS
         </button>
       </div>
+
+      <!-- Hero Key Stats Ticker Bar -->
+      <div class="hero-stats-pill-bar">
+        <div class="stats-pill-item">
+          <span class="pill-dot"></span>
+          <span>100+ TEAMS</span>
+        </div>
+        <div class="stats-pill-item">
+          <span class="pill-dot"></span>
+          <span>TOURNAMENTS</span>
+        </div>
+        <div class="stats-pill-item">
+          <span class="pill-dot"></span>
+          <span>DAILY SCRIMS</span>
+        </div>
+        <div class="stats-pill-item">
+          <span class="pill-dot"></span>
+          <span>INDIA</span>
+        </div>
+      </div>
+
     </div>
 
     <div class="scroll-indicator">
@@ -4407,204 +4956,120 @@
   </section>
 
   <!-- =========================================================================
-       SECTION 02: TOURNAMENT SEASONS & OPEN EWAVE APPLICATIONS HUB
+       02. CURRENT EVENT HIGHLIGHT (NO DATA BLOAT — DEEP LINK TO EWAVE)
        ========================================================================= -->
-  <section class="tournament-seasons-section" id="tournaments">
-    <canvas id="tournaments-canvas"></canvas>
-
+  <section class="event-highlight-section" id="event">
     <div class="container">
-      
-      <div class="sec-eyebrow">SQUAD ONE COMPETITIVE TOURNAMENTS</div>
-      <h2 class="sec-title">TOURNAMENT <span>SEASONS</span></h2>
+      <div class="sec-eyebrow">// OFFICIAL TOURNAMENT CIRCUIT</div>
+      <h2 class="sec-title">CURRENT <span>EVENT</span></h2>
       <p class="sec-desc">
-        Select a tournament season below to view registered team applications, players, and official tournament links on eWave.gg.
+        India's ultimate PUBG PC championship arena. Follow official tournament brackets, standings, and telemetry live on eWave.gg.
       </p>
 
-      <!-- Seasons Selection Cards Grid -->
-      <div class="seasons-cards-grid">
-        
-        <!-- Season 2 (LIVE & ONGOING) -->
-        <article class="season-card active-season" id="season2-card" data-sound="hover">
-          <div>
-            <div class="season-card-topline">
-              <span>01 // CURRENT CIRCUIT</span>
-              <span class="season-badge-live">● ONGOING</span>
-            </div>
-            <h3>Squad One Tournament - Season 2</h3>
-            <p style="font-size: 0.88rem; color: var(--text-muted); margin-top: 6px;">
-              National PUBG League Season 2. 95 registered squads battling through 2 Qualifier rounds for 16 Grand Finals spots.
-            </p>
-            <div class="season-card-facts">
-              <div class="season-fact-item"><span>STAGE</span><strong>QUALIFIERS</strong></div>
-              <div class="season-fact-item"><span>ROUNDS</span><strong>2 ROUNDS</strong></div>
-              <div class="season-fact-item"><span>FINALS</span><strong>3 DAYS (15 MATCHES)</strong></div>
-              <div class="season-fact-item"><span>TEAMS</span><strong>95 APPLIED</strong></div>
-            </div>
+      <div class="event-hero-card" data-sound="hover">
+        <div class="event-card-left">
+          <div class="event-badge-live">
+            <span class="live-dot" style="background: #00ff88; width: 8px; height: 8px; border-radius: 50%; display: inline-block; box-shadow: 0 0 8px #00ff88;"></span>
+            LIVE & ONGOING · GRAND FINALS
           </div>
-          <button class="cyber-btn cyber-btn-crimson" id="btn-view-season2" type="button" data-sound="click" style="width: 100%;">
-            VIEW SEASON 2
-          </button>
-        </article>
+          <h2 class="event-title-main">SQUAD ONE NATIONAL LEAGUE</h2>
+          <div class="event-subtitle-main">SEASON 2 — GRAND FINALS</div>
+          <p class="event-copy-desc">
+            16 qualified organizations battle across 3 grueling match days and 15 championship lobbies for the Season 2 trophy. Real-time brackets, points matrix, and player kills powered by eWave.
+          </p>
 
-        <!-- Season 1 (ARCHIVE / QUALIFIERS DATA) -->
-        <article class="season-card" id="season1-card" data-sound="hover">
-          <div>
-            <div class="season-card-topline">
-              <span>02 // SEASON ONE ARCHIVE</span>
-              <span class="season-badge-past">SEASON 1</span>
+          <div class="event-facts-grid">
+            <div class="event-fact-box">
+              <div class="event-fact-label">STAGE</div>
+              <div class="event-fact-val">GRAND FINALS</div>
             </div>
-            <h3>Squad One Tournament - Season 1</h3>
-            <p style="font-size: 0.88rem; color: var(--text-muted); margin-top: 6px;">
-              Squad One Elite Battlegrounds #1 (Season 1). 31 verified competing organizations and official tournament roster.
-            </p>
-            <div class="season-card-facts">
-              <div class="season-fact-item"><span>STAGE</span><strong>QUALIFIERS</strong></div>
-              <div class="season-fact-item"><span>ROUNDS</span><strong>2 ROUNDS</strong></div>
-              <div class="season-fact-item"><span>FINALS</span><strong>3 DAYS</strong></div>
-              <div class="season-fact-item"><span>TEAMS</span><strong>31 APPLIED</strong></div>
+            <div class="event-fact-box">
+              <div class="event-fact-label">TEAMS</div>
+              <div class="event-fact-val">16 QUALIFIED</div>
             </div>
-          </div>
-          <button class="cyber-btn" id="btn-view-season1" type="button" data-sound="click" style="width: 100%;">
-            VIEW SEASON 1
-          </button>
-        </article>
-
-      </div>
-
-      <!-- =====================================================================
-           OPEN EWAVE APPLICATIONS HUB (ALWAYS DISPLAYED)
-           ===================================================================== -->
-      <div id="ewave-tournament-hub" style="display: block; margin-top: 50px;">
-        
-        <div class="ewave-tournament-wrapper">
-          
-          <!-- eWave Banner Hero -->
-          <div class="ewave-banner-hero" id="ewave-banner-bg" style="background-image: url('https://rywkcgvnvptncxgmljzp.supabase.co/storage/v1/object/public/tournaments/ba190d5d-84ff-42fc-ac8a-a61f23432e9a.png');">
-            <div class="ewave-banner-content">
-              <div class="ewave-league-badge" id="ewave-season-badge">
-                <span class="live-dot"></span>
-                SQUAD ONE NATIONAL LEAGUE — SEASON 2
-              </div>
-              <h1 class="ewave-tournament-title" id="ewave-banner-title">SQUAD ONE NATIONAL LEAGUE</h1>
-              <div class="ewave-tournament-meta" id="ewave-banner-meta">
-                <div class="ewave-meta-item">GAME: <strong>PUBG BATTLEGROUNDS</strong></div>
-                <div class="ewave-meta-item">PLATFORM: <strong>PC</strong></div>
-                <div class="ewave-meta-item">REGION: <strong>INDIA</strong></div>
-                <div class="ewave-meta-item" id="ewave-meta-teams">TEAMS: <strong>95 APPLIED</strong></div>
-                <div class="ewave-meta-item">YEAR: <strong>2026</strong></div>
-              </div>
+            <div class="event-fact-box">
+              <div class="event-fact-label">SCHEDULE</div>
+              <div class="event-fact-val">31 AUG — 02 SEP</div>
+            </div>
+            <div class="event-fact-box">
+              <div class="event-fact-label">LOBBIES</div>
+              <div class="event-fact-val">15 MATCHES (5/DAY)</div>
             </div>
           </div>
 
-          <!-- Applications Focused Header Bar with "MORE INFO ON EWAVE.GG" Button -->
-          <div class="ewave-hub-topbar">
-            <div class="ewave-hub-title-badge">
-              <span>👥 REGISTERED APPLICATIONS LIST</span>
-              <span class="count-tag" id="ewave-tab-teams-count">95 TEAMS</span>
-            </div>
-
-            <a href="https://ewave.gg/game/pubg/tournaments/5521ad78-82be-478b-a5df-bc62ee9b3bb2" target="_blank" class="ewave-more-info-btn" id="ewave-more-info-btn" data-sound="click">
-              <span class="btn-3d-glare"></span>
-              <span class="btn-3d-content">
-                <span class="btn-gun-wrapper">
-                  <span class="gun-turbine-vortex"></span>
-                  <span class="gun-muzzle-glow"></span>
-                  <img src="assets/cyber-gun-skin.png" class="btn-gun-skin" alt="Cyber Gun Skin">
-                </span>
-                <span class="btn-text">MORE INFO ON EWAVE.GG</span>
-                <span class="btn-arrow">↗</span>
-              </span>
+          <div class="hero-cta-group" style="justify-content: flex-start; margin-top: 0;">
+            <a href="https://ewave.gg/game/pubg/tournaments/5521ad78-82be-478b-a5df-bc62ee9b3bb2" target="_blank" class="cyber-btn cyber-btn-crimson" data-sound="click">
+              🌐 VIEW TOURNAMENT ON EWAVE.GG ↗
+            </a>
+            <a href="https://ewave.gg/game/pubg/tournaments/5521ad78-82be-478b-a5df-bc62ee9b3bb2/brackets" target="_blank" class="cyber-btn cyber-btn-outline" data-sound="click">
+              ⚔️ VIEW BRACKETS ON EWAVE ↗
             </a>
           </div>
-
-          <!-- Applications / Teams Content Wrapper -->
-          <div class="ewave-tab-content-wrapper" style="padding: 24px 30px;">
-            <div class="teams-search-bar" style="margin-bottom: 24px;">
-              <input type="text" class="teams-search-input" id="ewave-teams-search" placeholder="🔍 Search applied teams or player tags...">
-            </div>
-            
-            <div class="teams-grid-95" id="ewave-teams-grid">
-              <!-- Dynamically populated per season -->
-            </div>
-          </div>
-
         </div>
 
-      </div>
-
-    </div>
-  </section>
-
-  <!-- =========================================================================
-       SECTION 03: MATCH PROTOCOL DOCTRINE
-       ========================================================================= -->
-  <section class="protocol-section" id="protocol">
-    <div id="protocol-pin">
-      <div class="container">
-        
-        <div class="sec-eyebrow">SQUAD ONE OPERATIONAL COMBAT FRAMEWORK</div>
-        <h2 class="sec-title">MATCH PROTOCOL <span>DOCTRINE</span></h2>
-        
-        <div class="protocol-container">
-          
-          <div class="protocol-storyline">
-            
-            <div class="protocol-stage-card active" data-stage="0">
-              <span class="stage-tag">STAGE 01 // PHASE 1-2</span>
-              <h3>LOOT VELOCITY & MAP CONTROL</h3>
-              <p>Execute calculated drops at high-tier compound zones. Secure initial loadouts, armor tier 3, and utility surplus before the first blue zone constriction.</p>
-            </div>
-
-            <div class="protocol-stage-card" data-stage="1">
-              <span class="stage-tag">STAGE 02 // PHASE 3-4</span>
-              <h3>HARD-SHIFT ROTATIONS & COMPOUND ANCHOR</h3>
-              <p>Predict circle centroid shifts. Vehicle split rotations secure high-ground compounds with overlapping 360° firing lines.</p>
-            </div>
-
-            <div class="protocol-stage-card" data-stage="2">
-              <span class="stage-tag">STAGE 03 // PHASE 5-6</span>
-              <h3>EDGE CLEARING & UTILITY SUPPRESSION</h3>
-              <p>Establish edge gatekeeping. Coordinated smoke lines and frag grenade barrages eliminate rotating squads along the white zone perimeter.</p>
-            </div>
-
-            <div class="protocol-stage-card" data-stage="3">
-              <span class="stage-tag">STAGE 04 // FINAL CIRCLE</span>
-              <h3>ISOLATION & CHICKEN DINNER CONVERSION</h3>
-              <p>Isolate final surviving squads through precise crossfires. 4-man spread lockdown guarantees maximum placement points and the Winner Winner Chicken Dinner.</p>
-            </div>
-
+        <div class="event-card-right">
+          <div class="event-poster-preview-wrap">
+            <img src="assets/eventimage.jpeg" onerror="this.src='assets/ewave-squadone-banner.jpg'" alt="Squad One Season 2 Grand Finale Poster" class="event-poster-preview-img">
           </div>
-
-          <div class="protocol-visual-hud">
-            <div class="holo-radar">
-              <div class="holo-grid"></div>
-              <div class="holo-ring" id="holo-ring"></div>
-              <div class="holo-target" id="holo-target">01</div>
-            </div>
-            <div class="holo-telemetry-text" id="holo-telemetry">
-              COORDS: LAT 44.82 // LON 20.45<br>
-              ZONE 1 DROP PROTOCOL<br>
-              STATUS: INFILTRATION COMPLETE
-            </div>
-          </div>
-
         </div>
-
       </div>
     </div>
   </section>
 
   <!-- =========================================================================
-       SECTION 04: SQUAD ONE OFFICIAL 4-MAN ROSTER (HIDDEN // PRESERVED)
+       03. LIVE BROADCAST HUB (WATCH SQUAD ONE LIVE)
        ========================================================================= -->
-  <!--
-  <section class="roster-section" id="roster" style="display: none;">
+  <section class="broadcast-section" id="broadcast">
     <div class="container">
-      <div class="sec-eyebrow">SQUAD ONE COMPETITIVE STARTING LINEUP</div>
-      <h2 class="sec-title">SQUAD ONE <span>COMBAT ROSTER</span></h2>
+      <div class="sec-eyebrow">// OFFICIAL LIVE STREAMS & MATCH VODS</div>
+      <h2 class="sec-title">LIVE <span>BROADCAST HUB</span></h2>
+      <p class="sec-desc">
+        Watch every rotation, squad wipe, and chicken dinner live from the official Squad One YouTube broadcast channel.
+      </p>
+
+      <div class="broadcast-stage-card" data-sound="hover">
+        <div class="broadcast-header-row">
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <span class="season-badge-live" style="background: rgba(237, 20, 24, 0.15); border-color: var(--red); color: #ff5566;">● 🔴 LIVE MATCH FEED</span>
+            <span style="font-family: var(--font-display); font-size: 1.3rem; color: var(--text-bone); letter-spacing: 0.5px;">SQUAD ONE NATIONAL LEAGUE — GRAND FINALS</span>
+          </div>
+          <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--purple-light);">
+            BROADCAST START: 8:00 PM IST
+          </div>
+        </div>
+
+        <div class="broadcast-video-container">
+          <iframe 
+            src="https://www.youtube-nocookie.com/embed?listType=user_uploads&list=SquadOneEsports" 
+            title="Squad One Esports Live Match Stream" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            allowfullscreen>
+          </iframe>
+        </div>
+
+        <div class="broadcast-info-bar">
+          <div>
+            <div style="font-family: var(--font-condensed); font-size: 1.25rem; font-weight: 700; color: var(--text-bone); margin-bottom: 4px;">
+              OFFICIAL LIVE BROADCAST ON YOUTUBE & TWITCH
+            </div>
+            <div style="font-size: 0.85rem; color: var(--text-muted);">
+              Casted by India's top PUBG talent with real-time observer feeds and player telemetry.
+            </div>
+          </div>
+
+          <div class="hero-cta-group" style="margin-top: 0;">
+            <a href="https://www.youtube.com/@SquadOneEsports" target="_blank" class="cyber-btn cyber-btn-crimson" data-sound="click">
+              ▶ WATCH LIVE ON YOUTUBE ↗
+            </a>
+            <a href="https://discord.gg/pCk89vRPq" target="_blank" class="cyber-btn cyber-btn-outline" data-sound="click">
+              🔔 MATCH ALERTS [DISCORD]
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
-  -->
+
 
   <!-- =========================================================================
        SECTION 05: GRAND FINALS CONTENDERS (16 TEAMS 3D FLIP ROTATING CARDS)
@@ -4958,10 +5423,18 @@
           </div>
         </div>
       </div>
+
+      <!-- View All 95 Teams on eWave Direct Link -->
+      <div style="text-align: center; margin-top: 36px;">
+        <a href="https://ewave.gg/game/pubg/tournaments/5521ad78-82be-478b-a5df-bc62ee9b3bb2" target="_blank" class="cyber-btn cyber-btn-outline" data-sound="click" style="padding: 12px 28px; font-size: 0.85rem;">
+          👥 VIEW ALL 95+ APPLICANTS & ROSTERS ON EWAVE.GG ↗
+        </a>
+      </div>
+
     </div>
 
     <!-- =======================================================================
-         SECTION 06: 100+ TEAMS AUTO-MOVING CONTINUOUS WALL (3 ROWS)
+         100+ TEAMS AUTO-MOVING CONTINUOUS WALL (3 ROWS)
          ======================================================================= -->
     <div class="hundred-teams-arena">
       <div class="hundred-teams-header">
@@ -4969,7 +5442,7 @@
         <h3 style="font-family: var(--font-display); font-size: 1.8rem; color: var(--text-bone); letter-spacing: 0.04em;">
           100+ TOURNAMENT & SCRIMS ROSTER
         </h3>
-        <p style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--gold-dim); margin-top: 4px;">
+        <p style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--purple-dim); margin-top: 4px;">
           [ AUTO-MOVING DIVISION LINEUP · HOVER TO PAUSE & INSPECT ]
         </p>
       </div>
@@ -4984,9 +5457,213 @@
   </section>
 
   <!-- =========================================================================
-       SECTION 07: KINETIC MARQUEE & GRAND CTA (3D SCROLL ANIMATION)
+       05. SQUAD ONE SCRIMS OVERVIEW (STRUCTURED PRACTICE)
        ========================================================================= -->
-  <section class="cta-section" id="join">
+  <section class="scrims-section" id="scrims">
+    <div class="container">
+      <div class="sec-eyebrow">// TIER-1 COMPETITIVE PRACTICE</div>
+      <h2 class="sec-title">SQUAD ONE <span>SCRIMS</span></h2>
+      <p class="sec-desc">
+        Structured competitive practice for India's PUBG PC teams. Compete against the nation's best squads in custom lobbies.
+      </p>
+
+      <div class="scrims-feature-grid">
+        <div class="scrims-card" data-sound="hover">
+          <div class="scrims-icon">🎯</div>
+          <h3>COMPETITIVE LOBBIES</h3>
+          <p>Super competitive esports circle settings, official points matrix, and high-intensity match lobbies against verified Tier-1 squads.</p>
+        </div>
+
+        <div class="scrims-card" data-sound="hover">
+          <div class="scrims-icon">🕒</div>
+          <h3>REGULAR DAILY SLOTS</h3>
+          <p>Daily match lobbies active every Friday, Saturday & Sunday starting sharp at 8:00 PM IST. Reserved slots for registered organizations.</p>
+        </div>
+
+        <div class="scrims-card" data-sound="hover">
+          <div class="scrims-icon">⚡</div>
+          <h3>eWAVE POWERED</h3>
+          <p>Automated slot bookings, verified player rosters, match telemetry, and full anti-cheat integration via the eWave platform.</p>
+        </div>
+      </div>
+
+      <!-- Scrims Countdown & eWave Direct Register Box -->
+      <div class="ewave-box">
+        <div class="ewave-box-left">
+          <div class="sec-eyebrow" style="margin-bottom: 8px;">// DAILY SCRIMS SCHEDULE</div>
+          <h2 class="ewave-box-title">
+            READY TO <span style="color: var(--purple-primary);">PRACTICE?</span>
+          </h2>
+          <p class="ewave-box-desc">
+            Reserve your team slot on eWave.gg and join the Squad One Discord to verify your India National League role before lobby start.
+          </p>
+
+          <div class="ewave-box-btn-group">
+            <a href="https://ewave.gg/game/pubg/dashboard" target="_blank" class="cyber-btn cyber-btn-crimson" data-sound="click">
+              ⚔️ VIEW SCRIMS ON EWAVE.GG ↗
+            </a>
+            <a href="https://discord.gg/pCk89vRPq" target="_blank" class="cyber-btn cyber-btn-outline" data-sound="click">
+              🎮 JOIN SCRIMS DISCORD ↗
+            </a>
+          </div>
+        </div>
+
+        <div class="ewave-countdown-panel">
+          <div class="sec-eyebrow no-prefix" style="justify-content: center; margin-bottom: 6px;">NEXT SCRIMS SESSION</div>
+          <h3 class="countdown-schedule-title">
+            FRIDAY · SATURDAY · SUNDAY
+          </h3>
+
+          <div class="countdown-grid">
+            <div class="countdown-item">
+              <div class="cd-val" id="cd-days">00</div>
+              <div class="cd-unit">DAYS</div>
+            </div>
+            <div class="countdown-item">
+              <div class="cd-val" id="cd-hours">19</div>
+              <div class="cd-unit">HOURS</div>
+            </div>
+            <div class="countdown-item">
+              <div class="cd-val" id="cd-mins">05</div>
+              <div class="cd-unit">MINS</div>
+            </div>
+            <div class="countdown-item">
+              <div class="cd-val" id="cd-secs">16</div>
+              <div class="cd-unit">SECS</div>
+            </div>
+          </div>
+
+          <div class="countdown-footer-note">
+            SCRIMS START AT 8:00 PM IST · REGISTER ON EWAVE.GG
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       06. LATEST NEWS & ANNOUNCEMENTS
+       ========================================================================= -->
+  <section class="news-showcase-section" id="news">
+    <div class="container">
+      <div class="sec-eyebrow">// DISPATCHES & ANNOUNCEMENTS</div>
+      <h2 class="sec-title">LATEST FROM <span>SQUAD ONE</span></h2>
+      <p class="sec-desc">
+        Official updates, tournament bulletins, partner highlights, and competitive community announcements.
+      </p>
+
+      <div class="news-grid-layout">
+        
+        <!-- Featured Main News Card -->
+        <div class="news-featured-hero-card" data-sound="hover">
+          <div>
+            <div class="news-card-tagline">● AUGUST 2026 // GRAND FINALE & PREDICT & WIN</div>
+            <h3 class="news-featured-title">SquadOne National League — Season 2 Grand Finale</h3>
+            <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 20px;">
+              The Season 2 Grand Finale is here! 16 teams. One champion. Take part in the <strong>Predict & Win</strong> challenge for Team Winner and Top Fragger to win exclusive mystery gifts while tuning into the live stream.
+            </p>
+          </div>
+
+          <div class="hero-cta-group" style="justify-content: flex-start; margin-top: 10px;">
+            <button class="cyber-btn cyber-btn-crimson modal-trigger-btn" data-open-modal="modal-news" type="button" data-sound="click">
+              📢 READ FULL ANNOUNCEMENT
+            </button>
+            <button class="cyber-btn cyber-btn-outline" data-open-event-image type="button" data-sound="click">
+              🔍 VIEW EVENT POSTER
+            </button>
+          </div>
+        </div>
+
+        <!-- Secondary News List -->
+        <div class="news-sub-list">
+          <div class="news-sub-item" data-sound="hover">
+            <div class="news-card-tagline">● JULY 2026 // TECHNOLOGY PARTNERSHIP</div>
+            <div class="news-sub-title">Strategic Alliance with eWave.gg</div>
+            <div class="news-sub-desc">
+              Squad One deploys eWave's automated tournament engine, live telemetry, and anti-cheat infrastructure for all official circuits.
+            </div>
+          </div>
+
+          <div class="news-sub-item" data-sound="hover">
+            <div class="news-card-tagline">● RECURRING WEEKLY // SCRIMS BULLETIN</div>
+            <div class="news-sub-title">Daily Scrims Schedule Active</div>
+            <div class="news-sub-desc">
+              Competitive lobbies kick off at 8:00 PM IST every Fri, Sat & Sun. Join our Discord to claim your lobby credentials.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       07. OUR JOURNEY (STORY & MILESTONES TIMELINE)
+       ========================================================================= -->
+  <section class="journey-section" id="journey">
+    <div class="container">
+      <div class="sec-eyebrow">// HERITAGE & VISION</div>
+      <h2 class="sec-title">FROM THE FIRST DROP TO <span>THE GRAND FINALS</span></h2>
+      <p class="sec-desc">
+        Our story from an ambitious esports community to hosting India's premier PUBG PC national championship.
+      </p>
+
+      <div class="journey-timeline-grid">
+        
+        <div class="journey-milestone-card" data-sound="hover">
+          <div class="journey-year-badge">
+            <span>2025</span>
+            <span class="journey-card-phase">PHASE 01</span>
+          </div>
+          <h3>SQUAD ONE FOUNDED</h3>
+          <p>Inception of Squad One Esports with a core mission: build a premier, cheat-free competitive home for Indian PUBG PC squads.</p>
+        </div>
+
+        <div class="journey-milestone-card" data-sound="hover">
+          <div class="journey-year-badge">
+            <span>2026 Q1</span>
+            <span class="journey-card-phase">PHASE 02</span>
+          </div>
+          <h3>NATIONAL LEAGUE S1</h3>
+          <p>Inaugural season launch. 31 organizations battle across 2 qualifiers, proving the intense hunger for competitive PC esports.</p>
+        </div>
+
+        <div class="journey-milestone-card" data-sound="hover">
+          <div class="journey-year-badge">
+            <span>2026 Q2</span>
+            <span class="journey-card-phase">PHASE 03</span>
+          </div>
+          <h3>eWAVE PARTNERSHIP</h3>
+          <p>Official alliance with eWave.gg, bringing automated brackets, match telemetry, and Overwatch Anti-Cheat to every lobby.</p>
+        </div>
+
+        <div class="journey-milestone-card" data-sound="hover">
+          <div class="journey-year-badge">
+            <span>2026 Q3</span>
+            <span class="journey-card-phase">PHASE 04</span>
+          </div>
+          <h3>NATIONAL LEAGUE S2</h3>
+          <p>Record 95 applicant squads. 2 grueling qualifier stages whittle the field down to 16 finalists competing for glory.</p>
+        </div>
+
+        <div class="journey-milestone-card journey-card-next" data-sound="hover">
+          <div class="journey-year-badge">
+            <span>NEXT</span>
+            <span class="journey-card-phase">THE FUTURE</span>
+          </div>
+          <h3>BIGGER. HARDER. STRONGER.</h3>
+          <p>National LAN tournaments, collegiate circuits, expanded prize pools, and establishing India's presence on the global PUBG stage.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       08. STRATEGIC PARTNERSHIP & GRAND ECOSYSTEM CTA (3D SCROLL ANIMATION)
+       ========================================================================= -->
+  <section class="cta-section" id="partners">
     
     <!-- 3D Perspective Stage for Kinetic Marquee Lines -->
     <div class="marquee-3d-stage">
@@ -5015,75 +5692,30 @@
 
     <div class="container">
       
-            <!-- =====================================================================
-           TOURNAMENT INFRASTRUCTURE & WEEKLY TOURNAMENT SCHEDULE (EXACT SCREENSHOT LAYOUT)
-           ===================================================================== -->
-      <div class="ewave-box">
-        <div class="ewave-box-left">
-          <div class="sec-eyebrow" style="margin-bottom: 8px;">// TOURNAMENT INFRASTRUCTURE</div>
-          <h2 class="ewave-box-title">
-            POWERED BY <span style="color: var(--gold-primary);">EWAVE.GG</span>
-          </h2>
-          <p class="ewave-box-desc">
-            All official Squad One tournaments, prize cups, and qualifier brackets run on eWave’s automated esports tournament engine with real-time stats and anti-cheat tracking.
-          </p>
-
-          <div class="ewave-box-btn-group">
-            <a href="https://ewave.gg/game/pubg/tournaments/5521ad78-82be-478b-a5df-bc62ee9b3bb2/brackets" target="_blank" class="cyber-btn cyber-btn-crimson" data-sound="click">
-              LIVE BRACKETS
-            </a>
-            <a href="https://ewave.gg/game/pubg/dashboard" target="_blank" class="cyber-btn cyber-btn-outline" data-sound="click">
-              EWAVE DASHBOARD
-            </a>
-          </div>
-        </div>
-
-        <div class="ewave-countdown-panel">
-          <div class="sec-eyebrow no-prefix" style="justify-content: center; margin-bottom: 6px;">TOURNAMENT SCHEDULE</div>
-          <h3 class="countdown-schedule-title">
-            FRIDAY · SATURDAY · SUNDAY
-          </h3>
-
-          <div class="countdown-grid">
-            <div class="countdown-item">
-              <div class="cd-val" id="cd-days">00</div>
-              <div class="cd-unit">DAYS</div>
-            </div>
-            <div class="countdown-item">
-              <div class="cd-val" id="cd-hours">19</div>
-              <div class="cd-unit">HOURS</div>
-            </div>
-            <div class="countdown-item">
-              <div class="cd-val" id="cd-mins">05</div>
-              <div class="cd-unit">MINS</div>
-            </div>
-            <div class="countdown-item">
-              <div class="cd-val" id="cd-secs">16</div>
-              <div class="cd-unit">SECS</div>
-            </div>
-          </div>
-
-          <div class="countdown-footer-note">
-            TOURNAMENTS START AT 8:00 PM IST · EVERY FRI, SAT & SUN
-          </div>
+      <!-- Partnership Showcase Card -->
+      <div class="partnership-banner-card" data-sound="hover" style="margin-bottom: 40px;">
+        <div class="banner-image-wrap">
+          <img src="assets/ewave-squadone-banner.jpg" onerror="this.src='assets/ewave-squadone-poster.jpg'" alt="EWAVE × SQUADONE — TRULY COMMUNITY FOCUSED" class="alliance-banner-img">
+          <div class="banner-ambient-glow"></div>
         </div>
       </div>
 
-<!-- Social Media Buttons -->
-      <div class="hero-cta-group" style="justify-content: center; margin-top: 40px;">
+      <!-- Social Media Buttons -->
+      <div class="hero-cta-group" style="justify-content: center; margin-top: 30px;">
         <a href="https://discord.gg/pCk89vRPq" target="_blank" class="cyber-btn cyber-btn-crimson" data-sound="click">
           🎮 DISCORD COMMUNITY
         </a>
         <a href="https://ewave.gg/game/pubg/dashboard" target="_blank" class="cyber-btn" data-sound="click">
-          🏆 REGISTER ON EWAVE.GG
+          🏆 COMPETE ON EWAVE.GG
         </a>
         <a href="https://www.youtube.com/@SquadOneEsports" target="_blank" class="cyber-btn cyber-btn-outline" data-sound="click">
-          ▶ YOUTUBE STREAM
+          ▶ YOUTUBE BROADCASTS
         </a>
       </div>
 
     </div>
   </section>
+
 
   <!-- =========================================================================
        TEAM FALCONS INSPIRED MEGA FOOTER FOR SQUAD ONE ESPORTS
@@ -5210,7 +5842,7 @@
           © 2026 SQUAD ONE ESPORTS. ALL RIGHTS RESERVED.
         </div>
         <div>
-          OFFICIAL TOURNAMENT PLATFORM: <a href="https://ewave.gg" target="_blank" style="color: var(--gold-primary); text-decoration: none;">EWAVE.GG</a>
+          OFFICIAL TOURNAMENT PLATFORM: <a href="https://ewave.gg" target="_blank" style="color: var(--purple-primary); text-decoration: none;">EWAVE.GG</a>
         </div>
       </div>
 
@@ -5229,13 +5861,13 @@
         <button class="esports-modal-close" data-close-modal="modal-about">✕</button>
       </div>
       <div class="esports-modal-body" data-lenis-prevent="true">
-        <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--gold-primary); margin-bottom: 12px;">LAST UPDATED: 22 AUGUST 2026</div>
+        <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--purple-primary); margin-bottom: 12px;">LAST UPDATED: 22 AUGUST 2026</div>
         
         <h4>Welcome to SQUADONE Esports</h4>
         <p>SQUADONE Esports is a competitive gaming and esports organization focused on creating structured, fair and engaging opportunities for players, teams, creators and gaming communities.</p>
         <p>Our goal is to build an esports ecosystem where players can compete, improve their skills, connect with other gamers and experience professionally organized competitions.</p>
         <p>From online tournaments and competitive leagues to community activities and esports content, SQUADONE is built around one principle:</p>
-        <div style="background: rgba(212, 175, 55, 0.1); border-left: 3px solid var(--gold-primary); padding: 12px 18px; margin: 16px 0; font-family: var(--font-display); font-size: 1.25rem; color: var(--gold-light); letter-spacing: 1px;">
+        <div style="background: rgba(149, 61, 223, 0.15); border-left: 3px solid var(--purple-primary); padding: 12px 18px; margin: 16px 0; font-family: var(--font-display); font-size: 1.25rem; color: var(--white); letter-spacing: 1px;">
           PLAY. COMPETE. IMPROVE.
         </div>
 
@@ -5331,7 +5963,7 @@
         <button class="esports-modal-close" data-close-modal="modal-tos">✕</button>
       </div>
       <div class="esports-modal-body" data-lenis-prevent="true">
-        <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--gold-primary); margin-bottom: 12px;">LAST UPDATED: 22 AUGUST 2026</div>
+        <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--purple-primary); margin-bottom: 12px;">LAST UPDATED: 22 AUGUST 2026</div>
 
         <h4>1. Acceptance of Terms</h4>
         <p>By accessing or using the SQUADONE Esports website, participating in a SQUADONE event, registering for a tournament, or using any SQUADONE service, you agree to comply with these Terms of Service and any applicable tournament-specific rules. If you do not agree with these Terms, please do not use the relevant service.</p>
@@ -5368,7 +6000,7 @@
         <p>Users must not commit unlawful activities, attempt unauthorized access, distribute malware, scrape protected data, or impersonate SQUADONE staff.</p>
 
         <h4>10. Contact</h4>
-        <p>For questions regarding these Terms, contact SQUADONE via eWave (<a href="https://ewave.gg" target="_blank" style="color: var(--gold-primary);">ewave.gg</a>) or official eWave Discord (<a href="https://discord.gg/ewave" target="_blank" style="color: var(--gold-primary);">discord.gg/ewave</a>).</p>
+        <p>For questions regarding these Terms, contact SQUADONE via eWave (<a href="https://ewave.gg" target="_blank" style="color: var(--purple-primary);">ewave.gg</a>) or official eWave Discord (<a href="https://discord.gg/ewave" target="_blank" style="color: var(--purple-primary);">discord.gg/ewave</a>).</p>
       </div>
     </div>
   </div>
@@ -5382,7 +6014,7 @@
         <button class="esports-modal-close" data-close-modal="modal-privacy">✕</button>
       </div>
       <div class="esports-modal-body" data-lenis-prevent="true">
-        <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--gold-primary); margin-bottom: 12px;">LAST UPDATED: 22 AUGUST 2026</div>
+        <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--purple-primary); margin-bottom: 12px;">LAST UPDATED: 22 AUGUST 2026</div>
 
         <h4>1. Introduction</h4>
         <p>SQUADONE Esports respects the privacy of players, teams, visitors and members of our gaming community. This Privacy Policy explains what information we may collect, why we collect it, how it may be used and the choices available to users.</p>
@@ -5405,7 +6037,7 @@
         <p>Where applicable law requires parental or guardian consent for processing information relating to children, SQUADONE follows applicable requirements.</p>
 
         <h4>6. Contact & Grievances</h4>
-        <p>For privacy requests or complaints, contact SQUADONE via eWave support / official Discord: <a href="https://discord.gg/ewave" target="_blank" style="color: var(--gold-primary);">discord.gg/ewave</a> (or <a href="https://ewave.gg" target="_blank" style="color: var(--gold-primary);">ewave.gg</a>).</p>
+        <p>For privacy requests or complaints, contact SQUADONE via eWave support / official Discord: <a href="https://discord.gg/ewave" target="_blank" style="color: var(--purple-primary);">discord.gg/ewave</a> (or <a href="https://ewave.gg" target="_blank" style="color: var(--purple-primary);">ewave.gg</a>).</p>
       </div>
     </div>
   </div>
@@ -5419,7 +6051,7 @@
         <button class="esports-modal-close" data-close-modal="modal-cookies">✕</button>
       </div>
       <div class="esports-modal-body" data-lenis-prevent="true">
-        <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--gold-primary); margin-bottom: 12px;">LAST UPDATED: 22 AUGUST 2026</div>
+        <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--purple-primary); margin-bottom: 12px;">LAST UPDATED: 22 AUGUST 2026</div>
 
         <h4>1. What Are Cookies?</h4>
         <p>Cookies and local storage are lightweight technologies that websites store on a user's device to remember preferences and improve functionality.</p>
@@ -5446,7 +6078,7 @@
         <button class="esports-modal-close" data-close-modal="modal-faq">✕</button>
       </div>
       <div class="esports-modal-body" data-lenis-prevent="true">
-        <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--gold-primary); margin-bottom: 12px;">LAST UPDATED: 22 AUGUST 2026</div>
+        <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--purple-primary); margin-bottom: 12px;">LAST UPDATED: 22 AUGUST 2026</div>
 
         <h4>What is SQUADONE Esports?</h4>
         <p>SQUADONE Esports is an esports organization focused on competitive gaming, tournaments, leagues, community activities and esports content.</p>
@@ -5470,7 +6102,7 @@
         <p>Cheating and competitive-integrity violations result in immediate match penalties, disqualification, suspension, and bans across the network.</p>
 
         <h4>How do I contact SQUADONE support?</h4>
-        <p>Join our official Discord helpdesk at <a href="https://discord.gg/j9cDYCA7rs" target="_blank" style="color: var(--gold-primary);">discord.gg/j9cDYCA7rs</a> to open a support ticket.</p>
+        <p>Join our official Discord helpdesk at <a href="https://discord.gg/j9cDYCA7rs" target="_blank" style="color: var(--purple-primary);">discord.gg/j9cDYCA7rs</a> to open a support ticket.</p>
 
         <h4>Are SQUADONE tournaments affiliated with game publishers?</h4>
         <p>Unless specifically stated, SQUADONE tournaments are independently organized. All game names and trademarks belong to their respective owners.</p>
@@ -5638,7 +6270,7 @@
     gsap.ticker.lagSmoothing(0);
 
     /* ==========================================================================
-       04. CRISP, NON-GLOWY SLOW FIRE SPARKS & BURNING EMBERS ENGINE
+       04. ESPORTS SPARKS & BURNING EMBERS ENGINE (WITH INTERACTIVE BURSTS)
        ========================================================================== */
     const globalCanvas = document.getElementById('global-particle-canvas');
     let globalScrollVelocity = 0;
@@ -5654,131 +6286,163 @@
       resizeGlobalCanvas();
       window.addEventListener('resize', resizeGlobalCanvas);
 
-      const sparkCount = window.innerWidth < 768 ? 75 : 150;
+      // Particle density based on screen size
+      const sparkCount = window.innerWidth < 768 ? 160 : 320;
+      const burstSparks = [];
 
-      class FireSpark {
+      class AmbientSpark {
         constructor() {
           this.reset(true);
         }
 
         reset(initial = false) {
           this.x = Math.random() * gW;
-          this.y = initial ? Math.random() * gH : gH + 10 + Math.random() * 30;
-          this.type = Math.floor(Math.random() * 3);
-          this.size = this.type === 1 ? (Math.random() * 1.8 + 1.0) : (Math.random() * 1.2 + 0.6);
-          this.length = this.type === 0 ? (Math.random() * 6 + 3) : (Math.random() * 3 + 1.2);
-          this.vx = (Math.random() - 0.5) * 0.35;
-          this.vy = -(Math.random() * 0.45 + 0.22);
-          this.turbulence = Math.random() * 0.025 + 0.008;
+          this.y = initial ? Math.random() * gH : gH + 10 + Math.random() * 35;
+          this.type = Math.floor(Math.random() * 4); // 0: Needle, 1: Ember Flake, 2: Diamond, 3: Micro Mote
+
+          // Archetype Physics
+          if (this.type === 0) {
+            this.size = Math.random() * 1.6 + 0.8;
+            this.length = Math.random() * 8 + 4;
+            this.vx = (Math.random() - 0.5) * 0.4;
+            this.vy = -(Math.random() * 0.8 + 0.4);
+          } else if (this.type === 1) {
+            this.size = Math.random() * 2.4 + 1.2;
+            this.length = Math.random() * 3 + 1.2;
+            this.vx = (Math.random() - 0.5) * 0.5;
+            this.vy = -(Math.random() * 0.5 + 0.25);
+          } else {
+            this.size = Math.random() * 1.4 + 0.6;
+            this.length = this.size;
+            this.vx = (Math.random() - 0.5) * 0.3;
+            this.vy = -(Math.random() * 0.35 + 0.15);
+          }
+
+          // Turbulence & Rotation
           this.turbPhase = Math.random() * Math.PI * 2;
-          this.turbAmp = Math.random() * 0.35 + 0.12;
+          this.turbSpeed = Math.random() * 0.03 + 0.01;
+          this.turbAmp = Math.random() * 0.4 + 0.15;
           this.rotation = Math.random() * Math.PI * 2;
-          this.rotSpeed = (Math.random() - 0.5) * 0.03;
-          this.maxLife = Math.random() * 450 + 300;
+          this.rotSpeed = (Math.random() - 0.5) * 0.04;
+
+          // Colors matched exactly to banner image:
+          // 0: Electric Violet / Purple (#953DDF / #A855F7), 1: Fiery Crimson (#ED1418 / #FF2A3A), 2: White Hot / Dual Blend
+          this.palette = Math.floor(Math.random() * 3);
+          this.maxLife = Math.random() * 400 + 250;
           this.life = initial ? Math.random() * this.maxLife : 0;
-          this.flickerSpeed = Math.random() * 0.12 + 0.04;
-          this.flickerOffset = Math.random() * Math.PI * 2;
+          this.flickerSpeed = Math.random() * 0.15 + 0.05;
         }
 
-        update(scrollVel) {
+        update(scrollVel = 0) {
           this.life += 1;
           if (this.life >= this.maxLife || this.y < -30) {
             this.reset(false);
             return;
           }
-          this.turbPhase += this.turbulence;
+
+          this.turbPhase += this.turbSpeed;
           this.rotation += this.rotSpeed;
-          const effectiveVy = this.vy - scrollVel * 0.25;
-          this.y += effectiveVy;
+          this.y += this.vy - scrollVel * 0.28;
           this.x += this.vx + Math.sin(this.turbPhase) * this.turbAmp;
-          if (this.x < -10) this.x = gW + 5;
-          if (this.x > gW + 10) this.x = -5;
+
+          if (this.x < -15) this.x = gW + 10;
+          if (this.x > gW + 15) this.x = -10;
         }
 
-        draw(ctx, scrollVel) {
+        draw(ctx) {
           const progress = this.life / this.maxLife;
-          const flicker = 0.85 + 0.15 * Math.sin(this.life * this.flickerSpeed + this.flickerOffset);
-          const alpha = (progress < 0.1 ? (progress / 0.1) : (1 - progress)) * flicker;
+          const flicker = 0.85 + 0.15 * Math.sin(this.life * this.flickerSpeed);
+          const alpha = (progress < 0.15 ? (progress / 0.15) : (1 - progress)) * flicker;
 
-          if (alpha <= 0.02) return;
+          if (alpha <= 0.01) return;
 
           let r, g, b;
-          if (progress < 0.25) {
-            const t = progress / 0.25;
+          if (this.palette === 0) {
+            // Electric Violet / Purple (#953DDF / #A855F7 -> Hot White)
+            r = Math.round(168 + (1 - progress) * 87);
+            g = Math.round(60 + (1 - progress) * 185);
+            b = 255;
+          } else if (this.palette === 1) {
+            // Fiery Crimson (#ED1418 / #FF2A3A -> Bright Orange-Red)
             r = 255;
-            g = Math.round(230 - t * 90);
-            b = Math.round(40 - t * 40);
-          } else if (progress < 0.7) {
-            const t = (progress - 0.25) / 0.45;
-            r = Math.round(255 - t * 45);
-            g = Math.round(140 - t * 115);
-            b = 0;
+            g = Math.round(20 + (1 - progress) * 160);
+            b = Math.round(24 + (1 - progress) * 60);
           } else {
-            const t = (progress - 0.7) / 0.3;
-            r = Math.round(210 - t * 125);
-            g = Math.round(25 - t * 20);
-            b = 0;
+            // Dual Purple-Crimson / Amber Gold hot spark
+            r = Math.round(255 - progress * 80);
+            g = Math.round(230 - progress * 170);
+            b = Math.round(255 - progress * 100);
           }
 
           ctx.save();
           ctx.translate(this.x, this.y);
-          ctx.shadowBlur = 0;
+          ctx.rotate(this.rotation);
 
+          ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${alpha.toFixed(3)})`;
+          ctx.beginPath();
           if (this.type === 0) {
-            const speed = Math.sqrt(this.vx * this.vx + this.vy * this.vy) + Math.abs(scrollVel * 0.3);
-            const streakLen = Math.max(this.length, speed * 2.5);
-            const angle = Math.atan2(this.vy - scrollVel * 0.25, this.vx);
-            ctx.rotate(angle);
-            ctx.beginPath();
-            ctx.moveTo(streakLen * 0.6, 0);
-            ctx.lineTo(-streakLen * 0.35, -this.size * 0.45);
-            ctx.lineTo(-streakLen * 0.65, 0);
-            ctx.lineTo(-streakLen * 0.35, this.size * 0.45);
-            ctx.closePath();
-            ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${alpha.toFixed(3)})`;
-            ctx.fill();
-
-            if (progress < 0.35) {
-              ctx.fillStyle = `rgba(255, 255, 220, ${ (alpha * 0.9).toFixed(3) })`;
-              ctx.fillRect(streakLen * 0.25, -this.size * 0.25, this.size * 0.7, this.size * 0.5);
-            }
-          } else if (this.type === 1) {
-            ctx.rotate(this.rotation);
-            ctx.beginPath();
-            ctx.moveTo(-this.size, -this.size * 0.6);
-            ctx.lineTo(this.size * 0.8, -this.size * 0.85);
-            ctx.lineTo(this.size * 1.0, this.size * 0.65);
-            ctx.lineTo(-this.size * 0.45, this.size * 0.9);
-            ctx.closePath();
-            ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${alpha.toFixed(3)})`;
-            ctx.fill();
-
-            if (progress < 0.4) {
-              ctx.fillStyle = `rgba(255, 240, 150, ${ (alpha * 0.75).toFixed(3) })`;
-              ctx.fillRect(-this.size * 0.25, -this.size * 0.25, this.size * 0.5, this.size * 0.5);
-            }
+            // Streaking Needle
+            ctx.moveTo(this.length, 0);
+            ctx.lineTo(-this.length * 0.5, -this.size * 0.5);
+            ctx.lineTo(-this.length * 0.5, this.size * 0.5);
           } else {
-            ctx.rotate(this.rotation);
-            ctx.beginPath();
-            ctx.moveTo(0, -this.size * 1.6);
-            ctx.lineTo(this.size * 0.75, 0);
-            ctx.lineTo(0, this.size * 1.6);
-            ctx.lineTo(-this.size * 0.75, 0);
-            ctx.closePath();
-            ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${alpha.toFixed(3)})`;
-            ctx.fill();
-
-            if (progress < 0.35) {
-              ctx.fillStyle = `rgba(255, 255, 255, ${ (alpha * 0.85).toFixed(3) })`;
-              ctx.fillRect(-0.5, -0.5, 1, 1);
-            }
+            // Diamond / Circular Ember
+            ctx.arc(0, 0, this.size, 0, Math.PI * 2);
           }
-
+          ctx.fill();
           ctx.restore();
         }
       }
 
-      const sparks = Array.from({ length: sparkCount }, () => new FireSpark());
+      // =========================================================================
+      // CLICK / INTERACTION SPARK BURST CLASS
+      // =========================================================================
+      class BurstSpark {
+        constructor(x, y) {
+          this.x = x;
+          this.y = y;
+          const angle = Math.random() * Math.PI * 2;
+          const speed = Math.random() * 7 + 2;
+          this.vx = Math.cos(angle) * speed;
+          this.vy = Math.sin(angle) * speed;
+          this.size = Math.random() * 2.5 + 1;
+          this.gravity = 0.12;
+          this.friction = 0.94;
+          this.life = 0;
+          this.maxLife = Math.random() * 40 + 25;
+          const rand = Math.random();
+          if (rand < 0.45) this.color = '168, 85, 255'; // Electric Violet
+          else if (rand < 0.9) this.color = '237, 20, 24'; // Fiery Crimson
+          else this.color = '255, 240, 255'; // Hot White
+        }
+
+        update() {
+          this.life++;
+          this.vx *= this.friction;
+          this.vy = this.vy * this.friction + this.gravity;
+          this.x += this.vx;
+          this.y += this.vy;
+        }
+
+        draw(ctx) {
+          const alpha = Math.max(0, 1 - (this.life / this.maxLife));
+          ctx.save();
+          ctx.fillStyle = `rgba(${this.color}, ${alpha.toFixed(3)})`;
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.restore();
+        }
+      }
+
+      const ambientSparks = Array.from({ length: sparkCount }, () => new AmbientSpark());
+
+      // Click to spawn spark burst
+      window.addEventListener('pointerdown', (e) => {
+        for (let i = 0; i < 28; i++) {
+          burstSparks.push(new BurstSpark(e.clientX, e.clientY));
+        }
+      });
 
       lenis.on('scroll', (e) => {
         globalScrollVelocity = Math.min(Math.abs(e.velocity) * 0.2, 6);
@@ -5786,11 +6450,23 @@
 
       function renderFireSparks() {
         gCtx.clearRect(0, 0, gW, gH);
+        gCtx.globalCompositeOperation = 'lighter';
         globalScrollVelocity *= 0.94;
 
-        for (let i = 0; i < sparks.length; i++) {
-          sparks[i].update(globalScrollVelocity);
-          sparks[i].draw(gCtx, globalScrollVelocity);
+        // 1. Draw Ambient Rising Sparks
+        for (let i = 0; i < ambientSparks.length; i++) {
+          ambientSparks[i].update(globalScrollVelocity);
+          ambientSparks[i].draw(gCtx);
+        }
+
+        // 2. Draw Interactive Burst Sparks
+        for (let i = burstSparks.length - 1; i >= 0; i--) {
+          const spark = burstSparks[i];
+          spark.update();
+          spark.draw(gCtx);
+          if (spark.life >= spark.maxLife) {
+            burstSparks.splice(i, 1);
+          }
         }
 
         requestAnimationFrame(renderFireSparks);
@@ -5817,16 +6493,17 @@
       const observer = new ResizeObserver(() => resizeTourneyCanvas());
       if (tourneyCanvas.parentElement) observer.observe(tourneyCanvas.parentElement);
 
-      const tSparkCount = window.innerWidth < 768 ? 60 : 120;
-      const tSparks = typeof FireSpark === 'function'
-        ? Array.from({ length: tSparkCount }, () => new FireSpark())
+      const tSparkCount = window.innerWidth < 768 ? 80 : 150;
+      const tSparks = typeof AmbientSpark === 'function'
+        ? Array.from({ length: tSparkCount }, () => new AmbientSpark())
         : [];
 
       function renderTourneySparks() {
         tCtx.clearRect(0, 0, tW, tH);
+        tCtx.globalCompositeOperation = 'lighter';
         for (let i = 0; i < tSparks.length; i++) {
           tSparks[i].update(globalScrollVelocity);
-          tSparks[i].draw(tCtx, globalScrollVelocity);
+          tSparks[i].draw(tCtx);
         }
         requestAnimationFrame(renderTourneySparks);
       }
@@ -5858,12 +6535,6 @@
           compassTrack.style.transform = `translateX(-${compassOffset}px)`;
         }
 
-        if (scrollY > 500) {
-          document.body.classList.add('blue-zone-active');
-        } else {
-          document.body.classList.remove('blue-zone-active');
-        }
-
         if (headerEl) {
           if (scrollY > 60) headerEl.classList.add('scrolled');
           else headerEl.classList.remove('scrolled');
@@ -5874,7 +6545,7 @@
     /* ==========================================================================
        07. CHAPTER NAVIGATION RAIL
        ========================================================================== */
-    const sections = ['hero', 'tournaments', 'teams'];
+    const sections = ['hero', 'event', 'broadcast', 'teams', 'scrims', 'news', 'journey'];
     const chapterDots = document.querySelectorAll('.chapter-dot');
     const navLinks = document.querySelectorAll('.nav-link');
 
@@ -5893,13 +6564,16 @@
     });
 
     sections.forEach(secId => {
-      ScrollTrigger.create({
-        trigger: `#${secId}`,
-        start: 'top center',
-        end: 'bottom center',
-        onEnter: () => updateActiveNav(secId),
-        onEnterBack: () => updateActiveNav(secId)
-      });
+      const el = document.getElementById(secId);
+      if (el) {
+        ScrollTrigger.create({
+          trigger: `#${secId}`,
+          start: 'top center',
+          end: 'bottom center',
+          onEnter: () => updateActiveNav(secId),
+          onEnterBack: () => updateActiveNav(secId)
+        });
+      }
     });
 
     function updateActiveNav(activeId) {
@@ -5907,7 +6581,7 @@
         dot.classList.toggle('active', dot.getAttribute('data-section') === activeId);
       });
       navLinks.forEach(link => {
-        const href = link.getAttribute('href').replace('#', '');
+        const href = link.getAttribute('href') ? link.getAttribute('href').replace('#', '') : '';
         link.classList.toggle('active', href === activeId);
       });
     }
@@ -5921,8 +6595,8 @@
       .from('#hero-crest', { scale: 0.5, opacity: 0, duration: 1.2 }, 0.2)
       .from('#hero-title', { y: 70, opacity: 0, duration: 1 }, 0.4)
       .from('#hero-tagline', { y: 35, opacity: 0, duration: 0.8 }, 0.6)
-      .from('#hero-partner', { y: 25, opacity: 0, duration: 0.8 }, 0.8)
-      .from('#hero-cta', { y: 25, opacity: 0, duration: 0.8 }, 1.0);
+      .from('#hero-cta', { y: 25, opacity: 0, duration: 0.8 }, 0.8)
+      .from('.hero-stats-pill-bar', { y: 20, opacity: 0, duration: 0.8 }, 1.0);
 
     gsap.to('#hero-parallax-bg', {
       yPercent: 45,
@@ -5973,18 +6647,6 @@
       }
     });
 
-    gsap.to('#hero-partner', {
-      y: -80,
-      opacity: 0,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: '#hero',
-        start: 'top top',
-        end: '55% top',
-        scrub: true
-      }
-    });
-
     gsap.to('#hero-cta', {
       y: -60,
       opacity: 0,
@@ -5998,44 +6660,52 @@
     });
 
     /* ==========================================================================
-       09. PINNED MATCH PROTOCOL
+       09. SCRIMS COUNTDOWN TIMER ENGINE (IST SYNCHRONIZED)
        ========================================================================== */
-    const stageCards = document.querySelectorAll('.protocol-stage-card');
-    const holoTarget = document.getElementById('holo-target');
-    const holoRing = document.getElementById('holo-ring');
-    const holoTelemetry = document.getElementById('holo-telemetry');
-    
-    const stageTelemetry = [
-      'COORDS: LAT 44.82 // LON 20.45<br>ZONE 1 DROP PROTOCOL<br>STATUS: INFILTRATION COMPLETE',
-      'COORDS: LAT 45.12 // LON 21.08<br>HARD-SHIFT COMPOUND REACHED<br>STATUS: 3-1 ANCHOR SECURED',
-      'COORDS: LAT 45.30 // LON 21.40<br>UTILITY BARRAGE ENGAGED<br>STATUS: 3 SQUADS ELIMINATED',
-      'COORDS: LAT 45.45 // LON 21.52<br>FINAL CIRCLE SECURED<br>STATUS: CHICKEN DINNER DEPLOYED'
-    ];
+    function updateCountdown() {
+      const now = new Date();
+      // Target next Fri/Sat/Sun 8:00 PM IST (14:30 UTC)
+      const daysEl = document.getElementById('cd-days');
+      const hoursEl = document.getElementById('cd-hours');
+      const minsEl = document.getElementById('cd-mins');
+      const secsEl = document.getElementById('cd-secs');
 
-    let currentStage = 0;
+      if (!daysEl || !hoursEl || !minsEl || !secsEl) return;
 
-    ScrollTrigger.create({
-      trigger: '#protocol',
-      start: 'top top',
-      end: '+=300%',
-      pin: '#protocol-pin',
-      scrub: 0.8,
-      onUpdate: (self) => {
-        const stageIndex = Math.min(3, Math.floor(self.progress * 4));
-        if (stageIndex !== currentStage) {
-          currentStage = stageIndex;
-          sound.playStageChime(currentStage);
+      // Calculate next 8:00 PM IST
+      const nowUtc = now.getTime() + (now.getTimezoneOffset() * 60000);
+      const istOffset = 5.5 * 60 * 60 * 1000;
+      const nowIst = new Date(nowUtc + istOffset);
 
-          stageCards.forEach((card, idx) => {
-            card.classList.toggle('active', idx === currentStage);
-          });
+      let targetIst = new Date(nowIst);
+      targetIst.setHours(20, 0, 0, 0);
 
-          if (holoTarget) holoTarget.textContent = `0${currentStage + 1}`;
-          if (holoRing) holoRing.style.transform = `rotate(${currentStage * 90}deg) scale(${1 + currentStage * 0.08})`;
-          if (holoTelemetry) holoTelemetry.innerHTML = stageTelemetry[currentStage];
-        }
+      // If already past 8 PM today, move to tomorrow
+      if (nowIst.getTime() > targetIst.getTime()) {
+        targetIst.setDate(targetIst.getDate() + 1);
       }
-    });
+
+      // Check day of week: if not Fri(5), Sat(6), Sun(0), advance to Friday
+      const day = targetIst.getDay();
+      if (day === 1) targetIst.setDate(targetIst.getDate() + 4); // Mon -> Fri
+      else if (day === 2) targetIst.setDate(targetIst.getDate() + 3); // Tue -> Fri
+      else if (day === 3) targetIst.setDate(targetIst.getDate() + 2); // Wed -> Fri
+      else if (day === 4) targetIst.setDate(targetIst.getDate() + 1); // Thu -> Fri
+
+      const diff = targetIst.getTime() - nowIst.getTime();
+      const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const s = Math.floor((diff % (1000 * 60)) / 1000);
+
+      daysEl.textContent = String(d).padStart(2, '0');
+      hoursEl.textContent = String(h).padStart(2, '0');
+      minsEl.textContent = String(m).padStart(2, '0');
+      secsEl.textContent = String(s).padStart(2, '0');
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
 
     /* ==========================================================================
        10. 100+ TEAMS DATA INJECTION (3 AUTO-SCROLLING TRACKS)
@@ -6123,7 +6793,7 @@
           pCard.innerHTML = `
             <div class="modal-player-top">
               <span class="modal-player-role">${p.role || 'STARTING FOUR'}</span>
-              <span style="font-family: var(--font-mono); font-size: 0.65rem; color: var(--gold-primary); letter-spacing: 0.8px;">PUBG PC</span>
+              <span style="font-family: var(--font-mono); font-size: 0.65rem; color: var(--purple-primary); letter-spacing: 0.8px;">PUBG PC</span>
             </div>
             
             <div class="modal-player-name">${p.name}</div>
@@ -6341,7 +7011,7 @@
             <img src="${primaryLogo}" class="team-applicant-avatar" alt="${t.name}" onerror="this.src='${fallbackLogo}'; this.onerror=function(){this.src='assets/teams/squadone.png';};">
             <div>
               <div class="team-applicant-name">${t.name}</div>
-              <div style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--gold-primary); margin-top: 2px;">${t.group || 'DIVISION 1'}</div>
+              <div style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--purple-primary); margin-top: 2px;">${t.group || 'DIVISION 1'}</div>
             </div>
           </div>
           <div class="team-roster-tags">
