@@ -15,47 +15,48 @@
        CSS VARIABLES & THEME
        ========================================================================== */
     :root {
-      /* eWave x SquadOne Unified Cosmic Palette */
-      --bg-dark: #07040a;
-      --bg-darker: #030105;
-      --bg-panel: #110819;
-      --bg-panel-alt: #170c23;
-      --bg-card: rgba(23, 12, 35, 0.88);
+      /* User's Exact 9-Color Palette */
+      --bg-dark: #050104;
+      --bg-darker: #050104;
+      --bg-panel: #11021A;
+      --bg-panel-alt: #260638;
+      --bg-card: rgba(38, 6, 56, 0.88);
       
-      /* Electric Violet / Purple (eWave Accent) */
-      --purple-primary: #953ddf;
-      --purple-light: #c084fc;
-      --purple-glow: rgba(149, 61, 223, 0.5);
-      --purple-dim: #6b21a8;
-      --purple-border: rgba(168, 85, 247, 0.3);
+      /* Electric Purple / eWave Palette */
+      --purple-primary: #953DDF;
+      --purple-light: #953DDF;
+      --purple-glow: rgba(149, 61, 223, 0.55);
+      --purple-dim: #7328A5;
+      --purple-border: rgba(115, 40, 165, 0.4);
 
-      /* Neon Crimson / Flame Red (Squad One Accent) */
-      --crimson: #ed1418;
-      --crimson-primary: #ff1e27;
-      --crimson-light: #ff6b6b;
-      --crimson-glow: rgba(237, 20, 24, 0.5);
-      --crimson-dim: #8b0a0c;
-      --crimson-border: rgba(237, 20, 24, 0.3);
+      /* Neon Crimson / Squad One Palette */
+      --crimson: #ED1418;
+      --crimson-primary: #ED1418;
+      --crimson-light: #ED1418;
+      --crimson-glow: rgba(237, 20, 24, 0.55);
+      --crimson-dim: #951121;
+      --crimson-border: rgba(149, 17, 33, 0.45);
+      --crimson-dark: #4B030B;
 
-      /* Primary Brand Highlighting */
-      --gold-primary: #ed1418;
-      --gold-light: #f3e8ff;
+      /* Primary Brand Highlights */
+      --gold-primary: #ED1418;
+      --gold-light: #F5F0F5;
       --gold-glow: rgba(149, 61, 223, 0.45);
-      --gold-dim: #9333ea;
-      --gold-border: rgba(168, 85, 247, 0.28);
+      --gold-dim: #7328A5;
+      --gold-border: rgba(115, 40, 165, 0.35);
       
-      --brand-gradient: linear-gradient(135deg, #953ddf 0%, #a855f7 35%, #ff3b30 70%, #ed1418 100%);
-      --brand-gradient-h: linear-gradient(90deg, #953ddf 0%, #b54dff 40%, #ff3b30 75%, #ed1418 100%);
-      --brand-glow-dual: 0 0 25px rgba(149, 61, 223, 0.45), 0 0 35px rgba(237, 20, 24, 0.4);
+      --brand-gradient: linear-gradient(135deg, #953DDF 0%, #7328A5 35%, #ED1418 70%, #951121 100%);
+      --brand-gradient-h: linear-gradient(90deg, #953DDF 0%, #7328A5 40%, #ED1418 75%, #951121 100%);
+      --brand-glow-dual: 0 0 25px rgba(149, 61, 223, 0.5), 0 0 35px rgba(237, 20, 24, 0.45);
 
-      --airdrop-red: #ff1e27;
-      --airdrop-smoke: rgba(255, 30, 39, 0.6);
-      --blue-zone: #a855f7;
-      --blue-zone-glow: rgba(168, 85, 247, 0.4);
+      --airdrop-red: #ED1418;
+      --airdrop-smoke: rgba(237, 20, 24, 0.6);
+      --blue-zone: #953DDF;
+      --blue-zone-glow: rgba(149, 61, 223, 0.4);
       
-      --text-bone: #f8f6fc;
-      --text-muted: #a79cb8;
-      --text-dark: #665b79;
+      --text-bone: #F5F0F5;
+      --text-muted: #bfaec9;
+      --text-dark: #7a658a;
       
       --font-display: 'Anton', sans-serif;
       --font-condensed: 'Barlow Condensed', sans-serif;
@@ -177,13 +178,13 @@
       pointer-events: none;
       z-index: 1;
       background-image: 
-        radial-gradient(circle at 12% 18%, rgba(149, 61, 223, 0.12) 0%, transparent 45%),
-        radial-gradient(circle at 88% 55%, rgba(237, 20, 24, 0.12) 0%, transparent 45%),
-        radial-gradient(circle at 50% 85%, rgba(149, 61, 223, 0.08) 0%, transparent 50%),
-        linear-gradient(rgba(149, 61, 223, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(237, 20, 24, 0.03) 1px, transparent 1px);
+        radial-gradient(circle at 15% 20%, rgba(149, 61, 223, 0.15) 0%, transparent 45%),
+        radial-gradient(circle at 85% 60%, rgba(237, 20, 24, 0.15) 0%, transparent 45%),
+        radial-gradient(circle at 50% 85%, rgba(115, 40, 165, 0.1) 0%, transparent 50%),
+        linear-gradient(rgba(149, 61, 223, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(237, 20, 24, 0.035) 1px, transparent 1px);
       background-size: 100% 100%, 100% 100%, 100% 100%, 60px 60px, 60px 60px;
-      opacity: 0.85;
+      opacity: 0.9;
     }
 
     .scanlines {
@@ -822,7 +823,7 @@
     }
 
     .hero h1 .word-gold {
-      background: linear-gradient(135deg, #b54dff 0%, #953ddf 35%, #ff3b30 70%, #ed1418 100%);
+      background: linear-gradient(135deg, #953DDF 0%, #7328A5 30%, #ED1418 70%, #951121 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       filter: drop-shadow(0 0 35px rgba(237, 20, 24, 0.65));
@@ -6945,59 +6946,59 @@ Roster (4 Players + Subs):</pre>
 
           if (alpha <= 0.015) return;
 
-          let r, g, b;
+                    let r, g, b;
           if (this.paletteType === 0) {
-            // Electric Purple / Violet (eWave Palette #953DDF / #A855F7)
+            // #953DDF (149, 61, 223) -> #7328A5 (115, 40, 165) -> #260638 (38, 6, 56)
             if (progress < 0.25) {
               const t = progress / 0.25;
-              r = Math.round(255 - t * 87);
-              g = Math.round(245 - t * 160);
-              b = 255;
+              r = Math.round(245 - t * 96);
+              g = Math.round(240 - t * 179);
+              b = Math.round(245 - t * 22);
             } else if (progress < 0.7) {
               const t = (progress - 0.25) / 0.45;
-              r = Math.round(168 - t * 19);
-              g = Math.round(85 - t * 24);
-              b = 255 - Math.round(t * 32);
+              r = Math.round(149 - t * 34);
+              g = Math.round(61 - t * 21);
+              b = Math.round(223 - t * 58);
             } else {
               const t = (progress - 0.7) / 0.3;
-              r = Math.round(149 - t * 75);
-              g = Math.round(61 - t * 40);
-              b = Math.round(223 - t * 120);
+              r = Math.round(115 - t * 77);
+              g = Math.round(40 - t * 34);
+              b = Math.round(165 - t * 109);
             }
           } else if (this.paletteType === 1) {
-            // Aggressive Neon Crimson (Squad One Palette #ED1418 / #FF1E27)
+            // #ED1418 (237, 20, 24) -> #951121 (149, 17, 33) -> #4B030B (75, 3, 11)
             if (progress < 0.25) {
               const t = progress / 0.25;
-              r = 255;
-              g = Math.round(240 - t * 180);
-              b = Math.round(220 - t * 180);
+              r = Math.round(245 - t * 8);
+              g = Math.round(240 - t * 220);
+              b = Math.round(245 - t * 221);
             } else if (progress < 0.7) {
               const t = (progress - 0.25) / 0.45;
-              r = Math.round(255 - t * 18);
-              g = Math.round(60 - t * 40);
-              b = Math.round(40 - t * 16);
+              r = Math.round(237 - t * 88);
+              g = Math.round(20 - t * 3);
+              b = Math.round(24 + t * 9);
             } else {
               const t = (progress - 0.7) / 0.3;
-              r = Math.round(237 - t * 140);
-              g = Math.round(20 - t * 14);
-              b = Math.round(24 - t * 14);
+              r = Math.round(149 - t * 74);
+              g = Math.round(17 - t * 14);
+              b = Math.round(33 - t * 22);
             }
           } else {
-            // Dual Fusion: Electric Violet to Glowing Crimson
-            if (progress < 0.35) {
-              const t = progress / 0.35;
-              r = Math.round(245 - t * 77);
-              g = Math.round(230 - t * 145);
-              b = 255;
-            } else if (progress < 0.7) {
-              const t = (progress - 0.35) / 0.35;
-              r = Math.round(168 + t * 69);
-              g = Math.round(85 - t * 65);
-              b = Math.round(255 - t * 231);
+            // Dual Fusion: #F5F0F5 -> #953DDF -> #ED1418 -> #4B030B
+            if (progress < 0.3) {
+              const t = progress / 0.3;
+              r = Math.round(245 - t * 96);
+              g = Math.round(240 - t * 179);
+              b = Math.round(245 - t * 22);
+            } else if (progress < 0.65) {
+              const t = (progress - 0.3) / 0.35;
+              r = Math.round(149 + t * 88);
+              g = Math.round(61 - t * 41);
+              b = Math.round(223 - t * 199);
             } else {
-              const t = (progress - 0.7) / 0.3;
-              r = Math.round(237 - t * 120);
-              g = Math.round(20 - t * 15);
+              const t = (progress - 0.65) / 0.35;
+              r = Math.round(237 - t * 162);
+              g = Math.round(20 - t * 17);
               b = Math.round(24 - t * 13);
             }
           }
