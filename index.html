@@ -7246,8 +7246,25 @@ Roster (4 Players + Subs):</pre>
         const targetEl = document.getElementById(targetId);
         if (targetEl) {
           lenis.scrollTo(targetEl, {
-            offset: -40,
-            duration: 1.8,
+            offset: targetId === 'hero' ? 0 : -40,
+            duration: 1.6,
+            easing: (t) => 1 - Math.pow(1 - t, 4)
+          });
+        }
+      });
+    });
+
+    // Smooth scroll for nav links, brand logo, and all in-page anchors
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+      link.addEventListener('click', (e) => {
+        const href = link.getAttribute('href');
+        if (!href || href === '#') return;
+        const targetEl = document.querySelector(href);
+        if (targetEl) {
+          e.preventDefault();
+          lenis.scrollTo(targetEl, {
+            offset: href === '#hero' ? 0 : -40,
+            duration: 1.6,
             easing: (t) => 1 - Math.pow(1 - t, 4)
           });
         }
@@ -7275,7 +7292,7 @@ Roster (4 Players + Subs):</pre>
     }
 
     /* ==========================================================================
-       08. HERO ENTRANCE & CINEMATIC SCROLL-UP PARALLAX TIMELINE
+       08. HERO ENTRANCE & CINEMATIC SCROLL PARALLAX
        ========================================================================== */
     const heroTl = gsap.timeline({ defaults: { ease: 'power3.out' } });
 
@@ -7283,12 +7300,14 @@ Roster (4 Players + Subs):</pre>
       .from('#hero-crest', { scale: 0.5, opacity: 0, duration: 1.2 }, 0.2)
       .from('#hero-title', { y: 70, opacity: 0, duration: 1 }, 0.4)
       .from('#hero-tagline', { y: 35, opacity: 0, duration: 0.8 }, 0.6)
-      .from('#hero-partner', { y: 25, opacity: 0, duration: 0.8 }, 0.8)
-      .from('#hero-cta', { y: 25, opacity: 0, duration: 0.8 }, 1.0);
+      .from('#hero-cta', { y: 25, opacity: 0, duration: 0.8 }, 0.8)
+      .from('.hero-stats-pill-bar', { y: 20, opacity: 0, duration: 0.8 }, 1.0);
 
+    // Dynamic cinematic scroll parallax animations for text and hero elements (keeps full visibility without disappearing)
     gsap.to('#hero-parallax-bg', {
-      yPercent: 45,
+      yPercent: 35,
       ease: 'none',
+      immediateRender: false,
       scrollTrigger: {
         trigger: '#hero',
         start: 'top top',
@@ -7298,63 +7317,51 @@ Roster (4 Players + Subs):</pre>
     });
 
     gsap.to('#hero-crest', {
-      y: -140,
-      scale: 0.75,
-      opacity: 0,
+      y: -110,
+      scale: 0.85,
       ease: 'none',
+      immediateRender: false,
       scrollTrigger: {
         trigger: '#hero',
         start: 'top top',
-        end: '65% top',
+        end: 'bottom top',
         scrub: true
       }
     });
 
     gsap.to('#hero-title', {
-      y: -160,
-      scale: 0.9,
-      opacity: 0,
+      y: -140,
+      scale: 0.92,
       ease: 'none',
+      immediateRender: false,
       scrollTrigger: {
         trigger: '#hero',
         start: 'top top',
-        end: '70% top',
+        end: 'bottom top',
         scrub: true
       }
     });
 
     gsap.to('#hero-tagline', {
-      y: -110,
-      opacity: 0,
+      y: -85,
       ease: 'none',
+      immediateRender: false,
       scrollTrigger: {
         trigger: '#hero',
         start: 'top top',
-        end: '60% top',
-        scrub: true
-      }
-    });
-
-    gsap.to('#hero-partner', {
-      y: -80,
-      opacity: 0,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: '#hero',
-        start: 'top top',
-        end: '55% top',
+        end: 'bottom top',
         scrub: true
       }
     });
 
     gsap.to('#hero-cta', {
-      y: -60,
-      opacity: 0,
+      y: -50,
       ease: 'none',
+      immediateRender: false,
       scrollTrigger: {
         trigger: '#hero',
         start: 'top top',
-        end: '50% top',
+        end: 'bottom top',
         scrub: true
       }
     });
